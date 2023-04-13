@@ -1,0 +1,29 @@
+#* Version de Docker-Compose
+version: '3.9'
+
+#* Se declararan todos lo sservicios a utilizar
+services:
+
+  #* Nombre del contenedor
+  dev-container:
+    build:
+
+      #* Donde se encuentra la carpeta
+      context: .
+
+      #* Nombre con extensión para el archivo dockerfile
+      dockerfile: Dockerfile.dev
+
+    #* Nombre del contenedor
+    #! (Cambiar nombre al del proyecto)
+    container_name: test-container-name
+
+    #* Volumen donde persistirá la información
+    #! (Cambiar nombre del volumen para cada proyecto)
+    volumes:
+      - dev-container-data:/home/dev
+
+#* Declaración de los volúmenes
+#! (Cambiar nombre del volumen para cada proyecto)
+volumes:
+  dev-container-data:
