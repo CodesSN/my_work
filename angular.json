@@ -119,10 +119,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "spire:build:production"
+              "browserTarget": "revs:build:production"
             },
             "development": {
-              "browserTarget": "spire:build:development"
+              "browserTarget": "revs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -130,7 +130,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "spire:build"
+            "browserTarget": "revs:build"
           }
         },
         "test": {
