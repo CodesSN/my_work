@@ -27,7 +27,7 @@
               <div class="input">
                 <input class="input-text" formControlName="email" />
               </div>
-              <p class="input-error" *ngIf="signUpForm.get('email')?.hasError('required') || signUpForm.get('email')?.touched">
+              <p class="input-error" *ngIf="signUpForm.get('email')?.hasError('required')">
                 Please enter a valid email address
               </p>
             </div>
@@ -49,24 +49,13 @@
               <div class="input">
                 <input class="input-text" formControlName="cpassword" />
               </div>
-              <p class="input-error" *ngIf="signUpForm.get('password')?.hasError('required')">
+              <p class="input-error" *ngIf="signUpForm.get('cpassword')?.hasError('required')">
                 Confirm Password is required
               </p>
+              <p *ngIf="signUpForm.get('cpassword')?.errors?.['passwordNotMatch']" class="input-error">
+                Passwords do not match
+              </p>
               </div>
-              <!-- <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
-                <mat-form-field class="example-full-width" appearance="outline">
-                  <mat-label>Confirm Password</mat-label>
-                  <input matInput formControlName="cpassword" [type]="chide ? 'password' : 'text'" required>
-                  <a href="#" onClick="return false;" matSuffix (click)="chide = !chide"
-                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="chide">
-                    <mat-icon class="material-icons-two-tone color-icon m-3" matSuffix>
-                      {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </a>
-                  <mat-error *ngIf="authForm.get('cpassword')?.hasError('required')">
-                    Confirm Password is required
-                  </mat-error>
-                </mat-form-field>
-              </div> -->
             </div>
             <div class="row">
               <div class="input-container">
@@ -74,7 +63,7 @@
                 <div class="input">
                   <input class="input-text" formControlName="mobile" />
                 </div>
-                <p class="input-error" *ngIf="signUpForm.get('password')?.hasError('required')">
+                <p class="input-error" *ngIf="signUpForm.get('mobile')?.hasError('required')">
                   Confirm Password is required
                 </p>
               </div>

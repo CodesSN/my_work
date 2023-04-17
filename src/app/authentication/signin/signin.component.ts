@@ -21,46 +21,37 @@ export class SigninComponent
   hide = true;
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
   ) { }
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      username: ['pavel', Validators.required],
-      password: ['Pavel.12345', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
-  onSubmit() {
-    // this.submitted = true;
-    // this.loading = true;
+  async onSubmit() {
+    this.submitted = true;
+    this.loading = true;
     this.error = '';
+
     if (this.signInForm.valid) {
       const username = this.signInForm.get('username')?.value;
       const password = this.signInForm.get('password')?.value;
+      try {
+        await this.authService.signIn(username, password);
+        const user = await this.authService.currentUser();
 
-      this.authService.signIn(username, password);
-
-
-      // console.log("Signin", this.authService.getValue());
-
-
-      // .subscribe(
-      //   (user) => {
-      //     // Por lo pronto direccionar
-      //     this.router.navigate(['dashboard'])
-      //     console.log(user)
-      //   },
-      //   (error) => {
-      //     // this.invalidInput = true ;
-      //     this.error = "Incorrect username or password";
-      //     console.error(error);
-      //   }
-      //   );
-
-
+        this.router.navigate(['/authentication/mfa']);
+        console.log(user);
+      } catch (error) {
+        console.error(error);
+        this.submitted = false;
+        this.loading = false;
+        this.error = 'Username or password is incorrect';
+      }
     }
   }
 }

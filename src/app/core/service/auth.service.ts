@@ -10,9 +10,7 @@ import { use } from 'echarts';
   providedIn: 'root',
 })
 export class AuthService {
-  private emailVerified: boolean;
-  private value!:any;
-
+  private emailVerified!: boolean;
 
   constructor(
     private http: HttpClient,
@@ -21,66 +19,25 @@ export class AuthService {
     this.emailVerified = false;
   }
 
-  signUp(username:string, email: string, password:string, number:string):Observable<any>{
-    return new Observable(observer => {
-      Auth.signUp({
-        username,
-        password,
-        attributes: {
-          email,
-          nickname: username,
-          phone_number: `+52${number}`
-        },
-      }).then(
-        (response) => {
-
-          this.saveUser("", email, username);
-          this.router.navigate(['auth/verification']);
-
-          observer.next(response);
-          observer.complete();
-        },
-        (error) => {
-          observer.error(error);
-        }
-      );
+  signUp(username:string, email: string, password:string, number:string){
+    return Auth.signUp({
+      username,
+      password,
+      attributes: {
+        email,
+        nickname: username,
+        phone_number: `+52${number}`
+      },
     });
   }
 
   // SignIn
-  async signIn(username:string, password:string) {
-    try {
-      const user = await Auth.signIn(username, password);
-      console.log(user);
-      const currentUser = await Auth.currentAuthenticatedUser();
-      const token = currentUser.signInUserSession.accessToken.jwtToken;
-      console.log(token);
-
-      // Redireccionar al mfa
-      this.router.navigate(['/dashboard']);
-
-    } catch (error) {
-      console.log(error);
-
-    }
+  signIn(username:string, password:string) {
+    return Auth.signIn(username, password);
   }
 
-  getValue(){
-  return this.value;
-  }
-
-  currentUser():Observable<any> {
-    return new Observable(observer => {
-      Auth.currentAuthenticatedUser().then(
-        (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        (error) => {
-          observer.error(error);
-        }
-      );
-    });
+  currentUser() {
+    return Auth.currentAuthenticatedUser()
   }
 
   // Verificaction

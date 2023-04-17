@@ -19,9 +19,9 @@
               <div class="input-container">
                   <label class="input-label">Username*</label>
                 <div class="input" appearance="outline">
-                  <input class="input-text" formControlName="username" />
+                  <input type="text" class="input-text" formControlName="username" />
                 </div>
-                <p class="input-error" *ngIf="signInForm.get('username')?.hasError('required')">
+                <p class="input-error" *ngIf="signInForm.get('username')?.invalid && signInForm.get('username')?.touched">
                   Username is required
                 </p>
               </div>
@@ -30,9 +30,9 @@
               <div class="input-container">
                 <label class="input-label">Password*</label>
                 <div class="input" appearance="outline">
-                  <input class="input-text" formControlName="password" />
+                  <input type="password" class="input-text" formControlName="password" />
                 </div>
-                <p class="input-error" *ngIf="signInForm.get('password')?.hasError('required')">
+                <p class="input-error" *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched">
                   Password is required
                 </p>
               </div>
@@ -52,7 +52,7 @@
             <div class="container-auth-form-btn">
               <div style="text-align:center">
                 <button mat-raised-button color="primary" [class.auth-spinner]="loading" [disabled]="loading"
-                  class="auth-form-btn" [disabled]="!signInForm.valid " type="submit">Login</button>
+                  class="auth-form-btn" [disabled]="!signInForm.valid" type="submit">Login</button>
               </div>
             </div>
           </form>
