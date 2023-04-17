@@ -36,45 +36,25 @@ export class AuthService {
     return Auth.signIn(username, password);
   }
 
+  signOut(){
+    return Auth.signOut();
+  }
+
   currentUser() {
     return Auth.currentAuthenticatedUser()
   }
 
   // Verificaction
-  confirmVerification(code:string):Observable<any> {
-    const user:any = this.getSaveUser();
-
-    return new Observable(observer => {
-      Auth.confirmSignUp(user.username, code).then(
-        (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        (error) => {
-          observer.error(error);
-        }
-        );
-      });
-  }
-
-  resendValidateCode(): Observable<any>{
-    const user:any = this.getSaveUser();
-    return new Observable(observer => {
-      Auth.resendSignUp(user.username).then(
-        (response) => {
-          observer.next(response)
-          observer.complete()
-        },
-        (error) => {
-          observer.error(error);
-        }
-        )
-      });
+  confirmVerification(username:string ,code:string) {
+    return Auth.confirmSignUp(username, code);
   }
 
 
+  resendValidateCode(username:string){
+    Auth.resendSignUp(username);
+  }
 
-  saveUser(token:string, email:string = '', username:string = ''){
+  saveUser(token:string, email:string, username:string){
     const newUser: User =  {
       token: token,
       email: email,
@@ -103,29 +83,4 @@ export class AuthService {
     }
     return false;
   }
-
-
-  // login(username: string, password: string) {
-  //   return this.http
-  //     .post<User>(`${environment.apiUrl}/authenticate`, {
-  //       username,
-  //       password,
-  //     })
-  //     .pipe(
-  //       map((user) => {
-  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
-
-  //         localStorage.setItem('currentUser', JSON.stringify(user));
-  //         this.currentUserSubject.next(user);
-  //         return user;
-  //       })
-  //     );
-  // }
-
-  // logout() {
-  //   // remove user from local storage to log user out
-  //   localStorage.removeItem('currentUser');
-  //   this.currentUserSubject.next(this.currentUserValue);
-  //   return of({ success: false });
-  // }
 }

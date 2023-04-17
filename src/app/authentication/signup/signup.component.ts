@@ -59,14 +59,11 @@ export class SignupComponent implements OnInit {
       const email = this.signUpForm.get('email')?.value;
       const password = this.signUpForm.get('password')?.value;
       const mobile = this.signUpForm.get('mobile')?.value;
-
-      console.log(username);
-      console.log(email);
-      console.log(password);
-      console.log(mobile);
-
       try {
         this.authService.signUp(username, email, password, mobile);
+        this.authService.saveUser('', '', username);
+        console.log(this.authService.getSaveUser());
+        this.router.navigate(['authentication/verification']);
       } catch (error) {
         console.error(error)
       }

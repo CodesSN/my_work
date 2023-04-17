@@ -1,2 +1,37 @@
-
+<div class="auth-container">
+  <div class="row auth-main">
+    <div class="col-sm-6 px-0 d-none d-sm-block">
+      <div class="left-img" style="background-image: url(assets/images/signin/revs-full-signin.png);">
+      </div>
+    </div>
+    <div class="col-sm-6 auth-form-section ">
+      <div class="form-section">
+        <div class="auth-wrapper">
+          <h2 class="welcome-msg color" >Verify email</h2>
+          <p class="auth-signup-text mfa-text">Check your email and send the code</p>
+          <form class="validate-form" [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="input-container">
+                <div class="input" appearance="outline">
+                  <input type="text" class="input-text" formControlName="code" placeholder="Code*" />
+                </div>
+                <p class="input-error" *ngIf="verifyForm.get('code')?.invalid && verifyForm.get('code')?.touched">
+                  Code is required
+                </p>
+                <p class="input-error" *ngIf="">
+                  Code incorrect, please try again
+                </p>
+              </div>
+            </div>
+            <div class="container-auth-form-btn">
+              <button mat-flat-button color="primary" class="auth-form-btn color" [disabled]="!verifyForm.valid " type="submit">
+                Send Code
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 

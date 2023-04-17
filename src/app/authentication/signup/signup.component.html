@@ -5,56 +5,56 @@
       </div>
     </div>
     <div class="col-sm-6 auth-form-section background-img">
-      <div class="form-section">
+      <div class="form-section flow">
         <div class="auth-wrapper">
           <h2 class="welcome-msg color"> Sign Up </h2>
-          <p class="auth-signup-text text-muted color">Enter details to create your account</p>
+          <p class="auth-signup-text color">Enter details to create your account</p>
           <form class="validate-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="input-container">
                 <label class="input-label">Username*</label>
-              <div class="input">
-                <input class="input-text" formControlName="username" />
+                <div class="input">
+                  <input class="input-text" formControlName="username" />
+                </div>
+                <p class="input-error" *ngIf="signUpForm.get('username')?.hasError('required') && signUpForm.get('username')?.touched">
+                  Username is required
+                </p>
               </div>
-              <p class="input-error" *ngIf="signUpForm.get('username')?.hasError('required')">
-                Username is required
-              </p>
-            </div>
             </div>
             <div class="row">
               <div class="input-container">
                 <label class="input-label">Email*</label>
-              <div class="input">
-                <input class="input-text" formControlName="email" />
+                <div class="input">
+                  <input class="input-text" formControlName="email" />
+                </div>
+                <p class="input-error" *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
+                  Please enter a valid email address
+                </p>
               </div>
-              <p class="input-error" *ngIf="signUpForm.get('email')?.hasError('required')">
-                Please enter a valid email address
-              </p>
-            </div>
             </div>
             <div class="row">
               <div class="input-container">
                 <label class="input-label">Password*</label>
-              <div class="input">
-                <input class="input-text" formControlName="password" />
-              </div>
-              <p class="input-error" *ngIf="signUpForm.get('password')?.hasError('required')">
-                Password is required
-              </p>
+                <div class="input">
+                  <input type="password" class="input-text" formControlName="password" />
+                </div>
+                <p class="input-error" *ngIf="signUpForm.get('password')?.hasError('required') && signUpForm.get('password')?.touched">
+                  Password is required
+                </p>
               </div>
             </div>
             <div class="row">
               <div class="input-container">
                 <label class="input-label">Confirm Password*</label>
-              <div class="input">
-                <input class="input-text" formControlName="cpassword" />
-              </div>
-              <p class="input-error" *ngIf="signUpForm.get('cpassword')?.hasError('required')">
-                Confirm Password is required
-              </p>
-              <p *ngIf="signUpForm.get('cpassword')?.errors?.['passwordNotMatch']" class="input-error">
-                Passwords do not match
-              </p>
+                <div class="input">
+                  <input type="password" class="input-text" formControlName="cpassword" />
+                </div>
+                <p class="input-error" *ngIf="signUpForm.get('cpassword')?.hasError('required') && signUpForm.get('cpassword')?.touched">
+                  Confirm Password is required
+                </p>
+                <p *ngIf="signUpForm.get('cpassword')?.errors?.['passwordNotMatch']" class="input-error">
+                  Passwords do not match
+                </p>
               </div>
             </div>
             <div class="row">
@@ -63,7 +63,7 @@
                 <div class="input">
                   <input class="input-text" formControlName="mobile" />
                 </div>
-                <p class="input-error" *ngIf="signUpForm.get('mobile')?.hasError('required')">
+                <p class="input-error" *ngIf="signUpForm.get('mobile')?.hasError('required') && signUpForm.get('mobile')?.touched">
                   Confirm Password is required
                 </p>
               </div>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="container-auth-form-btn">
-              <button mat-flat-button color="primary" class="auth-form-btn background color" [disabled]="!signUpForm.valid " type="submit">
+              <button mat-flat-button color="primary" class="auth-form-btn background color margin" [disabled]="!signUpForm.valid " type="submit">
                 Register
               </button>
             </div>
