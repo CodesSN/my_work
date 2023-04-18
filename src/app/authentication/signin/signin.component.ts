@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
@@ -12,14 +12,14 @@ import { AuthService } from 'src/app/core/service/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent
-  implements OnInit
+export class SigninComponent implements OnInit
 {
   signInForm!: UntypedFormGroup;
   submitted = false;
   loading = false;
   error = '';
   hide = true;
+
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
@@ -28,7 +28,7 @@ export class SigninComponent
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
