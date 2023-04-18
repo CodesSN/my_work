@@ -1,44 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit {
-  authForm!: UntypedFormGroup;
+  forgotForm!: UntypedFormGroup;
   submitted = false;
   returnUrl!: string;
+
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private route: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {}
+
   ngOnInit() {
-    this.authForm = this.formBuilder.group({
-      email: [
+    this.forgotForm = this.formBuilder.group({
+      forgot: [
         '',
-        [Validators.required, Validators.email, Validators.minLength(5)],
+        [Validators.required, Validators.email],
       ],
     });
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  get f() {
-    return this.authForm.controls;
-  }
-  onSubmit() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.authForm.invalid) {
-      return;
-    } else {
-      this.router.navigate(['/dashboard/main']);
+
+  async onSubmit() {
+    if(this.forgotForm.valid){
+      const username = this.forgotForm.get('forgot')?.value;
+      console.log(username);
+      try {
+        const res = await this.authService.forgotPassword(username);
+        console.log(res);
+        this.authService.saveForgotUsername(username);
+        this.router.navigate(['/authentication/new-password'])
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }

@@ -31,12 +31,12 @@ export class VerificationComponent {
   async onSubmit(){
     this.requiredCode = this.verifyForm.get('code')?.invalid;
     if(this.verifyForm.valid){
-      const user = this.authService.getSaveUser()
+      const user = this.authService.getNewUser()
       const code =  this.verifyForm.get('code')?.value;
       this.invalidCode = false;
       try {
         await this.authService.confirmVerification(user.username, code);
-        this.authService.deleteSaveUser();
+        this.authService.deleteNewUser();
         this.router.navigate(['/authentication/signin']);
       } catch (error) {
         this.invalidCode = true;
@@ -46,7 +46,7 @@ export class VerificationComponent {
 
   async resendCode(){
     this.invalidResendCode = false;
-    const user = this.authService.getSaveUser();
+    const user = this.authService.getNewUser();
     try {
       await this.authService.resendValidateCode(user.username);
     } catch (error) {

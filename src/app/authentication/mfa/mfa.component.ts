@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-mfa',
@@ -11,7 +13,9 @@ export class MfaComponent implements OnInit {
   public incorrectCode!: boolean;
 
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private authService: AuthService,
+    private router: Router
   ) {
     this.incorrectCode = false;
   }
@@ -22,10 +26,26 @@ export class MfaComponent implements OnInit {
     })
   }
 
-  onSubmit(){
-    const code = this.mfaForm.get('code')?.value;
-    this.incorrectCode = false;
+  async onSubmit(){
+    if(this.mfaForm.valid) {
+      this.incorrectCode = false;
+      const code = this.mfaForm.get('code')?.value;
+      const user = this.authService.getCurrentUser();
+      console.log(code);
+      console.log(user)
 
+      try {
+        await this.authService.signOut();
+        const res = await this.authService.confirmVerification(user, code);
 
+        console.log(res);
+
+        // this.authService.deleteCurrentUser();
+        // this.router.navigate(['/dashboard']);
+      } catch (error) {
+        console.error(error);
+        this.incorrectCode = true;
+      }
+    }
   }
 }

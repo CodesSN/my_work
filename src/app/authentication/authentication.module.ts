@@ -15,6 +15,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { VerificationComponent } from './verification/verification.component';
 import { MfaComponent } from './mfa/mfa.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 @NgModule({
   declarations: [
     Page500Component,
@@ -25,6 +26,7 @@ import { MfaComponent } from './mfa/mfa.component';
     ForgotPasswordComponent,
     VerificationComponent,
     MfaComponent,
+    NewPasswordComponent,
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Auth } from 'aws-amplify';
-import { User } from '../../models/user.model';
+import { CurrentUser, User } from '../../models/user.model';
 import { Router } from '@angular/router';
-import { use } from 'echarts';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +34,11 @@ export class AuthService {
     return Auth.signIn(username, password);
   }
 
+  // MFA
+  multifactorVerification(username:string, code:string){
+    return Auth.confirmSignIn(username, code);
+  }
+
   signOut(){
     return Auth.signOut();
   }
@@ -45,42 +48,70 @@ export class AuthService {
   }
 
   // Verificaction
-  confirmVerification(username:string ,code:string) {
-    return Auth.confirmSignUp(username, code);
+  confirmVerification(user:any ,code:string) {
+    return Auth.confirmSignUp(user, code);
   }
-
 
   resendValidateCode(username:string){
-    Auth.resendSignUp(username);
+    return Auth.resendSignUp(username);
   }
 
-  saveUser(token:string, email:string, username:string){
+  forgotPassword(username:string){
+    return Auth.forgotPassword(username)
+    .then( (data:any) => {
+      console.log(data);
+    });
+  }
+
+  forgotPasswordSubmit(username:string, code:string, newPassword:string){
+    return Auth.forgotPasswordSubmit(username, code,  newPassword)
+  }
+
+  saveNewUser(username:string){
     const newUser: User =  {
-      token: token,
-      email: email,
       username: username
     }
-    localStorage.setItem('user', JSON.stringify(newUser))
+    localStorage.setItem('new', JSON.stringify(newUser))
   }
 
-  getSaveUser(){
-    let user:any = localStorage.getItem('user');
+  getNewUser(){
+    let user:any = localStorage.getItem('new');
     if(user){
       user = JSON.parse(user);
     }
-    console.log(user);
     return user;
   }
 
-  deleteSaveUser(){
-    localStorage.removeItem('user');
+  deleteNewUser(){
+    localStorage.removeItem('new');
   }
 
-  isLogged(){
-    const user = this.getSaveUser();
+  saveCurrentUser(user:any){
+    localStorage.setItem('current', JSON.stringify(user));
+  }
+
+  getCurrentUser(){
+    let user:any = localStorage.getItem('current');
     if(user){
-      return true;
+      user = JSON.parse(user);
     }
-    return false;
+    return user;
+  }
+
+  deleteCurrentUser(){
+    localStorage.removeItem('current');
+  }
+
+  saveForgotUsername(username:string){
+    localStorage.setItem('forgot', username);
+  }
+
+  getForgotUsername(){
+    const username:string | null = localStorage.getItem('forgot');
+    return username;
+  }
+
+  deleteForgotUsername(){
+    localStorage.removeItem('forgot');
   }
 }

@@ -61,8 +61,8 @@ export class SignupComponent implements OnInit {
       const mobile = this.signUpForm.get('mobile')?.value;
       try {
         this.authService.signUp(username, email, password, mobile);
-        this.authService.saveUser('', '', username);
-        console.log(this.authService.getSaveUser());
+        this.authService.saveNewUser(username);
+        console.log(this.authService.getNewUser());
         this.router.navigate(['authentication/verification']);
       } catch (error) {
         console.error(error)

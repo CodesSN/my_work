@@ -8,6 +8,7 @@ import { Page404Component } from "./page404/page404.component";
 import { Page500Component } from "./page500/page500.component";
 import { VerificationComponent } from "./verification/verification.component";
 import { MfaComponent } from "./mfa/mfa.component";
+import { NewPasswordComponent } from "./new-password/new-password.component";
 const routes: Routes = [
   {
     path: "",
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: "forgot-password",
     component: ForgotPasswordComponent,
+  },
+  {
+    path: "new-password",
+    component: NewPasswordComponent,
   },
   {
     path: "locked",
