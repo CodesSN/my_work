@@ -9,6 +9,8 @@ import { Page500Component } from "./page500/page500.component";
 import { VerificationComponent } from "./verification/verification.component";
 import { MfaComponent } from "./mfa/mfa.component";
 import { NewPasswordComponent } from "./new-password/new-password.component";
+import { MfaGuard } from "../core/guard/mfa.guard";
+import { ForgotGuard } from "../core/guard/forgot.guard";
 const routes: Routes = [
   {
     path: "",
@@ -29,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: "mfa",
-    component: MfaComponent
+    component: MfaComponent,
+    canActivate: [MfaGuard]
   },
   {
     path: "forgot-password",
@@ -38,19 +41,20 @@ const routes: Routes = [
   {
     path: "new-password",
     component: NewPasswordComponent,
+    canActivate: [ForgotGuard]
   },
-  {
-    path: "locked",
-    component: LockedComponent,
-  },
+  // {
+  //   path: "locked",
+  //   component: LockedComponent,
+  // },
   {
     path: "page404",
     component: Page404Component,
   },
-  {
-    path: "page500",
-    component: Page500Component,
-  },
+  // {
+  //   path: "page500",
+  //   component: Page500Component,
+  // },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

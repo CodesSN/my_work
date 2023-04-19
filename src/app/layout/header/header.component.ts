@@ -223,13 +223,10 @@ export class HeaderComponent
     }
   }
   logout() {
-    // this.subs.sink = this.authService.logout().subscribe((res) => {
-    //   if (!res.success) {
-    //     this.router.navigate(['/authentication/signin']);
-    //   }
-    // });
 
-    console.log('logout');
+    this.authService.deleteToken();
+    this.router.navigate(['authentication/signin'])
+    // console.log('logout');
 
   }
 }

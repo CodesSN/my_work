@@ -1,22 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Auth } from 'aws-amplify';
-import { CurrentUser, User } from '../../models/user.model';
-import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private emailVerified!: boolean;
-
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.emailVerified = false;
-  }
-
   signUp(username:string, email: string, password:string, number:string){
     return Auth.signUp({
       username,
@@ -110,5 +99,18 @@ export class AuthService {
 
   deleteForgotEmail(){
     localStorage.removeItem('forgot');
+  }
+
+  saveToken(email:string){
+    localStorage.setItem('token', email);
+  }
+
+  getToken(){
+    const username:string | null = localStorage.getItem('token');
+    return username;
+  }
+
+  deleteToken(){
+    localStorage.removeItem('token');
   }
 }

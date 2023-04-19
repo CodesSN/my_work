@@ -65,6 +65,7 @@ export class SigninComponent implements OnInit
           console.error("NotAut");
           this.error = 'Username or password is incorrect';
         }
+
         this.submitted = false;
         this.loading = false;
       }
