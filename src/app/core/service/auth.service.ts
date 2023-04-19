@@ -56,11 +56,8 @@ export class AuthService {
     return Auth.resendSignUp(username);
   }
 
-  forgotPassword(username:string){
-    return Auth.forgotPassword(username)
-    .then( (data:any) => {
-      console.log(data);
-    });
+  forgotPassword(email:string){
+    return Auth.forgotPassword(email);
   }
 
   forgotPasswordSubmit(username:string, code:string, newPassword:string){
@@ -102,16 +99,16 @@ export class AuthService {
     localStorage.removeItem('current');
   }
 
-  saveForgotUsername(username:string){
-    localStorage.setItem('forgot', username);
+  saveForgotEmail(email:string){
+    localStorage.setItem('forgot', email);
   }
 
-  getForgotUsername(){
+  getForgotEmail(){
     const username:string | null = localStorage.getItem('forgot');
     return username;
   }
 
-  deleteForgotUsername(){
+  deleteForgotEmail(){
     localStorage.removeItem('forgot');
   }
 }

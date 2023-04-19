@@ -11,32 +11,34 @@ import { AuthService } from 'src/app/core/service/auth.service';
 export class NewPasswordComponent implements OnInit {
   public newPassForm!: FormGroup;
   public invalidCode!: boolean;
+  public email!:string | null;
 
   constructor(
     private authService:AuthService,
     private fb: FormBuilder,
     private router: Router
-  ){}
+  ){
+    this.invalidCode = false;
+    this.email = this.authService.getForgotEmail();
+  }
 
   ngOnInit(): void {
     this.newPassForm = this.fb.group({
       code: ['', Validators.required],
       nwpass: ['', Validators.required]
     })
-    this.invalidCode = false;
   }
 
   async onSubmit(){
     if(this.newPassForm.valid){
       const code = this.newPassForm.get('code')?.value;
       const newPassword = this.newPassForm.get('nwpass')?.value;
-      const email = this.authService.getForgotUsername();
 
-      if(email){
+      if(this.email){
         this.invalidCode = false;
         try {
-          await this.authService.forgotPasswordSubmit(email, code, newPassword);
-          this.authService.deleteForgotUsername();
+          await this.authService.forgotPasswordSubmit(this.email, code, newPassword);
+          this.authService.deleteForgotEmail();
           this.router.navigate(['/authentication/signin'])
         } catch (error) {
           this.invalidCode = true;

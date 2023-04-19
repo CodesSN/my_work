@@ -24,7 +24,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgotForm = this.formBuilder.group({
-      forgot: [
+      email: [
         '',
         [Validators.required, Validators.email],
       ],
@@ -33,12 +33,12 @@ export class ForgotPasswordComponent implements OnInit {
 
   async onSubmit() {
     if(this.forgotForm.valid){
-      const username = this.forgotForm.get('forgot')?.value;
-      console.log(username);
+      const email = this.forgotForm.get('email')?.value;
+      console.log(email);
       try {
-        const res = await this.authService.forgotPassword(username);
+        const res = await this.authService.forgotPassword(email);
         console.log(res);
-        this.authService.saveForgotUsername(username);
+        this.authService.saveForgotEmail(email);
         this.router.navigate(['/authentication/new-password'])
       } catch (error) {
         console.error(error);

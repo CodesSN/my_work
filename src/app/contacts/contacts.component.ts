@@ -61,12 +61,15 @@ export class ContactsComponent
   contextMenu?: MatMenuTrigger;
   contextMenuPosition = { x: '0px', y: '0px' };
 
+  // Cuando carga el componente carga los datos de la tabla
   ngOnInit() {
     this.loadData();
   }
+
   refresh() {
     this.loadData();
   }
+
   addNew() {
     let tempDirection: Direction;
     if (localStorage.getItem('isRtl') === 'true') {
@@ -82,6 +85,8 @@ export class ContactsComponent
 
       direction: tempDirection,
     });
+
+    // Crear el modal
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         // After dialog is closed we're doing frontend updates
@@ -99,6 +104,8 @@ export class ContactsComponent
       }
     });
   }
+
+  // Abre el modal con la opcion de detalles
   detailsCall(row: Contacts) {
     this.dialog.open(FormComponent, {
       data: {
@@ -109,9 +116,8 @@ export class ContactsComponent
       width: '35%',
     });
   }
-  toggleStar(row: Contacts) {
-    console.log(row);
-  }
+
+  // Abrel el modal para editar los datos
   editCall(row: Contacts) {
     this.id = row.id;
     let tempDirection: Direction;
@@ -127,6 +133,7 @@ export class ContactsComponent
       },
       direction: tempDirection,
     });
+
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
@@ -222,7 +229,9 @@ export class ContactsComponent
     this.exampleDatabase = new ContactsService(this.httpClient);
     this.dataSource = new ExampleDataSource(
       this.exampleDatabase,
+      // Sirve para dividir en paginas mas pequeñas
       this.paginator,
+      // Funcion de angular que acomoda los datos de una table
       this.sort
     );
     this.subs.sink = fromEvent(this.filter.nativeElement, 'keyup').subscribe(
@@ -234,6 +243,7 @@ export class ContactsComponent
       }
     );
   }
+
   showNotification(
     colorName: string,
     text: string,

@@ -33,19 +33,20 @@ export class MfaComponent implements OnInit {
       const user = this.authService.getCurrentUser();
       console.log(code);
       console.log(user)
+      this.authService.deleteCurrentUser();
+      this.router.navigate(['/dashboard']);
 
-      try {
-        await this.authService.signOut();
-        const res = await this.authService.confirmVerification(user, code);
+      // try {
+      //   // await this.authService.signOut();
+      //   // const res = await this.authService.confirmVerification(user, code);
 
-        console.log(res);
+      //   // console.log(res);
 
-        // this.authService.deleteCurrentUser();
-        // this.router.navigate(['/dashboard']);
-      } catch (error) {
-        console.error(error);
-        this.incorrectCode = true;
-      }
+
+      // } catch (error) {
+      //   console.error(error);
+      //   this.incorrectCode = true;
+      // }
     }
   }
 }

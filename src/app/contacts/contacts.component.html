@@ -72,13 +72,6 @@
                   </mat-header-cell>
                   <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
                 </ng-container>
-                <!-- <ng-container matColumnDef="img">
-                  <mat-header-cell mat-header-cell *matHeaderCellDef [ngClass]="'tbl-col-width-per-6'"> Image
-                  </mat-header-cell>
-                  <mat-cell mat-cell *matCellDef="let row" class="table-img tbl-col-width-per-6"> <img
-                      [src]="row.img" />
-                  </mat-cell>
-                </ng-container> -->
                 <ng-container matColumnDef="name">
                   <mat-header-cell *matHeaderCellDef mat-sort-header>Name
                   </mat-header-cell>

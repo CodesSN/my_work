@@ -38,7 +38,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user3.jpg',
-    name: 'Tim Hank',
+    name: 'Manager',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'open',
@@ -49,7 +49,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user4.jpg',
-    name: 'Tim Hank',
+    name: 'RH',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'closed',
@@ -60,7 +60,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user5.jpg',
-    name: 'Tim Hank',
+    name: 'Manager',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'open',
@@ -71,7 +71,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user6.jpg',
-    name: 'Tim Hank',
+    name: 'RH',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'closed',
@@ -82,7 +82,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user7.jpg',
-    name: 'Tim Hank',
+    name: 'Manager',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'open',
@@ -93,7 +93,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user8.jpg',
-    name: 'Tim Hank',
+    name: 'RH',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'pending',
@@ -104,7 +104,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user9.jpg',
-    name: 'Tim Hank',
+    name: 'Manager',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'closed',
@@ -115,7 +115,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {
     checked: false,
     imageUrl: 'assets/images/user/user10.jpg',
-    name: 'Tim Hank',
+    name: 'Admin',
     email: 'test@example.com',
     subject: 'Image not Proper',
     status: 'closed',
