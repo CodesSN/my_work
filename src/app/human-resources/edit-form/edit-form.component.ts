@@ -42,6 +42,8 @@ export class EditFormComponent implements OnInit {
       phone: [this.currentEmployee.phone, [Validators.required]],
       date: [this.currentEmployee.date, [Validators.required]],
       email: [this.currentEmployee.email, [Validators.required]],
+      civil: [this.currentEmployee.civil ,[Validators.required]],
+      ssn: [this.currentEmployee.sn, [Validators.required]]
     })
   }
 
@@ -62,5 +64,7 @@ export class EditFormComponent implements OnInit {
       this.employeeService.saveEmployee('2');
 
     }
+
+    this.dialogRef.close()
   }
 }

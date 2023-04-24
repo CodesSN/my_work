@@ -4,4 +4,6 @@ export interface Employee {
   phone:number;
   date:string;
   email: string;
+  sn: string;
+  civil: string;
 }

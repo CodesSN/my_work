@@ -32,7 +32,6 @@ export class ContactsComponent
   filterToggle = false;
   displayedColumns = [
     'select',
-    // 'img',
     'name',
     'email',
     'mobile',

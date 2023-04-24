@@ -4,53 +4,51 @@
       <!-- breadcrumb -->
       <app-breadcrumb [title]="'Configuration'" [items]="['HR']" [active_item]="'Configuration'"></app-breadcrumb>
     </div>
-
-
     <div class="row">
       <div class="card card-container">
-        <div class="button-container">
-          <button mat-button (click)="addEmployee()" class="button-color">Add Employee</button>
+        <div class="table-container">
+          <div class="table-header">
+            <h2 class="table-title">
+              Employee
+            </h2>
+          </div>
+          <div class="button-container">
+            <button mat-button (click)="addEmployee()" class="button-color">Add Employee</button>
+          </div>
+          <table mat-table [dataSource]="data" class="table" >
+            <!-- name -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+            <!-- address -->
+            <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef> Address </th>
+              <td mat-cell *matCellDef="let row"> {{row.address}} </td>
+            </ng-container>
+            <!-- phone -->
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef> Phone </th>
+              <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
+            </ng-container>
+            <!-- Email -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+            </ng-container>
+            <!-- Options -->
+            <ng-container matColumnDef="options">
+              <th mat-header-cell *matHeaderCellDef> Options </th>
+              <td mat-cell *matCellDef="let row">
+                <button mat-button (click)="editEmployee(row)" class="table-button">
+                  Edit
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
         </div>
-
-        <table mat-table [dataSource]="data" class="mat-elevation-z8 table" >
-          <!-- name -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-          </ng-container>
-          <!-- address -->
-          <ng-container matColumnDef="address">
-            <th mat-header-cell *matHeaderCellDef> Address </th>
-            <td mat-cell *matCellDef="let row"> {{row.address}} </td>
-          </ng-container>
-          <!-- phone -->
-          <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef> Phone </th>
-            <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
-          </ng-container>
-          <!-- date -->
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let row"> {{row.date}} </td>
-          </ng-container>
-          <!-- Status -->
-          <!-- Email -->
-          <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
-            <td mat-cell *matCellDef="let row"> {{row.email}} </td>
-          </ng-container>
-          <!-- Options -->
-          <ng-container matColumnDef="options">
-            <th mat-header-cell *matHeaderCellDef> Options </th>
-            <td mat-cell *matCellDef="let row">
-              <button mat-button (click)="editEmployee(row)" class="table-button">
-                Edit
-              </button>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
       </div>
     </div>
   </div>

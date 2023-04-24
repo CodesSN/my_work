@@ -16,17 +16,30 @@ export class ConfigComponent extends UnsubscribeOnDestroyAdapter {
       address:"calle 42",
       phone:8921094812,
       date:"12/11/2000",
-      email: "example2@example.com",
+      email: "pavel@example.com",
+      sn: "hombre",
+      civil: "soltero"
     },
     {
       name: "hibran",
       address:"calle rosales",
       phone:6058342495,
       date:"12/08/1996",
-      email: "exe@example.com",
+      email: "hibran@example.com",
+      sn: "hombre",
+      civil: "casado"
+    },
+    {
+      name: "andrea",
+      address:"calle pino",
+      phone:9442402340,
+      date:"23/06/1998",
+      email: "andrea@example.com",
+      sn: "mujer",
+      civil: "viuda"
     },
   ];
-  displayedColumns: string[] = ['name', 'address', 'phone', 'date', 'email', 'options'];
+  displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];
 
   constructor(
     private dialog:MatDialog
@@ -42,9 +55,7 @@ export class ConfigComponent extends UnsubscribeOnDestroyAdapter {
       }
     });
 
-    this.subs.sink = dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    this.subs.sink = dialogRef.afterClosed().subscribe();
   }
 
   addEmployee(): void{
@@ -61,8 +72,6 @@ export class ConfigComponent extends UnsubscribeOnDestroyAdapter {
       }
     });
 
-    this.subs.sink = dialogRef.afterClosed().subscribe(result => {
-      // console.log(result);edi
-    });
+    this.subs.sink = dialogRef.afterClosed().subscribe();
   }
 }

@@ -5,38 +5,62 @@
     </div>
     <div class="inputs-container">
       <div class="input-container">
-        <label>Name</label>
-        <input type="text" formControlName="name">
+        <mat-form-field appearance="outline" >
+          <mat-label>Name</mat-label>
+          <input matInput  formControlName="name">
+          <mat-icon matSuffix>name</mat-icon>
+          <mat-error *ngIf="modalForm.get('name')?.hasError('required') && modalForm.get('name')?.touched">Name required</mat-error>
+        </mat-form-field>
       </div>
       <div class="input-container">
-        <label>Address</label>
-        <input matInput type="text" formControlName="address">
-      </div>
-    </div>
-    <div class="inputs-container">
-      <div class="input-container">
-        <label>Phone</label>
-        <input type="number" formControlName="phone" >
-      </div>
-      <div class="input-container">
-        <label>Date</label>
-        <input type="text" formControlName="date">
+        <mat-form-field appearance="outline" >
+          <mat-label>Address</mat-label>
+          <input matInput  formControlName="address">
+          <mat-icon matSuffix>date</mat-icon>
+        </mat-form-field>
       </div>
     </div>
     <div class="inputs-container">
       <div class="input-container">
-        <label>Email</label>
-        <input type="email" formControlName="email">
+        <mat-form-field appearance="outline" >
+          <mat-label>Phone</mat-label>
+          <input matInput  formControlName="phone">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
       </div>
       <div class="input-container">
-        <label>Civil status</label>
-        <input type="text">
+        <!-- Date form -->
+        <mat-form-field appearance="outline" >
+          <mat-label>Date</mat-label>
+          <input matInput  formControlName="date">
+          <mat-icon matSuffix>date</mat-icon>
+        </mat-form-field>
       </div>
     </div>
     <div class="inputs-container">
       <div class="input-container">
-        <label>SSN</label>
-        <input type="text">
+        <mat-form-field appearance="outline" >
+          <mat-label>Email</mat-label>
+          <input matInput  formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Civil Status</mat-label>
+          <input matInput formControlName="civil">
+          <mat-icon matSuffix>wc</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>SSN</mat-label>
+          <input matInput formControlName="ssn" >
+          <mat-icon matSuffix>ss</mat-icon>
+        </mat-form-field>
       </div>
     </div>
     <div class="buttons-container">
