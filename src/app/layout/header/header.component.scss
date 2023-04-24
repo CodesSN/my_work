@@ -1,1 +1,9 @@
+.header-background {
+  background-color: #fff;
+}
 
+.user {
+  &-text {
+    color: black !important;
+  }
+}

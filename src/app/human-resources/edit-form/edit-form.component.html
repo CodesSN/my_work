@@ -1,0 +1,49 @@
+<div class="container">
+  <form [formGroup]="modalForm" (ngSubmit)="saveChanges()">
+    <div class="title-container">
+      <h2 class="title-text">{{titleForm}}</h2>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <label>Name</label>
+        <input type="text" formControlName="name">
+      </div>
+      <div class="input-container">
+        <label>Address</label>
+        <input matInput type="text" formControlName="address">
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <label>Phone</label>
+        <input type="number" formControlName="phone" >
+      </div>
+      <div class="input-container">
+        <label>Date</label>
+        <input type="text" formControlName="date">
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <label>Email</label>
+        <input type="email" formControlName="email">
+      </div>
+      <div class="input-container">
+        <label>Civil status</label>
+        <input type="text">
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <label>SSN</label>
+        <input type="text">
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button mat-button type="button" class="button-form button-form--close" (click)="close()">Close</button>
+      <button mat-button type="submit" class="button-form button-form--save">Save Changes</button>
+    </div>
+  </form>
+</div>
+
+

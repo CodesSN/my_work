@@ -1,0 +1,32 @@
+.card {
+  padding: 0 10px;
+  &-container {
+    box-sizing: border-box;
+  }
+}
+
+.table {
+  // width: calc(100% - 20px);
+  // margin: 0 10px 30px ;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  &-button {
+  background-color: #B6894B;
+  }
+
+}
+
+.button {
+  &-container {
+    padding: 20px;
+
+  }
+
+  &-color {
+    background-color: #B6894B;
+    outline: 0;
+    border: 0;
+    padding: 5px 10px;
+  }
+}
