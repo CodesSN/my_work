@@ -63,6 +63,15 @@ export class ConfigComponent extends UnsubscribeOnDestroyAdapter implements OnIn
       "civil": "Casado",
       "sn": "345-67-8901"
     },
+    {
+      "name": "Michael Davis",
+      "address": "888 Cedar Lane",
+      "phone": "555-345-6789",
+      "date": "09/30/1987",
+      "email": "michaeldavis@example.com",
+      "civil": "Casado",
+      "sn": "345-67-8901"
+    },
   ];
   public dataSource = new MatTableDataSource<Employee>(this.data);
   public displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];

@@ -1,0 +1,58 @@
+.card {
+  &-container {
+    box-sizing: border-box;
+  }
+}
+
+.table {
+  box-sizing: border-box;
+
+  &-container {
+    width:100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+    // box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  &-button {
+  background-color: #B6894B;
+  }
+
+}
+
+.button {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+  }
+
+  &-color {
+    background-color: #B6894B;
+    outline: 0;
+    border: 0;
+    padding: 5px 10px;
+  }
+}
+
+.input {
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 5px;
+  outline: 0;
+  border: 2px solid black;
+}
+
+.table {
+  &-header {
+    padding: 15px 5px;
+    background-color: #B6894B;
+  }
+
+  &-title {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.4rem;
+  }
+}

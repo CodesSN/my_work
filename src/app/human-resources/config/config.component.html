@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <div class="card card-container">
-        <div class="table-container">
+        <!-- <div class="table-container">
           <div class="table-header">
             <h2 class="table-title">
               Employee
@@ -17,27 +17,22 @@
             <input class="input" type="text" placeholder="search" [(ngModel)]="searchValue"  (input)="searchFilter()">
           </div>
           <table mat-table [dataSource]="dataSource" class="table" >
-            <!-- name -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
               <td mat-cell *matCellDef="let row"> {{row.name}} </td>
             </ng-container>
-            <!-- address -->
             <ng-container matColumnDef="address">
               <th mat-header-cell *matHeaderCellDef> Address </th>
               <td mat-cell *matCellDef="let row"> {{row.address}} </td>
             </ng-container>
-            <!-- phone -->
             <ng-container matColumnDef="phone">
               <th mat-header-cell *matHeaderCellDef> Phone </th>
               <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
             </ng-container>
-            <!-- Email -->
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef> Email </th>
               <td mat-cell *matCellDef="let row"> {{row.email}} </td>
             </ng-container>
-            <!-- Options -->
             <ng-container matColumnDef="options">
               <th mat-header-cell *matHeaderCellDef> Options </th>
               <td mat-cell *matCellDef="let row">
@@ -51,7 +46,8 @@
           </table>
           <mat-paginator #paginator (page)="pageEvent($event)" [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="pageSize"
           [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
-        </div>
+        </div> -->
+        <app-table [data]="data" [displayedColumns]="displayedColumns"></app-table>
       </div>
     </div>
   </div>
