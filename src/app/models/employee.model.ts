@@ -1,7 +1,7 @@
 export interface Employee {
   name: string;
   address:string;
-  phone:number;
+  phone:string;
   date:string;
   email: string;
   sn: string;

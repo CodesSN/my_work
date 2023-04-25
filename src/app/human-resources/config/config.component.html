@@ -14,8 +14,9 @@
           </div>
           <div class="button-container">
             <button mat-button (click)="addEmployee()" class="button-color">Add Employee</button>
+            <input class="input" type="text" placeholder="search" [(ngModel)]="searchValue"  (input)="searchFilter()">
           </div>
-          <table mat-table [dataSource]="data" class="table" >
+          <table mat-table [dataSource]="dataSource" class="table" >
             <!-- name -->
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -48,6 +49,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+          <mat-paginator #paginator (page)="pageEvent($event)" [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
         </div>
       </div>
     </div>

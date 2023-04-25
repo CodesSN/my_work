@@ -22,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatPaginatorModule,
     MatTooltipModule,
     MatCheckboxModule,
     MatTableModule,
