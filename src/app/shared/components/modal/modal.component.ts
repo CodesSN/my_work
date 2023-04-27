@@ -38,7 +38,7 @@ export class ModalComponent implements OnInit {
       phone: [this.currentEmployee.phone, [Validators.required]],
       date: [this.currentEmployee.date, [Validators.required]],
       email: [this.currentEmployee.email, [Validators.required, Validators.email]],
-      civil: [this.currentEmployee.civil ,[Validators.required]],
+      civil: [this.currentEmployee.civil_status ,[Validators.required]],
       ssn: [this.currentEmployee.sn, [Validators.required]]
     })
   }

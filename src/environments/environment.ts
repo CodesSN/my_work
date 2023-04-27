@@ -7,5 +7,5 @@ export const environment = {
     "aws_user_pools_web_client_id": "1rim5srfn6rjcthd8f4knu1r29",
   },
   s3Bucket: '',
-  apiUrl: '',
+  apiUrl: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com',
 };

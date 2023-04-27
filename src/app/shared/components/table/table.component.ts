@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, ViewChild, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Employee } from 'src/app/models/employee.model';
@@ -11,13 +11,13 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnInit  {
+export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnInit, OnChanges  {
   public filteredData:Employee[] = [];
   public searchValue = '';
   public pageSize = 0;
   public pageIndex = 0;
   @Input() title!:string;
-  @Input() data:Employee[] = [];
+  @Input() data!:Employee[];
   @Input() displayedColumns!: string[];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public dataSource!: MatTableDataSource<Employee>;
@@ -31,6 +31,13 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Employee>(this.data);
     this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnChanges(changes:SimpleChanges):void {
+    if(this.data.length !== 0){
+      console.log(changes['data'].currentValue);
+      this.dataSource.data = this.data;
+    }
   }
 
   editModal(row:Employee): void {

@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Employee } from '../models/employee.model';
-// import
+import { HttpClient } from '@angular/common/http'
+import { environment } from 'src/environments/environment';
+import { Response } from '../models/response.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+  constructor(
+    private http: HttpClient
+  ){}
+
   getAllEmployees(){
-    // return thi
+    return this.http.get<Response>(`${environment.apiUrl}/employee`);
   }
 
   addEmployee(id:string){
