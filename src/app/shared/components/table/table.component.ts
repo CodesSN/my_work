@@ -14,11 +14,11 @@ import { MatDialog } from '@angular/material/dialog';
 export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnInit  {
   public filteredData:Employee[] = [];
   public searchValue = '';
-  public pageSize = 5;
+  public pageSize = 0;
   public pageIndex = 0;
+  @Input() title!:string;
   @Input() data:Employee[] = [];
   @Input() displayedColumns!: string[];
-  // public displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public dataSource!: MatTableDataSource<Employee>;
 
@@ -29,9 +29,8 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Employee>(this.data)
-    console.log(this.data);
-    console.log(this.dataSource.filteredData);
+    this.dataSource = new MatTableDataSource<Employee>(this.data);
+    this.dataSource.paginator = this.paginator;
   }
 
   editModal(row:Employee): void {
@@ -41,10 +40,7 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
         action: 'edit'
       }
     });
-
     this.subs.sink = dialogRef.afterClosed().subscribe();
-    console.log(row);
-
   }
 
   addModal(): void{
@@ -52,18 +48,15 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
       data:{
         employee:{
           name: "",
-          address:"",
-        phone:0,
-          date:"",
+          address: "",
+          phone: "",
+          date: "",
           email: "",
         },
         action: 'add'
       }
     });
-
     this.subs.sink = dialogRef.afterClosed().subscribe();
-    console.log("Add");
-
   }
 
   searchFilter(){
@@ -77,8 +70,13 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
     }
   }
 
+  loadPaginator(){
+    this.dataSource.paginator = this.paginator;
+  }
+
   pageEvent(e:PageEvent){
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
+    this.loadPaginator()
   }
 }
