@@ -22,6 +22,11 @@ const routes: Routes = [
           import('./human-resources/human-resources.module').then((m) => m.HumanResourcesModule),
       },
       {
+        path: 'assets',
+        loadChildren: () =>
+          import('./assets/assets.module').then((m) => m.AssetsModule),
+      },
+      {
         path: 'advance-table',
         loadChildren: () =>
           import('./advance-table/advance-table.module').then(

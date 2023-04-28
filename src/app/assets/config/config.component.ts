@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/models/employee.model';
-import { EmployeeService } from '../employee.service';
 import { trucks } from 'src/app/models/assets.model';
+import { AssetsService } from '../assets.service';
+import { Employee } from 'src/app/models/employee.model';
+
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
@@ -9,14 +10,14 @@ import { trucks } from 'src/app/models/assets.model';
 })
 export class ConfigComponent implements OnInit {
   public data:Employee[]|trucks[] = [];
-  public displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];
+  public displayedColumns: string[] = ['id','Anumber', 'Atype', 'plate', 'up', 'code','Ayear','make','vin','model','options'];
 
   constructor(
-    private employeeService:EmployeeService
+    private assetsService:AssetsService
   ){}
 
   ngOnInit(): void {
-    this.employeeService.getAllEmployees().subscribe(data => {
+    this.assetsService.getAllAssets().subscribe(data => {
       this.data = data.body;
     })
   }
