@@ -3,23 +3,26 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { trucks } from '../../../models/assets.model';
 import axios from 'axios';
-import { AxiosRequestConfig } from 'axios'
+import { AxiosRequestConfig } from 'axios';
 
 export interface DialogData {
   id: number;
+  action: string;
   trucks: trucks;
 }
+
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss'],
 })
-export class EditComponent {
+export class AddComponent {
   trucksForm?: UntypedFormGroup;
   trucks: trucks;
   id: number;
+
   constructor(
-    public dialogRef: MatDialogRef<EditComponent>,
+    public dialogRef: MatDialogRef<AddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: UntypedFormBuilder
   ) {
@@ -53,27 +56,37 @@ export class EditComponent {
       vin: this.trucksForm?.value.vin,
       up: this.trucksForm?.value.up,
       Ayear: this.trucksForm?.value.year,
-    }
-    console.log(data);
-    
-    const url =
-      'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/assets/update_assets';
-    const config: AxiosRequestConfig = {
-      method: 'put',
-      maxBodyLength: Infinity,
-      url,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data
     };
+    console.log(data);
+
+    const url = 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com';
     try {
-      await axios.request(config);
-      window.location.reload()
-      
+      if (this.data.trucks.id) {
+        const config: AxiosRequestConfig = {
+           method: 'put',
+           maxBodyLength: Infinity,
+           url : url + '/assets/update_assets',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           data,
+         };
+         await axios.request(config);
+       } else {
+        const config: AxiosRequestConfig = {
+           method: 'post',
+           maxBodyLength: Infinity,
+           url : url + '/assets/create',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           data,
+         };
+         await axios.request(config);
+       }
+      window.location.reload();
     } catch (error) {
       console.log(error);
-      
     }
   }
 }

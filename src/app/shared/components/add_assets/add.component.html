@@ -1,0 +1,203 @@
+<div class="addContainer">
+  <div class="contact-form">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            <h3>Creating truck</h3>
+          </div>
+        </div>
+      </div>
+      <button
+        mat-icon-button
+        (click)="dialogRef.close()"
+        class="modal-close-button"
+        aria-label="Close dialog"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form m-4"
+        [formGroup]="trucksForm!"
+        (ngSubmit)="(submit)"
+      >
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>modelo</mat-label>
+              <input matInput formControlName="model" required />
+              <i class="material-icons-two-tone color-icon p-3" matSuffix
+                >model</i
+              >
+              <mat-error
+                *ngIf="trucksForm?.get('name')?.hasError('required')"
+              >
+                Name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>year</mat-label>
+              <input matInput formControlName="year" required />
+              <i class="material-icons-two-tone color-icon p-3" matSuffix
+                >calendar_month</i
+              >
+              <mat-error
+                *ngIf="
+                  trucksForm?.get('email')?.hasError('required') ||
+                  trucksForm?.get('email')?.touched
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>plate</mat-label>
+              <input matInput formControlName="plate" type="string" />
+              <i class="material-icons-two-tone color-icon p-3" matSuffix
+                >plate</i
+              >
+              <mat-error
+                *ngIf="trucksForm?.get('mobile')?.hasError('required')"
+              >
+                plate is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>number</mat-label>
+              <input
+                matInput
+                formControlName="number"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>make</mat-label>
+              <input
+                matInput
+                formControlName="make"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>type</mat-label>
+              <input
+                matInput
+                formControlName="type"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>vin</mat-label>
+              <input
+                matInput
+                formControlName="vin"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>up</mat-label>
+              <input
+                matInput
+                formControlName="up"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+            <mat-form-field
+              class="example-full-width mb-3"
+              appearance="outline"
+            >
+              <mat-label>code</mat-label>
+              <input
+                matInput
+                formControlName="code"
+              />
+              <mat-error
+                *ngIf="trucksForm?.get('birthDate')?.hasError('required')"
+              >
+                Please select date
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row" align="end">
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!trucksForm?.valid"
+                (click)="submit()"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

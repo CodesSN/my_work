@@ -6,7 +6,8 @@ import { UnsubscribeOnDestroyAdapter } from '../../UnsubscribeOnDestroyAdapter';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { trucks } from 'src/app/models/assets.model';
-import { EditComponent } from '../edit/edit.component';
+import { EditComponent } from '../edit_assets/edit.component';
+import { AddComponent } from '../add_assets/add.component';
 
 @Component({
   selector: 'app-table',
@@ -62,18 +63,41 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   }
 
   addModal(): void{
-    const dialogRef = this.dialog.open(ModalComponent, {
-      data:{
-        employee:{
-          name: "",
-          address: "",
-          phone: "",
-          date: "",
-          email: "",
-        },
-        action: 'add'
-      }
-    });
+    let dialogRef
+    if(this.title === 'Trucks'){
+       dialogRef = this.dialog.open(AddComponent, {
+        data:{
+          trucks: {
+            id: 0,
+            number: '',
+            type: '',
+            plate: '',
+            code: '',
+            year: '',
+            make: '',
+            model: '',
+            vin: '',
+            up: '',
+
+          },
+          action: 'add'
+        }
+      });
+    }else{
+       dialogRef = this.dialog.open(ModalComponent, {
+        data:{
+          employee:{
+            name: "",
+            address: "",
+            phone: "",
+            date: "",
+            email: "",
+          },
+          action: 'add'
+        }
+      });
+    }
+
     this.subs.sink = dialogRef.afterClosed().subscribe();
   }
 

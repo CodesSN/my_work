@@ -14,7 +14,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ModalComponent } from './modal/modal.component';
-import { EditComponent } from "./edit/edit.component";
+import { EditComponent } from "./edit_assets/edit.component";
+import { AddComponent } from "./add_assets/add.component";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditComponent } from "./edit/edit.component";
     BreadcrumbComponent,
     TableComponent,
     ModalComponent,
-    EditComponent
+    EditComponent,
+    AddComponent
   ],
   imports: [
     SharedModule,
