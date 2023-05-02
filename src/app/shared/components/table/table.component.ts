@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnInit, OnChanges  {
   public filteredData:Employee[] = [];
   public searchValue = '';
-  public pageSize = 0;
+  public pageSize = 5;
   public pageIndex = 0;
   @Input() title!:string;
   @Input() data!:Employee[];
@@ -35,7 +35,6 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
 
   ngOnChanges(changes:SimpleChanges):void {
     if(this.data.length !== 0){
-      console.log(changes['data'].currentValue);
       this.dataSource.data = this.data;
     }
   }

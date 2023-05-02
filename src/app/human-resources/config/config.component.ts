@@ -7,7 +7,7 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit {
-  public data:Employee[] = [];
+  public data:Employee[] = []
   public displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];
 
   constructor(

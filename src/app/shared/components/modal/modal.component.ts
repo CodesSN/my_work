@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EmployeeService } from 'src/app/human-resources/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 
 export interface DialogData {
@@ -22,6 +23,7 @@ export class ModalComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private fb: FormBuilder,
+    private employeeService: EmployeeService,
   ) {
     if(this.data.action === 'add'){
       this.titleForm = 'Add Employee';
@@ -39,7 +41,7 @@ export class ModalComponent implements OnInit {
       date: [this.currentEmployee.date, [Validators.required]],
       email: [this.currentEmployee.email, [Validators.required, Validators.email]],
       civil: [this.currentEmployee.civil_status ,[Validators.required]],
-      ssn: [this.currentEmployee.sn, [Validators.required]]
+      ssn: [this.currentEmployee.ssn, [Validators.required]]
     })
   }
 
@@ -47,18 +49,38 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  saveChanges(){
+  async saveChanges(){
+    const updatedUser: Employee = {
+      id: this.currentEmployee.id,
+      name: this.modalForm.get('name')?.value,
+      address: this.modalForm.get('address')?.value,
+      phone: this.modalForm.get('phone')?.value,
+      date: this.modalForm.get('date')?.value,
+      email: this.modalForm.get('email')?.value,
+      civil_status: this.modalForm.get('civil')?.value,
+      ssn: this.modalForm.get('ssn')?.value
+    }
+
     if(this.data.action === 'add'){
-      console.log("save changes");
+      // console.log("save changes");
       // Logica para añadir un empleado
+
+      this.employeeService.addEmployee(this.currentEmployee)
     }
 
     if(this.data.action === 'edit'){
-      console.log('edit');
       // Logica para editar un empleado
-
+      try {
+        this.employeeService.saveEmployee(updatedUser).subscribe(data => {
+          if(data.statusCode === 200){
+            // Cambiarlo por actualizar informacion automaticamente
+            location.reload();
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
     }
-
     this.dialogRef.close()
   }
 }
