@@ -44,6 +44,28 @@ export class EditComponent {
       up: [this.trucks.up],
     });
   }
+  async delete() {
+    const url =
+      'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/assets/delete';
+    const data = {
+      id: this.data.trucks.id,
+    };
+    const config: AxiosRequestConfig = {
+      method: 'delete',
+      maxBodyLength: Infinity,
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    try {
+      await axios.request(config);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
   async submit() {
     const data = {
       id: this.data.trucks.id,
@@ -57,7 +79,6 @@ export class EditComponent {
       up: this.trucksForm?.value.up,
       Ayear: this.trucksForm?.value.year,
     };
-    console.log(data);
 
     const url =
       'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/assets/update_assets';
