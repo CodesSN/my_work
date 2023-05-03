@@ -88,17 +88,6 @@ export const ROUTES: RouteInfo[] = [
         badgeClass: "",
         submenu: [],
       },
-      {
-        path: "/hr/reports",
-        title: "Reports",
-        iconType: "",
-        icon: "",
-        class: "ml-menu",
-        groupTitle: false,
-        badge: "",
-        badgeClass: "",
-        submenu: [],
-      },
     ],
   },
 //   {
