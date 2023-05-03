@@ -64,14 +64,23 @@ export class ModalComponent implements OnInit {
     if(this.data.action === 'add'){
       // console.log("save changes");
       // Logica para añadir un empleado
+      try {
+        await this.employeeService.addEmployee(updatedUser).subscribe(data => {
+          if(data.statusCode){
+            location.reload();
+            console.log(data);
+          }
+        })
+      } catch (error) {
+        console.error(error);
 
-      this.employeeService.addEmployee(this.currentEmployee)
+      }
     }
 
     if(this.data.action === 'edit'){
       // Logica para editar un empleado
       try {
-        this.employeeService.saveEmployee(updatedUser).subscribe(data => {
+        await this.employeeService.saveEmployee(updatedUser).subscribe(data => {
           if(data.statusCode === 200){
             // Cambiarlo por actualizar informacion automaticamente
             location.reload();

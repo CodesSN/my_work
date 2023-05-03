@@ -17,22 +17,12 @@ export class EmployeeService {
     return this.http.get<Response>(`${environment.apiUrl}/employee`);
   }
 
-  addEmployee(newEmployee: Employee){
-    console.log(newEmployee);
+  addEmployee(body:any){
+    console.log(body);
+    return this.http.post<any>(`${environment.apiUrl}/employee`, body);
   }
 
-  saveEmployee(updatedEmployee: Employee){
-    // Logica para salvar a un empleado
-    const body = {
-      name: updatedEmployee.name,
-      email: updatedEmployee.email,
-      address: updatedEmployee.address,
-      phone: updatedEmployee.phone,
-      civil_status: updatedEmployee.civil_status,
-      date: updatedEmployee.date,
-      ssn: updatedEmployee.ssn
-    }
-    // Logica para añadir a un empleado
-    return this.http.put<any>(`${environment.apiUrl}/employee/${updatedEmployee.id}`, body);
+  saveEmployee(body:any){
+    return this.http.put<any>(`${environment.apiUrl}/employee/${body.id}`, body);
   }
 }
