@@ -1,64 +1,74 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user.model';
-import { Auth } from 'aws-amplify';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent {
-  signInForm: FormGroup = new FormGroup('');
-  invalidUsername: boolean | undefined = false;
-  invalidPassword: boolean | undefined = false;
-  invalidInput: boolean | undefined = false;
-  user:User | null = null;
+export class SigninComponent implements OnInit
+{
+  signInForm!: UntypedFormGroup;
+  submitted = false;
+  loading = false;
+  error = '';
+  hide = true;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.createForm();
-  }
+    private formBuilder: UntypedFormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
-  createForm() {
-    this.signInForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+  ngOnInit() {
+    this.signInForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
     });
   }
 
-  async submitSignInForm() {
-    this.invalidInput = false;
-    this.invalidUsername = this.signInForm.get('username')?.invalid;
-    this.invalidPassword = this.signInForm.get('password')?.invalid;
-    // Si el formulario tiene datos validos en los input, entra al if
-    if(this.signInForm.valid){
+  async onSubmit() {
+    this.submitted = true;
+    this.loading = true;
+    this.error = '';
+
+    if (this.signInForm.valid) {
       const username = this.signInForm.get('username')?.value;
       const password = this.signInForm.get('password')?.value;
-      console.log(username);
-      console.log(password);
+      try {
+        const response = await this.authService.signIn(username, password);
 
-      this.authService.signIn(username, password)
-      .subscribe(
-        (user) => {
-          // Por lo pronto direccionar
-          this.router.navigate(['dashboard'])
-          console.log(user)
-        },
-        (error) => {
-          this.invalidInput = true ;
-          console.error(error);
+        if(response.signInUserSession === null){
+          this.authService.saveCurrentUser(response);
+          this.router.navigate(['/authentication/mfa']);
         }
-        );
+        const user = await this.authService.currentUser();
+        console.log(user);
 
-      const currentUser = await Auth.currentAuthenticatedUser();
-      const token = currentUser.signInUserSession.accessToken.jwtToken;
-      console.log(token);
+
+        this.router.navigate(['/authentication/mfa']);
+        console.log(user);
+      } catch (error:unknown) {
+        if (error instanceof Error && error.name === 'UserNotConfirmedException') {
+          // console.error("UserNotConfirmed");
+          this.router.navigate(['/authentication/verification'])
+          this.error = 'User not verificated';
+        }
+
+        if (error instanceof Error && error.name === 'NotAuthorizedException') {
+          console.error("NotAut");
+          this.error = 'Username or password is incorrect';
+        }
+
+        this.submitted = false;
+        this.loading = false;
+      }
     }
   }
 }

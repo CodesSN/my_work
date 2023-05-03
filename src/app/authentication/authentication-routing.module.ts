@@ -1,39 +1,63 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
-import { VerificationComponent } from './verification/verification.component';
-import { DoubleAuthComponent } from './double-auth/double-auth.component';
-import { AuthGuard } from '../guards/auth.guard';
-
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { SigninComponent } from "./signin/signin.component";
+import { SignupComponent } from "./signup/signup.component";
+import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
+import { LockedComponent } from "./locked/locked.component";
+import { Page404Component } from "./page404/page404.component";
+import { Page500Component } from "./page500/page500.component";
+import { VerificationComponent } from "./verification/verification.component";
+import { MfaComponent } from "./mfa/mfa.component";
+import { NewPasswordComponent } from "./new-password/new-password.component";
+import { MfaGuard } from "../core/guard/mfa.guard";
+import { ForgotGuard } from "../core/guard/forgot.guard";
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'signin',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "signin",
+    pathMatch: "full",
   },
   {
-    path: 'signin',
-    component: SigninComponent
+    path: "signin",
+    component: SigninComponent,
   },
   {
-    path: 'signup',
-    component: SignupComponent
+    path: "signup",
+    component: SignupComponent,
   },
   {
-    path: 'verification',
-    component: VerificationComponent,
-    canActivate: [AuthGuard]
+    path: "verification",
+    component: VerificationComponent
   },
   {
-    path: 'two-fa',
-    component: DoubleAuthComponent,
-    canActivate: [AuthGuard]
-  }
+    path: "mfa",
+    component: MfaComponent,
+    canActivate: [MfaGuard]
+  },
+  {
+    path: "forgot-password",
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: "new-password",
+    component: NewPasswordComponent,
+    canActivate: [ForgotGuard]
+  },
+  // {
+  //   path: "locked",
+  //   component: LockedComponent,
+  // },
+  {
+    path: "page404",
+    component: Page404Component,
+  },
+  // {
+  //   path: "page500",
+  //   component: Page500Component,
+  // },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthenticationRoutingModule { }
+export class AuthenticationRoutingModule {}

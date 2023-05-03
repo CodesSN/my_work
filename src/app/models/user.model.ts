@@ -1,7 +1,14 @@
 export interface User {
-  token:string;
-  email:string;
   username: string;
+  // password: string;
+}
+
+export interface CurrentUser extends User {
+  password:string;
+}
+
+export interface Token{
+  token:string;
 }
 
 export interface Response{

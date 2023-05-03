@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-verification',
@@ -11,8 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class VerificationComponent {
   verifyForm: FormGroup = new FormGroup('');
   requiredCode: boolean | undefined = false;
-  validResendCode: boolean | undefined = false;
-  invalidResendCode: boolean = false;
+  invalidResendCode: boolean | undefined = false;
   invalidCode: boolean | undefined = false;
 
   constructor(
@@ -29,41 +28,31 @@ export class VerificationComponent {
     });
   }
 
-  verifyEmail(){
+  async onSubmit(){
     this.requiredCode = this.verifyForm.get('code')?.invalid;
-    this.invalidCode = false;
     if(this.verifyForm.valid){
+      const user = this.authService.getNewUser()
       const code =  this.verifyForm.get('code')?.value;
-      this.authService.confirmVerification(code)
-      .subscribe(
-        (response) => {
-          this.authService.deleteSaveUser();
-          this.router.navigate(['dashboard']);
-          // console.log(response)
-        },
-        (error) => {
-          this.invalidCode = true;
-          // console.log(error)
-        }
-      );
+      this.invalidCode = false;
+      try {
+        await this.authService.confirmVerification(user.username, code);
+        this.authService.deleteNewUser();
+        this.router.navigate(['/authentication/signin']);
+      } catch (error) {
+        this.invalidCode = true;
+      }
     }
   }
 
-  resendCode(){
-    this.validResendCode = false;
+  async resendCode(){
     this.invalidResendCode = false;
-
-    this.authService.resendValidateCode()
-    .subscribe(
-      (response) => {
-        this.invalidResendCode = true;
-        // console.log(response);
-      },
-      (error) => {
-        this.validResendCode = true;
-        // console.log(error);
-      }
-    );
+    const user = this.authService.getNewUser();
+    try {
+      await this.authService.resendValidateCode(user.username);
+    } catch (error) {
+      this.invalidResendCode = true;
+    }
   }
+
 
 }

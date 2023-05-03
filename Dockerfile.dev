@@ -1,0 +1,18 @@
+#* Imagen de node-alpine a utilizar
+FROM node:18.14.1
+
+#* Directorio donde se trabajara
+WORKDIR /home/dev
+
+#* Se copia el archivo package.json para realizar las instalaciones de dependencias
+COPY package*.json ./
+
+#* Instalamos Angular CLI en su versión 15.1.6
+RUN npm install -g @angular/cli@15.2.6
+
+#* Se lanza comando para instalar las dependencias
+RUN npm install --legacy-peer-deps
+
+#* Se copia todo el contenido de la carpeta ignorando los archivos que esten el en .dockerignore
+COPY . .
+

@@ -1,46 +1,50 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-
-
+import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
+import {
+  AbstractControl,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
+import { AuthService } from 'src/app/core/service/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent {
-  signUpForm: FormGroup =  new FormGroup("");
-  invalidUsername: boolean | undefined = false;
-  invalidEmail: boolean | undefined = false;
-  invalidPassword: boolean | undefined = false;
+export class SignupComponent implements OnInit {
   invalidConfirmPassword: boolean | undefined  = false;
-  invalidPasswordsMatch: boolean | undefined = false;
-  invalidNumber: boolean | undefined = false;
-  userExists: boolean = false;
+  signUpForm!: UntypedFormGroup;
 
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.createForm();
-  }
+    private formBuilder: UntypedFormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
-  createForm() {
-    this.signUpForm = this.fb.group({
+  ngOnInit() {
+    this.signUpForm = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, this.passwordConfirming]],
-      number: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      email: [
+        '',
+        [Validators.required, Validators.email, Validators.minLength(5)],
+      ],
+      password: ['', Validators.required],
+      cpassword: [
+        '',
+        [Validators.required, this.passwordConfirming]
+      ],
+      mobile: [
+        '',
+        [Validators.required, Validators.minLength(10), Validators.maxLength(10)]
+      ]
     });
   }
 
   private passwordConfirming(control: AbstractControl): any {
     if (control && control.parent) {
       const password = control.parent.get('password');
-      const confirmPassword = control.parent.get('confirmPassword');
+      const confirmPassword = control.parent.get('cpassword');
       if (!password || !confirmPassword) {
         return null;
       }
@@ -49,35 +53,20 @@ export class SignupComponent {
     return null;
   }
 
-  submitSignUpForm(){
-    this.invalidEmail = this.signUpForm.get('email')?.invalid;
-    this.invalidUsername = this.signUpForm.get('username')?.invalid;
-    this.invalidPassword = this.signUpForm.get('password')?.invalid;
-    this.invalidConfirmPassword = this.signUpForm.get('confirmPassword')?.invalid;
-    this.invalidNumber = this.signUpForm.get('number')?.invalid;
-    this.userExists = false;
-
-    if(this.signUpForm.valid){
+  async onSubmit() {
+    if (this.signUpForm.valid) {
       const username = this.signUpForm.get('username')?.value;
       const email = this.signUpForm.get('email')?.value;
       const password = this.signUpForm.get('password')?.value;
-      const number = this.signUpForm.get('number')?.value;
-      console.log("username: " , username);
-      console.log("email: " , email);
-      console.log("password: " , password);
-      console.log("number", number)
-
-      this.authService.signUp(username, email, password, number)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.userExists = false;
-        },
-        (error) => {
-          console.error(error);
-          this.userExists = true;
-        }
-      );
+      const mobile = this.signUpForm.get('mobile')?.value;
+      try {
+        this.authService.signUp(username, email, password, mobile);
+        this.authService.saveNewUser(username);
+        console.log(this.authService.getNewUser());
+        this.router.navigate(['authentication/verification']);
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 }
