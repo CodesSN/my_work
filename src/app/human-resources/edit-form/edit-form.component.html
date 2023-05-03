@@ -1,0 +1,73 @@
+<div class="container">
+  <form [formGroup]="modalForm" (ngSubmit)="saveChanges()">
+    <div class="title-container">
+      <h2 class="title-text">{{titleForm}}</h2>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Name</mat-label>
+          <input matInput  formControlName="name">
+          <mat-icon matSuffix>name</mat-icon>
+          <mat-error *ngIf="modalForm.get('name')?.hasError('required') && modalForm.get('name')?.touched">Name required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Address</mat-label>
+          <input matInput  formControlName="address">
+          <mat-icon matSuffix>date</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Phone</mat-label>
+          <input matInput  formControlName="phone">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <!-- Date form -->
+        <mat-form-field appearance="outline" >
+          <mat-label>Date</mat-label>
+          <input matInput  formControlName="date">
+          <mat-icon matSuffix>date</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Email</mat-label>
+          <input matInput  formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>Civil Status</mat-label>
+          <input matInput formControlName="civil">
+          <mat-icon matSuffix>wc</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="inputs-container">
+      <div class="input-container">
+        <mat-form-field appearance="outline" >
+          <mat-label>SSN</mat-label>
+          <input matInput formControlName="ssn" >
+          <mat-icon matSuffix>ss</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button mat-button type="button" class="button-form button-form--close" (click)="close()">Close</button>
+      <button mat-button type="submit" class="button-form button-form--save">Save Changes</button>
+    </div>
+  </form>
+</div>
+
+

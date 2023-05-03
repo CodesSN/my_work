@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './dashboard-routing.module'
-import { Dashboard1Component } from './dashboard1/dashboard1.component';
-import { Dashboard2Component } from './dashboard2/dashboard2.component';
+
+import { HumanResourcesRoutingModule } from './human-resources-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ConfigComponent } from './config/config.component';
+import { ReportsComponent } from './reports/reports.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { NgChartsModule } from 'ng2-charts';
@@ -16,24 +18,39 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from '../shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { EditFormComponent } from './edit-form/edit-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
-  declarations: [Dashboard1Component, Dashboard2Component],
+  declarations: [
+    DashboardComponent,
+    ConfigComponent,
+    ReportsComponent,
+    EditFormComponent
+  ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    HumanResourcesRoutingModule,
+    SharedModule,
+    ComponentsModule,
     NgChartsModule,
     NgApexchartsModule,
     NgScrollbarModule,
+    DragDropModule,
+    MatProgressBarModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatPaginatorModule,
     MatTooltipModule,
     MatCheckboxModule,
-    DragDropModule,
-    MatProgressBarModule,
-    ComponentsModule,
-    SharedModule,
-  ],
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule
+  ]
 })
-export class DashboardModule {}
+export class HumanResourcesModule { }
