@@ -48,8 +48,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
   exports: [
     FileUploadComponent,
     BreadcrumbComponent,
-    TableComponent,
-
+    TableComponent
   ],
 })
 export class ComponentsModule {}
