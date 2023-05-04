@@ -67,9 +67,8 @@ export class ModalComponent implements OnInit {
         // Logica para añadir un empleado
         try {
           await this.employeeService.addEmployee(updatedUser).subscribe(data => {
-            if(data.statusCode){
-              // location.reload();
-              console.log(data);
+            if(data.statusCode === 200){
+              this.dialogRef.close(true);
             }
           })
         } catch (error) {
@@ -83,14 +82,13 @@ export class ModalComponent implements OnInit {
           await this.employeeService.saveEmployee(updatedUser).subscribe(data => {
             if(data.statusCode === 200){
               // Cambiarlo por actualizar informacion automaticamente
-              // location.reload();
+              this.dialogRef.close(true);
             }
           });
         } catch (error) {
           console.error(error);
         }
       }
-      this.dialogRef.close(true);
     }
   }
 }
