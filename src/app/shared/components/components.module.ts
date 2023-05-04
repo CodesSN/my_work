@@ -16,6 +16,9 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ModalComponent } from './modal/modal.component';
 import { EditComponent } from "./edit_assets/edit.component";
 import { AddComponent } from "./add_assets/add.component";
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { MatSelectModule } from "@angular/material/select";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,8 @@ import { AddComponent } from "./add_assets/add.component";
     TableComponent,
     ModalComponent,
     EditComponent,
-    AddComponent
+    AddComponent,
+    AutocompleteComponent
   ],
   imports: [
     SharedModule,
@@ -38,6 +42,8 @@ import { AddComponent } from "./add_assets/add.component";
     MatTableModule,
     MatSortModule,
     MatDialogModule,
+    MatSelectModule,
+    MatAutocompleteModule,
   ],
   exports: [
     FileUploadComponent,
