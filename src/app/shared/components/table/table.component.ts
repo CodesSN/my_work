@@ -54,6 +54,8 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
       this.subs.sink = dialogRef.afterClosed().subscribe();
     }else if(this.title === 'Trucks'){
       const dialogRef = this.dialog.open(EditComponent, {
+        width: '750px',
+        height: '550px',
         data: {
           trucks: row
         }
@@ -66,6 +68,7 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
     let dialogRef
     if(this.title === 'Trucks'){
        dialogRef = this.dialog.open(AddComponent, {
+        width: '500px',
         data:{
           trucks: {
             id: 0,

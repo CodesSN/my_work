@@ -1,5 +1,5 @@
-<div class="addContainer">
-  <div class="contact-form">
+<div class="container">
+  <div class="contact-form h-100">
     <div class="modalHeader">
       <div class="editRowModal">
         <div class="modalHeader clearfix">
@@ -32,12 +32,15 @@
               <mat-label>plate</mat-label>
               <input matInput formControlName="plate" required />
               <i class="material-icons-two-tone color-icon p-3" matSuffix
-                >plate</i
+                ></i
               >
               <mat-error
-                *ngIf="trucksForm?.get('name')?.hasError('required')"
+                *ngIf="
+                  trucksForm?.get('email')?.hasError('required') ||
+                  trucksForm?.get('email')?.touched
+                "
               >
-                plate is required
+                Please enter plate
               </mat-error>
             </mat-form-field>
           </div>
@@ -189,29 +192,29 @@
            <app-autocomplete></app-autocomplete>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-            <div class="example-button-row" align="end">
-              <button
-              mat-raised-button
-              color="warn"
-              [disabled]="!trucksForm?.valid"
-              (click)="delete()"
-            >
-              delete
-            </button>
-              <button
-                mat-raised-button
-                color="primary"
-                [disabled]="!trucksForm?.valid"
-                (click)="submit()"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-        </div>
       </form>
+    </div>
+  </div>
+  <div class="row my-3">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+      <div class="example-button-row" align="end">
+        <button
+        mat-raised-button
+        color="warn"
+        [disabled]="!trucksForm?.valid"
+        (click)="delete()"
+      >
+        delete
+      </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!trucksForm?.valid"
+          (click)="submit()"
+        >
+          Save
+        </button>
+      </div>
     </div>
   </div>
 </div>

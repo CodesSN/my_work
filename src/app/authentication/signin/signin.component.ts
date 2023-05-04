@@ -12,8 +12,7 @@ import { AuthService } from 'src/app/core/service/auth.service';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss'],
 })
-export class SigninComponent implements OnInit
-{
+export class SigninComponent implements OnInit {
   signInForm!: UntypedFormGroup;
   submitted = false;
   loading = false;
@@ -24,7 +23,7 @@ export class SigninComponent implements OnInit
     private formBuilder: UntypedFormBuilder,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
@@ -44,25 +43,27 @@ export class SigninComponent implements OnInit
       try {
         const response = await this.authService.signIn(username, password);
 
-        if(response.signInUserSession === null){
+        if (response.signInUserSession === null) {
           this.authService.saveCurrentUser(response);
           this.router.navigate(['/authentication/mfa']);
         }
         const user = await this.authService.currentUser();
         console.log(user);
 
-
         this.router.navigate(['/authentication/mfa']);
         console.log(user);
-      } catch (error:unknown) {
-        if (error instanceof Error && error.name === 'UserNotConfirmedException') {
+      } catch (error: unknown) {
+        if (
+          error instanceof Error &&
+          error.name === 'UserNotConfirmedException'
+        ) {
           // console.error("UserNotConfirmed");
-          this.router.navigate(['/authentication/verification'])
+          this.router.navigate(['/authentication/verification']);
           this.error = 'User not verificated';
         }
 
         if (error instanceof Error && error.name === 'NotAuthorizedException') {
-          console.error("NotAut");
+          console.error('NotAut');
           this.error = 'Username or password is incorrect';
         }
 

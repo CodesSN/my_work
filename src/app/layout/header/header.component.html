@@ -3,8 +3,15 @@
     <div class="collapse navbar-collapse">
       <ul class="float-start collapse-menu-icon">
         <li>
-          <button mat-button (click)="mobileMenuSidebarOpen($event,'overlay-open')" class="sidemenu-collapse">
-            <app-feather-icons [icon]="'menu'" [class]="'header-icon'"></app-feather-icons>
+          <button
+            mat-button
+            (click)="mobileMenuSidebarOpen($event, 'overlay-open')"
+            class="sidemenu-collapse"
+          >
+            <app-feather-icons
+              [icon]="'menu'"
+              [class]="'header-icon'"
+            ></app-feather-icons>
           </button>
         </li>
       </ul>
@@ -63,7 +70,10 @@
         </li>
       </ul> -->
     </div>
-    <div class="collapse navbar-collapse" [ngClass]="isNavbarCollapsed ? '' : 'show'">
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="isNavbarCollapsed ? '' : 'show'"
+    >
       <ul class="nav navbar-nav navbar-right">
         <!-- Full Screen Button -->
         <!-- <li class="fullscreen">
@@ -72,7 +82,7 @@
           </button>
         </li> -->
         <!-- #END# Full Screen Button -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <button mat-button [matMenuTriggerFor]="languagemenu" class="lang-dropdown nav-notification-icons"> <img
               *ngIf="flagvalue !== undefined" src="{{flagvalue}}" height="16">
             <img *ngIf="flagvalue === undefined" src="{{defaultFlag}}" height="16"></button>
@@ -85,6 +95,23 @@
               </button>
             </div>
           </mat-menu>
+        </li> -->
+        <li class="nav-item">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-user"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
         </li>
         <!-- #START# Notifications-->
         <!-- <li>
@@ -132,25 +159,41 @@
         <li class="nav-item user_profile">
           <button mat-button [matMenuTriggerFor]="profilemenu">
             <div class="chip dropdown-toggle" ngbDropdownToggle class="">
-              <span class="user-text">Ella Jones</span>
+              <span class="user-text">{{ this.user }}</span>
               <!-- <img src="{{userImg}}" class="user_img" width="32" height="32" alt="User"> -->
             </div>
           </button>
           <mat-menu #profilemenu="matMenu" class="profile-menu">
             <div class="noti-list">
-              <div class="menu ">
+              <div class="menu">
                 <div class="user_dw_menu">
                   <button mat-menu-item>
-                    <app-feather-icons [icon]="'user'" [class]="'user-menu-icons'"></app-feather-icons>Account
+                    <app-feather-icons
+                      [icon]="'user'"
+                      [class]="'user-menu-icons'"
+                    ></app-feather-icons
+                    >Account
                   </button>
                   <button mat-menu-item>
-                    <app-feather-icons [icon]="'mail'" [class]="'user-menu-icons'"></app-feather-icons>Inbox
+                    <app-feather-icons
+                      [icon]="'mail'"
+                      [class]="'user-menu-icons'"
+                    ></app-feather-icons
+                    >Inbox
                   </button>
                   <button mat-menu-item>
-                    <app-feather-icons [icon]="'settings'" [class]="'user-menu-icons'"></app-feather-icons>Settings
+                    <app-feather-icons
+                      [icon]="'settings'"
+                      [class]="'user-menu-icons'"
+                    ></app-feather-icons
+                    >Settings
                   </button>
                   <button mat-menu-item (click)="logout()">
-                    <app-feather-icons [icon]="'log-out'" [class]="'user-menu-icons'"></app-feather-icons>Logout
+                    <app-feather-icons
+                      [icon]="'log-out'"
+                      [class]="'user-menu-icons'"
+                    ></app-feather-icons
+                    >Logout
                   </button>
                 </div>
               </div>

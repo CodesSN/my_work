@@ -54,6 +54,7 @@ export class HeaderComponent
   ) {
     super();
   }
+  user: any;
   listLang = [
     { text: 'English', flag: 'assets/images/flags/us.jpg', lang: 'en' },
     { text: 'Spanish', flag: 'assets/images/flags/spain.jpg', lang: 'es' },
@@ -111,6 +112,7 @@ export class HeaderComponent
     },
   ];
   ngOnInit() {
+    this.user = localStorage.getItem('user');
     this.config = this.configService.configData;
     // this.userImg = this.authService.currentUserValue.img;
 

@@ -33,6 +33,8 @@ export class MfaComponent implements OnInit {
       const user = this.authService.getCurrentUser();
       console.log(code);
       console.log(user)
+      localStorage.removeItem('user');
+      localStorage.setItem('user', user.username);
       this.authService.deleteCurrentUser();
       this.authService.deleteForgotEmail();
       this.authService.deleteNewUser();
