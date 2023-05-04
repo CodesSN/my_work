@@ -5,6 +5,7 @@ import { Employee } from 'src/app/models/employee.model';
 import { UnsubscribeOnDestroyAdapter } from '../../UnsubscribeOnDestroyAdapter';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-table',
@@ -23,7 +24,8 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   public dataSource!: MatTableDataSource<Employee>;
 
   constructor(
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private snackBar: MatSnackBar
   ){
     super();
   }
@@ -46,7 +48,16 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
         action: 'edit'
       }
     });
-    this.subs.sink = dialogRef.afterClosed().subscribe();
+    this.subs.sink = dialogRef.afterClosed().subscribe(response => {
+      if(response){
+        this.showNotification(
+          'black',
+          'Edit Employee Successfully...!!!',
+          'bottom',
+          'center');
+        location.reload();
+      }
+    });
   }
 
   addModal(): void{
@@ -62,7 +73,17 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
         action: 'add'
       }
     });
-    this.subs.sink = dialogRef.afterClosed().subscribe();
+    this.subs.sink = dialogRef.afterClosed().subscribe(response => {
+      if(response){
+        this.showNotification(
+        'snackbar-success',
+        'Add Employee Successfully...!!!',
+        'bottom',
+        'center');
+
+        location.reload();
+      }
+    });
   }
 
   searchFilter(){
@@ -84,5 +105,19 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.loadPaginator()
+  }
+
+  showNotification(
+    colorName: string,
+    text: string,
+    placementFrom: MatSnackBarVerticalPosition,
+    placementAlign: MatSnackBarHorizontalPosition,
+  ) {
+    this.snackBar.open(text, '', {
+      duration: 2000,
+      verticalPosition: placementFrom,
+      horizontalPosition: placementAlign,
+      panelClass: colorName,
+    });
   }
 }

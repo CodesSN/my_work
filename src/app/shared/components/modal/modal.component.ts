@@ -50,46 +50,47 @@ export class ModalComponent implements OnInit {
   }
 
   async saveChanges(){
-    const updatedUser: Employee = {
-      id: this.currentEmployee.id,
-      name: this.modalForm.get('name')?.value,
-      address: this.modalForm.get('address')?.value,
-      phone: this.modalForm.get('phone')?.value,
-      date: this.modalForm.get('date')?.value,
-      email: this.modalForm.get('email')?.value,
-      civil_status: this.modalForm.get('civil')?.value,
-      ssn: this.modalForm.get('ssn')?.value
-    }
-
-    if(this.data.action === 'add'){
-      // console.log("save changes");
-      // Logica para añadir un empleado
-      try {
-        await this.employeeService.addEmployee(updatedUser).subscribe(data => {
-          if(data.statusCode){
-            location.reload();
-            console.log(data);
-          }
-        })
-      } catch (error) {
-        console.error(error);
-
+    if(this.modalForm.valid){
+      const updatedUser: Employee = {
+        id: this.currentEmployee.id,
+        name: this.modalForm.get('name')?.value,
+        address: this.modalForm.get('address')?.value,
+        phone: this.modalForm.get('phone')?.value,
+        date: this.modalForm.get('date')?.value,
+        email: this.modalForm.get('email')?.value,
+        civil_status: this.modalForm.get('civil')?.value,
+        ssn: this.modalForm.get('ssn')?.value
       }
-    }
 
-    if(this.data.action === 'edit'){
-      // Logica para editar un empleado
-      try {
-        await this.employeeService.saveEmployee(updatedUser).subscribe(data => {
-          if(data.statusCode === 200){
-            // Cambiarlo por actualizar informacion automaticamente
-            location.reload();
-          }
-        });
-      } catch (error) {
-        console.error(error);
+      if(this.data.action === 'add'){
+        // console.log("save changes");
+        // Logica para añadir un empleado
+        try {
+          await this.employeeService.addEmployee(updatedUser).subscribe(data => {
+            if(data.statusCode){
+              // location.reload();
+              console.log(data);
+            }
+          })
+        } catch (error) {
+          console.error(error);
+        }
       }
+
+      if(this.data.action === 'edit'){
+        // Logica para editar un empleado
+        try {
+          await this.employeeService.saveEmployee(updatedUser).subscribe(data => {
+            if(data.statusCode === 200){
+              // Cambiarlo por actualizar informacion automaticamente
+              // location.reload();
+            }
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      this.dialogRef.close(true);
     }
-    this.dialogRef.close()
   }
 }

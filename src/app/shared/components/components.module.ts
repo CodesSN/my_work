@@ -14,6 +14,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { MatDialogModule } from "@angular/material/dialog";
 import { ModalComponent } from './modal/modal.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ModalComponent } from './modal/modal.component';
     BreadcrumbComponent,
     TableComponent,
     ModalComponent,
+    SnackbarComponent,
   ],
   imports: [
     SharedModule,
