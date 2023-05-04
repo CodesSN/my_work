@@ -19,6 +19,7 @@ import { AddComponent } from "./add_assets/add.component";
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
     ModalComponent,
     EditComponent,
     AddComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    SnackbarComponent,
   ],
   imports: [
     SharedModule,
