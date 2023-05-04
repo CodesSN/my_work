@@ -5,6 +5,7 @@ import { Employee } from 'src/app/models/employee.model';
 import { UnsubscribeOnDestroyAdapter } from '../../UnsubscribeOnDestroyAdapter';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { trucks } from 'src/app/models/assets.model';
 import { EditComponent } from '../edit_assets/edit.component';
 import { AddComponent } from '../add_assets/add.component';
@@ -17,7 +18,7 @@ import { AddComponent } from '../add_assets/add.component';
 export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnInit, OnChanges  {
   public filteredData:Employee[]|trucks[] = [];
   public searchValue = '';
-  public pageSize = 0;
+  public pageSize = 5;
   public pageIndex = 0;
   @Input() title!:string;
   @Input() data!:Employee[]|trucks[];
@@ -26,7 +27,8 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   public dataSource!: MatTableDataSource<Employee|trucks>;
 
   constructor(
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private snackBar: MatSnackBar
   ){
     super();
   }
@@ -38,7 +40,6 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
 
   ngOnChanges(changes:SimpleChanges):void {
     if(this.data.length !== 0){
-      console.log(changes['data'].currentValue);
       this.dataSource.data = this.data;
     }
   }
@@ -51,7 +52,16 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
           action: 'edit'
         }
       });
-      this.subs.sink = dialogRef.afterClosed().subscribe();
+      this.subs.sink = dialogRef.afterClosed().subscribe(response => {
+      if(response){
+        this.showNotification(
+          'black',
+          'Edit Employee Successfully...!!!',
+          'bottom',
+          'center');
+        location.reload();
+      }
+    });
     }else if(this.title === 'Trucks'){
       const dialogRef = this.dialog.open(EditComponent, {
         width: '750px',
@@ -101,7 +111,17 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
       });
     }
 
-    this.subs.sink = dialogRef.afterClosed().subscribe();
+    this.subs.sink = dialogRef.afterClosed().subscribe(response => {
+      if(response){
+        this.showNotification(
+        'snackbar-success',
+        'Add Employee Successfully...!!!',
+        'bottom',
+        'center');
+
+        location.reload();
+      }
+    });
   }
 
   searchFilter(){
@@ -129,5 +149,19 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.loadPaginator()
+  }
+
+  showNotification(
+    colorName: string,
+    text: string,
+    placementFrom: MatSnackBarVerticalPosition,
+    placementAlign: MatSnackBarHorizontalPosition,
+  ) {
+    this.snackBar.open(text, '', {
+      duration: 2000,
+      verticalPosition: placementFrom,
+      horizontalPosition: placementAlign,
+      panelClass: colorName,
+    });
   }
 }

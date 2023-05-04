@@ -8,7 +8,7 @@ import { trucks } from 'src/app/models/assets.model';
   styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit {
-  public data:Employee[]|trucks[] = [];
+  public data:Employee[]|trucks[] = []
   public displayedColumns: string[] = ['name', 'address', 'phone', 'email', 'options'];
 
   constructor(

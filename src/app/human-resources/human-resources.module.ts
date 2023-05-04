@@ -23,6 +23,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCheckboxModule,
     MatTableModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
   ]
 })
 export class HumanResourcesModule { }

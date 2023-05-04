@@ -43,7 +43,7 @@ export class EditFormComponent implements OnInit {
       date: [this.currentEmployee.date, [Validators.required]],
       email: [this.currentEmployee.email, [Validators.required]],
       civil: [this.currentEmployee.civil_status ,[Validators.required]],
-      ssn: [this.currentEmployee.sn, [Validators.required]]
+      ssn: [this.currentEmployee.ssn, [Validators.required]]
     })
   }
 
@@ -55,14 +55,11 @@ export class EditFormComponent implements OnInit {
     if(this.data.action === 'add'){
       console.log("save changes");
       // Logica para añadir un empleado
-      this.employeeService.addEmployee('1');
     }
 
     if(this.data.action === 'edit'){
       console.log('edit');
       // Logica para editar un empleado
-      this.employeeService.saveEmployee('2');
-
     }
 
     this.dialogRef.close()
