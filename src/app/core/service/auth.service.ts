@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { User } from '../../models/user.model';
-import { local } from 'd3';
 
 @Injectable({
   providedIn: 'root',
