@@ -125,6 +125,8 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+
+
 //   {
 //     path: "advance-table",
 //     title: "MENUITEMS.ADVANCE-TABLE.TEXT",
@@ -136,17 +138,17 @@ export const ROUTES: RouteInfo[] = [
 //     badgeClass: "",
 //     submenu: [],
 //   },
-//   {
-//     path: "calendar",
-//     title: "MENUITEMS.CALENDAR.TEXT",
-//     iconType: "feather",
-//     icon: "calendar",
-//     class: "",
-//     groupTitle: false,
-//     badge: "New",
-//     badgeClass: "badge bg-blue sidebar-badge float-end",
-//     submenu: [],
-//   },
+  {
+    path: "calendar",
+    title: "Calendar",
+    iconType: "feather",
+    icon: "calendar",
+    class: "",
+    groupTitle: false,
+    badge: "",
+    badgeClass: "",
+    submenu: [],
+  },
 
 //   // Common Modules
 

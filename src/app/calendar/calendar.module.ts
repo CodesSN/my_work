@@ -24,6 +24,9 @@ import { FormDialogComponent as calFormComponent } from './dialogs/form-dialog/f
 import { CalendarService } from './calendar.service';
 
 import { ComponentsModule } from '../shared/components/components.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -48,6 +51,9 @@ import { ComponentsModule } from '../shared/components/components.module';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ComponentsModule,
+    DragDropModule,
+    MatSidenavModule,
+    NgScrollbarModule
   ],
   declarations: [CalendarComponent, calFormComponent],
   providers: [CalendarService],
