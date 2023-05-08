@@ -5,11 +5,7 @@
     </div>
     <mat-tab-group class="tab__container" color="Warn" mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="Personal">
-        <div class="file-input-wrapper">
-          <input type="file" id="my-file-input" name="my-file-input" (change)=" handleFileInput($event)" />
-          <!-- <button (click)="printFile()">Print</button> -->
-          <a *ngIf="fileUrl" href="{{fileUrl}}" download>Download </a>
-        </div>
+        <app-file-upload [title]="'Photo'" ></app-file-upload>
         <div class="inputs-container">
           <div class="input-container">
             <mat-form-field appearance="outline" >
@@ -96,31 +92,12 @@
         </div>
       </mat-tab>
       <mat-tab label="Files">
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'License' }}</span>
-        </div>
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'Social Security Card' }}</span>
-        </div>
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'Bank Account' }}</span>
-        </div>
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'Direct Deposit Instructions' }}</span>
-        </div>
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'Barber License' }}</span>
-        </div>
-        <div class="file-input__container" >
-          <button mat-raised-button color="primary">Choose file</button>
-          <span>{{file ? file.name : 'Contract' }}</span>
-        </div>
-
+        <app-file-upload [title]="'License'" ></app-file-upload>
+        <app-file-upload [title]="'Social Security Card'"></app-file-upload>
+        <app-file-upload [title]="'Bank Account'"></app-file-upload>
+        <app-file-upload [title]="'Direct Deposit Instructions'"></app-file-upload>
+        <app-file-upload [title]="'Bar License'"></app-file-upload>
+        <app-file-upload [title]="'Contract'"></app-file-upload>
       </mat-tab>
     </mat-tab-group>
     <div class="buttons-container">
