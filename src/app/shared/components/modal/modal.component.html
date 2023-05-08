@@ -3,73 +3,126 @@
     <div class="title-container">
       <h2 class="title-text">{{titleForm}}</h2>
     </div>
-    <div class="inputs-container">
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>Name</mat-label>
-          <input matInput  formControlName="name">
-          <mat-icon matSuffix>name</mat-icon>
-          <mat-error *ngIf="modalForm.get('name')?.hasError('required') && modalForm.get('name')?.touched">Name required</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>Address</mat-label>
-          <input matInput  formControlName="address">
-          <mat-icon matSuffix>date</mat-icon>
-          <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="inputs-container">
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>Phone</mat-label>
-          <input matInput  formControlName="phone">
-          <mat-icon matSuffix>phone</mat-icon>
-          <mat-error *ngIf="modalForm.get('phone')?.hasError('required') && modalForm.get('phone')?.touched">Phone is required</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="input-container">
-        <!-- Date form -->
-        <mat-form-field appearance="outline" >
-          <mat-label>Date</mat-label>
-          <input matInput  formControlName="date">
-          <mat-icon matSuffix>date</mat-icon>
-          <mat-error *ngIf="modalForm.get('date')?.hasError('required') && modalForm.get('date')?.touched">Date is required</mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="inputs-container">
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>Email</mat-label>
-          <input matInput  formControlName="email">
-          <mat-icon matSuffix>email</mat-icon>
-          <mat-error *ngIf="modalForm.get('email')?.hasError('required') && modalForm.get('email')?.touched">Email is required</mat-error>
-          <mat-error *ngIf="modalForm.get('email')?.hasError('email') && modalForm.get('email')?.touched"> Please enter a valid email address
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>Civil Status</mat-label>
-          <input matInput formControlName="civil">
-          <mat-icon matSuffix>wc</mat-icon>
-          <mat-error *ngIf="modalForm.get('civil')?.hasError('required') && modalForm.get('civil')?.touched">Civil status is required</mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="inputs-container">
-      <div class="input-container">
-        <mat-form-field appearance="outline" >
-          <mat-label>SSN</mat-label>
-          <input matInput formControlName="ssn" >
-          <mat-icon matSuffix>ss</mat-icon>
-          <mat-error *ngIf="modalForm.get('ssn')?.hasError('required') && modalForm.get('ssn')?.touched">SSN is required</mat-error>
-        </mat-form-field>
-      </div>
-    </div>
+    <mat-tab-group class="tab__container" color="Warn" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Personal">
+        <div class="file-input-wrapper">
+          <input type="file" id="my-file-input" name="my-file-input" (change)=" handleFileInput($event)" />
+          <!-- <button (click)="printFile()">Print</button> -->
+          <a *ngIf="fileUrl" href="{{fileUrl}}" download>Download </a>
+        </div>
+        <div class="inputs-container">
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Name</mat-label>
+              <input matInput  formControlName="name">
+              <mat-icon matSuffix>name</mat-icon>
+              <mat-error *ngIf="modalForm.get('name')?.hasError('required') && modalForm.get('name')?.touched">Name required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Address</mat-label>
+              <input matInput  formControlName="address">
+              <mat-icon matSuffix>date</mat-icon>
+              <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="inputs-container">
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Phone</mat-label>
+              <input matInput  formControlName="phone">
+              <mat-icon matSuffix>phone</mat-icon>
+              <mat-error *ngIf="modalForm.get('phone')?.hasError('required') && modalForm.get('phone')?.touched">Phone is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <!-- Date form -->
+            <mat-form-field appearance="outline" >
+              <mat-label>Date</mat-label>
+              <input matInput  formControlName="date">
+              <mat-icon matSuffix>date</mat-icon>
+              <mat-error *ngIf="modalForm.get('date')?.hasError('required') && modalForm.get('date')?.touched">Date is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="inputs-container">
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Email</mat-label>
+              <input matInput  formControlName="email">
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="modalForm.get('email')?.hasError('required') && modalForm.get('email')?.touched">Email is required</mat-error>
+              <mat-error *ngIf="modalForm.get('email')?.hasError('email') && modalForm.get('email')?.touched"> Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Civil Status</mat-label>
+              <input matInput formControlName="civil">
+              <mat-icon matSuffix>wc</mat-icon>
+              <mat-error *ngIf="modalForm.get('civil')?.hasError('required') && modalForm.get('civil')?.touched">Civil status is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="inputs-container">
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>SSN</mat-label>
+              <input matInput formControlName="ssn">
+              <mat-icon matSuffix>ss</mat-icon>
+              <mat-error *ngIf="modalForm.get('ssn')?.hasError('required') && modalForm.get('ssn')?.touched">SSN is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" [value]="modalForm.get('gender')?.value">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="outline" >
+            <mat-label>Description</mat-label>
+            <textarea matInput  formControlName="description"></textarea>
+            <mat-icon matSuffix></mat-icon>
+            <mat-error *ngIf="modalForm.get('description')?.hasError('required') && modalForm.get('description')?.touched">Description is required</mat-error>
+          </mat-form-field>
+        </div>
+      </mat-tab>
+      <mat-tab label="Files">
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'License' }}</span>
+        </div>
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'Social Security Card' }}</span>
+        </div>
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'Bank Account' }}</span>
+        </div>
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'Direct Deposit Instructions' }}</span>
+        </div>
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'Barber License' }}</span>
+        </div>
+        <div class="file-input__container" >
+          <button mat-raised-button color="primary">Choose file</button>
+          <span>{{file ? file.name : 'Contract' }}</span>
+        </div>
+
+      </mat-tab>
+    </mat-tab-group>
     <div class="buttons-container">
       <button mat-button type="button" class="button-form button-form--close" (click)="close()">Close</button>
       <button mat-button type="submit" class="button-form button-form--save">Save Changes</button>

@@ -20,6 +20,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { MatInput, MatInputModule } from "@angular/material/input";
+import { MatTabsModule } from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     MatDialogModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatInputModule,
+    MatTabsModule
   ],
   exports: [
     FileUploadComponent,
