@@ -16,7 +16,6 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ModalComponent } from './modal/modal.component';
 import { EditComponent } from "./edit_assets/edit.component";
 import { AddComponent } from "./add_assets/add.component";
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SnackbarComponent } from './snackbar/snackbar.component';
@@ -29,7 +28,6 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     ModalComponent,
     EditComponent,
     AddComponent,
-    AutocompleteComponent,
     SnackbarComponent,
   ],
   imports: [

@@ -1,9 +1,14 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { trucks } from '../../../models/assets.model';
 import axios from 'axios';
 import { AxiosRequestConfig } from 'axios';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { Employee } from 'src/app/models/employee.model';
 
 export interface DialogData {
   id: number;
@@ -16,19 +21,38 @@ export interface DialogData {
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent {
+export class EditComponent implements OnInit {
   trucksForm?: UntypedFormGroup;
   trucks: trucks;
   id: number;
+  myControl = new FormControl('');
+  options: any[] = [];
+  filteredOptions!: Observable<string[]>;
 
   constructor(
     public dialogRef: MatDialogRef<EditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
+    private employeeService: EmployeeService
   ) {
     this.id = data.trucks.id;
     this.trucks = data.trucks;
     this.trucksForm = this.createTrucksForm();
+  }
+  async ngOnInit() {
+    this.options = await this.employeeService.getAllEmployeesAuto();
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value || ''))
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter((option: string) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
   createTrucksForm(): UntypedFormGroup {
     return this.fb.group({
@@ -42,6 +66,7 @@ export class EditComponent {
       model: [this.trucks.model],
       vin: [this.trucks.vin],
       up: [this.trucks.up],
+      barber: [this.trucks.barber],
     });
   }
   async delete() {
@@ -67,6 +92,13 @@ export class EditComponent {
     }
   }
   async submit() {
+    this.employeeService.getAllEmployees().subscribe((data) => {
+      data.body.forEach((e) => {
+        if ((e as Employee).name === this.trucksForm?.value.barber)
+          localStorage.setItem('id_barber', (e as Employee).id.toString());
+      });
+    });
+    const x = parseInt(localStorage.getItem('id_barber') as string);
     const data = {
       id: this.data.trucks.id,
       Anumber: this.trucksForm?.value.number,
@@ -78,6 +110,7 @@ export class EditComponent {
       vin: this.trucksForm?.value.vin,
       up: this.trucksForm?.value.up,
       Ayear: this.trucksForm?.value.year,
+      Barber: x,
     };
 
     const url =

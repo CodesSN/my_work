@@ -10,9 +10,9 @@
     </div>
     <table mat-table [dataSource]="dataSource" class="table" >
       <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-        <th mat-header-cell *matHeaderCellDef> {{(column === 'Atype')? 'type':(column === 'Anumber')? 'number':(column === 'Ayear')? 'year':column}} </th>
+        <th mat-header-cell *matHeaderCellDef> {{(column === 'Atype')? 'type':(column === 'Anumber')? 'number':(column === 'Ayear')? 'year':(column === 'assignet_To')?'assigned to':column}} </th>
         <td mat-cell *matCellDef="let row">
-          <p *ngIf="column !== 'options'">{{row[column]}}</p>
+          <p *ngIf="column !== 'options'">{{(column === 'assigned_To')? row['barber'] : row[column]}}</p>
           <!-- Si la columna es la opcion de options, muestra un boton en lugar del texto -->
           <button *ngIf="column === 'options'" mat-button (click)="editModal(row)" class="table-button">
             Edit

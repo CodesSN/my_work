@@ -10,7 +10,7 @@ import { Employee } from 'src/app/models/employee.model';
 })
 export class ConfigComponent implements OnInit {
   public data:Employee[]|trucks[] = [];
-  public displayedColumns: string[] = ['id','Anumber', 'Atype', 'plate', 'up', 'code','Ayear','make','vin','model','options'];
+  public displayedColumns: string[] = ['id','Anumber', 'Atype', 'plate', 'up', 'code','Ayear','make','vin','model','assigned_To','options'];
 
   constructor(
     private assetsService:AssetsService
@@ -19,6 +19,8 @@ export class ConfigComponent implements OnInit {
   ngOnInit(): void {
     this.assetsService.getAllAssets().subscribe(data => {
       this.data = data.body;
+      console.log(data);
+      
     })
   }
 }

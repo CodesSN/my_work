@@ -9,6 +9,7 @@ export class trucks {
   model: string;
   vin: string;
   up: string;
+  barber: string;
 
   constructor(trucks: trucks) {
     {
@@ -22,6 +23,7 @@ export class trucks {
       this.model = trucks.model || '';
       this.vin = trucks.vin || '';
       this.up = trucks.up || '';
+      this.barber = trucks.barber || '';
     }
   }
   public getId(): number{

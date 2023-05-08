@@ -17,7 +17,7 @@ export class EmployeeService {
   ){}
 
   getAllEmployees(){
-    return this.http.get<Response>(`${environment.apiUrl}p`);
+    return this.http.get<Response>(`${environment.apiUrl}/employee`);
   }
 
   getAllEmployeesAuto(){
