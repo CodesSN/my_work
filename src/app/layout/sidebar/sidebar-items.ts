@@ -125,6 +125,18 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+  {
+    path: "/finances/dashboard",
+    title: "finances",
+    iconType: "feather",
+    icon: "dollar-sign",
+    class: "",
+    groupTitle: false,
+    badge: "",
+    badgeClass: "",
+    submenu: [
+    ],
+  },
 //   {
 //     path: "advance-table",
 //     title: "MENUITEMS.ADVANCE-TABLE.TEXT",
