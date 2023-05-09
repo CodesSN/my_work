@@ -22,6 +22,11 @@ const routes: Routes = [
           import('./human-resources/human-resources.module').then((m) => m.HumanResourcesModule),
       },
       {
+        path: 'barber',
+        loadChildren: () =>
+          import('./barber/barber.module').then((m) => m.BarberModule),
+      },
+      {
         path: 'assets',
         loadChildren: () =>
           import('./assets/assets.module').then((m) => m.AssetsModule),
