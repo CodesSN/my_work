@@ -6,3 +6,33 @@
   margin-bottom: 20px;
   border: 1px solid black;
 }
+
+.socials-container {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  margin: 5px auto 10px;
+
+}
+
+.social-container {
+  width: 42px;
+  height: 42px;
+
+  & img {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.social {
+  &-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  &-input-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
