@@ -125,6 +125,17 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+  {
+    path: "rating",
+    title: "rating",
+    iconType: "feather",
+    icon: "star",
+    class: "",
+    groupTitle: false,
+    badge: "",
+    badgeClass: "",
+    submenu: [],
+  },
 //   {
 //     path: "advance-table",
 //     title: "MENUITEMS.ADVANCE-TABLE.TEXT",
