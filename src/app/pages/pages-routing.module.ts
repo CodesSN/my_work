@@ -8,11 +8,11 @@ import { FinancesComponent } from './finances/finances.component';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "dashboard",
+    redirectTo: "finances",
     pathMatch: "full",
   },
   {
-    path: "dashboard",
+    path: "finances",
     component: FinancesComponent,
   },
 ];
