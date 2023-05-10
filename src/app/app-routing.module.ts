@@ -88,7 +88,7 @@ const routes: Routes = [
           import('./charts/charts.module').then((m) => m.ChartsModule),
       },
       {
-        path: 'rating',
+        path: 'me',
         loadChildren: () =>
           import('./pages/pages.module').then((m) => m.PagesModule),
       },

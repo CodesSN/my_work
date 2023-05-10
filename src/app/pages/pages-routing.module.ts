@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { RatingComponent } from './rating/rating.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'rating', pathMatch: 'full' },
   {
-    path: "dashboard",
+    path: "rating",
     component: RatingComponent,
   },
 ];

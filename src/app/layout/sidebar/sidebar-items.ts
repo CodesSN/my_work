@@ -126,7 +126,7 @@ export const ROUTES: RouteInfo[] = [
     ],
   },
   {
-    path: "rating",
+    path: "me",
     title: "rating",
     iconType: "feather",
     icon: "star",
