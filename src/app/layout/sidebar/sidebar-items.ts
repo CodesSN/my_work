@@ -159,6 +159,17 @@ export const ROUTES: RouteInfo[] = [
     badge: '',
     badgeClass: '',
     submenu: [],
+},
+{
+    path: '/me/notifications',
+    title: 'notifications',
+    iconType: 'feather',
+    icon: 'bell',
+    class: '',
+    groupTitle: false,
+    badge: '',
+    badgeClass: '',
+    submenu: [],
   },
   //   {
   //     path: "advance-table",

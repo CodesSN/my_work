@@ -17,13 +17,19 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReportsPageComponent } from './reports-page/reports-page.component';
 import { RatingComponent } from './rating/rating.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { EmailRoutingModule } from '../email/email-routing.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
   declarations: [
     FinancesComponent,
     RatingComponent,
-    ReportsPageComponent
+    ReportsPageComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +47,14 @@ import { RatingComponent } from './rating/rating.component';
     MatProgressBarModule,
     ComponentsModule,
     SharedModule,
-  ],
+    EmailRoutingModule,
+    MatCheckboxModule,
+    CKEditorModule,
+    MatIconModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ComponentsModule,
+  ]
 })
-export class PagesModule {}
+export class PagesModule { }
