@@ -15,9 +15,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from '../shared/shared.module';
+import { ReportsPageComponent } from './reports-page/reports-page.component';
 
 @NgModule({
-  declarations: [   FinancesComponent],
+  declarations: [ReportsPageComponent, FinancesComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -36,4 +37,4 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
   ],
 })
-export class PagesModule { }
+export class PagesModule {}
