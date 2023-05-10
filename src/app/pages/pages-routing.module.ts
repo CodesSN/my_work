@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'inbox', pathMatch: 'full' },
+  { path: '', redirectTo: 'notifications', pathMatch: 'full' },
   {
-    path: "inbox",
+    path: "notifications",
     component: NotificationsComponent,
   },
 ];
