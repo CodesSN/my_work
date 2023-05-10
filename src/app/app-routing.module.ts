@@ -93,6 +93,11 @@ const routes: Routes = [
           import('./charts/charts.module').then((m) => m.ChartsModule),
       },
       {
+        path: 'me',
+        loadChildren: () =>
+          import('./pages/pages.module').then((m) => m.PagesModule),
+      },
+      {
         path: 'timeline',
         loadChildren: () =>
           import('./timeline/timeline.module').then((m) => m.TimelineModule),
