@@ -16,9 +16,15 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReportsPageComponent } from './reports-page/reports-page.component';
+import { RatingComponent } from './rating/rating.component';
+
 
 @NgModule({
-  declarations: [ReportsPageComponent, FinancesComponent],
+  declarations: [
+    FinancesComponent,
+    RatingComponent,
+    ReportsPageComponent
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,

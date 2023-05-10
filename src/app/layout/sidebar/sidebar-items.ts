@@ -137,6 +137,18 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
     ],
   },
+  {
+    path: "/me/rating",
+    title: "rating",
+    iconType: "feather",
+    icon: "star",
+    class: "",
+    groupTitle: false,
+    badge: "",
+    badgeClass: "",
+    submenu: [
+    ],
+  },
 {
     path: '/me/report',
     title: 'report',
@@ -170,6 +182,28 @@ export const ROUTES: RouteInfo[] = [
   //     badgeClass: "badge bg-blue sidebar-badge float-end",
   //     submenu: [],
   //   },
+//   {
+//     path: "advance-table",
+//     title: "MENUITEMS.ADVANCE-TABLE.TEXT",
+//     iconType: "feather",
+//     icon: "trello",
+//     class: "",
+//     groupTitle: false,
+//     badge: "",
+//     badgeClass: "",
+//     submenu: [],
+//   },
+//   {
+//     path: "calendar",
+//     title: "MENUITEMS.CALENDAR.TEXT",
+//     iconType: "feather",
+//     icon: "calendar",
+//     class: "",
+//     groupTitle: false,
+//     badge: "New",
+//     badgeClass: "badge bg-blue sidebar-badge float-end",
+//     submenu: [],
+//   },
 
   //   // Common Modules
 
