@@ -83,7 +83,7 @@ const routes: Routes = [
           import('./media/media.module').then((m) => m.MediaModule),
       },
       {
-        path: 'reports',
+        path: 'report',
         loadChildren: () =>
           import('./pages/pages.module').then((m) => m.PagesModule),
       },

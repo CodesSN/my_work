@@ -126,8 +126,8 @@ export const ROUTES: RouteInfo[] = [
     ],
   },
   {
-    path: '/reports',
-    title: 'reports',
+    path: '/report',
+    title: 'report',
     iconType: 'feather',
     icon: 'bar-chart-2',
     class: '',
