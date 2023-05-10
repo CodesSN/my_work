@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReportsPageComponent } from './reports-page/reports-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'report', pathMatch: 'full' },
   {
-    path: 'dashboard',
+    path: 'report',
     component: ReportsPageComponent,
   },
 ];
