@@ -14,6 +14,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../shared/components/components.module';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatMenuModule } from '@angular/material/menu';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormDialogComponent } from './calendar/form-dialog/form-dialog.component';
+import { CalendarService } from './calendar/calendar.service';
 
 
 @NgModule({
@@ -25,7 +44,8 @@ import { ComponentsModule } from '../shared/components/components.module';
     FinanceComponent,
     ReportsComponent,
     NotificationsComponent,
-    RaitingsComponent
+    RaitingsComponent,
+    FormDialogComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +54,28 @@ import { ComponentsModule } from '../shared/components/components.module';
     MatIconModule,
     MatTabsModule,
     ComponentsModule,
-  ]
+    MatCheckboxModule,
+    FullCalendarModule,
+    FullCalendarModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatSnackBarModule,
+    MatSidenavModule,
+    NgScrollbarModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatMenuModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    DragDropModule,
+    MatIconModule,
+  ],
+  providers: [CalendarService]
 })
 export class BarberModule { }

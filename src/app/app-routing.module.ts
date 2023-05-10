@@ -38,11 +38,11 @@ const routes: Routes = [
             (m) => m.AdvanceTableModule
           ),
       },
-      {
-        path: 'calendar',
-        loadChildren: () =>
-          import('./calendar/calendar.module').then((m) => m.CalendarsModule),
-      },
+      // {
+      //   path: 'calendar',
+      //   loadChildren: () =>
+      //     import('./calendar/calendar.module').then((m) => m.CalendarsModule),
+      // },
       {
         path: 'task',
         loadChildren: () =>

@@ -1,13 +1,13 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject } from '@angular/core';
-import { CalendarService } from '../../calendar.service';
+import { CalendarService } from '../calendar.service';
 import {
   UntypedFormControl,
   Validators,
   UntypedFormGroup,
   UntypedFormBuilder,
 } from '@angular/forms';
-import { Calendar } from '../../calendar.model';
+import { Calendar } from '../calendar.model';
 
 export interface DialogData {
   id: number;
