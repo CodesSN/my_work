@@ -4,7 +4,7 @@
         {{title}}
       </h2>
     </div>
-    <div class="button-container">
+    <div *ngIf="!isBarber" class="button-container">
       <button mat-button (click)="addModal()" class="button-color">Add {{title}}</button>
       <input class="input" type="text" placeholder="search" [(ngModel)]="searchValue" (input)="searchFilter()">
     </div>

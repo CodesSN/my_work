@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../shared/components/components.module';
-import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -75,6 +75,7 @@ import { CalendarService } from './calendar/calendar.service';
     OwlNativeDateTimeModule,
     DragDropModule,
     MatIconModule,
+    MatSnackBarModule
   ],
   providers: [CalendarService]
 })

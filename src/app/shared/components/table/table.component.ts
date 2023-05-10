@@ -21,10 +21,11 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   public pageSize = 5;
   public pageIndex = 0;
   @Input() title!:string;
-  @Input() data!:Employee[]|trucks[];
+  @Input() data!:Employee[] | trucks[];
   @Input() displayedColumns!: string[];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   public dataSource!: MatTableDataSource<Employee|trucks>;
+  public isBarber!:boolean;
 
   constructor(
     private dialog:MatDialog,
@@ -36,6 +37,9 @@ export class TableComponent extends UnsubscribeOnDestroyAdapter implements OnIni
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Employee|trucks>(this.data);
     this.dataSource.paginator = this.paginator;
+    if (this.title === 'Barber') {
+      this.isBarber = true
+    }
   }
 
   ngOnChanges(changes:SimpleChanges):void {
