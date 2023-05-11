@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AssetsComponent } from './assets/assets.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { FinanceComponent } from './finance/finance.component';
+import { FinancesComponent } from './finances/finances.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RaitingsComponent } from './raitings/raitings.component';
@@ -33,6 +33,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormDialogComponent } from './calendar/form-dialog/form-dialog.component';
 import { CalendarService } from './calendar/calendar.service';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { CalendarService } from './calendar/calendar.service';
     ProfileComponent,
     AssetsComponent,
     CalendarComponent,
-    FinanceComponent,
+    FinancesComponent,
     ReportsComponent,
     NotificationsComponent,
     RaitingsComponent,
@@ -75,7 +77,9 @@ import { CalendarService } from './calendar/calendar.service';
     OwlNativeDateTimeModule,
     DragDropModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgImageFullscreenViewModule,
+    NgApexchartsModule
   ],
   providers: [CalendarService]
 })

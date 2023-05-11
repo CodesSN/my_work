@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from '../extra-pages/profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { AssetsComponent } from './assets/assets.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { FinanceComponent } from './finance/finance.component';
+import { FinancesComponent } from './finances/finances.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RaitingsComponent } from './raitings/raitings.component';
@@ -32,8 +32,8 @@ const routes: Routes = [
     component: CalendarComponent
   },
   {
-    path: "finance",
-    component: FinanceComponent
+    path: "finances",
+    component: FinancesComponent
   },
   {
     path: "reports",
@@ -44,7 +44,7 @@ const routes: Routes = [
     component: NotificationsComponent
   },
   {
-    path: "raiting",
+    path: "rating",
     component: RaitingsComponent
   },
 ];

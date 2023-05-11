@@ -35,7 +35,11 @@
     display: flex;
     justify-content: space-between;
   }
-  &-input {
+}
 
-  }
+.gallery-container {
+  display: flex;
+  width: 97%;
+  margin: 0 auto;
+  justify-content: center;
 }

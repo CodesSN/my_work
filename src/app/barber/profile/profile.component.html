@@ -101,9 +101,25 @@
                   <strong>Work Zones</strong>
                 </h2>
               </div>
-               <!-- Dibujar un mapa de las workzones de cada usuario  -->
-              <div class="map">
-
+                <!-- Dibujar un mapa de las workzones de cada usuario -->
+              <div class="map"></div>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">folder</mat-icon>
+                Gallery
+              </ng-template>
+              <div class="gallery-container">
+                <div class="group-2">
+                  <div>
+                    <img *ngFor="let img of imageObject; let i = index" [src]="img.thumbImage || img.image"
+                      (click)="showLightbox(i)" />
+                  </div>
+                </div>
+                <!-- ng-image-fullscreen-view  -->
+                <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="currentIndex" [show]="showFlag"
+                  (close)="closeEventHandler()">
+                </ng-image-fullscreen-view>
               </div>
             </mat-tab>
           </mat-tab-group>
