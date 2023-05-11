@@ -178,7 +178,7 @@
                 formControlName="barber"
                 [matAutocomplete]="auto"
               />
-              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-autocomplete #auto="matAutocomplete">
                 <mat-option
                   *ngFor="let option of filteredOptions | async"
                   [value]="option"
