@@ -22,6 +22,11 @@ const routes: Routes = [
           import('./human-resources/human-resources.module').then((m) => m.HumanResourcesModule),
       },
       {
+        path: 'barber',
+        loadChildren: () =>
+          import('./barber/barber.module').then((m) => m.BarberModule),
+      },
+      {
         path: 'assets',
         loadChildren: () =>
           import('./assets/assets.module').then((m) => m.AssetsModule),
@@ -33,11 +38,11 @@ const routes: Routes = [
             (m) => m.AdvanceTableModule
           ),
       },
-      {
-        path: 'calendar',
-        loadChildren: () =>
-          import('./calendar/calendar.module').then((m) => m.CalendarsModule),
-      },
+      // {
+      //   path: 'calendar',
+      //   loadChildren: () =>
+      //     import('./calendar/calendar.module').then((m) => m.CalendarsModule),
+      // },
       {
         path: 'task',
         loadChildren: () =>
@@ -86,6 +91,11 @@ const routes: Routes = [
         path: 'charts',
         loadChildren: () =>
           import('./charts/charts.module').then((m) => m.ChartsModule),
+      },
+      {
+        path: 'me',
+        loadChildren: () =>
+          import('./pages/pages.module').then((m) => m.PagesModule),
       },
       {
         path: 'timeline',
