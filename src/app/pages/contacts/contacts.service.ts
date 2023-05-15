@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Contacts } from './contacts.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { UnsubscribeOnDestroyAdapter } from '../shared/UnsubscribeOnDestroyAdapter';
+import { UnsubscribeOnDestroyAdapter } from '../../shared/UnsubscribeOnDestroyAdapter';
 @Injectable()
 export class ContactsService extends UnsubscribeOnDestroyAdapter {
   private readonly API_URL = 'assets/data/contacts.json';

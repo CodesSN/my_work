@@ -32,7 +32,7 @@ import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule,
 } from '@danielmoncada/angular-datetime-picker';
-import { ComponentsModule } from '../shared/components/components.module';
+import { ComponentsModule } from '../../shared/components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({

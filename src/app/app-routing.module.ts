@@ -51,7 +51,7 @@ const routes: Routes = [
       {
         path: 'contacts',
         loadChildren: () =>
-          import('./contacts/contacts.module').then((m) => m.ContactsModule),
+          import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
       },
       {
         path: 'email',
@@ -61,7 +61,7 @@ const routes: Routes = [
       {
         path: 'apps',
         loadChildren: () =>
-          import('./apps/apps.module').then((m) => m.AppsModule),
+          import('./pages/apps/apps.module').then((m) => m.AppsModule),
       },
       {
         path: 'widget',
