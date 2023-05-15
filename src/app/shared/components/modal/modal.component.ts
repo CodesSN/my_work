@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 
 export interface DialogData {

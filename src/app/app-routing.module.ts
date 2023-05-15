@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Page404Component } from './authentication/page404/page404.component';
+import { Page404Component } from './pages/authentication/page404/page404.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
@@ -14,22 +14,22 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
         path: 'hr',
         loadChildren: () =>
-          import('./human-resources/human-resources.module').then((m) => m.HumanResourcesModule),
+          import('./pages/human-resources/human-resources.module').then((m) => m.HumanResourcesModule),
       },
       {
         path: 'barber',
         loadChildren: () =>
-          import('./barber/barber.module').then((m) => m.BarberModule),
+          import('./pages/barber/barber.module').then((m) => m.BarberModule),
       },
       {
         path: 'assets',
         loadChildren: () =>
-          import('./assets/assets.module').then((m) => m.AssetsModule),
+          import('./pages/assets/assets.module').then((m) => m.AssetsModule),
       },
       {
         path: 'advance-table',
@@ -93,11 +93,6 @@ const routes: Routes = [
           import('./charts/charts.module').then((m) => m.ChartsModule),
       },
       {
-        path: 'me',
-        loadChildren: () =>
-          import('./pages/pages.module').then((m) => m.PagesModule),
-      },
-      {
         path: 'timeline',
         loadChildren: () =>
           import('./timeline/timeline.module').then((m) => m.TimelineModule),
@@ -132,7 +127,7 @@ const routes: Routes = [
     path: 'authentication',
     component: AuthLayoutComponent,
     loadChildren: () =>
-      import('./authentication/authentication.module').then(
+      import('./pages/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },

@@ -1,0 +1,71 @@
+.color {
+  display: block;
+  color: #000 !important;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+
+.gold-color {
+  color: #B6894B;
+}
+
+.mfa {
+  &-text {
+    text-align: center;
+  }
+}
+
+.background-img {
+  background-image: url(../../../../assets/images/signin/revs-full-signin.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.background {
+  background-color: #B6894B;
+}
+
+.input {
+  display: flex;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px 0;
+  background-color: transparent;
+  &-container {
+    margin-bottom: 40px;
+  }
+  &-text {
+    width: 90%;
+    margin: 5px 0;
+    padding: 5px 0;
+    margin-left: 20px;
+    color: #000;
+    border: none;
+    text-align: left;
+    // border-radius: 20px;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &-label {
+    color: #000;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+
+  &-error {
+    color: red;
+  }
+}
+
+.border {
+  outline-color: #EEECEC !important;
+  border-color: #EEECEC !important
+}
+
+
