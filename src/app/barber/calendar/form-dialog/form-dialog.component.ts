@@ -44,12 +44,10 @@ export class FormDialogComponent {
       this.calendar = new Calendar(blankObject);
       this.showDeleteBtn = false;
     }
-
     this.calendarForm = this.createContactForm();
   }
   formControl = new UntypedFormControl('', [
     Validators.required,
-    // Validators.email,
   ]);
   getErrorMessage() {
     return this.formControl.hasError('required')

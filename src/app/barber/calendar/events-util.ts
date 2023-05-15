@@ -17,17 +17,6 @@ export const INITIAL_EVENTS: EventInput[] = [
       "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
   },
   {
-    id: "event2",
-    title: "Break",
-    start: new Date(year, month, day + 28, 16, 0),
-    end: new Date(year, month, day + 29, 20, 0),
-    allDay: false,
-    className: "fc-event-primary",
-    groupId: "important",
-    details:
-      "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see. ",
-  },
-  {
     id: "event3",
     title: "Shopping",
     start: new Date(year, month, day + 4, 12, 0),
@@ -55,8 +44,8 @@ export const INITIAL_EVENTS: EventInput[] = [
     start: new Date(year, month, day, 11, 0),
     end: new Date(year, month, day, 14, 0),
     allDay: false,
-    className: "fc-event-primary",
-    groupId: "important",
+    className: "fc-event-warning",
+    groupId: "personal",
     details:
       "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
   },
@@ -79,39 +68,6 @@ export const INITIAL_EVENTS: EventInput[] = [
     allDay: false,
     className: "fc-event-warning",
     groupId: "personal",
-    details:
-      "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
-  },
-  {
-    id: "event8",
-    title: "Go to Delhi",
-    start: new Date(year, month, day + -5, 10, 0),
-    end: new Date(year, month, day + -4, 10, 30),
-    allDay: false,
-    className: "fc-event-danger",
-    groupId: "travel",
-    details:
-      "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
-  },
-  {
-    id: "event9",
-    title: "Get To Gather",
-    start: new Date(year, month, day + 6, 10, 0),
-    end: new Date(year, month, day + 7, 10, 30),
-    allDay: false,
-    className: "fc-event-info",
-    groupId: "friends",
-    details:
-      "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
-  },
-  {
-    id: "event10",
-    title: "Collage Party",
-    start: new Date(year, month, day + 20, 10, 0),
-    end: new Date(year, month, day + 20, 10, 30),
-    allDay: false,
-    className: "fc-event-info",
-    groupId: "friends",
     details:
       "Her extensive perceived may any sincerity extremity. Indeed add rather may pretty see.",
   },

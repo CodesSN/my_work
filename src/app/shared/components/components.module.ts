@@ -21,6 +21,7 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MatInput, MatInputModule } from "@angular/material/input";
 import { MatTabsModule } from "@angular/material/tabs";
+import { CalendarListComponent } from './calendar-list/calendar-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatTabsModule } from "@angular/material/tabs";
     EditComponent,
     AddComponent,
     SnackbarComponent,
+    CalendarListComponent,
   ],
   imports: [
     SharedModule,
@@ -52,7 +54,8 @@ import { MatTabsModule } from "@angular/material/tabs";
   exports: [
     FileUploadComponent,
     BreadcrumbComponent,
-    TableComponent
+    TableComponent,
+    CalendarListComponent
   ],
 })
 export class ComponentsModule {}

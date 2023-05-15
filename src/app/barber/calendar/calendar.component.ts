@@ -1,12 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import {
   CalendarOptions,
-  DateSelectArg,
   EventClickArg,
   EventApi,
 } from '@fullcalendar/core';
 import { HttpClient } from '@angular/common/http';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -15,7 +13,6 @@ import listPlugin from '@fullcalendar/list';
 import { MatDialog } from '@angular/material/dialog';
 import {
   UntypedFormBuilder,
-  UntypedFormControl,
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
@@ -30,9 +27,7 @@ import {
 import { INITIAL_EVENTS } from './events-util';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
-import { Direction } from '@angular/cdk/bidi';
-import { MatSidenav } from '@angular/material/sidenav';
-import { Task } from 'src/app/task/task.model';
+
 
 @Component({
   selector: 'app-calendar',
@@ -53,9 +48,6 @@ export class CalendarComponent
   filterItems: string[] = [
     'work',
     'personal',
-    'important',
-    'travel',
-    'friends',
   ];
   calendarEvents?: EventInput[];
   tempEvents?: EventInput[];
@@ -63,18 +55,8 @@ export class CalendarComponent
   public filters = [
     { name: 'work', value: 'Work', checked: true },
     { name: 'personal', value: 'Personal', checked: true },
-    { name: 'important', value: 'Important', checked: true },
-    { name: 'travel', value: 'Travel', checked: true },
-    { name: 'friends', value: 'Friends', checked: true },
   ];
 
-  // task
-  mode = new UntypedFormControl('side');
-  taskForm: UntypedFormGroup;
-  showFiller = false;
-  isNewEvent = false;
-  userImg?: string;
-  tasks: Task[] = [];
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -88,12 +70,6 @@ export class CalendarComponent
     const blankObject = {} as Calendar;
     this.calendar = new Calendar(blankObject);
     this.addCusForm = this.createCalendarForm(this.calendar);
-    const blank = {} as Task;
-    this.taskForm = this.createFormGroup(blank);
-
-    this.fetch((data: Task[]) => {
-      this.tasks = data;
-    });
   }
 
   public ngOnInit(): void {
@@ -105,39 +81,32 @@ export class CalendarComponent
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+      right: 'prev,next today',
+      left: 'title',
+      center: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
-    initialView: 'dayGridMonth',
+    initialView: 'timeGridWeek',
     weekends: true,
-    editable: true,
+    // editable: true,
     selectable: true,
-    selectMirror: true,
+    // selectMirror: true,
     dayMaxEvents: true,
-    select: this.handleDateSelect.bind(this),
+    // Hace la accion de las casillas ya existentes
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this),
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handleDateSelect(selectInfo: DateSelectArg) {
-    this.addNewEvent();
-  }
 
+  // Llama al modal para crear un nuevo evento
   addNewEvent() {
-    let tempDirection: Direction;
-    if (localStorage.getItem('isRtl') === 'true') {
-      tempDirection = 'rtl';
-    } else {
-      tempDirection = 'ltr';
-    }
+    console.log(this.calendar);
+
+
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         calendar: this.calendar,
         action: 'add',
       },
-      direction: tempDirection,
     });
 
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
@@ -166,6 +135,10 @@ export class CalendarComponent
   }
 
   changeCategory(event: MatCheckboxChange, filter: { name: string }) {
+    console.log(event);
+    console.log(filter);
+
+
     if (event.checked) {
       this.filterItems.push(filter.name);
     } else {
@@ -187,6 +160,14 @@ export class CalendarComponent
   }
 
   eventClick(row: EventClickArg) {
+    console.log(row.event.id);
+    console.log(row.event.title);
+    console.log(row.event.groupId);
+    console.log(row.event.start);
+    console.log(row.event.end);
+    console.log(row.event.extendedProps['details']);
+
+
     const calendarData = {
       id: row.event.id,
       title: row.event.title,
@@ -196,19 +177,12 @@ export class CalendarComponent
       details: row.event.extendedProps['details'],
     };
 
-    let tempDirection: Direction;
-    if (localStorage.getItem('isRtl') === 'true') {
-      tempDirection = 'rtl';
-    } else {
-      tempDirection = 'ltr';
-    }
 
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         calendar: calendarData,
         action: 'edit',
       },
-      direction: tempDirection,
     });
 
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
@@ -244,6 +218,7 @@ export class CalendarComponent
     });
   }
 
+
   editEvent(eventIndex: number, calendarData: Calendar) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const calendarEvents = this.calendarEvents!.slice();
@@ -261,11 +236,12 @@ export class CalendarComponent
     this.calendarOptions.events = calendarEvents;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // Actualiza la informacion despues de que el evento del calendario es ejecutado
   handleEvents(events: EventApi[]) {
-    // this.currentEvents = events;
+    console.log(events);
   }
 
+  // Crea el formulario del calendario
   createCalendarForm(calendar: Calendar): UntypedFormGroup {
     return this.fb.group({
       id: [calendar.id],
@@ -302,88 +278,7 @@ export class CalendarComponent
 
     if (category === 'work') className = 'fc-event-success';
     else if (category === 'personal') className = 'fc-event-warning';
-    else if (category === 'important') className = 'fc-event-primary';
-    else if (category === 'travel') className = 'fc-event-danger';
-    else if (category === 'friends') className = 'fc-event-info';
 
     return className;
-  }
-
-  fetch(cb: (i: Task[]) => void) {
-    const req = new XMLHttpRequest();
-    req.open('GET', 'assets/data/task.json');
-    req.onload = () => {
-      const data = JSON.parse(req.response);
-      cb(data);
-    };
-    req.send();
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
-  }
-  toggle(task: { done: boolean }, nav: MatSidenav) {
-    nav.close();
-    task.done = !task.done;
-  }
-  addNewTask(nav: MatSidenav) {
-    this.resetFormField();
-    this.isNewEvent = true;
-    this.dialogTitle = 'New Task';
-    this.userImg = 'assets/images/user/user1.jpg';
-    nav.open();
-  }
-  taskClick(task: Task, nav: MatSidenav): void {
-    this.isNewEvent = false;
-    this.dialogTitle = 'Edit Task';
-    this.userImg = task.img;
-    nav.open();
-    this.taskForm = this.createFormGroup(task);
-  }
-  closeSlider(nav: MatSidenav) {
-    nav.close();
-  }
-  createFormGroup(data: Task) {
-    return this.fb.group({
-      id: [data ? data.id : this.getRandomID()],
-      img: [data ? data.img : 'assets/images/user/user1.jpg'],
-      name: [data ? data.name : null],
-      title: [data ? data.title : null],
-      done: [data ? data.done : null],
-      priority: [data ? data.priority : null],
-      due_date: [data ? data.due_date : null],
-      note: [data ? data.note : null],
-    });
-  }
-  saveTask() {
-    this.tasks.unshift(this.taskForm.value);
-    this.resetFormField();
-  }
-  editTask() {
-    const targetIdx = this.tasks
-      .map((item) => item.id)
-      .indexOf(this.taskForm.value.id);
-    this.tasks[targetIdx] = this.taskForm.value;
-  }
-  deleteTask(nav: MatSidenav) {
-    const targetIdx = this.tasks
-      .map((item) => item.id)
-      .indexOf(this.taskForm.value.id);
-    this.tasks.splice(targetIdx, 1);
-    nav.close();
-  }
-  resetFormField() {
-    this.taskForm.controls['name'].reset();
-    this.taskForm.controls['title'].reset();
-    this.taskForm.controls['done'].reset();
-    this.taskForm.controls['priority'].reset();
-    this.taskForm.controls['due_date'].reset();
-    this.taskForm.controls['note'].reset();
-  }
-  public getRandomID(): number {
-    const S4 = () => {
-      return ((1 + Math.random()) * 0x10000) | 0;
-    };
-    return S4() + S4();
   }
 }
