@@ -32,7 +32,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 import { Direction } from '@angular/cdk/bidi';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Task } from 'src/app/task/task.model';
+import { Task } from 'src/app/models/task.model';
 import {
   ApexAxisChartSeries,
   ApexChart,
