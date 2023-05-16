@@ -1,0 +1,57 @@
+
+<div class="container">
+    <div class="contact-form h-100">
+      <div class="modalHeader">
+        <div class="editRowModal">
+          <div class="modalHeader clearfix">
+            <div class="modal-about">
+              <h3>Vincula tu cuenta de instagram</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div mat-dialog-content>
+        <form
+          class="register-form m-4"
+          [formGroup]="linkForm!"
+          (ngSubmit)="(submit)"
+        >
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+              <mat-form-field
+                class="example-full-width mb-3"
+                appearance="outline"
+              >
+                <mat-label>Instagram Link</mat-label>
+                <input matInput formControlName="instagram" required />
+                <i class="material-icons-two-tone color-icon p-3" matSuffix></i>
+                <mat-error
+                  *ngIf="
+                  linkForm?.get('instagram')?.hasError('required') ||
+                  linkForm?.get('instagram')?.touched
+                  "
+                >
+                  Please enter a instagram link
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+              <div class="example-button-row" align="end">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!linkForm?.valid"
+                  (click)="submit()"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

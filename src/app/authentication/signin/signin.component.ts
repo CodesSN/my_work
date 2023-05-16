@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { local } from 'd3';
 
 @Component({
   selector: 'app-signin',
@@ -42,16 +43,18 @@ export class SigninComponent implements OnInit {
       const password = this.signInForm.get('password')?.value;
       try {
         const response = await this.authService.signIn(username, password);
-
+        localStorage.setItem('sub',response.attributes.sub);
+        
         if (response.signInUserSession === null) {
           this.authService.saveCurrentUser(response);
           this.router.navigate(['/authentication/mfa']);
+        }else{
+          const user = await this.authService.currentUser();
+          console.log('user',user);
+          this.authService.deleteCurrentUser();
+          this.authService.saveCurrentUser(user);
+          this.router.navigate(['/dashboard']);
         }
-        const user = await this.authService.currentUser();
-        console.log(user);
-
-        this.router.navigate(['/authentication/mfa']);
-        console.log(user);
       } catch (error: unknown) {
         if (
           error instanceof Error &&

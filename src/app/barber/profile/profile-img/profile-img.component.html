@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="contact-form h-100">
+    <div class="modalHeader">
+      <div class="editRowModal">
+        <div class="modalHeader clearfix">
+          <div class="modal-about">
+            <h3>Choose profile image</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-content>
+      <form
+        class="register-form"
+      >
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-1">
+              <input
+              class="form-control"
+                type="file"
+                accept="image/*"
+                (change)="change($event)"
+              />
+              <i class="material-icons-two-tone color-icon p-3" matSuffix></i>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <div class="example-button-row" align="end">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="submit()"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { json } from 'd3';
 import { ConfigService } from 'src/app/config/config.service';
 import { InConfiguration } from 'src/app/core/models/config.interface';
 import { AuthService } from 'src/app/core/service/auth.service';
@@ -112,7 +113,9 @@ export class HeaderComponent
     },
   ];
   ngOnInit() {
-    this.user = localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('current') as string);
+    this.user = this.user.username;
+    
     this.config = this.configService.configData;
     // this.userImg = this.authService.currentUserValue.img;
 
@@ -227,6 +230,7 @@ export class HeaderComponent
   logout() {
 
     this.authService.deleteToken();
+    localStorage.clear();
     this.router.navigate(['authentication/signin'])
     // console.log('logout');
 

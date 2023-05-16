@@ -35,6 +35,8 @@ import { FormDialogComponent } from './calendar/form-dialog/form-dialog.componen
 import { CalendarService } from './calendar/calendar.service';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { SocialModalComponent } from './profile/social-modal/social-modal.component';
+import { ProfileImgComponent } from './profile/profile-img/profile-img.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ReportsComponent,
     NotificationsComponent,
     RaitingsComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    SocialModalComponent,
+    ProfileImgComponent
   ],
   imports: [
     CommonModule,
