@@ -28,6 +28,7 @@ export class ProfileComponent
 {
   public profileSocial!: string;
   public profileImage!: string;
+  public assetImage:any = 'assets/images/user/usrbig3.jpg';
   public name!: string;
   public phone!: string;
   public email!: string;
@@ -120,14 +121,6 @@ export class ProfileComponent
     return axios.request(config)
     .then(async (response) => {
       const datos = (response.data.imageUrl)?response.data.imageUrl:'assets/images/user/usrbig3.jpg';
-      const config:any = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: datos,
-        headers: { 
-          'Content-Type': 'application/json'
-        }
-      };
         return datos
     })
     .catch((error) => {
@@ -155,6 +148,7 @@ export class ProfileComponent
         this.id = this.assets['0'].id;
         this.make = this.assets['0'].make;
         this.model = this.assets['0'].model;
+        this.assetImage = 'https://eminentlimo.com/wp-content/uploads/2022/03/Executive-Sprinter-12-Passenger-400-x-262-Flip.png'
       }
     }).filter((asset:any) => asset !== null);
     
