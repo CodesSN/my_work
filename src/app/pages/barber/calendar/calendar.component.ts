@@ -66,14 +66,14 @@ export class CalendarComponent
     private http: HttpClient
   ) {
     super();
-    this.dialogTitle = 'Add New Event';
+    this.dialogTitle = 'New Appoitment';
     const blankObject = {} as Calendar;
     this.calendar = new Calendar(blankObject);
     this.addCusForm = this.createCalendarForm(this.calendar);
   }
 
   public ngOnInit(): void {
-    this.calendarEvents = INITIAL_EVENTS;
+    this.calendarEvents = [];
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.initialEvents = this.calendarEvents;
   }
@@ -89,19 +89,15 @@ export class CalendarComponent
     weekends: true,
     // editable: true,
     selectable: true,
+
     // selectMirror: true,
-    dayMaxEvents: true,
+    // dayMaxEvents: true,
     // Hace la accion de las casillas ya existentes
     eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this),
+    // eventsSet: this.handleEvents.bind(this),
   };
 
-
-  // Llama al modal para crear un nuevo evento
-  addNewEvent() {
-    console.log(this.calendar);
-
-
+  addWorkingTime(){
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         calendar: this.calendar,
@@ -111,6 +107,24 @@ export class CalendarComponent
 
     this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
       if (result === 'submit') {
+        //
+      }
+    });
+  }
+
+  // Llama al modal para crear un nuevo evento
+  addNewEvent() {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      data: {
+        calendar: this.calendar,
+        action: 'add',
+      },
+    });
+
+    this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'submit') {
+
+
         this.calendarData = this.calendarService.getDialogData();
         this.calendarEvents = this.calendarEvents?.concat({
           // add new event data. must create new array
@@ -122,6 +136,10 @@ export class CalendarComponent
           groupId: this.calendarData.category,
           details: this.calendarData.details,
         });
+        console.log(this.calendarData);
+        console.log("events: ", this.calendarEvents);
+
+
         this.calendarOptions.events = this.calendarEvents;
         this.addCusForm.reset();
         this.showNotification(
@@ -222,7 +240,12 @@ export class CalendarComponent
   editEvent(eventIndex: number, calendarData: Calendar) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const calendarEvents = this.calendarEvents!.slice();
+
     const singleEvent = Object.assign({}, calendarEvents[eventIndex]);
+    console.log(calendarEvents);
+    console.log(singleEvent);
+
+
     singleEvent.id = calendarData.id;
     singleEvent.title = calendarData.title;
     singleEvent.start = calendarData.startDate;

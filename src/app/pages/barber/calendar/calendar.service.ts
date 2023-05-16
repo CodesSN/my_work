@@ -12,7 +12,6 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class CalendarService {
-  private readonly API_URL = 'assets/data/calendar.json';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -28,14 +27,11 @@ export class CalendarService {
   getDialogData() {
     return this.dialogData;
   }
-  getAllCalendars(): Observable<Calendar[]> {
-    return this.httpClient
-      .get<Calendar[]>(this.API_URL)
-      .pipe(catchError(this.errorHandler));
-  }
 
   addUpdateCalendar(calendar: Calendar): void {
     this.dialogData = calendar;
+    // console.log(this.dialogData);
+    // console.log(this.dataChange);
   }
   deleteCalendar(calendar: Calendar): void {
     this.dialogData = calendar;
