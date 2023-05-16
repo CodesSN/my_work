@@ -13,6 +13,7 @@ import {
 import { ROUTES } from './sidebar-items';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { RouteInfo } from './sidebar.metadata';
+import { EmployeeService } from 'src/app/human-resources/employee.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -22,6 +23,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   public sidebarItems!: RouteInfo[];
   public innerHeight?: number;
   public bodyTag!: HTMLElement;
+  public data!: any;
   listMaxHeight?: string;
   listMaxWidth?: string;
   userFullName?: string;
@@ -35,7 +37,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
     public elementRef: ElementRef,
-    private authService: AuthService,
+    public authService: AuthService,
+    public employeeservice: EmployeeService,
     private router: Router
   ) {
     this.elementRef.nativeElement.closest('body');
@@ -69,17 +72,23 @@ export class SidebarComponent implements OnInit, OnDestroy {
       }
     }
   }
-  ngOnInit() {
-    // if (this.authService.currentUserValue) {
-    //   this.userFullName =
-    //     this.authService.currentUserValue.firstName +
-    //     ' ' +
-    //     this.authService.currentUserValue.lastName;
-    //   this.userImg = this.authService.currentUserValue.img;
-    // }
+  async getData() {
+    const user = this.authService.getCurrentUser();
+    const datos = await this.employeeservice.getAllEmployeesAxios();
+    let id;
+    await datos.forEach((e: any) => {
+      if (user.attributes.sub === e.sub) {
+        return (id = e.id);
+      }
+    });
 
-    this.userType = 'Admin';
-    this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
+    return this.employeeservice.getdataEmployeebyId(id);
+  }
+  async ngOnInit(): Promise<void> {
+    this.data = await this.getData();
+    console.log(this.data);
+    this.userType = this.data.data.body.id_role;
+    this.sidebarItems = ROUTES.filter((sidebarItem) => (sidebarItem.role_access.includes((this.userType?.toString())as string))? sidebarItem:null);
     // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
     this.initLeftSidebar();
     this.bodyTag = this.document.body;

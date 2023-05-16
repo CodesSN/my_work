@@ -144,10 +144,10 @@ export class ProfileComponent
     this.assets = (await this.getAssetById()).body
     this.assets.map((asset:any) => {
       if (asset.barber === this.name) {
-        this.plate = this.assets['0'].plate;
-        this.id = this.assets['0'].id;
-        this.make = this.assets['0'].make;
-        this.model = this.assets['0'].model;
+        this.plate = asset.plate;
+        this.id = asset.id;
+        this.make = asset.make;
+        this.model = asset.model;
         this.assetImage = 'https://eminentlimo.com/wp-content/uploads/2022/03/Executive-Sprinter-12-Passenger-400-x-262-Flip.png'
       }
     }).filter((asset:any) => asset !== null);

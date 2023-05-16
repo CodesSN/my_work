@@ -9,6 +9,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role_access: ['1'],
     submenu: [
       {
         path: 'dashboard/dashboard1',
@@ -19,6 +20,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
       {
@@ -30,6 +32,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
     ],
@@ -43,6 +46,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role_access: ['1','3'],
     submenu: [
       {
         path: '/hr/dashboard',
@@ -53,6 +57,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
       {
@@ -64,6 +69,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
     ],
@@ -77,6 +83,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role_access: ['1'],
     submenu: [
       {
         path: '/assets/config',
@@ -87,6 +94,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
     ],
@@ -100,6 +108,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: '',
     badgeClass: '',
+    role_access: ['1'],
     submenu: [
       {
         path: 'contacts',
@@ -110,6 +119,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
       {
@@ -121,13 +131,14 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
     ],
   },
 
   {
-    path: "contacts",
+    path: "barber",
     title: "Barber",
     iconType: "feather",
     icon: "edit",
@@ -135,6 +146,7 @@ export const ROUTES: RouteInfo[] = [
     groupTitle: false,
     badge: "",
     badgeClass: "",
+    role_access: ['2'],
     submenu: [
       {
         path: "barber/home",
@@ -145,6 +157,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [],
       },
       {
@@ -156,6 +169,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [],
       },
       {
@@ -167,6 +181,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [],
       },
       {
@@ -178,6 +193,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [],
       },
       {
@@ -189,6 +205,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [
         ],
       },
@@ -201,6 +218,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
       {
@@ -212,6 +230,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: '',
         badgeClass: '',
+        role_access: [],
         submenu: [],
       },
       {
@@ -223,6 +242,7 @@ export const ROUTES: RouteInfo[] = [
         groupTitle: false,
         badge: "",
         badgeClass: "",
+        role_access: [],
         submenu: [
         ],
       },
