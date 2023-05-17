@@ -11,6 +11,7 @@ import { AssetsService } from 'src/app/assets/assets.service';
 import { Employee } from 'src/app/models/employee.model';
 import { trucks } from 'src/app/models/assets.model';
 import { firstValueFrom } from 'rxjs';
+import { ModalFullViewComponent } from 'src/app/shared/components/gallery/modal-full-view/modal-full-view.component';
 
 export interface ImageData {
   image: string;
@@ -101,6 +102,14 @@ export class ProfileComponent
   showLightbox(index: number) {
     this.currentIndex = index;
     this.showFlag = true;
+    const dialogRef = this.dialog.open(ModalFullViewComponent, {
+      width: '750px',
+      height: '225px',
+      data: {
+        imageObject: this.imageObject,
+        currentIndex:index
+      },
+    });
   }
   closeEventHandler() {
     this.showFlag = false;
@@ -154,7 +163,7 @@ export class ProfileComponent
     
   }
 
-  async add_profile_img() {
+  async add_img(zone:string) {
     const user = await this.authservice.getCurrentUser();
     console.log(user.attributes.sub);
 
@@ -163,6 +172,7 @@ export class ProfileComponent
       height: '225px',
       data: {
         sub: user.attributes.sub,
+        zone
       },
     });
 

@@ -4,6 +4,8 @@ import { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
 export interface DialogData {
+  tittle: string;
+  zone: string;
   sub: any;
 }
 
@@ -14,9 +16,13 @@ export interface DialogData {
 })
 export class ProfileImgComponent {
   sub: any;
+  tittle: any;
+  zone: any;
   file: File | undefined;
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
     this.sub = data.sub;
+    this.zone = data.zone;
+    this.tittle = (this.zone === 'profile')? 'Choose Your Profile Photo': 'Upload A Photo';
   }
 
   change(event: any) {

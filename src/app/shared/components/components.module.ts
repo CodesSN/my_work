@@ -19,6 +19,8 @@ import { AddComponent } from "./add_assets/add.component";
 import { MatSelectModule } from "@angular/material/select";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { ModalFullViewComponent } from './gallery/modal-full-view/modal-full-view.component';
+import { NgImageFullscreenViewModule } from "ng-image-fullscreen-view";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     EditComponent,
     AddComponent,
     SnackbarComponent,
+    ModalFullViewComponent,
   ],
   imports: [
     SharedModule,
@@ -44,6 +47,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     MatDialogModule,
     MatSelectModule,
     MatAutocompleteModule,
+    NgImageFullscreenViewModule
   ],
   exports: [
     FileUploadComponent,

@@ -15,7 +15,7 @@
                 <div class="user-name"><span>{{name}}</span></div>
                 <div class="name-center">Barber</div>
               </div>
-              <img style="min-width:100px; min-height: 100px; background-image: url({{profileImage}}); background-position: center; background-repeat: no-repeat; background-size: cover;" (click)="add_profile_img()" class="user-img" alt="">
+              <img style="min-width:100px; min-height: 100px; background-image: url({{profileImage}}); background-position: center; background-repeat: no-repeat; background-size: cover;" (click)="add_img('profile')" class="user-img" alt="">
               <div class="socials-container">
                 <a target="_blank" [href]="" class="social-container d-flex justify-content-center align-items-center">
                   <a [href]="instagram_link"><img *ngIf="instagram_link !== ''" src="../../../assets/images/icons/instagram.svg"></a>
@@ -110,17 +110,17 @@
                 <mat-icon class="example-tab-icon msr-2">folder</mat-icon>
                 Gallery
               </ng-template>
-              <div class="gallery-container">
+              <div class="gallery-container shadow-none">
                 <div class="group-2">
-                  <div>
+                  <div class="header">
+                    <button (click)="add_img('gallery')" type="button" class="btn btn-default btn-circle border"><i class="fa fa-plus">Add</i>
+                    </button>
+                  </div>
+                  <div class="d-flex flex-wrap align-items-center justify-content-center">
                     <img *ngFor="let img of imageObject; let i = index" [src]="img.thumbImage || img.image"
                       (click)="showLightbox(i)" />
                   </div>
                 </div>
-                <!-- ng-image-fullscreen-view  -->
-                <ng-image-fullscreen-view [images]="imageObject" [imageIndex]="currentIndex" [show]="showFlag"
-                  (close)="closeEventHandler()">
-                </ng-image-fullscreen-view>
               </div>
             </mat-tab>
           </mat-tab-group>
@@ -132,7 +132,7 @@
           <div class="row clearfix px-4 py-3">
             <div class="my-auto col-3">
               <h4 class="h4">Plate:</h4>
-              <p class="d-flex text-default">{{id}}</p>
+              <p class="d-flex text-default">{{plate}}</p>
             </div>
             <div class="my-auto col-3">
               <h4 class="h4">Model:</h4>

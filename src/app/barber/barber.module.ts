@@ -37,6 +37,7 @@ import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SocialModalComponent } from './profile/social-modal/social-modal.component';
 import { ProfileImgComponent } from './profile/profile-img/profile-img.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { ProfileImgComponent } from './profile/profile-img/profile-img.component
     RaitingsComponent,
     FormDialogComponent,
     SocialModalComponent,
-    ProfileImgComponent
+    ProfileImgComponent,
   ],
   imports: [
     CommonModule,
@@ -83,7 +84,8 @@ import { ProfileImgComponent } from './profile/profile-img/profile-img.component
     MatIconModule,
     MatSnackBarModule,
     NgImageFullscreenViewModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    GoogleMapsModule
   ],
   providers: [CalendarService]
 })
