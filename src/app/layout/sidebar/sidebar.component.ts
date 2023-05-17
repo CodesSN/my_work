@@ -86,7 +86,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
   async ngOnInit(): Promise<void> {
     this.data = await this.getData();
-    console.log(this.data);
     this.userType = this.data.data.body.id_role;
     this.sidebarItems = ROUTES.filter((sidebarItem) => (sidebarItem.role_access.includes((this.userType?.toString())as string))? sidebarItem:null);
     // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
