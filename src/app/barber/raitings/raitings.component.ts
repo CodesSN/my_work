@@ -18,37 +18,46 @@ export class RaitingsComponent implements OnInit {
   public rateDiff: any = 0;
 
   async ngOnInit(): Promise<void> {
+    this.list = await this.getList();
+    this.rate = await this.getRateBarber(this.list);
+    this.rateDiff = await this.getIncOrDec(this.list);
+  }
+
+  async getList() {
     this.currentUser = JSON.parse(
       localStorage.getItem(
-        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.'+ localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser') +'.userData'
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
       ) as string
     ).UserAttributes[0].Value;
     const url =
       'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/rates/barber/get?sub=' +
       this.currentUser;
-    console.log(url);
-
     const config: AxiosRequestConfig = {
       method: 'get',
       maxBodyLength: Infinity,
       url,
       headers: {},
     };
-
-    this.list = await axios
+    return await axios
       .request(config)
       .then((response) => {
-        console.log(response);
-
-        return response.data;
+        const data = response.data
+        data.sort((a:any, b:any) => {
+          const DateTimeA = new Date(`${a.date} ${a.time}`);
+          const DateTimeB = new Date(`${b.date} ${b.time}`);
+          return DateTimeB.getTime() - DateTimeA.getTime();
+        });
+        return data;
       })
       .catch((error) => {
         console.log(error);
       });
-    this.rate = await this.getRateBarber(this.list);
-    this.rateDiff = await this.getIncOrDec(this.list);
   }
-  getIncOrDec(data: any[]): number {
+  async getIncOrDec(data: any[]): Promise<number>{
     const ActualMonth = moment().month() + 1;
     const PrevMonth = ActualMonth - 1;
     let ActualRate = 0;
@@ -78,8 +87,8 @@ export class RaitingsComponent implements OnInit {
         : PrevRate !== 0
         ? (dif * -1) / PrevRate - 1
         : dif;
-        
-    return (!isNaN(op * 100)) ? op * 100 : 0;
+
+    return !isNaN(op * 100) ? op * 100 : 0;
   }
   async getRateBarber(data: any[]): Promise<number> {
     let rate = 0;
@@ -87,7 +96,7 @@ export class RaitingsComponent implements OnInit {
       rate = rate + data.rate;
     });
 
-    return (!isNaN(rate / data.length))? rate / data.length:0;
+    return !isNaN(rate / data.length) ? rate / data.length : 0;
   }
   getRange(n: number): number[] {
     return Array.from({ length: n }, (_, i) => i + 1);
