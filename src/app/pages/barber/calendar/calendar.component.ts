@@ -27,6 +27,7 @@ import {
 import { INITIAL_EVENTS } from './events-util';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
+import { FormWorkingTimeComponent } from './form-working-time/form-working-time.component';
 
 
 @Component({
@@ -98,7 +99,7 @@ export class CalendarComponent
   };
 
   addWorkingTime(){
-    const dialogRef = this.dialog.open(FormDialogComponent, {
+    const dialogRef = this.dialog.open(FormWorkingTimeComponent, {
       data: {
         calendar: this.calendar,
         action: 'add',

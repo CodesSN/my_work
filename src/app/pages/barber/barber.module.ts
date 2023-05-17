@@ -35,6 +35,10 @@ import { FormDialogComponent } from './calendar/form-dialog/form-dialog.componen
 import { CalendarService } from './calendar/calendar.service';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { FormWorkingTimeComponent } from './calendar/form-working-time/form-working-time.component';
+import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -47,7 +51,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ReportsComponent,
     NotificationsComponent,
     RaitingsComponent,
-    FormDialogComponent
+    FormDialogComponent,
+    FormWorkingTimeComponent
   ],
   imports: [
     CommonModule,
@@ -78,6 +83,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     DragDropModule,
     MatIconModule,
     MatSnackBarModule,
+    NgbModule,
+    NgbTimepickerModule,
     NgImageFullscreenViewModule,
     NgApexchartsModule
   ],

@@ -18,3 +18,9 @@ export class Calendar {
     }
   }
 }
+
+export interface WorkingDay {
+  day: string;
+  ui: string;
+  selected:boolean;
+}

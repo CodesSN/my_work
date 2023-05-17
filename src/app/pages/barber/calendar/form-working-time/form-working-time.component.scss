@@ -1,0 +1,29 @@
+.button {
+  margin: 5px 5px;
+
+  &-color {
+    background-color: transparent;
+    border: 1px solid #B6894B;
+    color: #B6894B;
+    &-selected{
+      background-color: #B6894B;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
