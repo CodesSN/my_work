@@ -113,8 +113,7 @@ export class HeaderComponent
     },
   ];
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('current') as string);
-    this.user = this.user.username;
+    this.user = localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser');
     
     this.config = this.configService.configData;
     // this.userImg = this.authService.currentUserValue.img;
