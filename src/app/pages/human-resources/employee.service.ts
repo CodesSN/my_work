@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { Response } from '../models/response.model';
-import { Employee } from '../models/employee.model';
+import { Response } from '../../models/response.model';
+import { Employee } from '../../models/employee.model';
 import { axisBottom } from 'd3';
 import { AxiosRequestConfig } from 'axios';
 import axios from 'axios'
