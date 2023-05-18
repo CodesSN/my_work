@@ -58,7 +58,8 @@ export class ProfileImgComponent {
     const data = {
       fileName,
       file: img,
-      contentType
+      contentType,
+      folderName: (this.zone === 'profile')? 'profile_Image':'gallery_barber',
     };
 
     const config: AxiosRequestConfig = {
