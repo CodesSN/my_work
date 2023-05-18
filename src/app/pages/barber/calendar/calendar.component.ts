@@ -91,9 +91,10 @@ export class CalendarComponent
 
       }
     })
-    this.calendarEvents = [];
+    this.calendarEvents = INITIAL_EVENTS;
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.initialEvents = this.calendarEvents;
+
   }
 
   calendarOptions: CalendarOptions = {
@@ -154,8 +155,8 @@ export class CalendarComponent
           groupId: this.calendarData.category,
           details: this.calendarData.details,
         });
-        console.log(this.calendarData);
-        console.log("events: ", this.calendarEvents);
+        // console.log(this.calendarData);
+        // console.log("events: ", this.calendarEvents);
 
 
         this.calendarOptions.events = this.calendarEvents;
@@ -196,14 +197,6 @@ export class CalendarComponent
   }
 
   eventClick(row: EventClickArg) {
-    console.log(row.event.id);
-    console.log(row.event.title);
-    console.log(row.event.groupId);
-    console.log(row.event.start);
-    console.log(row.event.end);
-    console.log(row.event.extendedProps['details']);
-
-
     const calendarData = {
       id: row.event.id,
       title: row.event.title,
