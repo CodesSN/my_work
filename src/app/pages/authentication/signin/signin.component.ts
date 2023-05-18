@@ -55,6 +55,10 @@ export class SigninComponent implements OnInit {
           this.authService.saveCurrentUser(user);
           this.router.navigate(['/dashboard']);
         }
+        const user = await this.authService.currentUser();
+        this.authService.saveCurrentUser(user);
+
+        this.router.navigate(['/authentication/mfa']);
       } catch (error: unknown) {
         if (
           error instanceof Error &&
