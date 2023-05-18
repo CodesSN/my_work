@@ -24,3 +24,12 @@ export interface WorkingDay {
   ui: string;
   selected:boolean;
 }
+
+export interface WorkingData {
+  sub:any;
+}
+
+export interface PostWorkingData extends WorkingData {
+  times: string;
+  days: string;
+}

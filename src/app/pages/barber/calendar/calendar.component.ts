@@ -16,7 +16,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Calendar } from './calendar.model';
+import { Calendar } from '../../../models/calendar.model';
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
 import { CalendarService } from './calendar.service';
 import {

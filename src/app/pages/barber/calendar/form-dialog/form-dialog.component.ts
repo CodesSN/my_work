@@ -7,7 +7,7 @@ import {
   UntypedFormGroup,
   UntypedFormBuilder,
 } from '@angular/forms';
-import { Calendar } from '../calendar.model';
+import { Calendar } from '../../../../models/calendar.model';
 
 export interface DialogData {
   id: number;
