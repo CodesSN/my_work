@@ -12,8 +12,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { RaitingsComponent } from './raitings/raitings.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SharedModule } from '../shared/shared.module';
-import { ComponentsModule } from '../shared/components/components.module';
+import { SharedModule } from '../../shared/shared.module';
+import { ComponentsModule } from '../../shared/components/components.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,6 +38,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { SocialModalComponent } from './profile/social-modal/social-modal.component';
 import { ProfileImgComponent } from './profile/profile-img/profile-img.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { FormWorkingTimeComponent } from './calendar/form-working-time/form-working-time.component';
+
 
 
 @NgModule({
@@ -53,14 +55,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FormDialogComponent,
     SocialModalComponent,
     ProfileImgComponent,
+    FormWorkingTimeComponent
   ],
   imports: [
     CommonModule,
     BarberRoutingModule,
     SharedModule,
     MatIconModule,
-    MatTabsModule,
     ComponentsModule,
+    MatTabsModule,
     MatCheckboxModule,
     FullCalendarModule,
     FullCalendarModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/employee.model';
 import { trucks } from 'src/app/models/assets.model';
-import { AssetsService } from 'src/app/assets/assets.service';
+import { AssetsService } from 'src/app/pages/assets/assets.service';
 @Component({
   selector: 'app-assets',
   templateUrl: './assets.component.html',

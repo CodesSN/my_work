@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 
 export interface DialogData {
@@ -18,6 +18,10 @@ export class ModalComponent implements OnInit {
   public currentEmployee!: Employee;
   public titleForm!: 'Add Employee'|'Edit Employee';
   public modalForm!: FormGroup;
+  public fileControl = new FormControl();
+  public selectedFile: File | null = null;
+  public fileUrl:any = null;
+  public file:File | null = null;
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,
@@ -41,7 +45,9 @@ export class ModalComponent implements OnInit {
       date: [this.currentEmployee.date, [Validators.required]],
       email: [this.currentEmployee.email, [Validators.required, Validators.email]],
       civil: [this.currentEmployee.civil_status ,[Validators.required]],
-      ssn: [this.currentEmployee.ssn, [Validators.required]]
+      ssn: [this.currentEmployee.ssn, [Validators.required]],
+      gender: ['male'],
+      description: ['', [Validators.required]],
     })
   }
 
@@ -49,7 +55,7 @@ export class ModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  async saveChanges(){
+saveChanges(){
     if(this.modalForm.valid){
       const updatedUser: Employee = {
         id: this.currentEmployee.id,
@@ -66,7 +72,7 @@ export class ModalComponent implements OnInit {
         // console.log("save changes");
         // Logica para añadir un empleado
         try {
-          await this.employeeService.addEmployee(updatedUser).subscribe(data => {
+           this.employeeService.addEmployee(updatedUser).subscribe(data => {
             if(data.statusCode === 200){
               this.dialogRef.close(true);
             }
@@ -79,7 +85,7 @@ export class ModalComponent implements OnInit {
       if(this.data.action === 'edit'){
         // Logica para editar un empleado
         try {
-          await this.employeeService.saveEmployee(updatedUser).subscribe(data => {
+          this.employeeService.saveEmployee(updatedUser).subscribe(data => {
             if(data.statusCode === 200){
               // Cambiarlo por actualizar informacion automaticamente
               this.dialogRef.close(true);
@@ -90,5 +96,20 @@ export class ModalComponent implements OnInit {
         }
       }
     }
+  }
+
+  handleFileInput(event: any) {
+    this.selectedFile = event.target.files[0];
+
+    if(this.selectedFile){
+      const formData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile?.name);
+      this.fileUrl = URL.createObjectURL(this.selectedFile);
+    }
+  }
+
+  printFile(){
+    console.log(this.fileUrl);
+    console.log(this.selectedFile);
   }
 }

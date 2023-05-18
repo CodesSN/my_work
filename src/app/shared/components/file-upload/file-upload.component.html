@@ -1,5 +1,11 @@
-<div class="file-drop-area">
-  <button mat-raised-button color="primary">Choose file</button>
-  <span>{{file ? file.name : ' or drag and drop file here' }}</span>
-  <input class="file-input" type="file">
+<div class="input-container">
+  <h3 class="input-text">{{title}}</h3>
+  <input class="file-input" type="file" [id]="title" [name]="title" (change)="handleFileInput($event)">
+  <label [htmlFor]="title" class="custom-button">
+    <p class="custom-text" >{{selectedFile ? selectedFile.name : 'Select file'}}</p>
+    <a *ngIf="selectedFile" href="{{fileUrl}}" download>Download</a>
+  </label>
+  <figure *ngIf="selectedFile" class="img-container">
+    <img [src]="fileUrl" [alt]="title">
+  </figure>
 </div>

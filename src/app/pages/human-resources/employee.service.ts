@@ -44,7 +44,7 @@ export class EmployeeService {
       method: 'get',
       maxBodyLength: Infinity,
       url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/employee',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       }
     };

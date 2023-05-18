@@ -25,7 +25,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
 import { ContactsService } from "./contacts.service";
-import { ComponentsModule } from "../shared/components/components.module";
+import { ComponentsModule } from "../../shared/components/components.module";
 
 @NgModule({
   declarations: [ContactsComponent, contactForm, DeleteComponent],

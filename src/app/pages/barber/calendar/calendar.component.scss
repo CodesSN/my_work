@@ -1,0 +1,39 @@
+.fc-button {
+  background-color: #B6894B;
+}
+
+.button {
+  background-color: #B6894B;
+  padding: 25px 10px;
+  width: 100%;
+}
+
+.working {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-bottom: 10px;
+
+  &-container {
+    width: 100%;
+
+    &-hours{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+  }
+
+  &-text {
+    margin: 2px 0;
+    text-align: center;
+  }
+}
+
+.checkbox  {
+  border-color: red;
+  // background-color: blue;
+}
+

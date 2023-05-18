@@ -16,14 +16,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 
 @NgModule({

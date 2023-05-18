@@ -3,14 +3,12 @@ import { Routes, RouterModule } from "@angular/router";
 import { SigninComponent } from "./signin/signin.component";
 import { SignupComponent } from "./signup/signup.component";
 import { ForgotPasswordComponent } from "./forgot-password/forgot-password.component";
-import { LockedComponent } from "./locked/locked.component";
 import { Page404Component } from "./page404/page404.component";
-import { Page500Component } from "./page500/page500.component";
 import { VerificationComponent } from "./verification/verification.component";
 import { MfaComponent } from "./mfa/mfa.component";
 import { NewPasswordComponent } from "./new-password/new-password.component";
-import { MfaGuard } from "../core/guard/mfa.guard";
-import { ForgotGuard } from "../core/guard/forgot.guard";
+import { MfaGuard } from "../../core/guard/mfa.guard";
+import { ForgotGuard } from "../../core/guard/forgot.guard";
 const routes: Routes = [
   {
     path: "",
@@ -43,18 +41,10 @@ const routes: Routes = [
     component: NewPasswordComponent,
     canActivate: [ForgotGuard]
   },
-  // {
-  //   path: "locked",
-  //   component: LockedComponent,
-  // },
   {
     path: "page404",
     component: Page404Component,
   },
-  // {
-  //   path: "page500",
-  //   component: Page500Component,
-  // },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

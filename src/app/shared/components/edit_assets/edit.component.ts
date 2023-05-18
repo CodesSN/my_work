@@ -6,7 +6,7 @@ import axios from 'axios';
 import { AxiosRequestConfig } from 'axios';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 import { Employee } from 'src/app/models/employee.model';
 
 export interface DialogData {
@@ -120,7 +120,7 @@ export class EditComponent implements OnInit {
             Ayear: this.trucksForm?.value.year,
             Barber: (e as Employee).id
           };
-      
+
           const url =
             'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/assets/update_assets';
           const config: AxiosRequestConfig = {

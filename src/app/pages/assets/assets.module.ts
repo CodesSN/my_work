@@ -11,12 +11,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from "@angular/material/select";
 import { MatMenuModule } from "@angular/material/menu";
-import { ComponentsModule } from "../shared/components/components.module";
+import { ComponentsModule } from "../../shared/components/components.module";
 import { SharedModule } from "src/app/shared/shared.module";
-import { ContactsModule } from "../contacts/contacts.module";
 import { AssetsRoutingModule } from "./assets-routing.module";
 import { HttpClientModule } from '@angular/common/http';
 import { ConfigComponent } from './config/config.component';
+import { ContactsModule } from "../contacts/contacts.module";
 
 
 @NgModule({

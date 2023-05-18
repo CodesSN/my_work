@@ -33,15 +33,6 @@
               <mat-option [value]="'personal'">
                 Personal
               </mat-option>
-              <mat-option [value]="'important'">
-                Important
-              </mat-option>
-              <mat-option [value]="'travel'">
-                Travel
-              </mat-option>
-              <mat-option [value]="'friends'">
-                Friends
-              </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -50,7 +41,7 @@
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
             <mat-label>Start date</mat-label>
-            <input matInput formControlName="startDate" [owlDateTimeTrigger]="startDate" [owlDateTime]="startDate"
+            <input matInput formControlName="startDate" [owlDateTimeTrigger]="startDate" [owlDateTime]="startDate" [(ngModel)]="startSelectedDateTime"
               placeholder="Choose a date" required>
             <mat-icon matSuffix [owlDateTimeTrigger]="startDate" class="date-icon">today</mat-icon>
             <owl-date-time #startDate></owl-date-time>
@@ -59,7 +50,7 @@
         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
           <mat-form-field class="example-full-width mb-3" appearance="outline">
             <mat-label>End date</mat-label>
-            <input matInput formControlName="endDate" [owlDateTimeTrigger]="endDate" [owlDateTime]="endDate"
+            <input matInput formControlName="endDate" [owlDateTimeTrigger]="endDate" [owlDateTime]="endDate" [(ngModel)]="endSelectedDateTime"
               placeholder="Choose a date" required>
             <mat-icon matSuffix [owlDateTimeTrigger]="endDate" class="date-icon">today</mat-icon>
             <owl-date-time #endDate></owl-date-time>
@@ -80,6 +71,7 @@
             <button mat-raised-button color="primary" [type]="submit" [disabled]="!calendarForm.valid"
               (click)="confirmAdd()">Save</button>
             <button mat-raised-button color="warn" (click)="dialogRef.close()" tabindex="-1">Cancel</button>
+            <button (click)="print()">Print</button>
           </div>
         </div>
         <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">

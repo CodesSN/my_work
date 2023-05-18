@@ -17,7 +17,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FormComponent } from './form/form.component';
 import { DeleteComponent } from './delete/delete.component';
-import { UnsubscribeOnDestroyAdapter } from '../shared/UnsubscribeOnDestroyAdapter';
+import { UnsubscribeOnDestroyAdapter } from '../../shared/UnsubscribeOnDestroyAdapter';
 import { Direction } from '@angular/cdk/bidi';
 
 @Component({

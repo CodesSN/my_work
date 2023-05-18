@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SocialModalComponent } from './social-modal/social-modal.component';
-import { UnsubscribeOnDestroyAdapter } from '../../../app/shared/UnsubscribeOnDestroyAdapter';
-import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { UnsubscribeOnDestroyAdapter } from '../../../shared/UnsubscribeOnDestroyAdapter';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { ProfileImgComponent } from './profile-img/profile-img.component';
 import { AxiosRequestConfig } from 'axios';
 import axios from 'axios';
-import { AssetsService } from 'src/app/assets/assets.service';
+import { AssetsService } from 'src/app/pages/assets/assets.service';
 import { Employee } from 'src/app/models/employee.model';
 import { trucks } from 'src/app/models/assets.model';
 import { firstValueFrom } from 'rxjs';

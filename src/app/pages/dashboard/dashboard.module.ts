@@ -15,7 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [Dashboard1Component, Dashboard2Component],

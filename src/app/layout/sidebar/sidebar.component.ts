@@ -13,7 +13,7 @@ import {
 import { ROUTES } from './sidebar-items';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { RouteInfo } from './sidebar.metadata';
-import { EmployeeService } from 'src/app/human-resources/employee.service';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

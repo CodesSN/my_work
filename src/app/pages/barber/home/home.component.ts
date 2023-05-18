@@ -19,7 +19,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Calendar } from '../calendar/calendar.model';
+import { Calendar } from '../../../models/calendar.model';
 import { FormDialogComponent } from '../calendar/form-dialog/form-dialog.component';
 import { CalendarService } from '../calendar/calendar.service';
 import {
@@ -32,7 +32,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 import { Direction } from '@angular/cdk/bidi';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Task } from 'src/app/task/task.model';
+import { Task } from 'src/app/models/task.model';
 import {
   ApexAxisChartSeries,
   ApexChart,

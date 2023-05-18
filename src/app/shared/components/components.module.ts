@@ -21,6 +21,9 @@ import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ModalFullViewComponent } from './gallery/modal-full-view/modal-full-view.component';
 import { NgImageFullscreenViewModule } from "ng-image-fullscreen-view";
+import { MatInputModule } from "@angular/material/input";
+import { MatTabsModule } from "@angular/material/tabs";
+import { CalendarListComponent } from './calendar-list/calendar-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { NgImageFullscreenViewModule } from "ng-image-fullscreen-view";
     AddComponent,
     SnackbarComponent,
     ModalFullViewComponent,
+    CalendarListComponent,
   ],
   imports: [
     SharedModule,
@@ -47,12 +51,15 @@ import { NgImageFullscreenViewModule } from "ng-image-fullscreen-view";
     MatDialogModule,
     MatSelectModule,
     MatAutocompleteModule,
-    NgImageFullscreenViewModule
+    NgImageFullscreenViewModule,
+    MatInputModule,
+    MatTabsModule
   ],
   exports: [
     FileUploadComponent,
     BreadcrumbComponent,
-    TableComponent
+    TableComponent,
+    CalendarListComponent
   ],
 })
 export class ComponentsModule {}

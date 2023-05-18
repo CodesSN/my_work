@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Calendar } from './calendar.model';
+import { Calendar, PostWorkingData, WorkingData } from '../../../models/calendar.model';
 import { Observable } from 'rxjs';
 import {
   HttpClient,
@@ -9,33 +9,45 @@ import {
 } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable()
 export class CalendarService {
-  private readonly API_URL = 'assets/data/calendar.json';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
   dataChange: BehaviorSubject<Calendar[]> = new BehaviorSubject<Calendar[]>([]);
   // Temporarily stores data from dialogs
   dialogData!: Calendar;
-  constructor(private httpClient: HttpClient) {}
+  currentUser: any;
+
+  constructor(
+    private http: HttpClient
+  ) {}
+
   get data(): Calendar[] {
     return this.dataChange.value;
   }
   getDialogData() {
     return this.dialogData;
   }
-  getAllCalendars(): Observable<Calendar[]> {
-    return this.httpClient
-      .get<Calendar[]>(this.API_URL)
-      .pipe(catchError(this.errorHandler));
+
+  getCurrentUser(){
+    this.currentUser =  JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes[0].Value;
+
+    return this.currentUser;
   }
 
   addUpdateCalendar(calendar: Calendar): void {
     this.dialogData = calendar;
+    // console.log(this.dialogData);
+    // console.log(this.dataChange);
   }
   deleteCalendar(calendar: Calendar): void {
     this.dialogData = calendar;
@@ -51,5 +63,14 @@ export class CalendarService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+  }
+
+
+  postWorkingHours(data: PostWorkingData){
+    return this.http.post<any>(`${environment.apiUrl}/worktime/Barber/post`, data);
+  }
+
+  getWorkingHours(data: string){
+    return this.http.get<any>(`${environment.apiUrl}/worktime/Barber/get?sub=${data}`);
   }
 }

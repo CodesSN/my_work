@@ -1,42 +1,28 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/ban-types */
-import { Component, ElementRef, HostListener, Input } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: FileUploadComponent,
-      multi: true,
-    },
-  ],
   styleUrls: ['./file-upload.component.scss'],
 })
-export class FileUploadComponent implements ControlValueAccessor {
-  onChange!: Function;
-  public file: File | null = null;
+export class FileUploadComponent {
+  public selectedFile: File | null = null;
+  public fileUrl:any = null;
+  public file:File | null = null;
+  @Input() title = '';
 
-  @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
-    const file = event && event.item(0);
-    this.onChange(file);
-    this.file = file;
+  handleFileInput(event: any) {
+    this.selectedFile = event.target.files[0];
+
+    if(this.selectedFile){
+      const formData = new FormData();
+      formData.append('file', this.selectedFile, this.selectedFile?.name);
+      this.fileUrl = URL.createObjectURL(this.selectedFile);
+    }
   }
 
-  constructor(private host: ElementRef<HTMLInputElement>) {}
-
-  writeValue(value: null) {
-    // clear file input
-    this.host.nativeElement.value = '';
-    this.file = null;
-  }
-
-  registerOnChange(fn: Function) {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: Function) {
-    // add code here
+  printFile(){
+    console.log(this.fileUrl);
+    console.log(this.selectedFile);
   }
 }
