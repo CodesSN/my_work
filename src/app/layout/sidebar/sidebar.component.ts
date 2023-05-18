@@ -81,11 +81,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
           '.userData'
       ) as string
     ).UserAttributes;
-
+    console.log('user',user[0]);
+    
     const datos = await this.employeeservice.getAllEmployeesAxios();
     let id;
     await datos.forEach((e: any) => {
-      if (user[0].sub === e.sub) {
+      if (user[0].Value === e.sub) {
         return (id = e.id);
       }
     });

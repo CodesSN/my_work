@@ -46,11 +46,19 @@ export class ProfileComponent
 
   public instagram_link: any = '';
   async getLink() {
-    const user = this.authservice.getCurrentUser();
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes;
     const datos = await this.employeeservice.getAllEmployeesAxios();
     let id;
     await datos.forEach((e: any) => {
-      if (user.attributes.sub === e.sub) {
+      if (user[0].Value === e.sub) {
         return (id = e.id);
       }
     });
