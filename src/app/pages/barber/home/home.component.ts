@@ -49,6 +49,7 @@ import {
   ApexTitleSubtitle,
   ApexResponsive,
 } from 'ng-apexcharts';
+import * as moment from 'moment';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -230,7 +231,10 @@ export class HomeComponent
   handleEventClick(clickInfo: EventClickArg) {
     this.eventClick(clickInfo);
   }
-
+  moment(){
+    const year = moment().format('YYYY');
+    return year;
+  }
   eventClick(row: EventClickArg) {
     const calendarData = {
       id: row.event.id,
@@ -436,11 +440,11 @@ export class HomeComponent
     this.earningOptions = {
       series: [
         {
-          name: '2019',
+          name: 'aproximate',
           data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
         },
         {
-          name: '2018',
+          name: 'actual',
           data: [8, 22, 60, 35, 17, 24, 48, 37, 56, 22, 32, 38],
         },
       ],

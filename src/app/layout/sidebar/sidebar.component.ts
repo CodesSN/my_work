@@ -113,7 +113,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
   setMenuHeight() {
     this.innerHeight = window.innerHeight;
-    const height = this.innerHeight - this.headerHeight;
+    let height = this.innerHeight - this.headerHeight;
+    height = height - 100;
     this.listMaxHeight = height + '';
     this.listMaxWidth = '500px';
   }

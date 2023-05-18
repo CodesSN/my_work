@@ -76,23 +76,33 @@ export class ProfileComponent
 
   imageObject: Array<ImageData> = [
     {
-      image: 'assets/images/image-gallery/1.jpg',
-      thumbImage: 'assets/images/image-gallery/1.jpg',
+      image: 'assets/images/barber-temp/1.png',
+      thumbImage: 'assets/images/barber-temp/1.png',
       title: 'Image 1',
     },
     {
-      image: 'assets/images/image-gallery/2.jpg',
-      thumbImage: 'assets/images/image-gallery/2.jpg',
+      image: 'assets/images/barber-temp/2.png',
+      thumbImage: 'assets/images/barber-temp/2.png',
       title: 'Image 2',
     },
     {
-      image: 'assets/images/image-gallery/3.jpg',
-      thumbImage: 'assets/images/image-gallery/3.jpg',
+      image: 'assets/images/barber-temp/3.png',
+      thumbImage: 'assets/images/barber-temp/3.png',
       title: 'Image 3',
     },
     {
-      image: 'assets/images/image-gallery/4.jpg',
-      thumbImage: 'assets/images/image-gallery/4.jpg',
+      image: 'assets/images/barber-temp/4.png',
+      thumbImage: 'assets/images/barber-temp/4.png',
+      title: 'Image 4',
+    },
+    {
+      image: 'assets/images/barber-temp/5.png',
+      thumbImage: 'assets/images/barber-temp/5.png',
+      title: 'Image 4',
+    },
+    {
+      image: 'assets/images/barber-temp/6.png',
+      thumbImage: 'assets/images/barber-temp/6.png',
       title: 'Image 4',
     },
   ];
@@ -172,14 +182,22 @@ export class ProfileComponent
   }
 
   async add_img(zone:string) {
-    const user = await this.authservice.getCurrentUser();
-    console.log(user.attributes.sub);
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes
+    console.log(user[0].Value);
 
     const dialogRef = this.dialog.open(ProfileImgComponent, {
       width: '750px',
       height: '225px',
       data: {
-        sub: user.attributes.sub,
+        sub: user[0].Value,
         zone
       },
     });
