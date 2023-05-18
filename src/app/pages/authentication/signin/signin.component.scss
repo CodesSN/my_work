@@ -1,6 +1,6 @@
 
 .color {
-  color: #EEECEC;
+  color: #000;
 }
 
 .gold-color {
@@ -20,7 +20,7 @@
 
 .input {
   display: flex;
-  border: 1px solid #EEECEC;
+  border: 1px solid #000;
   border-radius: 5px;
   padding: 5px 0;
   background-color: transparent;
@@ -32,7 +32,7 @@
     margin: 5px 0;
     padding: 5px 0;
     margin-left: 20px;
-    color: #EEECEC;
+    color: #000;
     border: none;
     // border-radius: 20px;
     outline: none;
@@ -40,7 +40,7 @@
   }
 
   &-label {
-    color: #EEECEC;
+    color: #000;
     font-size: 1rem;
     margin-left: 1rem;
     margin-bottom: 0.2rem;
@@ -53,9 +53,8 @@
 }
 
 .border {
-  outline-color: #EEECEC !important;
-  // outline: 1px solid #EEECEC !important;
-  border-color: #EEECEC !important
+  outline-color: #000 !important;
+  border-color: #000 !important
 }
 
 

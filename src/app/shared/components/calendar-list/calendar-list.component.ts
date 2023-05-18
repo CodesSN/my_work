@@ -17,16 +17,6 @@ export class CalendarListComponent implements OnChanges {
     if(this.data.length !== 0){
       this.list = this.data;
     }
-
-    if(this.list){
-      this.list.forEach((element:any) => {
-        const date:Date = element.start;
-        const dateS = `${date.getHours()}:${date.getMinutes()}`;
-
-        console.log(dateS);
-
-      });
-    }
   }
 
   getStartHours(list:any){
