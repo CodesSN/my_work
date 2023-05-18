@@ -16,7 +16,7 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
-import { Calendar } from '../../../models/calendar.model';
+import { Calendar, WorkingDay } from '../../../models/calendar.model';
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
 import { CalendarService } from './calendar.service';
 import {
@@ -46,6 +46,8 @@ export class CalendarComponent
   dialogTitle: string;
   filterOptions = 'All';
   calendarData!: Calendar;
+  workingDays!:string[];
+  workingHours!: string[];
   filterItems: string[] = [
     'work',
     'personal',
@@ -74,6 +76,21 @@ export class CalendarComponent
   }
 
   public ngOnInit(): void {
+    const sub = this.calendarService.getCurrentUser();
+    this.calendarService.getWorkingHours(sub).subscribe(response => {
+      if(response.statusCode){
+        const arrayHours = response.body.times.split('-');
+        const arrayDays = response.body.days.split('-');
+
+        this.workingDays = arrayDays;
+        this.workingHours = arrayHours
+
+        console.log(arrayHours);
+        console.log(arrayDays);
+
+
+      }
+    })
     this.calendarEvents = [];
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.initialEvents = this.calendarEvents;
@@ -304,5 +321,9 @@ export class CalendarComponent
     else if (category === 'personal') className = 'fc-event-warning';
 
     return className;
+  }
+
+  firstElement(index: number): boolean {
+    return index === 0;
   }
 }

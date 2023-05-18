@@ -27,6 +27,7 @@
                     </li>
                   </ul>
                 </div>
+
               </div>
               <div class="col-md-10 col-sm-12">
                 <div class="panel-body">
@@ -36,6 +37,30 @@
               </div>
             </div>
             <div class="row">
+              <div class="working">
+                <div class="working-container">
+                  <h4>Working days</h4>
+                  <div class="working-container-days">
+                    <div *ngFor="let day of workingDays">
+                      <p class="working-text">
+                        {{day}}
+                      </p>
+                  </div>
+                  </div>
+                </div>
+                <div class="working-container">
+                  <h4>Hours</h4>
+                  <div class="working-container-hours">
+                    <div *ngFor="let hour of workingHours">
+                      <p *ngIf="firstElement(0)" class="working-text"><strong>Start Hour</strong></p>
+                      <p *ngIf="firstElement(1)" class="working-text"><strong>End Hour</strong></p>
+                      <p class="working-text">
+                        {{hour}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <app-calendar-list></app-calendar-list>
             </div>
           </div>
