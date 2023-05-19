@@ -4,6 +4,11 @@
       <!-- breadcrumb -->
       <app-breadcrumb [title]="'Assets'" [items]="['Barber']" [active_item]="'Assets'"></app-breadcrumb>
     </div>
+    <div class="banners-container">
+      <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner>
+      <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner>
+      <!-- <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner> -->
+    </div>
     <div class="row">
       <div class="card card-container">
         <app-table [data]="data" [displayedColumns]="displayedColumns" [title]="'Barber'"></app-table>

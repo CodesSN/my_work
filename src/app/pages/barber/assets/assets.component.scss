@@ -1,0 +1,6 @@
+.banners-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
