@@ -26,6 +26,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { BannerComponent } from './banner/banner.component';
 import { CardComponent } from './card/card.component';
+import { ImgContainerComponent } from './img-container/img-container.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CardComponent } from './card/card.component';
     CalendarListComponent,
     BannerComponent,
     CardComponent,
+    ImgContainerComponent,
   ],
   imports: [
     SharedModule,
@@ -65,7 +67,8 @@ import { CardComponent } from './card/card.component';
     TableComponent,
     CalendarListComponent,
     BannerComponent,
-    CardComponent
+    CardComponent,
+    ImgContainerComponent
   ],
 })
 export class ComponentsModule {}

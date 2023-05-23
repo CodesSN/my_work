@@ -1,3 +1,18 @@
+export interface Vehicles {
+  Anumber: string;
+  Atype: string;
+  Ayear: string;
+  assigned_To: number;
+  code: string;
+  id: number;
+  make: string;
+  model: string;
+  plate: string;
+  up: string;
+  barber: string;
+  vin: string;
+}
+
 export class trucks {
   id: number;
   Anumber: string;
