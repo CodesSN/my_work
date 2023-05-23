@@ -1,0 +1,39 @@
+@import '../../../../assets/scss/common/mixinsmedia';
+
+.breadcrumb{
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop-l {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-item {
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  &-items {
+    display: flex;
+    justify-content: start;
+
+    @include tablet {
+      justify-content: end;
+    }
+
+
+  }
+
+}

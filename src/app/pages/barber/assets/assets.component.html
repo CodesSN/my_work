@@ -1,19 +1,15 @@
 <section class="content">
   <div class="content-block">
-    <div class="block-header">
-      <!-- breadcrumb -->
-      <app-breadcrumb [title]="'Assets'" [items]="['Barber']" [active_item]="'Assets'"></app-breadcrumb>
-    </div>
-    <div class="banners-container">
+    <app-breadcrumb [title]="'Assets'" [items]="['Barber']" [active_item]="'Assets'"></app-breadcrumb>
+    <div class="banners-container row">
       <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner>
       <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner>
       <!-- <app-banner [title]="bannerTitle" [text]="bannerText"></app-banner> -->
     </div>
-    <div class="row">
-      <div class="card card-container">
-        <app-table [data]="data" [displayedColumns]="displayedColumns" [title]="'Barber'"></app-table>
-      </div>
+    <div class="asset-container">
+      <app-card></app-card>
     </div>
+
   </div>
 </section>
 

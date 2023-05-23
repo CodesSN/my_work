@@ -25,6 +25,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatTabsModule } from "@angular/material/tabs";
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { BannerComponent } from './banner/banner.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BannerComponent } from './banner/banner.component';
     ModalFullViewComponent,
     CalendarListComponent,
     BannerComponent,
+    CardComponent,
   ],
   imports: [
     SharedModule,
@@ -62,7 +64,8 @@ import { BannerComponent } from './banner/banner.component';
     BreadcrumbComponent,
     TableComponent,
     CalendarListComponent,
-    BannerComponent
+    BannerComponent,
+    CardComponent
   ],
 })
 export class ComponentsModule {}

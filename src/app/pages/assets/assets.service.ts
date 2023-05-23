@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { Response } from '../../models/response.model';
+import { Response, ResponseVehicles } from '../../models/response.model';
 
 
 @Injectable({
@@ -16,7 +16,11 @@ export class AssetsService {
   ){}
 
   getAllAssets(){
-    return this.http.get<Response>(`${environment.apiUrl}/assets/get_assets`);
+    return this.http.get<ResponseVehicles>(`${environment.apiUrl}/assets/get_assets`);
+  }
+
+  getAsset(sub:string){
+    return this.http.get<any>(`${environment.apiUrl}/assets/assigned_to?sub=${sub}`)
   }
 
   addAssets(id:string){

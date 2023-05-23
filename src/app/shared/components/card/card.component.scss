@@ -1,0 +1,33 @@
+@import '../../../../assets/scss/common/mixinsmedia';
+
+.card {
+  background-color: #111111;
+  padding: 5px 10px;
+  color: white;
+  width: 100%;
+
+  @include tablet {
+    padding: 10px 15px;
+  }
+
+  @include desktop-xl {
+    padding: 15px 20px;
+  }
+
+  &-title {
+    color: white;
+  }
+
+}
+
+.descriptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 20px;
+  margin-top: 10px;
+  width: 100%;
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}

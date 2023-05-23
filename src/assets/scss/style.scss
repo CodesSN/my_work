@@ -19,6 +19,7 @@
 /* Importing Bootstrap SCSS file. */
 @import "common/_variables";
 @import "common/_mixins";
+@import 'common/mixinsmedia';
 @import "common/_customanimate.scss";
 @import "common/_general.scss";
 @import "common/_demo.scss";

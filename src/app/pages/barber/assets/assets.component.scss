@@ -1,6 +1,28 @@
-.banners-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-  gap: 10px;
-  margin-bottom: 20px;
+@import '../../../../assets/scss/common/mixinsmedia';
+
+
+.banners {
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  }
+}
+
+.asset {
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    // margin: 0 20px;
+    margin-right: 20px;
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
