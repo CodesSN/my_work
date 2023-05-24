@@ -74,38 +74,7 @@ export class ProfileComponent
     super();
   }
 
-  imageObject: Array<ImageData> = [
-    {
-      image: 'assets/images/barber-temp/1.png',
-      thumbImage: 'assets/images/barber-temp/1.png',
-      title: 'Image 1',
-    },
-    {
-      image: 'assets/images/barber-temp/2.png',
-      thumbImage: 'assets/images/barber-temp/2.png',
-      title: 'Image 2',
-    },
-    {
-      image: 'assets/images/barber-temp/3.png',
-      thumbImage: 'assets/images/barber-temp/3.png',
-      title: 'Image 3',
-    },
-    {
-      image: 'assets/images/barber-temp/4.png',
-      thumbImage: 'assets/images/barber-temp/4.png',
-      title: 'Image 4',
-    },
-    {
-      image: 'assets/images/barber-temp/5.png',
-      thumbImage: 'assets/images/barber-temp/5.png',
-      title: 'Image 4',
-    },
-    {
-      image: 'assets/images/barber-temp/6.png',
-      thumbImage: 'assets/images/barber-temp/6.png',
-      title: 'Image 4',
-    },
-  ];
+  imageObject: Array<ImageData> = [];
 
   add_link() {
     const dialogRef = this.dialog.open(SocialModalComponent, {
@@ -178,9 +147,27 @@ export class ProfileComponent
         this.assetImage = 'https://eminentlimo.com/wp-content/uploads/2022/03/Executive-Sprinter-12-Passenger-400-x-262-Flip.png'
       }
     }).filter((asset:any) => asset !== null);
-    
+    this.imageObject = await this.getGalleryLinks(this.data.data.body.sub);
+    console.log(this.imageObject);
   }
-
+  async getGalleryLinks(fileName:any){
+    const config:any = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/revx_Get_Gallery_Links?fileName=' + fileName,
+      headers: { 
+        'Content-Type': 'application/json'
+      }
+    };
+    return axios.request(config)
+    .then(async (response) => {
+       return response.data.imageUrl
+    })
+    .catch((error) => {
+      console.log(error);
+      return [];
+    });
+  }
   async add_img(zone:string) {
     const user = JSON.parse(
       localStorage.getItem(
