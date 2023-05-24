@@ -94,6 +94,8 @@
     .list {
       list-style: none;
       padding-left: 0;
+      display: flex;
+      flex-direction: column;
 
       li {
         &.active {
@@ -153,7 +155,8 @@
         }
 
         .ml-menu {
-          display: block;
+          display: flex;
+          flex-direction: column;
         }
         .ml-sub-menu {
           display: block;
@@ -832,6 +835,8 @@
       &.active {
         .menu-top {
           background-color: rgba(0, 0, 0, 0.4);
+          width: 100% !important;
+
         }
       }
       &.active-top {
