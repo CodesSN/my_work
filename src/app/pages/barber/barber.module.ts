@@ -39,6 +39,7 @@ import { SocialModalComponent } from './profile/social-modal/social-modal.compon
 import { ProfileImgComponent } from './profile/profile-img/profile-img.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FormWorkingTimeComponent } from './calendar/form-working-time/form-working-time.component';
+import { ViewNotificationComponent } from './notifications/view-notification/view_notification.component';
 
 
 
@@ -55,7 +56,8 @@ import { FormWorkingTimeComponent } from './calendar/form-working-time/form-work
     FormDialogComponent,
     SocialModalComponent,
     ProfileImgComponent,
-    FormWorkingTimeComponent
+    FormWorkingTimeComponent,
+    ViewNotificationComponent
   ],
   imports: [
     CommonModule,

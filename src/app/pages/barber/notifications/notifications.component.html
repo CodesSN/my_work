@@ -20,79 +20,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="unread">
-                    <td class="hidden-xs">jose meraz</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail">
-                        <span class="badge col-blue shadow-style m-r-10"
-                          >Notification</span
-                        >
-                        New Client Needs A Hair Cut</a
-                      >
-                    </td>
-                    <td class="text-end">12:30 PM</td>
-                  </tr>
-                  <tr class="unread">
-                    <td class="hidden-xs">jose meraz</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail"
-                        >
-                        <span class="badge col-blue shadow-style m-r-10"
-                          >Notification</span
-                        >
-                        New Client Needs A Complete Service</a
-                      >
-                    </td>
-                    <td class="text-end">May 13</td>
-                  </tr>
-                  <tr class="unread">
-                    <td class="hidden-xs">ricardo estrada</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail">
-                        <span class="badge col-red shadow-style m-r-10"
-                          >Alarm</span
-                        >
-                        Expiration Date Of Your License Is Close</a
-                      >
-                    </td>
-                    <td class="text-end">May 12</td>
-                  </tr>
-                  <tr>
-                    <td class="hidden-xs">mary saenz</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail">
-                        <span class="badge col-orange shadow-style m-r-10"
-                          >Message</span
-                        >
-                        Can You Send Me A Photo Of Your License Please</a
-                      >
-                    </td>
-                    <td class="text-end">May 12</td>
-                  </tr>
-                  <tr>
-                    <td class="hidden-xs">ricardo estrada</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail">
-                        <span class="badge col-red shadow-style m-r-10"
-                          >Alarm</span
-                        >
-                        10 Min Left To End The Hair Cut
-                      </a>
-                    </td>
-                    <td class="text-end">May 11</td>
+                    <tr *ngFor="let item of notifications" class="unread" (click)="viewNotification(item)">
+                      <td class="hidden-xs fw-bold">
+                        From:<span class="fw-normal text-capitalize">  {{item.created_by}}</span>
+                      </td>
+                      <td class="max-texts fw-bold">
+                          <span class="badge {{item.col}} shadow-style m-r-10"
+                            >{{item.type}}</span
+                          ><span class="text-capitalize">  {{item.tittle}}</span>
+                      </td>
+                      <td class="text-end">{{item.date}}</td>
                     </tr>
-                  <tr>
-                    <td class="hidden-xs">mary saenz</td>
-                    <td class="max-texts">
-                      <a routerLink="/email/read-mail"
-                        >
-                        <span class="badge col-blue shadow-style m-r-10"
-                        >Notification</span>
-                        Your In The Top 5 Barbers</a
-                      >
-                    </td>
-                    <td class="text-end">May 11</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -129,18 +67,23 @@
               <h5 class="b-b p-10 text-strong">Labels</h5>
               <ul class="" id="mail-labels">
                 <li>
-                  <a href="javascript:;">
+                  <a href="javascript:;" (click)="filterData('Alarms')">
                     <i class="material-icons col-red">local_offer</i>Alarms</a
                   >
                 </li>
                 <li>
-                  <a href="">
+                  <a href="javascript:;" (click)="filterData('Notification')">
                     <i class="material-icons col-blue">local_offer</i>Notification</a
                   >
                 </li>
                 <li>
-                  <a href="javascript:;">
+                  <a href="javascript:;" (click)="filterData('Message')">
                     <i class="material-icons col-orange">local_offer</i>Message</a
+                  >
+                </li>
+                <li>
+                  <a href="javascript:;" (click)="filterData('All')">
+                    <i class="material-icons col-black">local_offer</i>All</a
                   >
                 </li>
               </ul>
