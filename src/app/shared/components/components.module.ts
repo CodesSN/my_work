@@ -27,6 +27,7 @@ import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { BannerComponent } from './banner/banner.component';
 import { CardComponent } from './card/card.component';
 import { ImgContainerComponent } from './img-container/img-container.component';
+import { KpiComponent } from './kpi/kpi.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ImgContainerComponent } from './img-container/img-container.component';
     BannerComponent,
     CardComponent,
     ImgContainerComponent,
+    KpiComponent,
   ],
   imports: [
     SharedModule,
@@ -68,7 +70,8 @@ import { ImgContainerComponent } from './img-container/img-container.component';
     CalendarListComponent,
     BannerComponent,
     CardComponent,
-    ImgContainerComponent
+    ImgContainerComponent,
+    KpiComponent
   ],
 })
 export class ComponentsModule {}

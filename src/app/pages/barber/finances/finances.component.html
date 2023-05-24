@@ -1,48 +1,24 @@
 <section class="content">
   <div class="content-block">
-      <!-- breadcrumb -->
-      <app-breadcrumb [title]="'Finances'" [items]="['Barber']" [active_item]="'Finances'">
-      </app-breadcrumb>
-    <div class="row">
-      <div class="col-md-6 col-xl-4">
-          <div class="card info-card">
-            <div class="info-box8">
-              <i class="material-icons bg-blue card1-icon">attach_money</i>
-              <h5 class="col-blue">Earning</h5>
-              <h4>$48,697</h4>
-              <div>
-                <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-                <p class="float-start m-0"><span class="col-green">08%</span> Increase
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-orange card1-icon">content_cut</i>
-            <h5 class="col-orange">Haircuts</h5>
-            <h4>1,287</h4>
-            <div>
-              <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-              <p class="float-start m-0"><span class="col-green">25%</span> Increase
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 col-xl-4">
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-yellow card1-icon">local_activity</i>
-            <h5 class="col-yellow">Rate</h5>
-            <h4>4.5</h4>
-            <div>
-              <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-              <p class="float-start m-0"><span class="col-green">12%</span> increase
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- breadcrumb -->
+    <app-breadcrumb [title]="'Finances'" [items]="['Barber']" [active_item]="'Finances'">
+    </app-breadcrumb>
+    <div class="kpis-container">
+      <app-kpi
+        [title]="'Earning Weekly'"
+        [description]="'$12,745'"
+        [percentage]="'4%'"
+        [percentageStatus]="'Increase'"></app-kpi>
+      <app-kpi
+        [title]="'Earning Monthly'"
+        [description]="'$43,129'"
+        [percentage]="'12%'"
+        [percentageStatus]="'Decrease'"></app-kpi>
+      <app-kpi
+        [title]="'Earning Monthly'"
+        [description]="'$587,129'"
+        [percentage]="'2%'"
+        [percentageStatus]="'Increase'"></app-kpi>
     </div>
     <div class="row">
       <div class="col-xl-8 ">
