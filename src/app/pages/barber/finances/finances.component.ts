@@ -15,6 +15,9 @@ import {
   ApexTitleSubtitle,
   ApexResponsive,
 } from 'ng-apexcharts';
+import { BarberService } from 'src/app/core/service/barber.service';
+import { EmployeeService } from '../../human-resources/employee.service';
+import { Earnings } from 'src/app/models/earnings.model';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -44,23 +47,29 @@ export class FinancesComponent {
   public barChartOptions!: Partial<ChartOptions>;
   public earningOptions!: Partial<ChartOptions>;
   public performanceRateChartOptions!: Partial<ChartOptions>;
+  public earningData:any;
 
-  constructor() {
+  constructor(
+    private barberService: BarberService,
+    private employeeService: EmployeeService
+  ) {
     //constructor
   }
+
   ngOnInit() {
     this.chart1();
     this.chart2();
+    this.getKpis()
   }
   private chart1() {
     this.earningOptions = {
       series: [
         {
-          name: '2019',
+          name: 'Approximately',
           data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
         },
         {
-          name: '2018',
+          name: 'Real',
           data: [8, 22, 60, 35, 17, 24, 48, 37, 56, 22, 32, 38],
         },
       ],
@@ -190,5 +199,20 @@ export class FinancesComponent {
         },
       },
     };
+  }
+
+  getKpis(){
+    const sub = this.employeeService.getSub();
+    console.log(sub);
+
+
+    this.barberService.getKPIS(sub).subscribe(response => {
+      // console.log(response.data);
+      this.earningData = response.data;
+
+      // console.log('week', this.earningData.week.kpis);
+      // console.log('month', this.earningData.month.kpis);
+      // console.log('year', this.earningData.year.kpis);
+    });
   }
 }

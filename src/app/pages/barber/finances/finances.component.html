@@ -5,26 +5,31 @@
     </app-breadcrumb>
     <div class="kpis-container">
       <app-kpi
+        type="earning"
         [title]="'Earning Weekly'"
-        [description]="'$12,745'"
         [percentage]="'4%'"
-        [percentageStatus]="'Increase'"></app-kpi>
+        [percentageStatus]="'Increase'"
+        [kpiData]="this.earningData?.week"
+        ></app-kpi>
       <app-kpi
+        type="earning"
         [title]="'Earning Monthly'"
-        [description]="'$43,129'"
         [percentage]="'12%'"
-        [percentageStatus]="'Decrease'"></app-kpi>
+        [percentageStatus]="'Decrease'"
+        [kpiData]="this.earningData?.month"
+        ></app-kpi>
       <app-kpi
+        type="earning"
         [title]="'Earning Monthly'"
-        [description]="'$587,129'"
         [percentage]="'2%'"
-        [percentageStatus]="'Increase'"></app-kpi>
+        [percentageStatus]="'Increase'"
+        [kpiData]="this.earningData?.year"></app-kpi>
     </div>
     <div class="row">
-      <div class="col-xl-8 ">
+      <div class="col-xl-12">
           <div class="card">
             <div class="header">
-              <h2>Earning Chart</h2>
+              <h2>Earning Chart 2023</h2>
               <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
                 <mat-icon>more_vert</mat-icon>
               </button>
@@ -44,7 +49,7 @@
               </mat-menu>
             </div>
             <div class="body p-5">
-              <ul class="list-inline text-center m-b-0">
+              <!-- <ul class="list-inline text-center m-b-0">
                 <li class="list-inline-item p-r-30">
                   <app-feather-icons [icon]="'arrow-up-circle'" [class]="'col-green'"></app-feather-icons>
                   <h5 class="m-b-0">$675</h5>
@@ -61,7 +66,7 @@
                   <h5 class="mb-0 m-b-0">$45,965</h5>
                   <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
                 </li>
-              </ul>
+              </ul> -->
               <apx-chart [series]="earningOptions.series!" [chart]="earningOptions.chart!" [xaxis]="earningOptions.xaxis!"
                 [stroke]="earningOptions.stroke!" [tooltip]="earningOptions.tooltip!"
                 [dataLabels]="earningOptions.dataLabels!" [legend]="earningOptions.legend!"
@@ -71,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
           <div class="card">
             <div class="card-body">
               <div class="float-start">
@@ -89,7 +94,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
     </div>
   </div>
 </section>
