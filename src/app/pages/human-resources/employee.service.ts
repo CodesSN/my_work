@@ -32,7 +32,18 @@ export class EmployeeService {
     return user;
   }
 
-
+  getUserInfo(){
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes;
+    return user;
+  }
 
   getAllEmployees(){
     return this.http.get<ResponseEmployees>(`${environment.apiUrl}/employee`);

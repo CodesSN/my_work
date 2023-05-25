@@ -12,7 +12,8 @@ export class KpiComponent implements OnChanges {
   @Input() percentage = '';
   @Input() percentageStatus = '';
   @Input() kpiData!: Period | null;
-  public value = "";
+  @Input() value = "";
+  @Input() icon = "attach_money";
 
 
 
@@ -23,9 +24,6 @@ export class KpiComponent implements OnChanges {
       console.log(this.kpiData);
       const kpi = this.kpiData.kpis.totalEarnings
       this.value = `$${kpi}` ;
-
-
-
     }
   }
 }

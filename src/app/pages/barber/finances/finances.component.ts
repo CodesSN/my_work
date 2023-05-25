@@ -42,7 +42,7 @@ export type ChartOptions = {
   templateUrl: './finances.component.html',
   styleUrls: ['./finances.component.scss']
 })
-export class FinancesComponent {
+export class FinancesComponent implements OnInit {
   public areaChartOptions!: Partial<ChartOptions>;
   public barChartOptions!: Partial<ChartOptions>;
   public earningOptions!: Partial<ChartOptions>;
@@ -61,6 +61,7 @@ export class FinancesComponent {
     this.chart2();
     this.getKpis()
   }
+
   private chart1() {
     this.earningOptions = {
       series: [
@@ -139,6 +140,7 @@ export class FinancesComponent {
       },
     };
   }
+
   private chart2() {
     this.performanceRateChartOptions = {
       series: [

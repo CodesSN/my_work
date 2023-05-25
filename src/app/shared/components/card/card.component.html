@@ -1,37 +1,40 @@
 <div class="card">
   <h3 class="card-title">Vehicle Descripcion</h3>
-  <div *ngIf="vehicle" class="descriptions">
+  <div *ngIf="vehicle;" class="descriptions">
     <div class="descriptions-container">
-      <h4>Plate</h4>
-      <p>{{vehicle.plate}}</p>
+      <h4 class="descriptions-title">Plate</h4>
+      <p class="descriptions-text">{{vehicle.plate}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Status</h4>
-      <p>{{vehicle.up}}</p>
+      <h4 class="descriptions-title">Status</h4>
+      <p class="descriptions-text">{{vehicle.up}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Model</h4>
-      <p>{{vehicle.model}}</p>
+      <h4 class="descriptions-title">Model</h4>
+      <p class="descriptions-text">{{vehicle.model}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Make</h4>
-      <p>{{vehicle.make}}</p>
+      <h4 class="descriptions-title">Make</h4>
+      <p class="descriptions-text">{{vehicle.make}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Year</h4>
-      <p>{{vehicle.Ayear}}</p>
+      <h4 class="descriptions-title">Year</h4>
+      <p class="descriptions-text">{{vehicle.Ayear}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Type</h4>
-      <p>{{vehicle.Atype}}</p>
+      <h4 class="descriptions-title">Type</h4>
+      <p class="descriptions-text">{{vehicle.Atype}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Number</h4>
-      <p>{{vehicle.Anumber}}</p>
+      <h4 class="descriptions-title">Number</h4>
+      <p class="descriptions-text">{{vehicle.Anumber}}</p>
     </div>
     <div class="descriptions-container">
-      <h4>Code</h4>
-      <p>{{vehicle.code}}</p>
+      <h4 class="descriptions-title">Code</h4>
+      <p class="descriptions-text">{{vehicle.code}}</p>
     </div>
+  </div>
+  <div *ngIf="!vehicle" class="descriptions--not" >
+    <p>Not assigned yet</p>
   </div>
 </div>
