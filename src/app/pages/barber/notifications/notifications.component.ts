@@ -16,10 +16,12 @@ export class NotificationsComponent
 {
   public notifications: any[];
   public temp: any[];
+  public tempString: any;
   constructor(private dialog: MatDialog) {
     super()
     this.notifications = [];
     this.temp = [];
+    this.tempString = '';
   }
   async ngOnInit(): Promise<void> {
     this.notifications = await this.getData();
@@ -41,12 +43,13 @@ export class NotificationsComponent
     const config: AxiosRequestConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/notifications/get?sub=c7baefe3-ae2b-4ff0-92d0-a87791de798e',
+      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/notifications/get?sub=' + localStorage.getItem('sub'),
       headers: {},
     };
 
     return axios.request(config).then(async (response) => {
       const datos = response.data.body;
+      console.log(datos);
       return datos;
     });
   }
@@ -58,5 +61,16 @@ export class NotificationsComponent
       this.notifications = this.temp;
       this.notifications = this.notifications.filter(item => item.type === type);
     }
+  }
+  async show(str:any, inicio:any, fin:any){
+    return await this.ocultarString(str,inicio,fin);
+  }
+  async ocultarString(str:any, inicio:any, fin:any): Promise<string>{
+    if (inicio >= fin || inicio < 0 || fin > str.length) {
+      return str;
+    }
+    
+    const oculto = '.'.repeat(3 - inicio);
+    return str.substring(0, inicio) + oculto + str.substring(fin);
   }
 }

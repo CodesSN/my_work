@@ -9,7 +9,38 @@
       ></app-breadcrumb>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <div class="card">
+          <div class="body">
+            <div id="mail-nav">
+              <h5 class="b-b p-10 text-strong">Labels</h5>
+              <ul class="" id="mail-labels">
+                <li>
+                  <a href="javascript:;" (click)="filterData('Alarms')">
+                    <i class="material-icons text-danger">local_offer</i>Alarms</a
+                  >
+                </li>
+                <li>
+                  <a href="javascript:;" (click)="filterData('Notification')">
+                    <i class="material-icons text-primary">local_offer</i>Notification</a
+                  >
+                </li>
+                <li>
+                  <a href="javascript:;" (click)="filterData('Message')">
+                    <i class="material-icons text-warning">local_offer</i>Message</a
+                  >
+                </li>
+                <li>
+                  <a href="javascript:;" (click)="filterData('All')">
+                    <i class="material-icons col-black">local_offer</i>All</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
         <div class="card">
           <div class="boxs mail_listing">
             <div class="inbox-center table-responsive">
@@ -21,15 +52,18 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of notifications" class="unread" (click)="viewNotification(item)">
-                      <td class="hidden-xs fw-bold">
-                        From:<span class="fw-normal text-capitalize">  {{item.created_by}}</span>
+                      <td class="hidden-xs fw-normal">
+                        <span class="noti-type px-2 py-1 {{item.col}}"></span>
+                        <img class="img-noti" [src]="item.created_by_link_img" alt=""><span class="fw-bold text-capitalize">  {{item.created_by}}</span>
                       </td>
-                      <td class="max-texts fw-bold">
-                          <span class="badge {{item.col}} shadow-style m-r-10"
+                      <td class="max-texts fw-normal">
+                          <!-- <span class="badge {{item.col}} shadow-style m-r-10"
                             >{{item.type}}</span
-                          ><span class="text-capitalize">  {{item.tittle}}</span>
+                          > -->
+                          <span class="text-capitalize fw-bold m-r-2">  {{item.tittle}}</span>
+                          <span class="text-capitalize fw-normal" style="overflow: hidden;">  {{item.value.substring(0, 120)}}...</span>
                       </td>
-                      <td class="text-end">{{item.date}}</td>
+                      <td class="text-end" style="width:90px;">{{item.date}}</td>
                     </tr>
                 </tbody>
               </table>
@@ -56,37 +90,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-        <div class="card">
-          <div class="body">
-            <div id="mail-nav">
-              <h5 class="b-b p-10 text-strong">Labels</h5>
-              <ul class="" id="mail-labels">
-                <li>
-                  <a href="javascript:;" (click)="filterData('Alarms')">
-                    <i class="material-icons col-red">local_offer</i>Alarms</a
-                  >
-                </li>
-                <li>
-                  <a href="javascript:;" (click)="filterData('Notification')">
-                    <i class="material-icons col-blue">local_offer</i>Notification</a
-                  >
-                </li>
-                <li>
-                  <a href="javascript:;" (click)="filterData('Message')">
-                    <i class="material-icons col-orange">local_offer</i>Message</a
-                  >
-                </li>
-                <li>
-                  <a href="javascript:;" (click)="filterData('All')">
-                    <i class="material-icons col-black">local_offer</i>All</a
-                  >
-                </li>
-              </ul>
             </div>
           </div>
         </div>
