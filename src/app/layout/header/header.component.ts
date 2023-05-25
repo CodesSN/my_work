@@ -13,6 +13,7 @@ import { ConfigService } from 'src/app/config/config.service';
 import { InConfiguration } from 'src/app/core/models/config.interface';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { LanguageService } from 'src/app/core/service/language.service';
+import { EmployeeService } from 'src/app/pages/human-resources/employee.service';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 
 interface Notifications {
@@ -43,6 +44,7 @@ export class HeaderComponent
   isOpenSidebar?: boolean;
   docElement: HTMLElement | undefined;
   isFullScreen = false;
+  userType = 1;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -51,7 +53,8 @@ export class HeaderComponent
     private configService: ConfigService,
     private authService: AuthService,
     private router: Router,
-    public languageService: LanguageService
+    public languageService: LanguageService,
+    private employeeService:EmployeeService
   ) {
     super();
   }
@@ -112,9 +115,13 @@ export class HeaderComponent
       status: 'msg-read',
     },
   ];
-  ngOnInit() {
+  async ngOnInit() {
+    const data = this.employeeService.getSub();
+    console.log(data);
+
+
     this.user = localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser');
-    
+
     this.config = this.configService.configData;
     // this.userImg = this.authService.currentUserValue.img;
 
@@ -130,6 +137,29 @@ export class HeaderComponent
     } else {
       this.flagvalue = val.map((element) => element.flag);
     }
+  }
+
+  async getData() {
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes;
+    // console.log('user',user[0]);/
+
+    const datos = await this.employeeService.getAllEmployeesAxios();
+    let id;
+    await datos.forEach((e: any) => {
+      if (user[0].Value === e.sub) {
+        return (id = e.id);
+      }
+    });
+
+    return this.employeeService.getdataEmployeebyId(id);
   }
 
   ngAfterViewInit() {

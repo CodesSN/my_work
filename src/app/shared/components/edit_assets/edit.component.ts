@@ -91,7 +91,7 @@ export class EditComponent implements OnInit {
   }
   async local(){
     await this.employeeService.getAllEmployees().subscribe(async (data) => {
-      data.body.forEach(async (e) => {
+      data.body.forEach(async (e:any) => {
         if ((e as Employee).name === this.trucksForm?.value.barber) {
           localStorage.setItem('id_barber', (e as Employee).id.toString());
           console.log(
@@ -105,7 +105,7 @@ export class EditComponent implements OnInit {
   }
   async submit() {
     this.employeeService.getAllEmployees().subscribe(async (data) => {
-      data.body.forEach(async (e) => {
+      data.body.forEach(async (e:any) => {
         if ((e as Employee).name === this.trucksForm?.value.barber) {
           const data = {
             id: this.data.trucks.id,

@@ -46,22 +46,18 @@ export class ProfileComponent
 
   public instagram_link: any = '';
   async getLink() {
-    const user = JSON.parse(
-      localStorage.getItem(
-        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
-          localStorage.getItem(
-            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
-          ) +
-          '.userData'
-      ) as string
-    ).UserAttributes;
+    const sub = this.employeeservice.getSub();
     const datos = await this.employeeservice.getAllEmployeesAxios();
+    // console.log(datos);
+
     let id;
     await datos.forEach((e: any) => {
-      if (user[0].Value === e.sub) {
+      if (sub === e.sub) {
         return (id = e.id);
       }
     });
+    // console.log(id);
+
 
     return this.employeeservice.getdataEmployeebyId(id);
   }
@@ -141,7 +137,7 @@ export class ProfileComponent
       method: 'get',
       maxBodyLength: Infinity,
       url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/profile/user/image/getUrl?fileName=' + fileName,
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       }
     };
@@ -162,6 +158,8 @@ export class ProfileComponent
 
   async ngOnInit(): Promise<void> {
     this.data = await this.getLink();
+    console.log('data', this.data);
+
     this.profileImage = await this.getUrlProfileImage(this.data.data.body.sub);
     this.id = this.data.data.body.id;
     this.name = this.data.data.body.name;
@@ -178,7 +176,7 @@ export class ProfileComponent
         this.assetImage = 'https://eminentlimo.com/wp-content/uploads/2022/03/Executive-Sprinter-12-Passenger-400-x-262-Flip.png'
       }
     }).filter((asset:any) => asset !== null);
-    
+
   }
 
   async add_img(zone:string) {

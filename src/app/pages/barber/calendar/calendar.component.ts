@@ -76,7 +76,7 @@ export class CalendarComponent
   }
 
   public ngOnInit(): void {
-    const sub = this.calendarService.getCurrentUser();
+  const sub = this.calendarService.getCurrentUser();
     this.calendarService.getWorkingHours(sub).subscribe(response => {
       if(response.statusCode){
         const arrayHours = response.body.times.split('-');

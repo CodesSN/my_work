@@ -19,8 +19,6 @@ export class ConfigComponent implements OnInit {
   ngOnInit(): void {
     this.assetsService.getAllAssets().subscribe(data => {
       this.data = data.body;
-      console.log(data);
-      
     })
   }
 }

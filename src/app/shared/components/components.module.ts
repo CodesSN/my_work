@@ -24,6 +24,10 @@ import { NgImageFullscreenViewModule } from "ng-image-fullscreen-view";
 import { MatInputModule } from "@angular/material/input";
 import { MatTabsModule } from "@angular/material/tabs";
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
+import { BannerComponent } from './banner/banner.component';
+import { CardComponent } from './card/card.component';
+import { ImgContainerComponent } from './img-container/img-container.component';
+import { KpiComponent } from './kpi/kpi.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { CalendarListComponent } from './calendar-list/calendar-list.component';
     SnackbarComponent,
     ModalFullViewComponent,
     CalendarListComponent,
+    BannerComponent,
+    CardComponent,
+    ImgContainerComponent,
+    KpiComponent,
   ],
   imports: [
     SharedModule,
@@ -59,7 +67,11 @@ import { CalendarListComponent } from './calendar-list/calendar-list.component';
     FileUploadComponent,
     BreadcrumbComponent,
     TableComponent,
-    CalendarListComponent
+    CalendarListComponent,
+    BannerComponent,
+    CardComponent,
+    ImgContainerComponent,
+    KpiComponent
   ],
 })
 export class ComponentsModule {}

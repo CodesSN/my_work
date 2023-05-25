@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import { Response } from '../../models/response.model';
+import { Response, ResponseEmployees } from '../../models/response.model';
 import { Employee } from '../../models/employee.model';
 import { axisBottom } from 'd3';
 import { AxiosRequestConfig } from 'axios';
 import axios from 'axios'
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -17,15 +18,50 @@ export class EmployeeService {
     private http: HttpClient
   ){}
 
-  getAllEmployees(){
-    return this.http.get<Response>(`${environment.apiUrl}/employee`);
+  getSub(){
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes[0].Value;
+
+    return user;
   }
+
+  getUserInfo(){
+    const user = JSON.parse(
+      localStorage.getItem(
+        'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.' +
+          localStorage.getItem(
+            'CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser'
+          ) +
+          '.userData'
+      ) as string
+    ).UserAttributes;
+    return user;
+  }
+
+  getAllEmployees(){
+    return this.http.get<ResponseEmployees>(`${environment.apiUrl}/employee`);
+  }
+
+
+  getEmployeeData(id:number):Observable<any>{
+    return this.http.get<Response>(`${environment}/employe/${id}`)
+  }
+
+
+
   getAllEmployeesAxios(){
     const config:any = {
       method: 'get',
       maxBodyLength: Infinity,
       url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/employee',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json'
       }
     };
@@ -39,6 +75,9 @@ export class EmployeeService {
       return [];
     });
   }
+
+
+
   getAllEmployeesAuto(){
     const config:any = {
       method: 'get',

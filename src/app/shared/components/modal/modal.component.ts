@@ -65,7 +65,8 @@ saveChanges(){
         date: this.modalForm.get('date')?.value,
         email: this.modalForm.get('email')?.value,
         civil_status: this.modalForm.get('civil')?.value,
-        ssn: this.modalForm.get('ssn')?.value
+        ssn: this.modalForm.get('ssn')?.value,
+        sub: ''
       }
 
       if(this.data.action === 'add'){

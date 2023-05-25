@@ -1,0 +1,57 @@
+@import '../../../../assets/scss/common/mixinsmedia';
+
+.card {
+  background-color: #242529;
+  padding: 5px 10px;
+  color: white;
+  width: 100%;
+  height: 100%;
+
+  @include tablet {
+    padding: 10px 15px;
+  }
+
+  @include desktop-xl {
+    padding: 15px 20px;
+  }
+
+  &-title {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    padding: 5px 0;
+  }
+
+}
+
+.descriptions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 20px;
+  margin-top: 10px;
+  width: 100%;
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &-title {
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  &-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  &--not {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+}

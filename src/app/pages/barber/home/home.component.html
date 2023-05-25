@@ -1,60 +1,40 @@
 <section class="content">
   <div class="content-block">
-    <div class="block-header">
       <!-- breadcrumb -->
-      <app-breadcrumb [title]="'Finances'" [items]="['Home','Finances']" [active_item]="'Finances'">
+      <app-breadcrumb [title]="'Home'" [items]="[]" [active_item]="'Home'">
       </app-breadcrumb>
-    </div>
-  </div>
   <!-- KPI -->
-  <div class="row">
-      <div class="col-md-6 col-xl-4">
-          <div class="card info-card">
-            <div class="info-box8">
-              <i class="material-icons bg-blue card1-icon">attach_money</i>
-              <h5 class="col-blue">Earning</h5>
-              <h4>$48,697</h4>
-              <div>
-                <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-                <p class="float-start m-0"><span class="col-green">08%</span> Increase
-              </div>
-            </div>
-          </div>
-        </div>
-      <div class="col-md-6 col-xl-4">
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-orange card1-icon">content_cut</i>
-            <h5 class="col-orange">Haircuts</h5>
-            <h4>1,287</h4>
-            <div>
-              <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-              <p class="float-start m-0"><span class="col-green">25%</span> Increase
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12 col-xl-4">
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-yellow card1-icon">local_activity</i>
-            <h5 class="col-yellow">Rate</h5>
-            <h4>4.5</h4>
-            <div>
-              <i class="material-icons col-green float-start me-1 ms-1">trending_up</i>
-              <p class="float-start m-0"><span class="col-green">12%</span> increase
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="kpis-container">
+    <app-kpi
+      type="earning"
+      [title]="'Earnings'"
+      [percentage]="'8%'"
+      [percentageStatus]="'Increase'"
+      value="$48,697"
+      ></app-kpi>
+    <app-kpi
+      type="earning"
+      [title]="'Haircuts'"
+      [percentage]="'25%'"
+      [percentageStatus]="'Increase'"
+      value="1,287"
+      icon="content_cut"
+      ></app-kpi>
+    <app-kpi
+      type="earning"
+      [title]="'Rate'"
+      [percentage]="'12%'"
+      [percentageStatus]="'Increase'"
+      value="4.5"
+      icon="local_activity"
+      ></app-kpi>
   </div>
   <!-- Earning -->
   <div class="row">
     <div class="col-xl-6 ">
         <div class="card">
           <div class="header">
-            <h2>Earning Chart</h2>
-            <h2 class="">{{moment()}}</h2>
+            <h2>Earning Chart {{moment()}}</h2>
             <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -74,24 +54,6 @@
             </mat-menu>
           </div>
           <div class="body p-5">
-            <ul class="list-inline text-center m-b-0">
-              <li class="list-inline-item p-r-30">
-                <app-feather-icons [icon]="'arrow-up-circle'" [class]="'col-green'"></app-feather-icons>
-                <h5 class="m-b-0">$675</h5>
-                <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
-              </li>
-              <li class="list-inline-item p-r-30">
-                <app-feather-icons [icon]="'arrow-down-circle'" [class]="'col-orange'">
-                </app-feather-icons>
-                <h5 class="m-b-0">$1,587</h5>
-                <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
-              </li>
-              <li class="list-inline-item p-r-30">
-                <app-feather-icons [icon]="'arrow-up-circle'" [class]="'col-green'"></app-feather-icons>
-                <h5 class="mb-0 m-b-0">$45,965</h5>
-                <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
-              </li>
-            </ul>
             <apx-chart [series]="earningOptions.series!" [chart]="earningOptions.chart!" [xaxis]="earningOptions.xaxis!"
               [stroke]="earningOptions.stroke!" [tooltip]="earningOptions.tooltip!"
               [dataLabels]="earningOptions.dataLabels!" [legend]="earningOptions.legend!"
@@ -431,5 +393,5 @@
       </div>
     </div>
   </div>
-
+  </div>
 </section>

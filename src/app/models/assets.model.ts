@@ -1,3 +1,18 @@
+export interface Vehicles {
+  Anumber: string;
+  Atype: string;
+  Ayear: string;
+  assigned_To: number;
+  code: string;
+  id: number;
+  make: string;
+  model: string;
+  plate: string;
+  up: string;
+  barber: string;
+  vin: string;
+}
+
 export class trucks {
   id: number;
   Anumber: string;
@@ -10,6 +25,7 @@ export class trucks {
   vin: string;
   up: string;
   barber: string;
+  assigned_To: number;
 
   constructor(trucks: trucks) {
     {
@@ -24,6 +40,8 @@ export class trucks {
       this.vin = trucks.vin || '';
       this.up = trucks.up || '';
       this.barber = trucks.barber || '';
+      this.assigned_To = trucks.assigned_To || 0;
+
     }
   }
   public getId(): number{

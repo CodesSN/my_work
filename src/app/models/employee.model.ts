@@ -7,4 +7,5 @@ export interface Employee {
   email: string;
   ssn: string;
   civil_status: string;
+  sub: string;
 }
