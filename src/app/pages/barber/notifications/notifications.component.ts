@@ -62,15 +62,4 @@ export class NotificationsComponent
       this.notifications = this.notifications.filter(item => item.type === type);
     }
   }
-  async show(str:any, inicio:any, fin:any){
-    return await this.ocultarString(str,inicio,fin);
-  }
-  async ocultarString(str:any, inicio:any, fin:any): Promise<string>{
-    if (inicio >= fin || inicio < 0 || fin > str.length) {
-      return str;
-    }
-    
-    const oculto = '.'.repeat(3 - inicio);
-    return str.substring(0, inicio) + oculto + str.substring(fin);
-  }
 }
