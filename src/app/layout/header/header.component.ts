@@ -116,8 +116,7 @@ export class HeaderComponent
     },
   ];
   async ngOnInit() {
-    const data = this.employeeService.getSub();
-    console.log(data);
+    this.getDataType();
 
 
     this.user = localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser');
@@ -137,6 +136,11 @@ export class HeaderComponent
     } else {
       this.flagvalue = val.map((element) => element.flag);
     }
+  }
+
+  async getDataType(){
+    // const user = await this.getData();
+    // this.userType = this.user.data.body.id_role;
   }
 
   async getData() {
