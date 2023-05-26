@@ -74,6 +74,14 @@
           </div>
           <div class="input-container">
             <mat-form-field appearance="outline" >
+              <mat-label>Role</mat-label>
+              <input matInput formControlName="role">
+              <mat-icon matSuffix>ss</mat-icon>
+              <mat-error *ngIf="modalForm.get('role')?.hasError('required') && modalForm.get('role')?.touched">Role is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
               <mat-label>Gender</mat-label>
               <mat-select formControlName="gender" [value]="modalForm.get('gender')?.value">
                 <mat-option value="male">Male</mat-option>
@@ -102,7 +110,7 @@
     </mat-tab-group>
     <div class="buttons-container">
       <button mat-button type="button" class="button-form button-form--close" (click)="close()">Close</button>
-      <button mat-button type="submit" class="button-form button-form--save">Save Changes</button>
+      <button mat-button type="submit" class="button-form button-form--save" (click)="saveChanges()">Save Changes</button>
     </div>
   </form>
 </div>
