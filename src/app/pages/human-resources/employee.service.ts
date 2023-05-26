@@ -116,6 +116,9 @@ export class EmployeeService {
   addEmployee(body:any){
     return this.http.post<any>(`${environment.apiUrl}/employee`, body);
   }
+  getRoles(){
+    return this.http.get<any>(`${environment.apiUrl}/roles/get`);
+  }
 
   saveEmployee(body:any){
     return this.http.put<any>(`${environment.apiUrl}/employee/${body.id}`, body);
