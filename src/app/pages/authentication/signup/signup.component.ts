@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
+import { EmployeeService } from '../../human-resources/employee.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,7 +20,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private formBuilder: UntypedFormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private employeeService: EmployeeService,
   ) {}
 
   ngOnInit() {
@@ -37,6 +39,9 @@ export class SignupComponent implements OnInit {
       mobile: [
         '',
         [Validators.required, Validators.minLength(10), Validators.maxLength(10)]
+      ],
+      barber: [
+        false,
       ]
     });
   }
@@ -59,8 +64,25 @@ export class SignupComponent implements OnInit {
       const email = this.signUpForm.get('email')?.value;
       const password = this.signUpForm.get('password')?.value;
       const mobile = this.signUpForm.get('mobile')?.value;
+      const barber = this.signUpForm.get('barber')?.value;
+      console.log(barber);
+      
       try {
-        this.authService.signUp(username, email, password, mobile);
+        const user = await this.authService.signUp(username, email, password, mobile);
+        const params = {
+          name: username,
+          address: '',
+          phone: mobile,
+          date: '',
+          email,
+          civil_status: '',
+          id_role: (barber)? 2 : 3,
+          ssn: '',
+          sub: user.userSub,
+          upload: !barber,
+          social_links: []
+        }
+        this.employeeService.addEmployee(params).subscribe();
         this.authService.saveNewUser(username);
         console.log(this.authService.getNewUser());
         this.router.navigate(['authentication/verification']);

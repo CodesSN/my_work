@@ -114,7 +114,6 @@ export class EmployeeService {
   return response;
   }
   addEmployee(body:any){
-    console.log(body);
     return this.http.post<any>(`${environment.apiUrl}/employee`, body);
   }
 
