@@ -46,6 +46,7 @@ public civil_status:any = ['Single','merried','separated','divorced']
   }
 
   ngOnInit(): void {
+    console.log(this.currentEmployee);
     this.modalForm = this.fb.group({
       name: [this.currentEmployee.name, [Validators.required]],
       address: [this.currentEmployee.address, [Validators.required]],
@@ -55,9 +56,9 @@ public civil_status:any = ['Single','merried','separated','divorced']
         this.currentEmployee.email,
         [Validators.required, Validators.email],
       ],
-      civil: [this.currentEmployee.civil_status, [Validators.required]],
+      civil_status: [this.currentEmployee.civil_status, [Validators.required]],
       ssn: [this.currentEmployee.ssn, [Validators.required]],
-      role: [this.currentEmployee.id_role, [Validators.required]],
+      id_role: [this.currentEmployee.id_role, [Validators.required]],
       gender: ['male'],
       description: ['', [Validators.required]],
     });
@@ -79,9 +80,9 @@ public civil_status:any = ['Single','merried','separated','divorced']
         phone: this.modalForm.get('phone')?.value,
         date: this.modalForm.get('date')?.value,
         email: this.modalForm.get('email')?.value,
-        civil_status: this.modalForm.get('civil')?.value,
+        civil_status: this.modalForm.get('civil_status')?.value,
         ssn: this.modalForm.get('ssn')?.value,
-        id_role: this.modalForm.get('role')?.value,
+        id_role: this.modalForm.get('id_role')?.value,
         social_link: [],
         sub: '',
         upload: false,
