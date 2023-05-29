@@ -1,0 +1,74 @@
+@import '../../../assets/scss/common/mixinsmedia';
+@import '../../../assets/scss/common/variables';
+
+
+.uploading{
+  padding: 40px 20px 0px 20px;
+  &-title {
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+  }
+  &-text {
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    @include tablet {
+      border-radius: 0;
+    }
+    &--form {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+      margin-bottom: 30px;
+      border-radius: 10px ;
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  &-button {
+    background-color: transparent;
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+    width: 120px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 10px 0;
+    border: 1px solid $gold;
+    border-radius: 10px;
+    outline: 0;
+    color: $gold;
+
+    &:hover {
+      color: white;
+      background-color: $gold;
+    }
+  }
+}
+
+.title {
+  &-container {
+    max-height: 200px;
+  }
+}
+
+.input {
+  margin-bottom: 10px;
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: 200px;
+  }
+}

@@ -49,6 +49,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
       },
+      {
+        path: 'uploading',
+        loadChildren: () =>
+          import('./pages/uploading/uploading.module').then((m) => m.UploadingModule),
+      },
     ],
   },
   { path: '**', component: Page404Component },

@@ -5,7 +5,7 @@
     <p class="custom-text" >{{selectedFile ? selectedFile.name : 'Select file'}}</p>
     <a *ngIf="selectedFile" href="{{fileUrl}}" download>Download</a>
   </label>
-  <figure *ngIf="selectedFile" class="img-container">
+  <!-- <figure *ngIf="selectedFile" class="img-container">
     <img [src]="fileUrl" [alt]="title">
-  </figure>
+  </figure> -->
 </div>

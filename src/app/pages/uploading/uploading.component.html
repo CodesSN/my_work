@@ -1,0 +1,84 @@
+<section class="content">
+  <article class="uploading">
+    <form class="uploading-container--form" [formGroup]="barberInfoForm" (ngSubmit)="submitBarberInfo()" >
+      <div class="uploading-container">
+        <div class="title-container">
+          <h4 class="uploading-title">Personal Information</h4>
+          <p class="uploading-text">Please provide your personal information for security purposes and a personalized experience.</p>
+        </div>
+        <div class="uploading-content">
+            <!-- Name Input  -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" >
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error *ngIf="barberInfoForm.get('name')?.hasError('required') && barberInfoForm.get('name')?.touched">Name required</mat-error>
+            </mat-form-field>
+            <!-- Address Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" >
+              <mat-icon matSuffix>home</mat-icon>
+              <mat-error *ngIf="barberInfoForm.get('address')?.hasError('required') && barberInfoForm.get('address')?.touched">Address is required</mat-error>
+            </mat-form-field>
+            <!-- Birthday input -->
+            <mat-form-field class="input" appearance="outline">
+              <mat-label>Choose a date</mat-label>
+              <input matInput formControlName="date" [matDatepicker]="picker">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="barberInfoForm.get('date')?.hasError('required') && barberInfoForm.get('date')?.touched">Birthday is required</mat-error>
+            </mat-form-field>
+            <!-- Email Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" >
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error *ngIf="barberInfoForm.get('email')?.hasError('required') && barberInfoForm.get('email')?.touched">Email is required</mat-error>
+              <mat-error *ngIf="barberInfoForm.get('email')?.hasError('email') && barberInfoForm.get('email')?.touched">Email is invalid</mat-error>
+            </mat-form-field>
+            <!-- Civil Status Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Civil Status</mat-label>
+              <mat-select formControlName="civil" [value]="barberInfoForm.get('civil')?.value">
+                <mat-option value="single">Single</mat-option>
+                <mat-option value="married">Married</mat-option>
+                <mat-option value="divorced">Divorced</mat-option>
+                <mat-option value="widowed">Widowed</mat-option>
+              </mat-select>
+              <mat-error *ngIf="barberInfoForm.get('civil')?.hasError('required') && barberInfoForm.get('civil')?.touched">Civil status required</mat-error>
+            </mat-form-field>
+            <!-- SSN Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>SSN</mat-label>
+              <input matInput formControlName="ssn" >
+              <mat-icon matSuffix>123</mat-icon>
+              <mat-error *ngIf="barberInfoForm.get('ssn')?.hasError('required') && barberInfoForm.get('ssn')?.touched">SSN required</mat-error>
+            </mat-form-field>
+            <!-- Gender Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender" [value]="barberInfoForm.get('gender')?.value">
+                <mat-option value="male">Male</mat-option>
+                <mat-option value="female">Female</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="uploading-container">
+        <div class="title-container">
+          <h4 class="uploading-title">Personal Files</h4>
+          <p class="uploading-text">Securely upload your personal files here.</p>
+        </div>
+        <div class="uploading-content">
+          <app-file-upload [title]="'Driver license'" ></app-file-upload>
+          <app-file-upload [title]="'Social Security Card'"></app-file-upload>
+          <app-file-upload [title]="'Bank Account'"></app-file-upload>
+          <app-file-upload [title]="'Direct Deposit Instructions'"></app-file-upload>
+          <app-file-upload [title]="'Barber License'"></app-file-upload>
+        </div>
+      </div>
+      <button class="uploading-button" type="submit">Upload</button>
+    </form>
+  </article>
+</section>
