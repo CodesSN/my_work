@@ -66,7 +66,7 @@ export class FinancesComponent implements OnInit {
     this.earningOptions = {
       series: [
         {
-          name: 'Approximately',
+          name: 'Estimated',
           data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
         },
         {
