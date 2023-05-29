@@ -12,21 +12,16 @@ input[type=file] {
   opacity: 0;
 }
 
-// #Photo {
-//   margin-bottom: 10px;
-// }
 
 .custom-button {
   display: flex;
-  padding: 16px 12px;
-  // margin: 10px auto;
-  // width: calc(100% - 34px);
-  width: 100%;
-  justify-content: start;
+  justify-content: space-between;
   align-items: start;
-  color: black;
+  width: 100%;
+  padding: 16px 12px;
   border: 1px dashed black;
   border-radius: 4px;
+  color: black;
   cursor: pointer;
 }
 

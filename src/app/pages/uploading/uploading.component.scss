@@ -16,9 +16,16 @@
     display: flex;
     flex-direction: column;
     padding: 15px 20px;
+    margin-bottom: 40px;
     @include tablet {
+      margin-bottom: 0;
       border-radius: 0;
     }
+
+    &--files {
+      margin: 0;
+    }
+
     &--form {
       background-color: white;
       display: grid;
@@ -40,16 +47,21 @@
   &-button {
     background-color: transparent;
     position: absolute;
-    right: 30px;
-    bottom: 5px;
-    width: 120px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    padding: 10px 0;
-    border: 1px solid $gold;
+    right: 15px;
+    bottom: 15px;
+    width: 90px;
+    padding: 8px 0;
+    border: 2px solid $gold;
     border-radius: 10px;
     outline: 0;
+    font-size: 1rem;
+    font-weight: 500;
     color: $gold;
+
+    @include tablet {
+      width: 110px;
+      padding: 10px 0;
+    }
 
     &:hover {
       color: white;

@@ -1,7 +1,7 @@
 <section class="content">
   <article class="uploading">
     <form class="uploading-container--form" [formGroup]="barberInfoForm" (ngSubmit)="submitBarberInfo()" >
-      <div class="uploading-container">
+      <div class="uploading-container uploading-container--files">
         <div class="title-container">
           <h4 class="uploading-title">Personal Information</h4>
           <p class="uploading-text">Please provide your personal information for security purposes and a personalized experience.</p>
@@ -71,11 +71,11 @@
           <p class="uploading-text">Securely upload your personal files here.</p>
         </div>
         <div class="uploading-content">
-          <app-file-upload [title]="'Driver license'" ></app-file-upload>
-          <app-file-upload [title]="'Social Security Card'"></app-file-upload>
-          <app-file-upload [title]="'Bank Account'"></app-file-upload>
-          <app-file-upload [title]="'Direct Deposit Instructions'"></app-file-upload>
-          <app-file-upload [title]="'Barber License'"></app-file-upload>
+          <app-file-upload [title]="'Driver license'" (sendFile)="getFile($event, 'driverLicense')" ></app-file-upload>
+          <app-file-upload [title]="'Social Security Card'" (sendFile)="getFile($event, 'socialSecurity')"></app-file-upload>
+          <app-file-upload [title]="'Bank Account'" (sendFile)="getFile($event, 'bankAccount')"></app-file-upload>
+          <app-file-upload [title]="'Direct Deposit Instructions'" (sendFile)="getFile($event, 'directDeposit')"></app-file-upload>
+          <app-file-upload [title]="'Barber License'" (sendFile)="getFile($event, 'barberLicense')"></app-file-upload>
         </div>
       </div>
       <button class="uploading-button" type="submit">Upload</button>

@@ -1,28 +1,23 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
 })
 export class FileUploadComponent {
-  public selectedFile: File | null = null;
-  public fileUrl:any = null;
-  public file:File | null = null;
   @Input() title = '';
+  @Output() sendFile = new EventEmitter<File|null>();
+  public fileUrl:any = null;
+  public selectedFile: File | null = null;
 
   handleFileInput(event: any) {
     this.selectedFile = event.target.files[0];
-
     if(this.selectedFile){
-      const formData = new FormData();
-      formData.append('file', this.selectedFile, this.selectedFile?.name);
+      this.sendFile.emit(this.selectedFile);
       this.fileUrl = URL.createObjectURL(this.selectedFile);
+    } else {
+      this.sendFile.emit(null);
     }
-  }
-
-  printFile(){
-    console.log(this.fileUrl);
-    console.log(this.selectedFile);
   }
 }

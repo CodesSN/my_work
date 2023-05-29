@@ -158,8 +158,6 @@ export class ProfileComponent
 
   async ngOnInit(): Promise<void> {
     this.data = await this.getLink();
-    console.log('data', this.data);
-
     this.profileImage = await this.getUrlProfileImage(this.data.data.body.sub);
     this.id = this.data.data.body.id;
     this.name = this.data.data.body.name;

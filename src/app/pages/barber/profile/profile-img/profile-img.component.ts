@@ -27,6 +27,7 @@ export class ProfileImgComponent {
 
   change(event: any) {
     this.file = event.target.files[0];
+
   }
   readFileAsync(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -52,9 +53,7 @@ export class ProfileImgComponent {
     const url =
       'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/profile/user/image/upload';
     const img = await this.readFileAsync(this.file as File);
-    const contentType = this.file?.type.toString()
-    console.log(contentType);
-    
+    const contentType = this.file?.type.toString();
     const data = {
       fileName,
       file: img,
