@@ -81,7 +81,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
           '.userData'
       ) as string
     ).UserAttributes;
-    // console.log('user',user[0]);/
+    // console.log(user);
 
     const datos = await this.employeeservice.getAllEmployeesAxios();
     let id;
@@ -90,7 +90,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
         return (id = e.id);
       }
     });
-
     return this.employeeservice.getdataEmployeebyId(id);
   }
   async ngOnInit(): Promise<void> {

@@ -5,4 +5,5 @@ export interface BarberFiles {
   deposit_Instructions: string;
   social_Security_Card: string;
   fileName: string;
+  id: number;
 }

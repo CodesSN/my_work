@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BarberService } from 'src/app/core/service/barber.service';
 import { BarberFiles } from 'src/app/models/barber.model';
 import { EmployeeService } from '../human-resources/employee.service';
+import { UpdatedUser } from 'src/app/models/employee.model';
 
 @Component({
   selector: 'app-uploading',
@@ -22,9 +23,9 @@ export class UploadingComponent implements OnInit {
   private createForms(){
     this.barberInfoForm = this.fb.group({
       name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       address: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       civil: ['' ,[Validators.required]],
       ssn: ['', [Validators.required]],
       gender: ['', [Validators.required]],
@@ -48,11 +49,11 @@ export class UploadingComponent implements OnInit {
   getFile(file:File|null, text:string){
     this.barberFilesForm.get(text)?.setValue(file);
   }
-
   // Sube la informacion de un usuario
   async submitBarberInfo(){
+    const sub = this.employeeService.getSub();
+    const id = await this.employeeService.getIDEmployee();
     if(this.barberFilesForm.valid && this.barberInfoForm.valid){
-      const sub = this.employeeService.getSub();
       // Obtener los valores del formulario de cada valor
       const driverLicense = this.barberFilesForm.get('driverLicense')?.value;
       const socialSecurity = this.barberFilesForm.get('socialSecurity')?.value;
@@ -66,37 +67,41 @@ export class UploadingComponent implements OnInit {
         const bankAccountImg = await this.barberService.readFileAsync(bankAccount as File);
         const directDepositImg = await this.barberService.readFileAsync(directDeposit as File);
         const barberLicenseImg = await this.barberService.readFileAsync(barberLicense as File);
-        const params:BarberFiles = {
+        const paramsFiles:BarberFiles = {
           bank_Account: bankAccountImg,
           barber_License: barberLicenseImg,
           barber_Driver_License: driverLicenseImg,
           deposit_Instructions: directDepositImg,
           social_Security_Card: socialSecurityImg,
-          fileName: sub
+          fileName: sub,
+          id: id
         }
-
-        console.log(params);
-
-
-        this.barberService.uploadBarberFiles(params).subscribe(response => {
+        this.barberService.uploadBarberFiles(paramsFiles).subscribe(response => {
           console.log(response);
         });
-
-
-
       } catch (error) {
         console.log(error);
       }
-
-
-
-
-
-
-
+      const name = this.barberInfoForm.get('name')?.value;
+      const lastName = this.barberInfoForm.get('lastName')?.value;
+      const address = this.barberInfoForm.get('address')?.value;
+      const date = this.barberInfoForm.get('date')?.value;
+      const civil = this.barberInfoForm.get('civil')?.value;
+      const ssn = this.barberInfoForm.get('ssn')?.value;
+      const gender = this.barberInfoForm.get('gender')?.value;
+      const barberInfo:UpdatedUser = {
+        id:id,
+        name: name,
+        last_name: lastName,
+        address: address,
+        civil_status: civil,
+        date: date,
+        ssn: ssn,
+        gender: gender
+      };
+      this.barberService.uploadBarberInfo(barberInfo).subscribe(response => {
+        console.log(response);
+      })
     }
-    // console.log(this.barberInfoForm.getRawValue());
-    // console.log(this.barberFilesForm.getRawValue());
   }
-
 }

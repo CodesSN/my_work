@@ -14,6 +14,13 @@
               <mat-icon matSuffix>person</mat-icon>
               <mat-error *ngIf="barberInfoForm.get('name')?.hasError('required') && barberInfoForm.get('name')?.touched">Name required</mat-error>
             </mat-form-field>
+            <!-- Lastname Input -->
+            <mat-form-field class="input" appearance="outline" >
+              <mat-label>Lastname</mat-label>
+              <input matInput formControlName="lastName" >
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error *ngIf="barberInfoForm.get('lastName')?.hasError('required') && barberInfoForm.get('lastName')?.touched">Lastname required</mat-error>
+            </mat-form-field>
             <!-- Address Input -->
             <mat-form-field class="input" appearance="outline" >
               <mat-label>Address</mat-label>
@@ -28,14 +35,6 @@
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="barberInfoForm.get('date')?.hasError('required') && barberInfoForm.get('date')?.touched">Birthday is required</mat-error>
-            </mat-form-field>
-            <!-- Email Input -->
-            <mat-form-field class="input" appearance="outline" >
-              <mat-label>Email</mat-label>
-              <input matInput formControlName="email" >
-              <mat-icon matSuffix>mail</mat-icon>
-              <mat-error *ngIf="barberInfoForm.get('email')?.hasError('required') && barberInfoForm.get('email')?.touched">Email is required</mat-error>
-              <mat-error *ngIf="barberInfoForm.get('email')?.hasError('email') && barberInfoForm.get('email')?.touched">Email is invalid</mat-error>
             </mat-form-field>
             <!-- Civil Status Input -->
             <mat-form-field class="input" appearance="outline" >

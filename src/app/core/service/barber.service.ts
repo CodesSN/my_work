@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BarberFiles } from 'src/app/models/barber.model';
+import { UpdatedUser } from 'src/app/models/employee.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,6 +23,10 @@ getVans(){
   // Subir archivos del barbero
   uploadBarberFiles(files: BarberFiles){
     return this.http.post<any>(`${environment.apiUrl}/employee/files/upload`, files);
+  }
+
+  uploadBarberInfo(files: UpdatedUser){
+    return this.http.put<any>(`${environment.apiUrl}/employee/upload/data`, files);
   }
 
   readFileAsync(file: File): Promise<string> {

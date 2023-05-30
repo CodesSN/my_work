@@ -12,3 +12,14 @@ export interface Employee {
   sub: string;
   upload: boolean;
 }
+
+export interface UpdatedUser {
+  id:number;
+  name:string;
+  last_name:string;
+  address:string;
+  date:Date;
+  ssn: string;
+  civil_status: string;
+  gender: string;
+}
