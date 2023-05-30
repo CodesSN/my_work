@@ -114,8 +114,10 @@ export class EmployeeService {
   return response;
   }
   addEmployee(body:any){
-    console.log(body);
     return this.http.post<any>(`${environment.apiUrl}/employee`, body);
+  }
+  getRoles(){
+    return this.http.get<any>(`${environment.apiUrl}/roles/get`);
   }
 
   saveEmployee(body:any){

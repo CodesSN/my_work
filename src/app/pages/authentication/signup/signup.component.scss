@@ -1,4 +1,21 @@
-
+.b-switch{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height:50px;
+  align-items: center;
+  border-radius:10px;
+  background-color: #e8e8e8;
+  border:solid 1px #cfcfcf;
+  padding: 2px;
+}
+.i-switch{
+  display: flex;
+  width:40px;
+  height:20px;
+  margin-left:10px;
+}
+d-flex form-switch justify-content-center align-items-center col-8
 .color {
   color: #000 !important;
 }

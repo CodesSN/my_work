@@ -57,9 +57,10 @@
           <div class="input-container">
             <mat-form-field appearance="outline" >
               <mat-label>Civil Status</mat-label>
-              <input matInput formControlName="civil">
-              <mat-icon matSuffix>wc</mat-icon>
-              <mat-error *ngIf="modalForm.get('civil')?.hasError('required') && modalForm.get('civil')?.touched">Civil status is required</mat-error>
+              <mat-select formControlName="civil_status" [value]="modalForm.get('civil_status')?.value">
+                <mat-option *ngFor="let item of civil_status" [value]="item">{{item}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="modalForm.get('civil_status')?.hasError('required') && modalForm.get('civil_status')?.touched">Civil status is required</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -70,6 +71,15 @@
               <input matInput formControlName="ssn">
               <mat-icon matSuffix>ss</mat-icon>
               <mat-error *ngIf="modalForm.get('ssn')?.hasError('required') && modalForm.get('ssn')?.touched">SSN is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-container">
+            <mat-form-field appearance="outline" >
+              <mat-label>Role</mat-label>
+              <mat-select formControlName="id_role" [value]="modalForm.get('id_role')?.value">
+                <mat-option *ngFor="let item of roles" [value]="item.id">{{item.name}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="modalForm.get('id_role')?.hasError('required') && modalForm.get('id_role')?.touched">Role is required</mat-error>
             </mat-form-field>
           </div>
           <div class="input-container">
@@ -102,7 +112,7 @@
     </mat-tab-group>
     <div class="buttons-container">
       <button mat-button type="button" class="button-form button-form--close" (click)="close()">Close</button>
-      <button mat-button type="submit" class="button-form button-form--save">Save Changes</button>
+      <button mat-button type="submit" class="button-form button-form--save" (click)="saveChanges()">Save Changes</button>
     </div>
   </form>
 </div>
