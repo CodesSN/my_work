@@ -28,6 +28,7 @@ import { BannerComponent } from './banner/banner.component';
 import { CardComponent } from './card/card.component';
 import { ImgContainerComponent } from './img-container/img-container.component';
 import { KpiComponent } from './kpi/kpi.component';
+import { ReportsListComponent } from './reports-list/reports-list.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { KpiComponent } from './kpi/kpi.component';
     CardComponent,
     ImgContainerComponent,
     KpiComponent,
+    ReportsListComponent,
   ],
   imports: [
     SharedModule,
@@ -71,7 +73,8 @@ import { KpiComponent } from './kpi/kpi.component';
     BannerComponent,
     CardComponent,
     ImgContainerComponent,
-    KpiComponent
+    KpiComponent,
+    ReportsListComponent
   ],
 })
 export class ComponentsModule {}

@@ -1,6 +1,6 @@
 <section class="content">
   <article class="uploading">
-    <form class="uploading-container--form" [formGroup]="barberInfoForm" (ngSubmit)="submitBarberInfo()" >
+    <form  class="uploading-container--form" [formGroup]="barberInfoForm" (ngSubmit)="submitBarberInfo()" >
       <div class="uploading-container uploading-container--files">
         <div class="title-container">
           <h4 class="uploading-title">Personal Information</h4>
@@ -79,5 +79,11 @@
       </div>
       <button class="uploading-button" type="submit">Upload</button>
     </form>
+
+    <div  class="uploading-container--text">
+      <h3 class="uploading-title--text"> Thank you for your patience!</h3>
+      <p class="uploading-text--text">
+        We would like to inform you that we have received your request and we are currently reviewing it carefully. We understand how important it is to you, and we are working diligently to analyze it and provide you with a response as soon as possible.</p>
+    </div>
   </article>
 </section>

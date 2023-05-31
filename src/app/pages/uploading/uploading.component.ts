@@ -11,14 +11,17 @@ import { UpdatedUser } from 'src/app/models/employee.model';
   styleUrls: ['./uploading.component.scss']
 })
 export class UploadingComponent implements OnInit {
-  barberInfoForm!: FormGroup;
-  barberFilesForm!: FormGroup;
+  public barberInfoForm!: FormGroup;
+  public barberFilesForm!: FormGroup;
+  public uploading = false;
 
   constructor(
     private fb: FormBuilder,
     private barberService: BarberService,
     private employeeService: EmployeeService
   ){}
+
+
   // Funcion para crear el reactiveform
   private createForms(){
     this.barberInfoForm = this.fb.group({
@@ -38,12 +41,20 @@ export class UploadingComponent implements OnInit {
       directDeposit:  ['', [Validators.required]],
       barberLicense:  ['', [Validators.required]],
     });
-
-
   }
 
-  ngOnInit(): void {
+  async getInfoBar(){
+    const id = await this.employeeService.getIDEmployee();
+    this.employeeService.getEmployeeData(id).subscribe(response => {
+      if(response.statusCode === 200){
+        this.uploading = response.body.upload;
+      }
+    });
+  }
+
+  ngOnInit(){
     this.createForms();
+    this.getInfoBar();
   }
   // Obtiene el archivo de los input
   getFile(file:File|null, text:string){

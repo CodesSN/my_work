@@ -35,6 +35,11 @@ const routes: Routes = [
           import('./pages/barber/barber.module').then((m) => m.BarberModule),
       },
       {
+        path: 'monitorist',
+        loadChildren: () =>
+          import('./pages/monitorist/monitorist.module').then((m) => m.MonitoristModule),
+      },
+      {
         path: 'assets',
         loadChildren: () =>
           import('./pages/assets/assets.module').then((m) => m.AssetsModule),

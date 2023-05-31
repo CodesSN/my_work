@@ -59,17 +59,13 @@ export class EmployeeService {
     return employeeData.data.body.id;
   }
 
-
   getAllEmployees(){
     return this.http.get<ResponseEmployees>(`${environment.apiUrl}/employee`);
   }
 
-
-  getEmployeeData(id:number):Observable<any>{
-    return this.http.get<Response>(`${environment.apiUrl}/employee/${id}`);
+  getEmployeeData(id:number){
+    return this.http.get<any>(`${environment.apiUrl}/employee/${id}`);
   }
-
-
 
   getAllEmployeesAxios(){
     const config:any = {

@@ -31,6 +31,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   headerHeight = 60;
   currentRoute?: string;
   routerObj;
+  showSideBar!:boolean;
   menuIcon = 'radio_button_checked';
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -97,6 +98,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.userType = this.data.data.body.id_role;
     this.sidebarItems = ROUTES.filter((sidebarItem) => (sidebarItem.role_access.includes((this.userType?.toString())as string))? sidebarItem:null);
     // this.sidebarItems = ROUTES.filter((sidebarItem) => sidebarItem);
+    // const id = await this.employeeservice.getIDEmployee();
+    // this.employeeservice.getEmployeeData(id).subscribe(response => {
+    //   console.log(response);
+    // });
+
     this.initLeftSidebar();
     this.bodyTag = this.document.body;
   }

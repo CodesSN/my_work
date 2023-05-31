@@ -1,0 +1,29 @@
+@import '../../../../assets/scss/common/_variables.scss';
+
+.report {
+  &-container {
+    margin: 0 10px;
+    // background-color: #fff;
+  }
+
+  &-title {
+    background-color: $gold;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+  }
+
+  &-text {
+    margin: 10px;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    // padding: 10px 0;
+    background-color: #fff;
+  }
+}

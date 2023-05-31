@@ -1,0 +1,6 @@
+<div class="report-container">
+  <h4 class="report-title">{{title}}</h4>
+  <div *ngFor="let report of reports" class="report-content">
+    <a (click)="viewReport(report)" class="report-text">{{report}}</a>
+  </div>
+</div>

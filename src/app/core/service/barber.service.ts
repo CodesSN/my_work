@@ -13,7 +13,7 @@ export class BarberService {
     private http: HttpClient
   ) {}
 
-getVans(){
+  getVans(){
     this.http.get<any>(`${environment}/`)
   }
 
