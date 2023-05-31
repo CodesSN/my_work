@@ -1,0 +1,88 @@
+@import '../../../../assets/scss/common/variables';
+
+.modal{
+  &-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 15px;
+    margin-bottom: 20px;
+  }
+
+  &-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    &-container {
+      border-bottom: 1px solid $light-gray;
+      margin-bottom: 20px;
+      padding: 10px 0;
+    }
+  }
+
+  &-info-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  &-input{
+    &-container {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      padding: 5px 20px;
+    }
+    &-title {
+      margin: 0;
+      color: $font-gray;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    &-text {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    &-icon {
+      color: black;
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  &-button {
+    // background-color: $button-gray;
+    background-color: transparent;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 5px ;
+    outline: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    &--cancel {
+      color: $error;
+      border: 2px solid $error;
+      &:hover {
+        background-color: $error;
+        color: white;
+      }
+    }
+
+    &--confirm {
+      color: $success;
+      // border: 2px solid $success;
+      &:hover {
+        background-color: $success;
+        color: black;
+      }
+    }
+  }
+}
+

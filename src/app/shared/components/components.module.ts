@@ -29,6 +29,7 @@ import { CardComponent } from './card/card.component';
 import { ImgContainerComponent } from './img-container/img-container.component';
 import { KpiComponent } from './kpi/kpi.component';
 import { ReportsListComponent } from './reports-list/reports-list.component';
+import { ModalReportAppointmentComponent } from './modal-report-appointment/modal-report-appointment.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ReportsListComponent } from './reports-list/reports-list.component';
     ImgContainerComponent,
     KpiComponent,
     ReportsListComponent,
+    ModalReportAppointmentComponent,
   ],
   imports: [
     SharedModule,

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Appointment } from 'src/app/models/appointment.model';
 import { BarberFiles } from 'src/app/models/barber.model';
 import { UpdatedUser } from 'src/app/models/employee.model';
 import { environment } from 'src/environments/environment';
@@ -27,6 +28,14 @@ export class BarberService {
 
   uploadBarberInfo(files: UpdatedUser){
     return this.http.put<any>(`${environment.apiUrl}/employee/upload/data`, files);
+  }
+
+  getBarberAppointments(){
+    return this.http.get<Appointment[]>(`${environment.apiUrl}/citas/get`);
+  }
+
+  changeAppointmentState(id:any){
+    return this.http.put<any>(`${environment.apiUrl}/Appoitments/Paid/Confirm`, id);
   }
 
   readFileAsync(file: File): Promise<string> {
