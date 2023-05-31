@@ -70,38 +70,7 @@ export class ProfileComponent
     super();
   }
 
-  imageObject: Array<ImageData> = [
-    {
-      image: 'assets/images/barber-temp/1.png',
-      thumbImage: 'assets/images/barber-temp/1.png',
-      title: 'Image 1',
-    },
-    {
-      image: 'assets/images/barber-temp/2.png',
-      thumbImage: 'assets/images/barber-temp/2.png',
-      title: 'Image 2',
-    },
-    {
-      image: 'assets/images/barber-temp/3.png',
-      thumbImage: 'assets/images/barber-temp/3.png',
-      title: 'Image 3',
-    },
-    {
-      image: 'assets/images/barber-temp/4.png',
-      thumbImage: 'assets/images/barber-temp/4.png',
-      title: 'Image 4',
-    },
-    {
-      image: 'assets/images/barber-temp/5.png',
-      thumbImage: 'assets/images/barber-temp/5.png',
-      title: 'Image 4',
-    },
-    {
-      image: 'assets/images/barber-temp/6.png',
-      thumbImage: 'assets/images/barber-temp/6.png',
-      title: 'Image 4',
-    },
-  ];
+  imageObject: Array<ImageData> = [];
 
   add_link() {
     const dialogRef = this.dialog.open(SocialModalComponent, {
@@ -147,19 +116,34 @@ export class ProfileComponent
         return datos
     })
     .catch((error) => {
+      return 'assets/images/user/usrbig3.jpg';
+    });
+  }
+  async getGallery(sub: any){
+    const config:any = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/revx_Get_Gallery_Links?fileName=' + sub,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    return axios.request(config)
+    .then(async (response) => {
+      const datos = (response.data.imageUrl)?response.data.imageUrl:'assets/images/user/usrbig3.jpg';
+        return datos
+    })
+    .catch((error) => {
       console.log(error);
       return 'assets/images/user/usrbig3.jpg';
     });
   }
-
   async getAssetById(){
     return await firstValueFrom(this.assetsservice.getAllAssets());
   }
 
   async ngOnInit(): Promise<void> {
     this.data = await this.getLink();
-    console.log('data', this.data);
-
     this.profileImage = await this.getUrlProfileImage(this.data.data.body.sub);
     this.id = this.data.data.body.id;
     this.name = this.data.data.body.name;
@@ -176,6 +160,7 @@ export class ProfileComponent
         this.assetImage = 'https://eminentlimo.com/wp-content/uploads/2022/03/Executive-Sprinter-12-Passenger-400-x-262-Flip.png'
       }
     }).filter((asset:any) => asset !== null);
+    this.imageObject = await this.getGallery(this.data.data.body.sub);
 
   }
 
