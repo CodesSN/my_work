@@ -44,7 +44,7 @@ export class HeaderComponent
   isOpenSidebar?: boolean;
   docElement: HTMLElement | undefined;
   isFullScreen = false;
-  userType = 1;
+  userType!:string;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -115,10 +115,7 @@ export class HeaderComponent
       status: 'msg-read',
     },
   ];
-  async ngOnInit() {
-    this.getDataType();
-
-
+  ngOnInit() {
     this.user = localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser');
 
     this.config = this.configService.configData;
@@ -136,10 +133,21 @@ export class HeaderComponent
     } else {
       this.flagvalue = val.map((element) => element.flag);
     }
+
+    this.getDataType();
+
   }
 
   async getDataType(){
-    // const user = await this.getData();
+    const id = await this.employeeService.getIDEmployee();
+    const user = this.employeeService.getEmployeeData(id).subscribe(response => {
+      if(response.statusCode === 200) {
+        this.userType = response.body.id_role;
+        console.log(response.body.id_role);
+      }
+
+    })
+
     // this.userType = this.user.data.body.id_role;
   }
 
