@@ -102,7 +102,7 @@ export class CalendarComponent
     citas.forEach((e:any) => {
       events.push({
         title: e.service,
-        start: e.date + 'T12:' + e.time,
+        start: e.date + 'T' + e.time,
         allDay: false,
         client: e.nameClient,
         price: e.cost,
