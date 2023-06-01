@@ -48,8 +48,6 @@ export class ModalReportAppointmentComponent implements OnInit {
     this.barberService.changeAppointmentState(body).subscribe(response => {
       console.log(response);
     })
-
+    this.dialogRef.close('confirm');
   }
-
-
 }

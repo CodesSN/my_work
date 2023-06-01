@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UnsubscribeOnDestroyAdapter } from '../../UnsubscribeOnDestroyAdapter';
-import { DialogData, ModalReportAppointmentComponent } from '../modal-report-appointment/modal-report-appointment.component';
+import { ModalReportAppointmentComponent } from '../modal-report-appointment/modal-report-appointment.component';
 import { Appointment } from 'src/app/models/appointment.model';
+import { BarberService } from 'src/app/core/service/barber.service';
 @Component({
   selector: 'app-reports-list',
   templateUrl: './reports-list.component.html',
@@ -14,7 +15,8 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
   data:any;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private barberService: BarberService
   ){
     super();
   }
@@ -44,7 +46,25 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
       data: this.data
     });
     this.subs.sink = dialogRef.afterClosed().subscribe(response => {
-      // console.log(response);
+      // Si el modal fue existosa la peticion regresa un confirm
+      if(response === 'confirm'){
+        this.subs.sink =  this.barberService.getBarberAppointments().subscribe(response => {
+          // Para ver como se va a filtrar la informacion lo analizamos en base al titulo
+          switch(this.title){
+            case 'Requested':
+              // Filtra la informacion si es falta
+              this.appointments = response.filter(res => res.paid === false);
+              break;
+            case 'Assigned':
+              this.appointments = response.filter(res => res.paid === true);
+              break;
+            case 'Completed':
+              // Completed
+              break;
+          }
+          location.reload();
+        })
+      }
     });
   }
 }

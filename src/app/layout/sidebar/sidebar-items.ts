@@ -87,7 +87,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
       {
         path: 'monitorist',
-        title: 'Monitorist',
+        title: 'Appointments',
         iconType: '',
         icon: '',
         class: 'ml-menu',
