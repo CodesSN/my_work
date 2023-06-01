@@ -1,0 +1,124 @@
+@import '../../../assets/scss/common/mixinsmedia';
+@import '../../../assets/scss/common/variables';
+
+
+.uploading{
+  padding: 40px 20px 0px 20px;
+  &-title {
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+
+    &--text {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+
+      @include tablet {
+        font-size: 2.2rem;
+      }
+    }
+  }
+  &-text {
+    text-align: justify;
+    margin-bottom: 20px;
+
+    &--text {
+      font-size: 1.2rem;
+      font-weight: 400;
+      text-align: justify;
+
+      @include tablet {
+        font-size: 1.6rem;
+      }
+    }
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 20px;
+    margin-bottom: 40px;
+    @include tablet {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    &--files {
+      margin: 0;
+    }
+
+    &--form {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+      margin-bottom: 30px;
+      border-radius: 10px ;
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &--text {
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      // justify-content: center;
+      padding: 20px;
+      align-items: center;
+      margin-top: 10px;
+      width: 100%;
+      height: auto;
+      overflow-y: auto;
+      @include tablet {
+        margin-top: 15px;
+        padding: 40px 60px;
+      }
+    }
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  &-button {
+    background-color: transparent;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 90px;
+    padding: 8px 0;
+    border: 2px solid $gold;
+    border-radius: 10px;
+    outline: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $gold;
+
+    @include tablet {
+      width: 110px;
+      padding: 10px 0;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $gold;
+    }
+  }
+}
+
+.title {
+  &-container {
+    max-height: 200px;
+  }
+}
+
+.input {
+  margin-bottom: 10px;
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: 200px;
+  }
+}

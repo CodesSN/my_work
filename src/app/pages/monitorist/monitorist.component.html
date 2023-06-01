@@ -1,0 +1,12 @@
+<section class="content">
+  <div class="content-block">
+    <app-breadcrumb [title]="'Monitorist'" [active_item]="'Monitorist'"></app-breadcrumb>
+    <div class="row">
+      <div class="reports">
+        <app-reports-list title="Requested" [appointments]="appointmentsRequested"></app-reports-list>
+        <app-reports-list title="Assigned" [appointments]="appointmentsAssigned"></app-reports-list>
+        <app-reports-list title="Completed"></app-reports-list>
+      </div>
+    </div>
+  </div>
+</section>

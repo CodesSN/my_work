@@ -46,7 +46,6 @@ public civil_status:any = ['Single','merried','separated','divorced']
   }
 
   ngOnInit(): void {
-    console.log(this.currentEmployee);
     this.modalForm = this.fb.group({
       name: [this.currentEmployee.name, [Validators.required]],
       address: [this.currentEmployee.address, [Validators.required]],

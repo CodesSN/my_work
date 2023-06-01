@@ -44,7 +44,7 @@ export class HeaderComponent
   isOpenSidebar?: boolean;
   docElement: HTMLElement | undefined;
   isFullScreen = false;
-  userType = 1;
+  userType!:string;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -64,11 +64,58 @@ export class HeaderComponent
     { text: 'Spanish', flag: 'assets/images/flags/spain.jpg', lang: 'es' },
     { text: 'German', flag: 'assets/images/flags/germany.jpg', lang: 'de' },
   ];
-  async ngOnInit() {
-    const data = this.employeeService.getSub();
-    console.log(data);
-
-
+  notifications: Notifications[] = [
+    {
+      message: 'Please check your mail',
+      time: '14 mins ago',
+      icon: 'mail',
+      color: 'nfc-green',
+      status: 'msg-unread',
+    },
+    {
+      message: 'New Employee Added..',
+      time: '22 mins ago',
+      icon: 'person_add',
+      color: 'nfc-blue',
+      status: 'msg-read',
+    },
+    {
+      message: 'Your leave is approved!! ',
+      time: '3 hours ago',
+      icon: 'event_available',
+      color: 'nfc-orange',
+      status: 'msg-read',
+    },
+    {
+      message: 'Lets break for lunch...',
+      time: '5 hours ago',
+      icon: 'lunch_dining',
+      color: 'nfc-blue',
+      status: 'msg-read',
+    },
+    {
+      message: 'Employee report generated',
+      time: '14 mins ago',
+      icon: 'description',
+      color: 'nfc-green',
+      status: 'msg-read',
+    },
+    {
+      message: 'Please check your mail',
+      time: '22 mins ago',
+      icon: 'mail',
+      color: 'nfc-red',
+      status: 'msg-read',
+    },
+    {
+      message: 'Salary credited...',
+      time: '3 hours ago',
+      icon: 'paid',
+      color: 'nfc-purple',
+      status: 'msg-read',
+    },
+  ];
+  ngOnInit() {
     this.user = localStorage.getItem('CognitoIdentityServiceProvider.1rim5srfn6rjcthd8f4knu1r29.LastAuthUser');
 
     this.config = this.configService.configData;
@@ -86,6 +133,22 @@ export class HeaderComponent
     } else {
       this.flagvalue = val.map((element) => element.flag);
     }
+
+    this.getDataType();
+
+  }
+
+  async getDataType(){
+    const id = await this.employeeService.getIDEmployee();
+    const user = this.employeeService.getEmployeeData(id).subscribe(response => {
+      if(response.statusCode === 200) {
+        this.userType = response.body.id_role;
+        console.log(response.body.id_role);
+      }
+
+    })
+
+    // this.userType = this.user.data.body.id_role;
   }
 
   async getData() {

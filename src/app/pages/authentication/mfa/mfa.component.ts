@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { EmployeeService } from '../../human-resources/employee.service';
+import { id } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-mfa',
@@ -12,8 +13,9 @@ import { EmployeeService } from '../../human-resources/employee.service';
 export class MfaComponent implements OnInit {
   public mfaForm!: FormGroup;
   public incorrectCode!: boolean;
-  public data!: any;
-  userType?: string;
+  public user!: any;
+  private userType!: string;
+  private approved!: string;
 
   constructor(
     private fb:FormBuilder,
@@ -40,8 +42,6 @@ export class MfaComponent implements OnInit {
           '.userData'
       ) as string
     ).UserAttributes;
-    console.log('user',user[0]);
-    
     const datos = await this.employeeService.getAllEmployeesAxios();
     let id;
     await datos.forEach((e: any) => {
@@ -57,29 +57,42 @@ export class MfaComponent implements OnInit {
     if(this.mfaForm.valid) {
       this.incorrectCode = false;
       const code = this.mfaForm.get('code')?.value;
-      this.data = await this.getData();
-      this.userType = this.data.data.body.id_role;
-      this.authService.deleteCurrentUser();
-      this.authService.deleteForgotEmail();
-      this.authService.deleteNewUser();
-      this.authService.saveToken('token');
-      if(this.userType === '1'){
-        this.router.navigate(['/dashboard']);
-      }else{
-        this.router.navigate(['/barber/home']);
-      }
+      // Obtener el id del usuario
+      const id = await this.employeeService.getIDEmployee();
+      // Response para traer la informacion del empleado
+      this.employeeService.getEmployeeData(id).subscribe(response => {
+        if(response.statusCode === 200){
+          console.log(response.body);
+          this.userType = response.body.id_role;
+          this.approved = response.body.approved;
+          console.log(this.userType);
+          console.log(this.approved);
 
-      // try {
-      //   // await this.authService.signOut();
-      //   // const res = await this.authService.confirmVerification(user, code);
+          this.authService.deleteCurrentUser();
+          this.authService.deleteForgotEmail();
+          this.authService.deleteNewUser();
+          this.authService.saveToken('token');
 
-      //   // console.log(res);
+          switch(this.userType) {
+            case '1':
+              this.router.navigate(['/dashboard']);
+              break;
+            case '2':
+
+              this.router.navigate(['/barber/home']);
+              break;
+            case '3':
+              this.router.navigate(['/barber/home']);
+              break;
+            default:
+              this.router.navigate(['/barber/home']);
+          }
+        }
+      });
 
 
-      // } catch (error) {
-      //   console.error(error);
-      //   this.incorrectCode = true;
-      // }
+
+
     }
   }
 }

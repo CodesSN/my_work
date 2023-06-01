@@ -35,6 +35,11 @@ const routes: Routes = [
           import('./pages/barber/barber.module').then((m) => m.BarberModule),
       },
       {
+        path: 'monitorist',
+        loadChildren: () =>
+          import('./pages/monitorist/monitorist.module').then((m) => m.MonitoristModule),
+      },
+      {
         path: 'assets',
         loadChildren: () =>
           import('./pages/assets/assets.module').then((m) => m.AssetsModule),
@@ -48,6 +53,11 @@ const routes: Routes = [
         path: 'contacts',
         loadChildren: () =>
           import('./pages/contacts/contacts.module').then((m) => m.ContactsModule),
+      },
+      {
+        path: 'uploading',
+        loadChildren: () =>
+          import('./pages/uploading/uploading.module').then((m) => m.UploadingModule),
       },
     ],
   },
