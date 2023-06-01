@@ -1,0 +1,88 @@
+<div class="modal-container">
+  <!-- Contenedor de los  -->
+  <div class="modal-title-container">
+    <h4 class="modal-title" >{{title}}</h4>
+    <span class="title-barber">Service provided by <strong>{{appointment.barber}}</strong></span>
+  </div>
+  <!-- Contenedor de Date y time -->
+  <div class="modal-info-container">
+    <!-- Date  -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">event_available</i>
+      <div>
+        <p class="modal-input-title">Date</p>
+        <p class="modal-input-text">{{appointment.date}}</p>
+      </div>
+    </div>
+    <!-- Time -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">schedule</i>
+      <div>
+        <p class="modal-input-title">Time</p>
+        <p class="modal-input-text">{{appointment.time}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de Service y address -->
+  <div class="modal-info-container">
+    <!-- Service  -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">content_cut</i>
+      <div>
+        <p class="modal-input-title">Service</p>
+        <p class="modal-input-text">{{appointment.service}}</p>
+      </div>
+    </div>
+    <!-- Duration -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">schedule</i>
+      <div>
+        <p class="modal-input-title">Duration</p>
+        <p class="modal-input-text">{{appointment.duration}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de phone y client name  -->
+  <div class="modal-info-container">
+    <!-- Client name -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">people</i>
+      <div>
+        <p class="modal-input-title">Client name</p>
+        <p class="modal-input-text">{{appointment.nameClient}}</p>
+      </div>
+    </div>
+    <!--  Phone -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">call</i>
+      <div>
+        <p class="modal-input-title">Phone</p>
+        <p class="modal-input-text">{{appointment.phoneClient}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de email y  -->
+  <div class="modal-info-container">
+    <!-- Email Client  -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">mail</i>
+      <div>
+        <p class="modal-input-title">Email</p>
+        <p class="modal-input-text">{{appointment.emailClient}}</p>
+      </div>
+    </div>
+    <!-- Address Client -->
+    <div class="modal-input-container">
+      <i class="material-icons modal-input-icon">location_on</i>
+      <div>
+        <p class="modal-input-title">Address Client</p>
+        <p class="modal-input-text">{{appointment.addressClient}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Contenedor de los botones -->
+  <div class="modal-buttons-container">
+    <button class="modal-button modal-button--cancel" (click)="close()">Close</button>
+    <button *ngIf="confirmButton" class="modal-button modal-button--confirm" (click)="confirmAppointment()">Confirm</button>
+  </div>
+</div>

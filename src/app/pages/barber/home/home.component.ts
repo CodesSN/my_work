@@ -440,11 +440,11 @@ export class HomeComponent
     this.earningOptions = {
       series: [
         {
-          name: 'aproximate',
+          name: 'Estimated',
           data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
         },
         {
-          name: 'actual',
+          name: 'Actual',
           data: [8, 22, 60, 35, 17, 24, 48, 37, 56, 22, 32, 38],
         },
       ],

@@ -45,16 +45,27 @@ export class EmployeeService {
     return user;
   }
 
+  async getIDEmployee(){
+    const sub = this.getSub();
+    const datos = await this.getAllEmployeesAxios();
+    let id;
+    datos.forEach((e: any) => {
+      if (sub === e.sub) {
+        return (id = e.id);
+      }
+    });
+
+    const employeeData = await this.getdataEmployeebyId(id);
+    return employeeData.data.body.id;
+  }
+
   getAllEmployees(){
     return this.http.get<ResponseEmployees>(`${environment.apiUrl}/employee`);
   }
 
-
-  getEmployeeData(id:number):Observable<any>{
-    return this.http.get<Response>(`${environment}/employe/${id}`)
+  getEmployeeData(id:number){
+    return this.http.get<any>(`${environment.apiUrl}/employee/${id}`);
   }
-
-
 
   getAllEmployeesAxios(){
     const config:any = {
@@ -116,6 +127,7 @@ export class EmployeeService {
   addEmployee(body:any){
     return this.http.post<any>(`${environment.apiUrl}/employee`, body);
   }
+
   getRoles(){
     return this.http.get<any>(`${environment.apiUrl}/roles/get`);
   }
@@ -123,4 +135,5 @@ export class EmployeeService {
   saveEmployee(body:any){
     return this.http.put<any>(`${environment.apiUrl}/employee/${body.id}`, body);
   }
+
 }

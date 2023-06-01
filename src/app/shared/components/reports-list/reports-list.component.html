@@ -1,0 +1,6 @@
+<div class="report-container">
+  <h4 class="report-title">{{title}}</h4>
+  <div *ngFor="let appointment of appointments" class="report-content">
+    <a (click)="viewReport(appointment)" class="report-text">{{appointment.nameClient}}</a>
+  </div>
+</div>

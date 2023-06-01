@@ -1,11 +1,13 @@
 <div class="input-container">
   <h3 class="input-text">{{title}}</h3>
-  <input class="file-input" type="file" [id]="title" [name]="title" (change)="handleFileInput($event)">
+  <input
+    class="file-input"
+    type="file"
+    [id]="title"
+    [name]="title"
+    (change)="handleFileInput($event)">
   <label [htmlFor]="title" class="custom-button">
     <p class="custom-text" >{{selectedFile ? selectedFile.name : 'Select file'}}</p>
     <a *ngIf="selectedFile" href="{{fileUrl}}" download>Download</a>
   </label>
-  <figure *ngIf="selectedFile" class="img-container">
-    <img [src]="fileUrl" [alt]="title">
-  </figure>
 </div>

@@ -1,12 +1,31 @@
 <section class="content">
   <div class="content-block">
-      <!-- breadcrumb -->
-      <app-breadcrumb
-        [title]="'Rating'"
-        [items]="['Barber']"
-        [active_item]="'Rating'"
-      ></app-breadcrumb>
-    <div class="row">
+    <!-- breadcrumb -->
+    <app-breadcrumb
+      [title]="'Rating'"
+      [items]="['Barber']"
+      [active_item]="'Rating'"
+    ></app-breadcrumb>
+    <div class="kpis-container">
+      <app-kpi
+        type="earning"
+        [title]="'Rate'"
+        [percentage]="'220%'"
+        [percentageStatus]="'Increase'"
+        [value]="rate.toFixed(2)"
+        icon="local_activity"
+        ></app-kpi>
+      <app-kpi
+        type="earning"
+        [title]="'Clients'"
+        [percentage]="'25%'"
+        [percentageStatus]="'Increase'"
+        [value]="list.length"
+        icon="person"
+        ></app-kpi>
+    </div>
+
+    <!-- <div class="row">
       <div class="col-md-6 col-xl-6">
         <div class="card info-card">
           <div class="info-box8">
@@ -65,7 +84,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">

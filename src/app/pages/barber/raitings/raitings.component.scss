@@ -1,0 +1,13 @@
+@import '../../../../assets/scss/common/mixinsmedia';
+
+.kpis {
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 20px;
+    gap: 20px;
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
