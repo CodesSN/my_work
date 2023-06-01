@@ -4,6 +4,7 @@ import {
   EventClickArg,
   EventApi,
 } from '@fullcalendar/core';
+import axios , { AxiosRequestConfig } from 'axios';
 import { HttpClient } from '@angular/common/http';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -75,7 +76,7 @@ export class CalendarComponent
     this.addCusForm = this.createCalendarForm(this.calendar);
   }
 
-  public ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
   const sub = this.calendarService.getCurrentUser();
     this.calendarService.getWorkingHours(sub).subscribe(response => {
       if(response.statusCode){
@@ -91,10 +92,39 @@ export class CalendarComponent
 
       }
     })
-    this.calendarEvents = INITIAL_EVENTS;
+    this.calendarEvents = await this.getEvents(await this.getAppoitments());
     this.tempEvents = this.calendarEvents;
-    this.calendarOptions.initialEvents = this.calendarEvents;
+    this.calendarOptions.events = this.calendarEvents;
 
+  }
+  async getEvents(citas:any){
+    const events:EventInput[] = [];
+    citas.forEach((e:any) => {
+      events.push({
+        title: e.service,
+        start: e.date + 'T12:' + e.time,
+        allDay: false,
+        client: e.nameClient,
+        price: e.cost,
+        duration: e.duration
+        
+      })
+    })
+    console.log(events)
+    return events
+  }
+  async getAppoitments(){
+    const config: AxiosRequestConfig = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/citas/get',
+      headers: {},
+    };
+
+    return axios.request(config).then(async (response) => {
+      const datos = response.data;
+      return datos;
+    });
   }
 
   calendarOptions: CalendarOptions = {

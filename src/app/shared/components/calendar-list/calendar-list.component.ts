@@ -10,26 +10,23 @@ export class CalendarListComponent implements OnChanges {
   list!:any;
 
   constructor(){
-    console.log(this.data);
+    console.log('data: ' , this.data);
   }
 
   ngOnChanges(changes:SimpleChanges):void {
-    if(this.data.length !== 0){
+    if(this.data !== undefined){
       this.list = this.data;
     }
   }
 
   getStartHours(list:any){
-    const date:Date = list.start;
-    const dateS = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
-    return dateS;
+    const date:any = list.start;
+    return date;
   }
 
-  getEndHours(list:any){
-    const date:Date = list.end;
-    const dateS = `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
-
-    return dateS;
+  async getEndHours(list:any){
+    const date:any = list.start;
+    return date;
   }
 
 }
