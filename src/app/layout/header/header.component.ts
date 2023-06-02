@@ -143,12 +143,8 @@ export class HeaderComponent
     const user = this.employeeService.getEmployeeData(id).subscribe(response => {
       if(response.statusCode === 200) {
         this.userType = response.body.id_role;
-        console.log(response.body.id_role);
       }
-
     })
-
-    // this.userType = this.user.data.body.id_role;
   }
 
   async getData() {

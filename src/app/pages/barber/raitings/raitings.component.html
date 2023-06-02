@@ -10,81 +10,18 @@
       <app-kpi
         type="earning"
         [title]="'Rate'"
-        [percentage]="'220%'"
-        [percentageStatus]="'Increase'"
+        [percentage]="'0%'"
         [value]="rate.toFixed(2)"
         icon="local_activity"
         ></app-kpi>
       <app-kpi
         type="earning"
         [title]="'Clients'"
-        [percentage]="'25%'"
-        [percentageStatus]="'Increase'"
+        [percentage]="'0%'"
         [value]="list.length"
         icon="person"
         ></app-kpi>
     </div>
-
-    <!-- <div class="row">
-      <div class="col-md-6 col-xl-6">
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-yellow card1-icon">local_activity</i>
-            <h5 class="col-yellow">Rate</h5>
-            <h4>{{ rate.toFixed(2) }}</h4>
-            <div>
-              <i
-                *ngIf="rateDiff > 0"
-                class="material-icons col-green float-start me-1 ms-1"
-                >trending_up</i
-              >
-              <i
-                *ngIf="rateDiff < 0"
-                class="material-icons col-red float-start me-1 ms-1"
-                >trending_down</i
-              >
-              <p class="float-start m-0">
-                <span *ngIf="rateDiff > 0" class="col-green"
-                  >{{ rateDiff.toFixed(2) }}%</span
-                >
-                <span *ngIf="rateDiff === 0" class="col-black"
-                  >{{ rateDiff.toFixed(2) }}%</span
-                >
-                <span *ngIf="rateDiff > 0">{{
-                  rateDiff > 0 ? " increase" : " decrease"
-                }}</span>
-                <span *ngIf="rateDiff < 0" class="col-red"
-                  >{{ rateDiff.toFixed(2) }}%</span
-                >
-                <span *ngIf="rateDiff === 0"> need more rate</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="col-md-6 col-xl-6"
-      >
-        <div class="card info-card">
-          <div class="info-box8">
-            <i class="material-icons bg-orange card1-icon">person</i>
-            <h5 class="col-orange">Clients</h5>
-            <h4>{{list.length}}</h4>
-            <div>
-              <i *ngIf="list.length > 0" class="material-icons col-green float-start me-1 ms-1"
-                >trending_up</i
-              >
-              <p class="float-start m-0">
-                <span *ngIf="list.length > 0" class="col-green">25%</span> <span>{{
-                  rateDiff > 0 ? " increase" : rateDiff > 0 ? " decrease" : null
-                }}</span>
-                <span *ngIf="list.length === 0" class="col-black">0%</span> <span *ngIf="list.length === 0"> need more clients</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
@@ -116,11 +53,11 @@
               </div>
             </div>
           </div>
-          <div class="footer p-2 text-center m-b-5">
+          <!-- <div class="footer p-2 text-center m-b-5">
             <a href="#!" class="b-b-primary text-primary"
               >View all Customer Reviews</a
             >
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

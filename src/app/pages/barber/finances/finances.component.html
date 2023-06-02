@@ -4,7 +4,7 @@
     <app-breadcrumb [title]="'Finances'" [items]="['Barber']" [active_item]="'Finances'">
     </app-breadcrumb>
     <div class="kpis-container">
-      <app-kpi
+      <!-- <app-kpi
         type="earning"
         [title]="'Earning Weekly'"
         [percentage]="'4%'"
@@ -23,7 +23,25 @@
         [title]="'Earning Yearly'"
         [percentage]="'2%'"
         [percentageStatus]="'Increase'"
-        [kpiData]="this.earningData?.year"></app-kpi>
+        [kpiData]="this.earningData?.year"></app-kpi> -->
+        <app-kpi
+        type="earning"
+        [title]="'Earning Weekly'"
+        [percentage]="'0%'"
+        value="$0"
+        ></app-kpi>
+      <app-kpi
+        type="earning"
+        [title]="'Earning Monthly'"
+        [percentage]="'0%'"
+        value="$0"
+        ></app-kpi>
+      <app-kpi
+        type="earning"
+        [title]="'Earning Yearly'"
+        [percentage]="'0%'"
+        value="$0"
+        ></app-kpi>
     </div>
     <div class="row">
       <div class="col-xl-12">

@@ -17,7 +17,6 @@ import {
 } from 'ng-apexcharts';
 import { BarberService } from 'src/app/core/service/barber.service';
 import { EmployeeService } from '../../human-resources/employee.service';
-import { Earnings } from 'src/app/models/earnings.model';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -67,11 +66,11 @@ export class FinancesComponent implements OnInit {
       series: [
         {
           name: 'Estimated',
-          data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
+          data: [0,0,0,0,23,25],
         },
         {
-          name: 'Real',
-          data: [8, 22, 60, 35, 17, 24, 48, 37, 56, 22, 32, 38],
+          name: 'Actual',
+          data: [0,0,0,0,21,29],
         },
       ],
       chart: {
@@ -211,10 +210,6 @@ export class FinancesComponent implements OnInit {
     this.barberService.getKPIS(sub).subscribe(response => {
       // console.log(response.data);
       this.earningData = response.data;
-
-      // console.log('week', this.earningData.week.kpis);
-      // console.log('month', this.earningData.month.kpis);
-      // console.log('year', this.earningData.year.kpis);
     });
   }
 }

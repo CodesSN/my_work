@@ -441,11 +441,11 @@ export class HomeComponent
       series: [
         {
           name: 'Estimated',
-          data: [15, 48, 36, 20, 40, 60, 35, 20, 16, 31, 22, 11],
+          data: [0,0,0,0,23,25],
         },
         {
           name: 'Actual',
-          data: [8, 22, 60, 35, 17, 24, 48, 37, 56, 22, 32, 38],
+          data: [0,0,0,0,21,29],
         },
       ],
       chart: {
@@ -581,11 +581,11 @@ export class HomeComponent
       series: [
         {
           name: 'New Clients',
-          data: [31, 40, 28, 51, 42, 85, 77],
+          data: [0,0],
         },
         {
           name: 'Old Clients',
-          data: [11, 32, 45, 32, 34, 52, 41],
+          data: [0,0],
         },
       ],
       chart: {
@@ -611,13 +611,8 @@ export class HomeComponent
       xaxis: {
         type: 'datetime',
         categories: [
-          '2018-09-19',
-          '2018-09-20',
-          '2018-09-21',
-          '2018-09-22',
-          '2018-09-23',
-          '2018-09-24',
-          '2018-09-25',
+          '2023-06-01',
+          '2023-06-30',
         ],
       },
       legend: {
