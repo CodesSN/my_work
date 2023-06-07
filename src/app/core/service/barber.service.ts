@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Appointment } from 'src/app/models/appointment.model';
+import { Appointment, AppointmentStatus } from 'src/app/models/appointment.model';
 import { BarberFiles } from 'src/app/models/barber.model';
 import { UpdatedUser } from 'src/app/models/employee.model';
 import { environment } from 'src/environments/environment';
@@ -33,6 +33,14 @@ export class BarberService {
     return this.http.get<Appointment[]>(`${environment.apiUrl}/citas/get`);
   }
 
+  getBarberAppointmentsMig(){
+    return this.http.get<Appointment[]>(`${environment.apiUrl}/mig/appointments/get/all`);
+  }
+
+  changeAppointmentMonitoristStatus(status: AppointmentStatus){
+    return this.http.put<any>(`${environment.apiUrl}/mig/appointments/put`, status);
+  }
+
   getBarberAppointmentsById(sub:string){
     return this.http.get<Appointment[]>(`${environment.apiUrl}/mig/appointments/by_id?id_sub=${sub}`)
   }
@@ -59,6 +67,15 @@ export class BarberService {
 
       reader.readAsDataURL(file);
     });
+  }
+
+  getDate(date: Date | null){
+    if(date){
+      const newDate = new Date(date);
+      const dateWithoutHour = newDate.toISOString().split("T")[0];
+      return dateWithoutHour;
+    }
+    return '';
   }
 
 }

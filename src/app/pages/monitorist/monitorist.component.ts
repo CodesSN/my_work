@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarberService } from 'src/app/core/service/barber.service';
 import { Appointment } from 'src/app/models/appointment.model';
-import { EmployeeService } from '../human-resources/employee.service';
 
 @Component({
   selector: 'app-monitorist',
@@ -14,7 +13,6 @@ export class MonitoristComponent implements OnInit{
 
   constructor(
     private barberService: BarberService,
-    private employeeService: EmployeeService
   ){}
 
   ngOnInit(): void {
@@ -25,12 +23,19 @@ export class MonitoristComponent implements OnInit{
 
     //   this.appointmentsAssigned = response.filter(res => res.paid === true);
     // });
-    const userSub = this.employeeService.getSub();
-    console.log(userSub);
 
-    this.barberService.getBarberAppointmentsById(userSub).subscribe(response => {
+    this.barberService.getBarberAppointmentsMig().subscribe(response => {
       console.log(response);
 
-    })
+      this.appointmentsRequested = response.filter(res => !res.paid);
+      console.log(this.appointmentsRequested);
+
+
+      this.appointmentsAssigned = response.filter(res => res.paid);
+      console.log(this.appointmentsAssigned);
+
+    });
+
+
   }
 }

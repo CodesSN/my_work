@@ -78,6 +78,8 @@ export class CalendarComponent
 
   async ngOnInit(): Promise<void> {
   const sub = this.calendarService.getCurrentUser();
+  console.log(sub);
+
     this.calendarService.getWorkingHours(sub).subscribe(response => {
       if(response.statusCode){
         const arrayHours = response.body.times.split('-');
@@ -85,14 +87,10 @@ export class CalendarComponent
 
         this.workingDays = arrayDays;
         this.workingHours = arrayHours
-
-        console.log(arrayHours);
-        console.log(arrayDays);
-
-
       }
     })
-    this.calendarEvents = await this.getEvents(await this.getAppoitments(sub));
+    const appointment = await this.getAppoitments(sub);
+    this.calendarEvents = await this.getEvents(appointment);
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.events = this.calendarEvents;
 
@@ -101,13 +99,14 @@ export class CalendarComponent
     const events:EventInput[] = [];
     citas.forEach((e:any) => {
       events.push({
-        title: e.service,
+        title  : e.clientName,
+        service: e.service,
         start: e.time,
+        end: e.end,
         allDay: false,
         client: e.nameClient,
         price: e.cost,
         duration: e.duration
-
       })
     })
     console.log(events)

@@ -17,29 +17,27 @@
         </button>
       </td>
       <td class="table-content">
-        <span>
+        <a class="table-text" (click)="viewAppointment(appointment)">
           {{ appointment.nameClient}}
-        </span>
+        </a>
       </td>
       <td class="table-content">
         <!-- <button (click)="changeState(i, 'payment')" class="table-content--option" [ngClass]="fila.payment? 'table-content--success' : 'table-content--danger'" >
           {{ fila.payment? 'Aproved' : 'Not aproved'  }}
         </button> -->
-        <input type="checkbox">
+        <input type="checkbox" [(ngModel)]="appointment.paid" (change)="changeAppointmentMonitoristState(appointment, 'paid')">
       </td>
       <td class="table-content">
         <!-- <button (click)="changeState(i, 'distances')" class="table-content--option" [ngClass]="fila.distances? 'table-content--success' : 'table-content--danger'">
           {{ fila.distances? 'Aproved' : 'Not aproved'  }}
         </button> -->
-        <input type="checkbox">
-
+        <input type="checkbox" [(ngModel)]="appointment.inPlace" (change)="changeAppointmentMonitoristState(appointment, 'inPlace')">
       </td>
       <td class="table-content">
         <!-- <button (click)="changeState(i, 'confirmAppointment')" class="table-content--option" [ngClass]="fila.confirmAppointment? 'table-content--success' : 'table-content--danger'">
           {{ fila.confirmAppointment? 'Aproved' : 'Not aproved'  }}
         </button> -->
-        <input type="checkbox">
-
+        <input type="checkbox" [(ngModel)]="appointment.confirmed" (change)="changeAppointmentMonitoristState(appointment, 'confirmed')">
       </td>
     </tr>
   </tbody>

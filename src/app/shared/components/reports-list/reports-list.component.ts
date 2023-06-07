@@ -12,7 +12,7 @@ import { BarberService } from 'src/app/core/service/barber.service';
 export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
   @Input() title!: 'Requested' | 'Assigned' | "Completed";
   @Input() appointments!: Appointment[];
-  data:any;
+  private data:any;
 
   constructor(
     private dialog: MatDialog,
@@ -22,25 +22,9 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
   }
 
   viewReport(appointment:Appointment){
-    switch(this.title){
-      case 'Requested':
-        this.data = {
-          appointment:appointment,
-          report: "Requested"
-        }
-        break;
-      case 'Assigned':
-        this.data = {
-          appointment:appointment,
-          report: 'Assigned'
-        }
-        break;
-      case 'Completed':
-        this.data = {
-          appointment:appointment,
-          report: 'Completed'
-        }
-        break;
+    this.data = {
+      appointment:appointment,
+      report: 'Assigned'
     }
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
       data: this.data
@@ -48,7 +32,7 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
     this.subs.sink = dialogRef.afterClosed().subscribe(response => {
       // Si el modal fue existosa la peticion regresa un confirm
       if(response === 'confirm'){
-        this.subs.sink =  this.barberService.getBarberAppointments().subscribe(response => {
+        this.subs.sink =  this.barberService.getBarberAppointmentsMig().subscribe(response => {
           // Para ver como se va a filtrar la informacion lo analizamos en base al titulo
           switch(this.title){
             case 'Requested':
@@ -66,5 +50,14 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
         })
       }
     });
+  }
+
+  getDate(date: Date | null){
+    if(date){
+      const newDate = new Date(date);
+      const dateWithoutHour = newDate.toISOString().split("T")[0];
+      return dateWithoutHour;
+    }
+    return '';
   }
 }

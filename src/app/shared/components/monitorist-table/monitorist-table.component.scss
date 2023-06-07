@@ -17,7 +17,7 @@
       border-top: 1px solid black;
       border-bottom: 1px solid black;
       display: grid;
-      grid-template-columns: minmax(40px, auto) minmax(120px, auto) repeat(3,1fr);
+      grid-template-columns: minmax(40px, auto) 120px repeat(3,1fr);
     }
 
     &--header {
@@ -32,6 +32,7 @@
     display: flex;
     align-items: center;
     background-color: white;
+    overflow: hidden;
 
     &--danger {
       background-color: $error;
@@ -58,6 +59,16 @@
 
   &-icon {
 
+  }
+
+  &-text {
+    text-align: left;
+    color: $light-gray;
+    cursor: pointer;
+
+    &:hover {
+      color: black;
+    }
   }
 }
 

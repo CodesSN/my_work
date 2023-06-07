@@ -1,5 +1,6 @@
 export interface Appointment {
   id_sub: string;
+  id:number;
   date: Date;
   address: string;
   addressClient: string;
@@ -12,4 +13,11 @@ export interface Appointment {
   service: string;
   paid:boolean;
   time: string;
+  confirmed: boolean;
+  inPlace: boolean;
+}
+
+export interface AppointmentStatus {
+  id: number,
+  attr: 'confirmed' | 'paid' | 'inPlace';
 }
