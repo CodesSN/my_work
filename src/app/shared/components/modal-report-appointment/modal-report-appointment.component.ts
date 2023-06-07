@@ -5,7 +5,7 @@ import { Appointment } from 'src/app/models/appointment.model';
 
 export interface DialogData {
   appointment: Appointment;
-  report: 'Requested' | 'Assigned' | "Completed";
+  report: 'Requested' | 'Assigned' | "Completed" | "Appointment";
 }
 
 @Component({

@@ -5,7 +5,6 @@
     </div>
     <mat-tab-group class="tab__container" color="Warn" mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="Personal">
-        <app-file-upload [title]="'Photo'" ></app-file-upload>
         <div class="inputs-container">
           <div class="input-container">
             <mat-form-field appearance="outline" >
@@ -91,14 +90,6 @@
               </mat-select>
             </mat-form-field>
           </div>
-        </div>
-        <div class="input-container">
-          <mat-form-field appearance="outline" >
-            <mat-label>Description</mat-label>
-            <textarea matInput  formControlName="description"></textarea>
-            <mat-icon matSuffix></mat-icon>
-            <mat-error *ngIf="modalForm.get('description')?.hasError('required') && modalForm.get('description')?.touched">Description is required</mat-error>
-          </mat-form-field>
         </div>
       </mat-tab>
       <mat-tab label="Files">

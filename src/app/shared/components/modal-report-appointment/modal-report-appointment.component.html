@@ -2,7 +2,7 @@
   <!-- Contenedor de los  -->
   <div class="modal-title-container">
     <h4 class="modal-title" >{{title}}</h4>
-    <span class="title-barber">Service provided by <strong>{{appointment.barber}}</strong></span>
+    <span *ngIf="data.report !== 'Appointment'" class="title-barber">Service provided by <strong>{{appointment.barber}}</strong></span>
   </div>
   <!-- Contenedor de Date y time -->
   <div class="modal-info-container">
@@ -80,6 +80,7 @@
       </div>
     </div>
   </div>
+
   <!-- Contenedor de los botones -->
   <div class="modal-buttons-container">
     <button class="modal-button modal-button--cancel" (click)="close()">Close</button>

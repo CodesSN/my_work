@@ -29,6 +29,7 @@ import { INITIAL_EVENTS } from './events-util';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 import { FormWorkingTimeComponent } from './form-working-time/form-working-time.component';
+import { ModalReportAppointmentComponent } from 'src/app/shared/components/modal-report-appointment/modal-report-appointment.component';
 
 
 @Component({
@@ -161,44 +162,44 @@ export class CalendarComponent
   }
 
   // Llama al modal para crear un nuevo evento
-  addNewEvent() {
-    const dialogRef = this.dialog.open(FormDialogComponent, {
-      data: {
-        calendar: this.calendar,
-        action: 'add',
-      },
-    });
+  // addNewEvent() {
+  //   const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
+  //     data: {
+  //       calendar: this.calendar,
+  //       action: 'add',
+  //     },
+  //   });
 
-    this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'submit') {
-
-
-        this.calendarData = this.calendarService.getDialogData();
-        this.calendarEvents = this.calendarEvents?.concat({
-          // add new event data. must create new array
-          id: this.calendarData.id,
-          title: this.calendarData.title,
-          start: this.calendarData.startDate,
-          end: this.calendarData.endDate,
-          className: this.getClassNameValue(this.calendarData.category),
-          groupId: this.calendarData.category,
-          details: this.calendarData.details,
-        });
-        // console.log(this.calendarData);
-        // console.log("events: ", this.calendarEvents);
+  //   this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
+  //     if (result === 'submit') {
 
 
-        this.calendarOptions.events = this.calendarEvents;
-        this.addCusForm.reset();
-        this.showNotification(
-          'snackbar-success',
-          'Add Record Successfully...!!!',
-          'bottom',
-          'center'
-        );
-      }
-    });
-  }
+  //       this.calendarData = this.calendarService.getDialogData();
+  //       this.calendarEvents = this.calendarEvents?.concat({
+  //         // add new event data. must create new array
+  //         id: this.calendarData.id,
+  //         title: this.calendarData.title,
+  //         start: this.calendarData.startDate,
+  //         end: this.calendarData.endDate,
+  //         className: this.getClassNameValue(this.calendarData.category),
+  //         groupId: this.calendarData.category,
+  //         details: this.calendarData.details,
+  //       });
+  //       // console.log(this.calendarData);
+  //       // console.log("events: ", this.calendarEvents);
+
+
+  //       this.calendarOptions.events = this.calendarEvents;
+  //       this.addCusForm.reset();
+  //       this.showNotification(
+  //         'snackbar-success',
+  //         'Add Record Successfully...!!!',
+  //         'bottom',
+  //         'center'
+  //       );
+  //     }
+  //   });
+  // }
 
   changeCategory(event: MatCheckboxChange, filter: { name: string }) {
     console.log(event);
@@ -236,7 +237,7 @@ export class CalendarComponent
     };
 
 
-    const dialogRef = this.dialog.open(FormDialogComponent, {
+    const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
       data: {
         calendar: calendarData,
         action: 'edit',

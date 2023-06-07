@@ -99,7 +99,7 @@ export class FormDialogComponent implements OnInit  {
     this.calendarService.deleteCalendar(this.calendarForm.getRawValue());
     this.dialogRef.close('delete');
   }
-  onNoClick(): void {
+  close(): void {
     this.dialogRef.close();
   }
   public confirmAdd(): void {
