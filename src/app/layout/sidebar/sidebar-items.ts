@@ -86,8 +86,20 @@ export const ROUTES: RouteInfo[] = [
     role_access: ['1'],
     submenu: [
       {
-        path: 'monitorist',
+        path: 'monitorist/appointments',
         title: 'Appointments',
+        iconType: '',
+        icon: '',
+        class: 'ml-menu',
+        groupTitle: false,
+        badge: '',
+        badgeClass: '',
+        role_access: [],
+        submenu: [],
+      },
+      {
+        path: 'monitorist/list',
+        title: 'List',
         iconType: '',
         icon: '',
         class: 'ml-menu',

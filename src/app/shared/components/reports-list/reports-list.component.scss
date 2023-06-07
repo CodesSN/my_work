@@ -3,6 +3,7 @@
 .report {
   &-container {
     margin: 0 10px;
+    margin-bottom: 30px;
     // background-color: #fff;
   }
 
@@ -15,6 +16,8 @@
   }
 
   &-text {
+    display: flex;
+    justify-content: space-between;
     margin: 10px;
     text-align: left;
     color: $light-gray;

@@ -33,6 +33,10 @@ export class BarberService {
     return this.http.get<Appointment[]>(`${environment.apiUrl}/citas/get`);
   }
 
+  getBarberAppointmentsById(sub:string){
+    return this.http.get<Appointment[]>(`${environment.apiUrl}/mig/appointments/by_id?id_sub=${sub}`)
+  }
+
   changeAppointmentState(id:any){
     return this.http.put<any>(`${environment.apiUrl}/Appoitments/Paid/Confirm`, id);
   }

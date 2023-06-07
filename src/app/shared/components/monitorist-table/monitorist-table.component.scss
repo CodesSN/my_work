@@ -1,0 +1,64 @@
+@import '../../../../assets/scss/common/variables';
+@import '../../../../assets/scss/common/mixinsmedia';
+
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+
+  &-row {
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    border: 0;
+    outline: 0;
+    @include mobile-l {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      display: grid;
+      grid-template-columns: minmax(40px, auto) minmax(120px, auto) repeat(3,1fr);
+    }
+
+    &--header {
+      display: none;
+      @include mobile-l {
+        display: grid;
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    background-color: white;
+
+    &--danger {
+      background-color: $error;
+    }
+
+    &--success {
+      background-color: $success;
+    }
+  }
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $black;
+    padding: 8px;
+    width: 80%;
+    height: 80%;
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &-icon {
+
+  }
+}
+
+

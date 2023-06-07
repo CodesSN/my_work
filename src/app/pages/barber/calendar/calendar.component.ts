@@ -92,7 +92,7 @@ export class CalendarComponent
 
       }
     })
-    this.calendarEvents = await this.getEvents(await this.getAppoitments());
+    this.calendarEvents = await this.getEvents(await this.getAppoitments(sub));
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.events = this.calendarEvents;
 
@@ -102,22 +102,22 @@ export class CalendarComponent
     citas.forEach((e:any) => {
       events.push({
         title: e.service,
-        start: e.date + 'T' + e.time,
+        start: e.time,
         allDay: false,
         client: e.nameClient,
         price: e.cost,
         duration: e.duration
-        
+
       })
     })
     console.log(events)
     return events
   }
-  async getAppoitments(){
+  async getAppoitments(sub:string){
     const config: AxiosRequestConfig = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: 'https://awbkpur9r9.execute-api.us-east-1.amazonaws.com/citas/get',
+      url: `https://awbkpur9r9.execute-api.us-east-1.amazonaws.com//mig/appointments/by_id?id_sub=${sub}`,
       headers: {},
     };
 
