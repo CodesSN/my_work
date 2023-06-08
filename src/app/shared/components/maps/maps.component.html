@@ -1,0 +1,22 @@
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card custom-card">
+          <div class="header d-flex justify-content-center align-items-center">
+            <h4 class="fw-bold fs-5 mx-2 d-flex justify-content-center align-items-center">Appointment Location</h4>
+            <div class="btn-loc"><span class="fw-bold">Location:</span> {{ lat}},{{lng }}
+            </div>
+          </div>
+          <div class="card-body">
+            <google-map
+              height="500px"
+              width="100%"
+              [center]="center"
+              [zoom]="zoom"
+            >
+            <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition" [options]="markerOptions"></map-marker>
+            </google-map>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -7,6 +7,8 @@ export interface Appointment {
   barber: string;
   cost: number;
   duration: number;
+  lat:number,
+  lng:number,
   emailClient: string;
   nameClient: string;
   phoneClient: string;

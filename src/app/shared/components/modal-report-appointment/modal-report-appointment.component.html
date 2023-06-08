@@ -80,6 +80,7 @@
       </div>
     </div>
   </div>
+  <app-maps [lat]="appointment.lat" [lng]="appointment.lng"></app-maps>
   <!-- Contenedor de los botones -->
   <div class="modal-buttons-container">
     <button class="modal-button modal-button--cancel" (click)="close()">Close</button>

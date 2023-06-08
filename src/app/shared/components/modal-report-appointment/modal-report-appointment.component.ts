@@ -26,6 +26,7 @@ export class ModalReportAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointment = this.data.appointment;
+    console.log("lat ",this.appointment.lat)
     if(this.data.report === 'Requested') {
       this.confirmButton = true
     } else {
