@@ -2,10 +2,10 @@
   <h2>List of appointments</h2>
   <div class="list-item" *ngFor="let event of list">
     <div class="item-container">
-      <p class="item item-text">{{event.title}}</p>
+      <p class="item item-text">{{event.clientName}}</p>
     </div>
     <div class="item-container item-container-hour">
-      <p class="item item-hour">{{event.client}}</p>
+      <p class="item item-hour">{{event.service}}</p>
       <p class="item item-hour">{{event.duration}} minutes</p>
       <p class="item item-hour">{{event.price}} $</p>
       <p class="item item-hour">{{getStartHours(event)}}</p>

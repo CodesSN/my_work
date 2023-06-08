@@ -4,7 +4,7 @@ import { BarberService } from 'src/app/core/service/barber.service';
 import { Appointment } from 'src/app/models/appointment.model';
 
 export interface DialogData {
-  appointment: Appointment;
+  appointment: Appointment | any;
   report: 'Requested' | 'Assigned' | "Completed" | "Appointment";
 }
 
@@ -25,6 +25,8 @@ export class ModalReportAppointmentComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    console.log(this.data.appointment);
+
     this.appointment = this.data.appointment;
     if(this.data.report === 'Requested') {
       this.confirmButton = true
@@ -42,7 +44,7 @@ export class ModalReportAppointmentComponent implements OnInit {
     console.log(this.data);
     const body = {
       id_sub:this.appointment.id_sub,
-      date: this.appointment.date
+      date: this.appointment.creation_date
     }
     // Subir la peticion con el sub_id y la fecha de la cita
     this.barberService.changeAppointmentState(body).subscribe(response => {

@@ -1,18 +1,19 @@
 export interface Appointment {
   id_sub: string;
   id:number;
-  date: Date;
   address: string;
   addressClient: string;
   barber: string;
   cost: number;
+  creation_date: string;
   duration: number;
   emailClient: string;
   nameClient: string;
   phoneClient: string;
   service: string;
   paid:boolean;
-  time: string;
+  start: Date;
+  end: Date;
   confirmed: boolean;
   inPlace: boolean;
 }

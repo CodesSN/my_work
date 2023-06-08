@@ -30,6 +30,7 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroyAdapter';
 import { FormWorkingTimeComponent } from './form-working-time/form-working-time.component';
 import { ModalReportAppointmentComponent } from 'src/app/shared/components/modal-report-appointment/modal-report-appointment.component';
+import { Appointment } from 'src/app/models/appointment.model';
 
 
 @Component({
@@ -78,9 +79,7 @@ export class CalendarComponent
   }
 
   async ngOnInit(): Promise<void> {
-  const sub = this.calendarService.getCurrentUser();
-  console.log(sub);
-
+    const sub = this.calendarService.getCurrentUser();
     this.calendarService.getWorkingHours(sub).subscribe(response => {
       if(response.statusCode){
         const arrayHours = response.body.times.split('-');
@@ -94,23 +93,33 @@ export class CalendarComponent
     this.calendarEvents = await this.getEvents(appointment);
     this.tempEvents = this.calendarEvents;
     this.calendarOptions.events = this.calendarEvents;
-
   }
+
   async getEvents(citas:any){
     const events:EventInput[] = [];
     citas.forEach((e:any) => {
+      // console.log(e.start);
+      console.log(e);
       events.push({
-        title  : e.clientName,
-        service: e.service,
-        start: e.time,
+        id: e.id,
+        start: e.start,
         end: e.end,
+        title: e.nameClient,
+        nameClient  : e.nameClient,
+        address: e.address,
+        service: e.service,
         allDay: false,
         client: e.nameClient,
-        price: e.cost,
-        duration: e.duration
+        emailClient: e.emailClient,
+        duration: e.duration,
+        dur: e.duration,
+        groupId: e.service,
+        barber: e.barber,
+        cost: e.cost,
+        creation_date: e.creation_date,
+        phone: e.phone
       })
     })
-    console.log(events)
     return events
   }
   async getAppoitments(sub:string){
@@ -160,47 +169,6 @@ export class CalendarComponent
       }
     });
   }
-
-  // Llama al modal para crear un nuevo evento
-  // addNewEvent() {
-  //   const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
-  //     data: {
-  //       calendar: this.calendar,
-  //       action: 'add',
-  //     },
-  //   });
-
-  //   this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
-  //     if (result === 'submit') {
-
-
-  //       this.calendarData = this.calendarService.getDialogData();
-  //       this.calendarEvents = this.calendarEvents?.concat({
-  //         // add new event data. must create new array
-  //         id: this.calendarData.id,
-  //         title: this.calendarData.title,
-  //         start: this.calendarData.startDate,
-  //         end: this.calendarData.endDate,
-  //         className: this.getClassNameValue(this.calendarData.category),
-  //         groupId: this.calendarData.category,
-  //         details: this.calendarData.details,
-  //       });
-  //       // console.log(this.calendarData);
-  //       // console.log("events: ", this.calendarEvents);
-
-
-  //       this.calendarOptions.events = this.calendarEvents;
-  //       this.addCusForm.reset();
-  //       this.showNotification(
-  //         'snackbar-success',
-  //         'Add Record Successfully...!!!',
-  //         'bottom',
-  //         'center'
-  //       );
-  //     }
-  //   });
-  // }
-
   changeCategory(event: MatCheckboxChange, filter: { name: string }) {
     console.log(event);
     console.log(filter);
@@ -226,21 +194,30 @@ export class CalendarComponent
     this.eventClick(clickInfo);
   }
 
+  // Event click
   eventClick(row: EventClickArg) {
     const calendarData = {
-      id: row.event.id,
-      title: row.event.title,
-      category: row.event.groupId,
-      startDate: row.event.start,
-      endDate: row.event.end,
-      details: row.event.extendedProps['details'],
+        id: row.event.id,
+        nameClient  : row.event.extendedProps['nameClient'],
+        address: row.event.extendedProps['address'],
+        service: row.event.extendedProps['service'],
+        start: row.event.start,
+        end: row.event.end,
+        creation_date: row.event.extendedProps['creation_date'],
+        cost: row.event.extendedProps['cost'],
+        duration: row.event.extendedProps['dur'],
+        phone: row.event.extendedProps['phone'],
+        emailClient: row.event.extendedProps['emailClient']
     };
+    console.log(row.event.extendedProps);
+
+    console.log(calendarData);
 
 
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
       data: {
-        calendar: calendarData,
-        action: 'edit',
+        appointment: calendarData,
+        report: 'assigned',
       },
     });
 

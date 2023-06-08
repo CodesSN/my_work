@@ -9,10 +9,6 @@ export class CalendarListComponent implements OnChanges {
   @Input() data:any;
   list!:any;
 
-  constructor(){
-    console.log('data: ' , this.data);
-  }
-
   ngOnChanges(changes:SimpleChanges):void {
     if(this.data !== undefined){
       this.list = this.data;

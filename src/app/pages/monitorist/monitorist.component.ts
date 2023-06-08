@@ -18,24 +18,11 @@ export class MonitoristComponent implements OnInit{
   ngOnInit(): void {
     // this.barberService.getBarberAppointments().subscribe(response => {
     //   this.appointmentsRequested = response.filter(res => res.paid === false);
-    //   console.log(typeof this.appointmentsRequested[0]['date']);
-
-
     //   this.appointmentsAssigned = response.filter(res => res.paid === true);
     // });
-
     this.barberService.getBarberAppointmentsMig().subscribe(response => {
-      console.log(response);
-
-      this.appointmentsRequested = response.filter(res => !res.paid);
-      console.log(this.appointmentsRequested);
-
-
-      this.appointmentsAssigned = response.filter(res => res.paid);
-      console.log(this.appointmentsAssigned);
-
+      this.appointmentsRequested = response.filter(res => !res.paid || !res.inPlace || !res.confirmed );
+      this.appointmentsAssigned = response.filter(res => res.paid && res.inPlace && res.confirmed);
     });
-
-
   }
 }
