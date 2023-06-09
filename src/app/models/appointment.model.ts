@@ -7,6 +7,8 @@ export interface Appointment {
   cost: number;
   creation_date: string;
   duration: number;
+  lat:number,
+  lng:number,
   emailClient: string;
   nameClient: string;
   phoneClient: string;

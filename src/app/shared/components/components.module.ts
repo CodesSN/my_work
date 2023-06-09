@@ -31,6 +31,8 @@ import { KpiComponent } from './kpi/kpi.component';
 import { ReportsListComponent } from './reports-list/reports-list.component';
 import { ModalReportAppointmentComponent } from './modal-report-appointment/modal-report-appointment.component';
 import { MonitoristTableComponent } from './monitorist-table/monitorist-table.component';
+import { MapsComponent } from './maps/maps.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { MonitoristTableComponent } from './monitorist-table/monitorist-table.co
     ReportsListComponent,
     ModalReportAppointmentComponent,
     MonitoristTableComponent,
+    MapsComponent,
   ],
   imports: [
     SharedModule,
@@ -67,7 +70,8 @@ import { MonitoristTableComponent } from './monitorist-table/monitorist-table.co
     MatAutocompleteModule,
     NgImageFullscreenViewModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    GoogleMapsModule
   ],
   exports: [
     FileUploadComponent,

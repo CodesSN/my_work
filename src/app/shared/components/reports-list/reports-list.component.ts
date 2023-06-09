@@ -27,7 +27,9 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
       report: 'Assigned'
     }
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
-      data: this.data
+      data: this.data,
+      height:'100%',
+      width: '100%;'
     });
     this.subs.sink = dialogRef.afterClosed().subscribe(response => {
       // Si el modal fue existosa la peticion regresa un confirm

@@ -43,6 +43,7 @@ export class CalendarListComponent extends UnsubscribeOnDestroyAdapter implement
         appointment: info,
         report: 'assigned',
       },
+      height: '100%'
     });
 
     this.subs.sink = dialogRef.afterClosed().subscribe();

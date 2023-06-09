@@ -1,13 +1,30 @@
 <div class="report-container">
-  <h4 class="report-title">{{title}}</h4>
+  <h4 class="report-title">
+    <span *ngIf="(title === 'Requested')" class="request-mark">
+    </span>
+    <span *ngIf="(title === 'Assigned')"  class="assigned-mark">
+    </span>
+    <span *ngIf="(title === 'Completed')"  class="completed-mark">
+    </span>
+    {{title}}</h4>
   <div *ngFor="let appointment of appointments" class="report-content">
     <a (click)="viewReport(appointment)" class="report-text">
-      <span>
-        {{appointment.nameClient}}
-      </span>
-      <span>
-        {{ getDate(appointment.start)}}
-      </span>
+      <span *ngIf="(title === 'Requested')" class="mark-request"></span>
+      <span *ngIf="(title === 'Assigned')" class="mark-assigned"></span>
+      <span *ngIf="(title === 'Completed')" class="mark-completed"></span>
+      <div class="report-text-text">
+        <span>
+          {{appointment.nameClient}}
+        </span>
+        <span>
+          {{ getDate(appointment.start)}}
+        </span>
+      </div>
+      <div class="icon-report">
+        <i class="fa fa-expand" aria-hidden="true"></i>
+      </div>
     </a>
+  </div>
+  <div class="footer-report">
   </div>
 </div>

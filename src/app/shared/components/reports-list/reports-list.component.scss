@@ -9,16 +9,49 @@
   }
 
   &-title {
-    background-color: $gold;
+    display: flex;
+    flex-direction: row;
+    background-color:white;
     margin: 0;
     padding: 10px 0;
     text-align: center;
-    color: white;
+    color: rgb(80, 80, 80);
+    border-top:1px solid rgb(221, 221, 221);
+    border-left:1px solid rgb(221, 221, 221);
+    border-right:1px solid rgb(221, 221, 221);
+    border-bottom:1px solid rgb(221, 221, 221);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    & .request-mark{
+      display: flex;
+      width:10px;
+      height:10px;
+      background-color: $error;
+      border-radius: 100%;
+      margin-right:4px;
+    }
+    & .assigned-mark{
+      display: flex;
+      width:10px;
+      height:10px;
+      background-color: $yellow;
+      border-radius: 100%;
+      margin-right:4px;
+    }
+    & .completed-mark{
+      display: flex;
+      width:10px;
+      height:10px;  
+      background-color: $success;
+      border-radius: 100%;
+      margin-right:4px;
+    }
   }
-
+  
   &-text {
     display: flex;
-    justify-content: space-between;
     margin: 10px;
     text-align: left;
     color: $light-gray;
@@ -27,12 +60,54 @@
     &:hover {
       color: black;
     }
+    &-text{
+      margin-left:4px;
+    }
   }
 
   &-content {
     display: flex;
     flex-direction: column;
+    border-left:1px solid rgb(221, 221, 221);
+    border-right:1px solid rgb(221, 221, 221);
+    border-bottom:1px solid rgb(221, 221, 221);
     // padding: 10px 0;
     background-color: #fff;
+    margin:3px 0 3px 0;
   }
+}
+.mark-request{
+  display: flex;
+  background-color: $error;
+  padding:2px;
+}
+.mark-assigned{
+  display: flex;
+  background-color: $yellow;
+  padding:2px;
+}
+.mark-completed{
+  display: flex;
+  background-color: #3ed839;
+  padding:2px;
+}
+
+.footer-report{
+  background-color:white;
+  display: flex;
+  position: relative;
+  min-height:40px;
+  padding:10px;
+  border-left:1px solid rgb(221, 221, 221);
+  border-right:1px solid rgb(221, 221, 221);
+  border-bottom:1px solid rgb(221, 221, 221);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.icon-report{
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content:end;
+  align-items: center;
 }

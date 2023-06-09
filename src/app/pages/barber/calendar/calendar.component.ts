@@ -116,7 +116,9 @@ export class CalendarComponent
         barber: e.barber,
         cost: e.cost,
         creation_date: e.creation_date,
-        phoneClient: e.phoneClient
+        phoneClient: e.phoneClient,
+        lat: e.lat,
+        lng: e.lng
       })
     })
     return events
@@ -206,7 +208,9 @@ export class CalendarComponent
         cost: row.event.extendedProps['cost'],
         duration: row.event.extendedProps['dur'],
         phoneClient: row.event.extendedProps['phoneClient'],
-        emailClient: row.event.extendedProps['emailClient']
+        emailClient: row.event.extendedProps['emailClient'],
+        lat: row.event.extendedProps['lat'],
+        lng: row.event.extendedProps['lng']
     };
 
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
@@ -214,6 +218,7 @@ export class CalendarComponent
         appointment: calendarData,
         report: 'assigned',
       },
+      height: '100%'
     });
 
     this.subs.sink = dialogRef.afterClosed().subscribe();

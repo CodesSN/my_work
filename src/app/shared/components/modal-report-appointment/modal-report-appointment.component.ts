@@ -28,6 +28,7 @@ export class ModalReportAppointmentComponent implements OnInit {
     console.log(this.data.appointment);
 
     this.appointment = this.data.appointment;
+    console.log("lat ",this.appointment.lat)
     if(this.data.report === 'Requested') {
       this.confirmButton = true
     } else {
