@@ -31,6 +31,7 @@ import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/UnsubscribeOnDestroy
 import { FormWorkingTimeComponent } from './form-working-time/form-working-time.component';
 import { ModalReportAppointmentComponent } from 'src/app/shared/components/modal-report-appointment/modal-report-appointment.component';
 import { Appointment } from 'src/app/models/appointment.model';
+import { LogIn } from 'angular-feather/icons';
 
 
 @Component({
@@ -98,8 +99,6 @@ export class CalendarComponent
   async getEvents(citas:any){
     const events:EventInput[] = [];
     citas.forEach((e:any) => {
-      // console.log(e.start);
-      console.log(e);
       events.push({
         id: e.id,
         start: e.start,
@@ -117,7 +116,7 @@ export class CalendarComponent
         barber: e.barber,
         cost: e.cost,
         creation_date: e.creation_date,
-        phone: e.phone
+        phoneClient: e.phoneClient
       })
     })
     return events
@@ -206,13 +205,9 @@ export class CalendarComponent
         creation_date: row.event.extendedProps['creation_date'],
         cost: row.event.extendedProps['cost'],
         duration: row.event.extendedProps['dur'],
-        phone: row.event.extendedProps['phone'],
+        phoneClient: row.event.extendedProps['phoneClient'],
         emailClient: row.event.extendedProps['emailClient']
     };
-    console.log(row.event.extendedProps);
-
-    console.log(calendarData);
-
 
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
       data: {
@@ -221,37 +216,37 @@ export class CalendarComponent
       },
     });
 
-    this.subs.sink = dialogRef.afterClosed().subscribe((result) => {
-      if (result === 'submit') {
-        this.calendarData = this.calendarService.getDialogData();
-        this.calendarEvents?.forEach((element, index) => {
-          if (this.calendarData.id === element.id) {
-            this.editEvent(index, this.calendarData);
-          }
-        }, this);
-        this.showNotification(
-          'black',
-          'Edit Record Successfully...!!!',
-          'bottom',
-          'center'
-        );
-        this.addCusForm.reset();
-      } else if (result === 'delete') {
-        this.calendarData = this.calendarService.getDialogData();
-        this.calendarEvents?.forEach((element) => {
-          if (this.calendarData.id === element.id) {
-            row.event.remove();
-          }
-        }, this);
+    this.subs.sink = dialogRef.afterClosed().subscribe();
+  }
 
-        this.showNotification(
-          'snackbar-danger',
-          'Delete Record Successfully...!!!',
-          'bottom',
-          'center'
-        );
-      }
-    });
+  private getDate(date: Date | null){
+    if(date) {
+      // Convierte la fecha a un objeto Date
+      const newDate = new Date(date);
+      // Obtiene los componentes de la fecha
+      const day = newDate.getDate();
+      const month = newDate.getMonth() + 1; // Se suma 1 porque los meses en JavaScript van de 0 a 11
+      const year = newDate.getFullYear();
+
+      const dateTS = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
+      return dateTS;
+
+    }
+    return ""
+  }
+
+  private getHour(date: Date | null) {
+    if(date){
+      // Separa las partes de la hora
+      const newDate = new Date(date);
+      const hour = newDate.getHours();
+      const minutes = newDate.getMinutes();
+      // Genera el formato deseado en TypeScript
+      const hourTS = `${hour.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+      return hourTS;
+    }
+    return '';
   }
 
 

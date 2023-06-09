@@ -1,8 +1,8 @@
 <div class="list">
   <h2>List of appointments</h2>
-  <div class="list-item" *ngFor="let event of list">
+  <a (click)="print(event)" class="list-item" *ngFor="let event of list">
     <div class="item-container">
-      <p class="item item-text">{{event.clientName}}</p>
+      <p class="item item-text">{{event.nameClient}}</p>
     </div>
     <div class="item-container item-container-hour">
       <p class="item item-hour">{{event.service}}</p>
@@ -10,5 +10,5 @@
       <p class="item item-hour">{{event.price}} $</p>
       <p class="item item-hour">{{getStartHours(event)}}</p>
     </div>
-  </div>
+  </a>
 </div>

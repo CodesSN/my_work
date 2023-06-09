@@ -66,11 +66,11 @@ export class FinancesComponent implements OnInit {
       series: [
         {
           name: 'Estimated',
-          data: [0,0,0,0,23,25],
+          data: [0,0,0,0,0,0],
         },
         {
           name: 'Actual',
-          data: [0,0,0,0,21,29],
+          data: [0,0,0,0,0,0],
         },
       ],
       chart: {

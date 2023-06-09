@@ -53,11 +53,18 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
   }
 
   getDate(date: Date | null){
-    if(date){
+    if(date) {
+      // Convierte la fecha a un objeto Date
       const newDate = new Date(date);
-      const dateWithoutHour = newDate.toISOString().split("T")[0];
-      return dateWithoutHour;
+      // Obtiene los componentes de la fecha
+      const day = newDate.getDate();
+      const month = newDate.getMonth() + 1; // Se suma 1 porque los meses en JavaScript van de 0 a 11
+      const year = newDate.getFullYear();
+
+      const dateTS = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
+      return dateTS;
+
     }
-    return '';
+    return ""
   }
 }

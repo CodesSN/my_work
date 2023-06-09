@@ -211,7 +211,7 @@ export const ROUTES: RouteInfo[] = [
       },
       {
         path: "barber/assets",
-        title: "Assets",
+        title: "Asset",
         iconType: "feather",
         icon: "user-plus",
         class: "ml-menu",
