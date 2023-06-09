@@ -27,7 +27,7 @@
       display: flex;
       width:10px;
       height:10px;
-      background-color: #d84439;
+      background-color: $error;
       border-radius: 100%;
       margin-right:4px;
     }
@@ -35,7 +35,7 @@
       display: flex;
       width:10px;
       height:10px;
-      background-color: #396cd8;
+      background-color: $yellow;
       border-radius: 100%;
       margin-right:4px;
     }
@@ -43,7 +43,7 @@
       display: flex;
       width:10px;
       height:10px;  
-      background-color: #3ed839;
+      background-color: $success;
       border-radius: 100%;
       margin-right:4px;
     }
@@ -77,12 +77,12 @@
 }
 .mark-request{
   display: flex;
-  background-color: #d84439;
+  background-color: $error;
   padding:2px;
 }
 .mark-assigned{
   display: flex;
-  background-color: #396cd8;
+  background-color: $yellow;
   padding:2px;
 }
 .mark-completed{
@@ -102,4 +102,11 @@
   border-bottom:1px solid rgb(221, 221, 221);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+.icon-report{
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content:end;
+  align-items: center;
 }
