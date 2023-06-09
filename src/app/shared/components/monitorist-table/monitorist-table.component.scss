@@ -50,6 +50,13 @@
       justify-content: center;
       align-items: center;
     }
+    & input{
+      display: flex;
+      width:40px;
+      height:20px;
+      margin-left:10px;
+      border-radius:100%;
+    }
   }
   &-text{
     color: black;
@@ -58,10 +65,4 @@
 .bg-status-on{
   background-color: $success;
   color:white;
-}
-.i-switch{
-  display: flex;
-  width:40px;
-  height:20px;
-  margin-left:10px;
 }
