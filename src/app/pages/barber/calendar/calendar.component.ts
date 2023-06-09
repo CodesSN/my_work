@@ -218,7 +218,8 @@ export class CalendarComponent
         appointment: calendarData,
         report: 'assigned',
       },
-      height: '100%'
+      height: '100%',
+      width: '50%'
     });
 
     this.subs.sink = dialogRef.afterClosed().subscribe();

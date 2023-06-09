@@ -28,8 +28,8 @@ export class ReportsListComponent extends UnsubscribeOnDestroyAdapter {
     }
     const dialogRef = this.dialog.open(ModalReportAppointmentComponent, {
       data: this.data,
-      height:'100%',
-      width: '100%;'
+      height: '100%',
+      width: '550px'
     });
     this.subs.sink = dialogRef.afterClosed().subscribe(response => {
       // Si el modal fue existosa la peticion regresa un confirm

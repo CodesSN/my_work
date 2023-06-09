@@ -33,6 +33,7 @@ import { ModalReportAppointmentComponent } from './modal-report-appointment/moda
 import { MonitoristTableComponent } from './monitorist-table/monitorist-table.component';
 import { MapsComponent } from './maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { NgScrollbarModule } from "ngx-scrollbar";
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
     NgImageFullscreenViewModule,
     MatInputModule,
     MatTabsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    NgScrollbarModule
   ],
   exports: [
     FileUploadComponent,
