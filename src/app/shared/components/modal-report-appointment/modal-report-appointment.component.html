@@ -8,7 +8,7 @@
       <h4 class="modal-title" >{{title}}</h4>
       <span *ngIf="data.report !== 'Appointment'" class="title-barber">Service provided by <strong>{{appointment.barber}}</strong></span>
     </div>
-    <button (click)="close()" mat-fab color="warn" aria-label="Example icon button with a home icon">
+    <button class="close-button" (click)="close()" aria-label="Example icon button with a home icon">
       <mat-icon>close</mat-icon>
     </button>
   </div>

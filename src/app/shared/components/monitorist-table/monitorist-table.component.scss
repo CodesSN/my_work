@@ -1,75 +1,67 @@
 @import '../../../../assets/scss/common/variables';
 @import '../../../../assets/scss/common/mixinsmedia';
-
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
+.table{
   background-color: white;
+  border:1px solid $gray-border;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
-  &-row {
+  &-row{
     display: flex;
-    flex-direction: column;
-    border-collapse: collapse;
-    border: 0;
-    outline: 0;
-    @include mobile-l {
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-      display: grid;
-      grid-template-columns: minmax(40px, auto) 120px repeat(3,1fr);
+    flex-direction: row;
+    &-header{
+      display: flex;
+      flex-direction: row;
+      padding:10px;
+      border-bottom:1px solid $gray-border;
+      font-size:16px;
+      font-weight:500;
     }
-
-    &--header {
-      display: none;
-      @include mobile-l {
-        display: grid;
-      }
+    &-header .table-content{
+      width:25% !important;
+    }
+    &-content{
+      display: flex;
+      position: relative;
     }
   }
-
-  &-content {
+  &-content{
     display: flex;
-    align-items: center;
-    background-color: white;
-    overflow: hidden;
-
-    &--danger {
-      background-color: $error;
-    }
-
-    &--success {
-      background-color: $success;
-    }
-  }
-
-  &-button {
-    display: flex;
+    width:calc(100% - 50px);
     justify-content: center;
     align-items: center;
-    color: $black;
-    padding: 8px;
-    width: 80%;
-    height: 80%;
-    border: none;
-    border-radius: 40px;
-    outline: none;
-    cursor: pointer;
-  }
-
-  &-icon {
-
-  }
-
-  &-text {
-    text-align: left;
-    color: $light-gray;
-    cursor: pointer;
-
-    &:hover {
-      color: black;
+    &-success{
+      margin-left:4px;
+      width:50px;
+      height:50px;
+      border: none;
+      border-radius:100%;
+    }
+    &--success{
+      margin-left:4px;
+      width:35px;
+      height:35px;
+      border: none;
+      border-radius:100%;
+      padding:10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
+  &-text{
+    color: black;
+  }
 }
-
-
+.bg-status-on{
+  background-color: $success;
+  color:white;
+}
+.i-switch{
+  display: flex;
+  width:40px;
+  height:20px;
+  margin-left:10px;
+}
