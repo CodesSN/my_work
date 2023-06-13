@@ -29,6 +29,10 @@ export class BarberService {
     return this.http.put<any>(`${environment.apiUrl}/employee/upload/data`, files);
   }
 
+  getBarbers(){
+    return this.http.get<any>(`${environment.apiUrl}/mig/employee/get`);
+  }
+
   getBarberAppointments(){
     return this.http.get<Appointment[]>(`${environment.apiUrl}/citas/get`);
   }

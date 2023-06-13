@@ -6,6 +6,7 @@ import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout
 import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
 import { AdminGuard } from './core/guard/admin.guard';
 import { BarberGuard } from './core/guard/barber.guard';
+import { UserGuard } from './core/guard/user.guard';
 const routes: Routes = [
   {
     path: 'authentication',
@@ -67,9 +68,21 @@ const routes: Routes = [
         path: 'uploading',
         loadChildren: () =>
           import('./pages/uploading/uploading.module').then((m) => m.UploadingModule),
-          canActivate: [BarberGuard]
+        canActivate: [BarberGuard]
+      },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./pages/user/user.module').then((m) => m.UserModule),
+        canActivate: [UserGuard]
       },
     ],
+  },
+  {
+    path: 'appointments',
+    loadChildren: () =>
+      import('./pages/appointments/appointments.module').then((m) => m.AppointmentsModule),
+    canActivate: []
   },
   { path: '**', component: Page404Component },
 ];
