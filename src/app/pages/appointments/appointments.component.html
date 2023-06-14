@@ -1,10 +1,105 @@
 
 <main class="main">
-  <a routerLink="/authentication/signin" class="logo">RevX</a>
-  <div class="container-fluid  bg-light" style=" padding: 40px; height: 100%;">
+  <a routerLink="/authentication/signin" class="logo">
+    <img src="" alt="">
+  </a>
+  <!-- Barbers -->
+  <section class="section">
+    <article class="content">
+      <h2 class="">Choose a proffessional</h2>
+      <div class="barber-container">
+        <button *ngFor="let barber of barbers" class="barber-card"  (click)="professional(barber)">
+          <picture>
+            <i class="material-icons"></i>
+          </picture>
+          <p>Barber</p>
+          <h4>{{barber.name}}</h4>
+          <!-- <p>Not available <br> date </p> -->
+          <hr>
+          <a (click)="about()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+            aria-controls="offcanvasBottom">About</a>
+        </button>
+      </div>
+    </article>
+    <!-- Services -->
+    <article class="content">
+      <h2 style="font-size: 25px; font-weight: bold;">Choose a service</h2>
+      <div class="appointment-container">
+        <button class="barber-card barber-card--appointment" onclick="service('Haircut Short to Medium')">
+            <h4>Haircut</h4>
+            <p>Short to Medium</p>
+            <span class="badge bg-secondary">$75</span>
+        </button>
+        <button class="barber-card barber-card--appointment" onclick="service('Haircut Medium to Long')">
+            <h4>Haircut</h4>
+            <p>Medium to Long</p>
+            <span class="badge bg-secondary">$95</span>
+        </button>
+        <button class="barber-card barber-card--appointment" onclick="service('Beard Trim')">
+            <h4>Beard & Mustache</h4>
+            <p>Trim</p>
+            <span class="badge bg-secondary">$35</span>
+        </button>
+        <button class="barber-card barber-card--appointment" onclick="service('Beard Fade')">
+            <h4>Beard & Mustache</h4>
+            <p> Fade</p>
+            <span class="badge bg-secondary">$45</span>
+        </button>
+        <button class="barber-card barber-card--appointment" onclick="service('Beard Mustache')">
+            <h4>Beard & Mustache</h4>
+            <p> Mustache</p>
+            <span class="badge bg-secondary">$25</span>
+        </button>
+        <button class="barber-card barber-card--appointment" onclick="service('Beard Shave')">
+            <h4>Beard & Mustache</h4>
+            <p> Shave</p>
+            <span class="badge bg-secondary">$60</span>
+        </button>
+      </div>
+    </article>
+    <!-- Map -->
+    <article class="content">
+      <h1>Choose a location</h1>
+      <h2> Search or drag
+          the marker to the desired
+          service location</h2>
+      <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
+      <div id="map" style="height: 400px; padding-top: 10px;"></div>
+    </article>
+    <article class="content">
+      <h1 style="font-size: 25px; font-weight: bold;">Choose a Date</h1>
+      <div class="hour-container">
+        <button *ngFor="let date of dates" class="appointment-button">
+          <span>14</span>
+          <span>Wed</span>
+        </button>
+        <!-- <button class="appointment-button appointment-button--selected">
+          <span>15</span>
+          <span>Wed</span>
+        </button>
+        <button class="appointment-button">
+          <span>16</span>
+          <span>Thr</span>
+        </button>
+        <button class="appointment-button">
+          <span>17</span>
+          <span>Fri</span>
+        </button>
+        <button class="appointment-button">
+          <span>17</span>
+          <span>Fri</span>
+        </button> -->
+      </div>
+      <div id="mesAnio"></div>
+      <div id="fechasDisponibles"></div>
+    </article>
+  </section>
+
+
+  <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <ul>
+            <!-- <ul>
                 <li><a id="barberLi" class="active" href="#">Barber <i class="fa-solid fa-chevron-right"></i></a>
                 </li>
                 <li><a id="serviceLi" href="#">Service <i class="fa-solid fa-chevron-right"></i></a></li>
@@ -12,15 +107,16 @@
                 <li><a id="dateLi" href="#">Date <i class="fa-solid fa-chevron-right"></i> </a> </li>
                 <li><a id="dataLi" href="#">Contact <i class="fa-solid fa-chevron-right"></i> </a> </li>
                 <li><a id="summaryLi" href="#">Summary </a> </li>
-            </ul>
+            </ul> -->
 
-            <div class="row">
-                <div class="col-md-12" id="proffessionalDiv" style="display: block;">
+
+            <div class="contentc">
+                <!-- <div class="col-md-12" id="proffessionalDiv" style="display: block;">
                     <h1 style="font-size: 25px; font-weight: bold;">Choose a proffessional</h1>
 
-                    <button *ngFor="let barber of barbers" class="barberCard" id="barber1" (click)="professional(barber)">
-                        <img src="./assets/img/barber 1.jpg">
-                        <!-- <i style="border: 1px solid black; border-radius: 50%; padding: 10px 1px; font-size: 2.5rem;" class="fa-solid fa-user"></i> -->
+                    <button *ngFor="let barber of barbers" class="barberCard"  (click)="professional(barber)">
+                        <img src="../../../assets/images/barber-temp/img/barber 1.jpg">
+                        <!-- <i style="border: 1px solid black; border-radius: 50%; padding: 10px 1px; font-size: 2.5rem;" class="fa-solid fa-user"></i>
                         <h3>{{barber.name}}</h3>
                         <p>Not available <br> date </p>
                         <hr>
@@ -28,8 +124,8 @@
                             aria-controls="offcanvasBottom">About {{barber.name}}</a>
                     </button>
 
-                </div>
-                <div class="col-md-12" id="serviceDiv" style="display: none;">
+                </div> -->
+                <div class="col-md-12" id="serviceDiv" style="display: none">
                     <h1 style="font-size: 25px; font-weight: bold;">Choose a service</h1>
 
                     <button class="barberCard" onclick="service('Haircut Short to Medium')">
@@ -42,7 +138,6 @@
                         <p>Medium to Long</p>
                         <span class="badge bg-secondary">$95</span>
                     </button>
-
                     <button class="barberCard" onclick="service('Beard Trim')">
                         <h3>Beard & Mustache</h3>
                         <p> Trim</p>

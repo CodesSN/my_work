@@ -1,16 +1,214 @@
+@import '../../../assets/scss/common/variables';
+@import '../../../assets/scss/common/mixinsmedia';
+
 .main {
-  background-color: rgb(248, 249, 250);
+  background-color: rgb(255,255,255);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   width: 100vw;
   height: 100vh;
 }
 
-body {
-  background-color: rgb(248, 249, 250);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+.section {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  gap: 10px;
+
+  & h2 {
+    margin: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+}
+
+.barber {
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+
+    @include mobile-l {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop-l {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include desktop-xxl {
+      grid-template-columns: repeat(7, 1fr);
+    }
+  }
+
+  &-card {
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    max-width: 260px;
+    height: 120px;
+    max-height: 140px;
+    padding: 0 5px;
+    border: 2px solid $light-gray;
+    border-radius: 10px;
+    text-align: center;
+    color: $light-gray;
+
+
+
+    &:hover {
+      box-shadow: 0px 0px 10px 0px rgb(184, 184, 184);
+    }
+
+    @include tablet {
+      max-width: 300px;
+    }
+
+    & img {
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    & h4 {
+      margin: 0;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    & hr {
+      width: 40%;
+      margin: 5px auto 10px;
+      border: 1px solid rgb(168, 168, 168);
+    }
+
+    & p {
+      margin: 0;
+      padding: 0;
+      font-size: .8rem;
+      font-weight: normal;
+      color: rgb(168, 168, 168);
+    }
+
+    & a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 11px;
+
+      &:hover {
+        color: $light-gray;
+      }
+    }
+
+    &--appointment {
+      padding: 5px 0;
+      justify-content: space-between;
+      height: 95px;
+
+      & h4 {
+        font-size: .8rem;
+      }
+
+      & p {
+        font-size: .8rem;
+      }
+
+      & span {
+        margin-top: 5px;
+        font-size: .8rem;
+      }
+    }
+  }
+}
+
+
+.appointment {
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+
+    @include mobile-l {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include desktop-l {
+      grid-template-columns: repeat(7, 1fr);
+    }
+    @include desktop-xxl {
+      grid-template-columns: repeat(8, 1fr);
+    }
+  }
+
+  &-button {
+    background-color: white;
+    color: $light-gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    width: 45px;
+    padding: 10px;
+    outline: 0;
+    border: 2px solid $light-gray;
+    border-radius: 20px;
+
+    &:hover {
+      box-shadow: 0px 0px 10px 0px rgb(184, 184, 184);
+    }
+
+    &--selected {
+      background-color: $gold-light;
+      color: $gold;
+      border-color: $gold;
+
+      &:hover {
+        box-shadow: none
+      };
+    }
+
+
+
+    & span {
+      font-size: 1em;
+    }
+  }
+}
+
+
+.hour {
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 45px);
+    grid-gap: 15px;
+    width:90%;
+    margin: 0 auto;
+  }
+}
+
 
 .logo {
   margin-left: 40px;
@@ -59,55 +257,6 @@ ul i {
   margin-left: 5px;
 }
 
-.barberCard {
-  background-color: rgb(248, 249, 250);
-  cursor: pointer;
-  border-radius: 10px;
-  border: 1px solid rgb(184, 184, 184);
-  padding: 10px;
-  margin: 10px 10px 10px 0px;
-  text-align: center;
-  width: 150px;
-}
-
-.barberCard:hover {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 15px 0px rgb(184, 184, 184);
-}
-
-.barberCard img {
-  width: 50%;
-  border-radius: 10px;
-
-}
-
-.barberCard h3 {
-  margin: 0;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.barberCard a {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 11px;
-}
-
-.barberCard p {
-  margin: 0;
-  padding: 0;
-  font-size: 11px;
-  font-weight: bold;
-  color: rgb(168, 168, 168);
-}
-
-.barberCard hr {
-  margin-left: 37%;
-  width: 30px;
-  border: 1px solid rgb(168, 168, 168);
-}
 
 .summary {
   background-color: rgb(255, 255, 255);

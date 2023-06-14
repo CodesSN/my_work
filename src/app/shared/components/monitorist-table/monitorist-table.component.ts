@@ -50,7 +50,6 @@ export class MonitoristTableComponent extends UnsubscribeOnDestroyAdapter {
 
     this.subs.sink = this.barberService.changeAppointmentMonitoristStatus(status).subscribe(response => {
       console.log(response);
-
     })
   }
 }
