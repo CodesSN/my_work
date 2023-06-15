@@ -1,10 +1,10 @@
 
 <main class="main">
   <a routerLink="/authentication/signin" class="logo">
-    <img src="" alt="">
+    Revx
   </a>
-  <!-- Barbers -->
   <section class="section">
+    <!-- Barbers -->
     <article class="content">
       <h2 class="">Choose a proffessional</h2>
       <div class="barber-container">
@@ -25,32 +25,32 @@
     <article class="content">
       <h2 style="font-size: 25px; font-weight: bold;">Choose a service</h2>
       <div class="appointment-container">
-        <button class="barber-card barber-card--appointment" onclick="service('Haircut Short to Medium')">
+        <button class="barber-card barber-card--appointment" (click)="service('Haircut Short to Medium')">
             <h4>Haircut</h4>
             <p>Short to Medium</p>
             <span class="badge bg-secondary">$75</span>
         </button>
-        <button class="barber-card barber-card--appointment" onclick="service('Haircut Medium to Long')">
+        <button class="barber-card barber-card--appointment" (click)="service('Haircut Medium to Long')">
             <h4>Haircut</h4>
             <p>Medium to Long</p>
             <span class="badge bg-secondary">$95</span>
         </button>
-        <button class="barber-card barber-card--appointment" onclick="service('Beard Trim')">
+        <button class="barber-card barber-card--appointment" (click)="service('Beard Trim')">
             <h4>Beard & Mustache</h4>
             <p>Trim</p>
             <span class="badge bg-secondary">$35</span>
         </button>
-        <button class="barber-card barber-card--appointment" onclick="service('Beard Fade')">
+        <button class="barber-card barber-card--appointment" (click)="service('Beard Fade')">
             <h4>Beard & Mustache</h4>
             <p> Fade</p>
             <span class="badge bg-secondary">$45</span>
         </button>
-        <button class="barber-card barber-card--appointment" onclick="service('Beard Mustache')">
+        <button class="barber-card barber-card--appointment" (click)="service('Beard Mustache')">
             <h4>Beard & Mustache</h4>
             <p> Mustache</p>
             <span class="badge bg-secondary">$25</span>
         </button>
-        <button class="barber-card barber-card--appointment" onclick="service('Beard Shave')">
+        <button class="barber-card barber-card--appointment" (click)="service('Beard Shave')">
             <h4>Beard & Mustache</h4>
             <p> Shave</p>
             <span class="badge bg-secondary">$60</span>
@@ -59,43 +59,71 @@
     </article>
     <!-- Map -->
     <article class="content">
-      <h1>Choose a location</h1>
-      <h2> Search or drag
+      <h3>Choose a location</h3>
+      <h4> Search or drag
           the marker to the desired
-          service location</h2>
+          service location</h4>
       <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
       <div id="map" style="height: 400px; padding-top: 10px;"></div>
     </article>
+    <!-- Days -->
     <article class="content">
-      <h1 style="font-size: 25px; font-weight: bold;">Choose a Date</h1>
+      <h3 style="font-size: 25px; font-weight: bold;">Choose a Date</h3>
       <div class="hour-container">
         <button *ngFor="let date of dates" class="appointment-button">
-          <span>14</span>
+          <span>{{date}}</span>
           <span>Wed</span>
         </button>
-        <!-- <button class="appointment-button appointment-button--selected">
-          <span>15</span>
-          <span>Wed</span>
-        </button>
-        <button class="appointment-button">
-          <span>16</span>
-          <span>Thr</span>
-        </button>
-        <button class="appointment-button">
-          <span>17</span>
-          <span>Fri</span>
-        </button>
-        <button class="appointment-button">
-          <span>17</span>
-          <span>Fri</span>
-        </button> -->
       </div>
-      <div id="mesAnio"></div>
-      <div id="fechasDisponibles"></div>
     </article>
+    <!-- Hours -->
+    <article class="content">
+      <h3 style="font-size: 25px; font-weight: bold;">Choose a Hour</h3>
+      <div class="hour-container">
+        <button *ngFor="let hour of hours" class="hour-button">
+          <span>{{hour}}</span>
+        </button>
+      </div>
+    </article>
+    <!-- Contact -->
+    <article class="content">
+      <h3 style="font-size: 25px; font-weight: bold;">Contact info</h3>
+      <form [formGroup]="appointmentForm" (ngSubmit)="saveUserData()">
+        <div class="input-container">
+          <mat-form-field appearance="outline" >
+            <mat-label>Full Name</mat-label>
+            <input matInput  formControlName="nameClient">
+            <mat-icon matSuffix>date</mat-icon>
+            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" >
+            <mat-label>Mobile phone</mat-label>
+            <input matInput  formControlName="phoneClient">
+            <mat-icon matSuffix>date</mat-icon>
+            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="outline" >
+            <mat-label>Email</mat-label>
+            <input matInput  formControlName="emailClient">
+            <mat-icon matSuffix>date</mat-icon>
+            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline" >
+            <mat-label>Address</mat-label>
+            <input matInput  formControlName="addressClient">
+            <mat-icon matSuffix>date</mat-icon>
+            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+          </mat-form-field>
+        </div>
+      </form>
+      <button class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Confirm
+      </button>
+    </article>
+
   </section>
-
-
   <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">

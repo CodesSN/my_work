@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AppointmentsRoutingModule } from './appointments-routing.module';
 import { AppointmentsComponent } from './appointments.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
   imports: [
     CommonModule,
     AppointmentsRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AppointmentsModule { }

@@ -82,7 +82,7 @@ const routes: Routes = [
     path: 'appointments',
     loadChildren: () =>
       import('./pages/appointments/appointments.module').then((m) => m.AppointmentsModule),
-    canActivate: []
+    // canActivate: []
   },
   { path: '**', component: Page404Component },
 ];

@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { CalendarService } from '../calendar.service';
+import { CalendarService } from '../../../../core/service/calendar.service';
 import {
   UntypedFormControl,
   Validators,

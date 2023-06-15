@@ -32,7 +32,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormDialogComponent } from './calendar/form-dialog/form-dialog.component';
-import { CalendarService } from './calendar/calendar.service';
+import { CalendarService } from '../../core/service/calendar.service';
 import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SocialModalComponent } from './profile/social-modal/social-modal.component';

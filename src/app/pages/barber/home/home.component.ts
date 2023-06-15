@@ -21,7 +21,7 @@ import {
 } from '@angular/forms';
 import { Calendar } from '../../../models/calendar.model';
 import { FormDialogComponent } from '../calendar/form-dialog/form-dialog.component';
-import { CalendarService } from '../calendar/calendar.service';
+import { CalendarService } from '../../../core/service/calendar.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,

@@ -8,7 +8,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { PostWorkingData, WorkingDay } from '../../../../models/calendar.model';
-import { CalendarService } from '../calendar.service';
+import { CalendarService } from '../../../../core/service/calendar.service';
 import { dA } from '@fullcalendar/core/internal-common';
 
 export interface DialogData {
