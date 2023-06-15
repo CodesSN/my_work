@@ -29,6 +29,10 @@ export class BarberService {
     return this.http.put<any>(`${environment.apiUrl}/employee/upload/data`, files);
   }
 
+  getBarbers(){
+    return this.http.get<any>(`${environment.apiUrl}/mig/employee/get`);
+  }
+
   getBarberAppointments(){
     return this.http.get<Appointment[]>(`${environment.apiUrl}/citas/get`);
   }
@@ -41,8 +45,36 @@ export class BarberService {
     return this.http.put<any>(`${environment.apiUrl}/mig/appointments/put`, status);
   }
 
-  getBarberAppointmentsById(sub:string){
-    return this.http.get<Appointment[]>(`${environment.apiUrl}/mig/appointments/by_id?id_sub=${sub}`)
+  getBarberAppointmentsById(sub:string): Promise<any>{
+    // return this.http.get<Appointment[]>(`${environment.apiUrl}/mig/appointments/by_id?id_sub=${sub}`);
+    return new Promise((resolve, reject) => {
+      fetch(`${environment.apiUrl}/mig/employee/by_id?id_sub=${sub}`)
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Error en la solicitud');
+          }
+        })
+        .then(data => {
+          resolve(data);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    });
+
+  }
+
+  async fetchData(sub:string): Promise<any> {
+      const response = await fetch(`${environment.apiUrl}/mig/employee/by_id?id_sub=${sub}`);
+
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        throw new Error('Error en la solicitud');
+      }
   }
 
   changeAppointmentState(id:any){

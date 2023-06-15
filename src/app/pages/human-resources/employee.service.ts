@@ -67,6 +67,10 @@ export class EmployeeService {
     return this.http.get<any>(`${environment.apiUrl}/employee/${id}`);
   }
 
+  getEmployeeById(sub:string){
+    return this.http.get<any>(`${environment.apiUrl}/mig/employee/by_id?id_sub=${sub}`);
+  }
+
   getAllEmployeesAxios(){
     const config:any = {
       method: 'get',

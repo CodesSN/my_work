@@ -19,7 +19,7 @@ import {
 } from '@angular/forms';
 import { Calendar, WorkingDay } from '../../../models/calendar.model';
 import { FormDialogComponent } from './form-dialog/form-dialog.component';
-import { CalendarService } from './calendar.service';
+import { CalendarService } from '../../../core/service/calendar.service';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,

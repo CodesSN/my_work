@@ -9,10 +9,19 @@
     <div class="col-sm-6 auth-form-section">
       <div class="form-section" >
         <div class="auth-wrapper">
-          <h2 class="welcome-msg color" > Welcome to Revx </h2>
-          <p class="auth-signup-text text-muted color">Need an account?<a routerLink="/authentication/signup"
-              class="sign-up-link color">Sign Up
-            </a></p>
+          <h2 class="welcome-msg color" > Welcome to RevX </h2>
+          <p class="color-text">Are you a barber?<a routerLink="/authentication/signup"
+              class="color-link"> Want to join RevX
+            </a>
+          </p>
+          <p class="color-text">Need a haircut?<a routerLink="/authentication/signup"
+            class="color-link"> Appointment
+          </a>
+        <!-- </p>
+          <p class="auth-signup-text text-muted color">Need a haircut?<a routerLink="/appointments"
+            class="sign-up-link color">Appointment
+          </a>
+        </p> -->
           <h2 class="login-title color">Sign in</h2>
           <form class="validate-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <div class="row">
@@ -37,8 +46,9 @@
                 </p>
               </div>
             </div>
-            <div class="d-flex justify-content-between align-items-center mb-5">
-              <a class="txt1 gold-color" routerLink="/authentication/forgot-password">Forgot Password?</a>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <a class="color-link" routerLink="/authentication/forgot-password">Forgot Password?</a>
+              <!-- <a class="txt1 gold-color" routerLink="/appointments">Appointments</a> -->
             </div>
             <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
             <div class="container-auth-form-btn">

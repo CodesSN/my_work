@@ -76,7 +76,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '',
-    title: 'Monitorist',
+    title: 'Concierge',
     iconType: 'feather',
     icon: 'monitor',
     class: 'menu-toggle',
