@@ -68,12 +68,31 @@ export class AppointmentsComponent implements OnInit {
     })
   }
 
-  private getDay(date:Date){
+  getDayName(date:string){
+    const formatDate = new Date(date)
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = date.getDay();
+    const dayOfWeek = formatDate.getDay();
     // Get the name of the day of the week using the obtained number
     const dayName = dayNames[dayOfWeek];
-    return dayName;
+    const shortDay = dayName.slice(0,3);
+    return shortDay;
+  }
+
+  getMonthName(dateString: string): string {
+    const date = new Date(dateString);
+    const monthIndex = date.getMonth();
+    const englishMonths = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const monthInEnglish = englishMonths[monthIndex];
+    return monthInEnglish;
+  }
+
+  getDayNumber(dateString: string): number {
+    const date = new Date(dateString);
+    const dayNumber = date.getDate();
+    return dayNumber;
   }
 
   private getAppointmentAvailableDates() {
@@ -118,3 +137,4 @@ export class AppointmentsComponent implements OnInit {
     //make a delay
   }
 }
+

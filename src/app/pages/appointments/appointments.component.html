@@ -71,8 +71,9 @@
       <h3 style="font-size: 25px; font-weight: bold;">Choose a Date</h3>
       <div class="hour-container">
         <button *ngFor="let date of dates" class="appointment-button">
-          <span>{{date}}</span>
-          <span>Wed</span>
+          <span>{{ getMonthName(date)}}</span>
+          <span>{{ getDayNumber(date)}}</span>
+          <span>{{getDayName(date)}}</span>
         </button>
       </div>
     </article>
