@@ -85,7 +85,8 @@ import { NgScrollbarModule } from "ngx-scrollbar";
     ImgContainerComponent,
     KpiComponent,
     ReportsListComponent,
-    MonitoristTableComponent
+    MonitoristTableComponent,
+    MapsComponent,
   ],
 })
 export class ComponentsModule {}

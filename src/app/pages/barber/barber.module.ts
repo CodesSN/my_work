@@ -90,7 +90,7 @@ import { ViewNotificationComponent } from './notifications/view-notification/vie
     MatSnackBarModule,
     NgImageFullscreenViewModule,
     NgApexchartsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
   ],
   providers: [CalendarService]
 })

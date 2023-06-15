@@ -1,5 +1,8 @@
 .custom-card {
     box-shadow: none;
+    display: flex;
+    position: absolute;
+    width: 100%;
   }
   .footer-c{
     display: flex;
@@ -12,4 +15,8 @@
     padding:6px;
     border:1px solid #ccc;
     border-radius:5px;
+  }
+  .row{
+    display: flex;
+    width: 100%;
   }

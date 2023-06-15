@@ -15,6 +15,7 @@ export class MapsComponent implements OnInit {
   }
   @Input() lat!: any;
   @Input() lng!: any;
+  @Input() zoom!: any;
   markerPositions: google.maps.LatLngLiteral[] = [
     {
       lat: this.lat,
@@ -27,7 +28,6 @@ export class MapsComponent implements OnInit {
     lat: this.lat,
     lng: this.lng,
   };
-  zoom = 19;
 
 
   markerOptions: google.maps.MarkerOptions = {
