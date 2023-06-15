@@ -48,6 +48,112 @@ export class AppointmentsComponent implements OnInit {
 
   confirmAppointment(){
     //
+    if(this.appointmentForm.valid){
+      // Valid
+    }
+  }
+
+  // initMap(): void {
+  //   // Crear mapa centrado en la ubicación del cliente
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     const latLng = new google.maps.LatLng(
+  //       position.coords.latitude,
+  //       position.coords.longitude
+  //     );
+
+  //     const mapElement = document.getElementById('map');
+  //     if(mapElement){
+  //       const map = new google.maps.Map(mapElement, {
+  //         center: latLng,
+  //         zoom: 12,
+  //       });
+
+  //       const marker = new google.maps.Marker({
+  //         position: latLng,
+  //         map: map,
+  //         draggable: true,
+  //         animation: google.maps.Animation.DROP,
+  //       });
+
+  //       const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  //       const autocomplete = new google.maps.places.Autocomplete(searchInput);
+  //       autocomplete.bindTo('bounds', map);
+  //       const geocoder = new google.maps.Geocoder();
+  //       autocomplete.addListener('place_changed', function () {
+  //         const place = autocomplete.getPlace();
+  //         if (place.geometry) {
+  //           map.panTo(place.geometry.location);
+  //           map.setZoom(15);
+  //           marker.setPosition(place.geometry.location);
+  //           serviceData.location = {
+  //             lat: place.geometry.location.lat(),
+  //             lng: place.geometry.location.lng(),
+  //           };
+  //           serviceData.address = place.formatted_address;
+  //           document.getElementById('location').innerHTML = serviceData.address;
+  //         }
+  //       });
+  //     }
+
+  //     // Agregar marcador en la ubicación del cliente
+
+
+
+
+  //     // Escuchar el evento 'dragend' del marcador para obtener la ubicación seleccionada
+  //     google.maps.event.addListener(marker, 'dragend', function () {
+  //       // Obtener las nuevas coordenadas del marcador
+  //       const latLng = marker.getPosition();
+
+  //       // Obtener la dirección correspondiente a las coordenadas
+  //       geocoder.geocode({ location: latLng }, function (results, status) {
+  //         if (status === 'OK') {
+  //           if (results[0]) {
+  //             // Obtener la dirección en formato de texto
+  //             const address = results[0].formatted_address;
+  //             serviceData.location = {
+  //               lat: latLng.lat(),
+  //               lng: latLng.lng(),
+  //             };
+  //             serviceData.address = address;
+  //             document.getElementById('location').innerHTML = address;
+  //           } else {
+  //             console.log('No se encontraron resultados');
+  //           }
+  //         } else {
+  //           console.log('Geocodificación fallida debido a: ' + status);
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
+
+  // Obtiene el nombre del dia
+  getDayName(date:string){
+    const formatDate = new Date(date)
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = formatDate.getDay();
+    // Get the name of the day of the week using the obtained number
+    const dayName = dayNames[dayOfWeek];
+    const shortDay = dayName.slice(0,3);
+    return shortDay;
+  }
+  // Obtiene el mes del nombre
+  getMonthName(dateString: string): string {
+    const date = new Date(dateString);
+    const monthIndex = date.getMonth();
+    const englishMonths = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const monthInEnglish = englishMonths[monthIndex];
+    return monthInEnglish;
+  }
+  // Obtiene el numero del dia
+  getDayNumber(dateString: string): number {
+    const date = new Date(dateString);
+    const dayNumber = date.getDate();
+    return dayNumber;
   }
 
   private createForm(){
@@ -68,39 +174,11 @@ export class AppointmentsComponent implements OnInit {
     })
   }
 
-  getDayName(date:string){
-    const formatDate = new Date(date)
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const dayOfWeek = formatDate.getDay();
-    // Get the name of the day of the week using the obtained number
-    const dayName = dayNames[dayOfWeek];
-    const shortDay = dayName.slice(0,3);
-    return shortDay;
-  }
-
-  getMonthName(dateString: string): string {
-    const date = new Date(dateString);
-    const monthIndex = date.getMonth();
-    const englishMonths = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    const monthInEnglish = englishMonths[monthIndex];
-    return monthInEnglish;
-  }
-
-  getDayNumber(dateString: string): number {
-    const date = new Date(dateString);
-    const dayNumber = date.getDate();
-    return dayNumber;
-  }
-
   private getAppointmentAvailableDates() {
     return fetch(`${environment.apiUrl}/citas/fechas-disp`)
       .then(response => response.json())
       .then(data => {
           // Aquí puedes trabajar con los datos recibidos de la API
-          console.log(data);
           this.dates = data.fechas;
       })
       .catch(error => {
@@ -119,7 +197,6 @@ export class AppointmentsComponent implements OnInit {
       })
           .then(response => response.json())
           .then(responseData => {
-            // console.log(responseData.horas);
             this.hours =  responseData.horas
           })
           .catch(error => {

@@ -89,6 +89,24 @@
         </div>
       </div>
     </div>
+    <div class="modal-info-container">
+      <!-- Email Client  -->
+      <div class="modal-input-container">
+        <i class="material-icons modal-input-icon">attach_money</i>
+        <div>
+          <p class="modal-input-title">Cost:</p>
+          <p class="modal-input-text">{{appointment.cost}}</p>
+        </div>
+      </div>
+      <!-- Phone -->
+      <!-- <div class="modal-input-container">
+        <i class="material-icons modal-input-icon">call</i>
+        <div>
+          <p class="modal-input-title">Client Phone:</p>
+          <p class="modal-input-text">{{appointment.phoneClient}}</p>
+        </div>
+      </div> -->
+    </div>
     <app-maps [lat]="appointment.lat" [lng]="appointment.lng"></app-maps>
     <!-- Contenedor de los botones -->
     <div class="modal-buttons-container">

@@ -7,12 +7,12 @@
         [active_item]="'Notifications'"
       ></app-breadcrumb>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+      <div class=" col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <div class="card">
           <div class="body">
             <div id="mail-nav">
               <h5 class="b-b p-10 text-strong">Labels</h5>
-              <ul class="" id="mail-labels">
+              <ul class="" id="mail-labels" style="display: flex; flex-direction:  column;">
                 <li>
                   <a href="javascript:;" (click)="filterData('Alarms')">
                     <i class="material-icons text-danger">local_offer</i>Alarms</a
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
         <div class="card">
           <div class="boxs mail_listing">
             <div class="inbox-center table-responsive">
