@@ -6,10 +6,15 @@ import { SelectAppointmentComponent } from './select-appointment/select-appointm
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'barber',
+    pathMatch: 'full',
+  },
+  {
+    path: 'barber',
     component: AppointmentsComponent
   },
   {
-    path: 'select',
+    path: 'select/:id',
     component: SelectAppointmentComponent
   },
 ];

@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { UserComponent } from './user.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    component: UserComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      {
+        path: 'home',
+        component: UserHomeComponent
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent
+      },
+    ]
   },
-  {
-    path: 'home',
-    component: UserHomeComponent
-  },
-
-
-
-
 ];
 
 @NgModule({

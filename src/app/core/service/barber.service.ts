@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Appointment, AppointmentStatus } from 'src/app/models/appointment.model';
-import { BarberFiles } from 'src/app/models/barber.model';
+import { Barber, BarberFiles, BarberInfo } from 'src/app/models/barber.model';
 import { UpdatedUser } from 'src/app/models/employee.model';
 import { environment } from 'src/environments/environment';
 
@@ -9,9 +9,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class BarberService {
+  barberInfo: BarberInfo | null = null;
+
   constructor(
     private http: HttpClient
   ) {}
+
+  getBarberInfo(){
+    return this.barberInfo;
+  }
+
+  setBarberInfo(barber: BarberInfo){
+    this.barberInfo = barber;
+  }
 
   getVans(){
     this.http.get<any>(`${environment}/`)
@@ -30,7 +40,7 @@ export class BarberService {
   }
 
   getBarbers(){
-    return this.http.get<any>(`${environment.apiUrl}/mig/employee/get`);
+    return this.http.get<Barber>(`${environment.apiUrl}/mig/employee/get`);
   }
 
   getBarberAppointments(){

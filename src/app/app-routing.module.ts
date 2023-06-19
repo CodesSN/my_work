@@ -70,13 +70,13 @@ const routes: Routes = [
           import('./pages/uploading/uploading.module').then((m) => m.UploadingModule),
         canActivate: [BarberGuard]
       },
-      {
-        path: 'user',
-        loadChildren: () =>
-          import('./pages/user/user.module').then((m) => m.UserModule),
-        canActivate: [UserGuard]
-      },
     ],
+  },
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./pages/user/user.module').then((m) => m.UserModule),
+    // canActivate: [UserGuard]
   },
   {
     path: 'appointments',

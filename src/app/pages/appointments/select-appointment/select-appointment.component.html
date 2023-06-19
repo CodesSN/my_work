@@ -8,46 +8,37 @@
     <article class="content">
       <h2 style="font-size: 25px; font-weight: bold;">Choose a service</h2>
       <div class="appointment-container">
-        <button class="barber-card barber-card--appointment" (click)="service('Haircut Short to Medium')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Haircut Short to Medium')">
             <h4>Haircut</h4>
             <p>Short to Medium</p>
             <span class="badge bg-secondary">$75</span>
         </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Haircut Medium to Long')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Haircut Medium to Long')">
             <h4>Haircut</h4>
             <p>Medium to Long</p>
             <span class="badge bg-secondary">$95</span>
         </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Trim')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Beard Trim')">
             <h4>Beard & Mustache</h4>
             <p>Trim</p>
             <span class="badge bg-secondary">$35</span>
         </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Fade')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Beard Fade')">
             <h4>Beard & Mustache</h4>
             <p> Fade</p>
             <span class="badge bg-secondary">$45</span>
         </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Mustache')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Beard Mustache')">
             <h4>Beard & Mustache</h4>
             <p> Mustache</p>
             <span class="badge bg-secondary">$25</span>
         </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Shave')">
+        <button class="barber-card barber-card--appointment" (click)="selectService('Beard Shave')">
             <h4>Beard & Mustache</h4>
             <p> Shave</p>
             <span class="badge bg-secondary">$60</span>
         </button>
       </div>
-    </article>
-    <!-- Map -->
-    <article class="content">
-      <h3>Choose a location</h3>
-      <h4> Search or drag
-          the marker to the desired
-          service location</h4>
-      <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
-      <div id="map" style="height: 400px; padding-top: 10px;"></div>
     </article>
     <!-- Days -->
     <article class="content">
@@ -103,6 +94,17 @@
         </div>
       </form>
     </article>
-
+    <!-- Map -->
+    <article class="content">
+      <h3>Choose a location</h3>
+      <h4> Search or drag
+          the marker to the desired
+          service location</h4>
+      <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
+      <div id="map" style="height: 400px; padding-top: 10px;"></div>
+    </article>
+    <button (click)="print()"  class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Confirm
+    </button>
   </section>
 </main>
