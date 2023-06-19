@@ -8,7 +8,7 @@
     <article class="content">
       <h2 class="">Choose a proffessional</h2>
       <div class="barber-container">
-        <button *ngFor="let barber of barbers" class="barber-card"  (click)="professional(barber)">
+        <button *ngFor="let barber of barbers" class="barber-card"  (click)="selectBarber(barber)">
           <picture>
             <i class="material-icons"></i>
           </picture>
@@ -16,113 +16,14 @@
           <h4>{{barber.name}}</h4>
           <!-- <p>Not available <br> date </p> -->
           <hr>
-          <a (click)="about()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+          <a (click)="aboutBarber()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
             aria-controls="offcanvasBottom">About</a>
         </button>
       </div>
-    </article>
-    <!-- Services -->
-    <article class="content">
-      <h2 style="font-size: 25px; font-weight: bold;">Choose a service</h2>
-      <div class="appointment-container">
-        <button class="barber-card barber-card--appointment" (click)="service('Haircut Short to Medium')">
-            <h4>Haircut</h4>
-            <p>Short to Medium</p>
-            <span class="badge bg-secondary">$75</span>
-        </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Haircut Medium to Long')">
-            <h4>Haircut</h4>
-            <p>Medium to Long</p>
-            <span class="badge bg-secondary">$95</span>
-        </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Trim')">
-            <h4>Beard & Mustache</h4>
-            <p>Trim</p>
-            <span class="badge bg-secondary">$35</span>
-        </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Fade')">
-            <h4>Beard & Mustache</h4>
-            <p> Fade</p>
-            <span class="badge bg-secondary">$45</span>
-        </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Mustache')">
-            <h4>Beard & Mustache</h4>
-            <p> Mustache</p>
-            <span class="badge bg-secondary">$25</span>
-        </button>
-        <button class="barber-card barber-card--appointment" (click)="service('Beard Shave')">
-            <h4>Beard & Mustache</h4>
-            <p> Shave</p>
-            <span class="badge bg-secondary">$60</span>
-        </button>
-      </div>
-    </article>
-    <!-- Map -->
-    <article class="content">
-      <h3>Choose a location</h3>
-      <h4> Search or drag
-          the marker to the desired
-          service location</h4>
-      <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
-      <div id="map" style="height: 400px; padding-top: 10px;"></div>
-    </article>
-    <!-- Days -->
-    <article class="content">
-      <h3 style="font-size: 25px; font-weight: bold;">Choose a Date</h3>
-      <div class="hour-container">
-        <button *ngFor="let date of dates" class="appointment-button">
-          <span>{{ getMonthName(date)}}</span>
-          <span>{{ getDayNumber(date)}}</span>
-          <span>{{getDayName(date)}}</span>
-        </button>
-      </div>
-    </article>
-    <!-- Hours -->
-    <article class="content">
-      <h3 style="font-size: 25px; font-weight: bold;">Choose a Hour</h3>
-      <div class="hour-container">
-        <button *ngFor="let hour of hours" class="hour-button">
-          <span>{{hour}}</span>
-        </button>
-      </div>
-    </article>
-    <!-- Contact -->
-    <article class="content">
-      <h3 style="font-size: 25px; font-weight: bold;">Contact info</h3>
-      <form [formGroup]="appointmentForm" (ngSubmit)="saveUserData()">
-        <div class="input-container">
-          <mat-form-field appearance="outline" >
-            <mat-label>Full Name</mat-label>
-            <input matInput  formControlName="nameClient">
-            <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
-          </mat-form-field>
-          <mat-form-field appearance="outline" >
-            <mat-label>Mobile phone</mat-label>
-            <input matInput  formControlName="phoneClient">
-            <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-container">
-          <mat-form-field appearance="outline" >
-            <mat-label>Email</mat-label>
-            <input matInput  formControlName="emailClient">
-            <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
-          </mat-form-field>
-          <mat-form-field appearance="outline" >
-            <mat-label>Address</mat-label>
-            <input matInput  formControlName="addressClient">
-            <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
-          </mat-form-field>
-        </div>
-      </form>
-      <button class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button (click)="confirmAppointment()"  class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Confirm
       </button>
     </article>
-
+    <!-- Services -->
   </section>
 </main>
