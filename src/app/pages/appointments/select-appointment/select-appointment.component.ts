@@ -17,6 +17,8 @@ export class SelectAppointmentComponent implements OnInit {
   public hours: any;
   public appointmentForm!: FormGroup;
   public barberInfo!: BarberInfo | null;
+  marker!: google.maps.Marker;
+
 
   constructor(
     private barberService: BarberService,
@@ -29,13 +31,34 @@ export class SelectAppointmentComponent implements OnInit {
     this.barberInfo = this.barberService.getBarberInfo();
     if(this.barberInfo) {
       this.appointmentForm.get('barber')?.setValue(this.barberInfo.name);
-      this.appointmentForm.get('id')?.setValue(this.barberInfo.id);
+      this.appointmentForm.get('id_sub')?.setValue(this.barberInfo.id);
     }
-
     // console.log(this.barberInfo);
     await this.getAppointmentAvailableHourDates();
   }
 
+
+  onMapClick(event: google.maps.MapMouseEvent) {
+    const latLng = event.latLng;
+    if(latLng) {
+      const lat = latLng.lat();
+      const lng = latLng.lng();
+
+      // Eliminamos el marcador anterior si existe
+      if (this.marker) {
+        this.marker.setMap(null);
+      }
+
+      // Creamos un nuevo marcador en la posición clicada
+      this.marker = new google.maps.Marker({
+        position: latLng,
+        map: this.marker.getMap() // Utilizamos getMap() para obtener el objeto Map actual del marcador
+      });
+
+      console.log('Latitud:', lat);
+      console.log('Longitud:', lng);
+    }
+  }
 
   professional(barber:any) {
     console.log(barber);
@@ -46,9 +69,12 @@ export class SelectAppointmentComponent implements OnInit {
     switch(service) {
       case "Haircut Short to Medium":
         this.appointmentForm.get('service')?.setValue(service);
+        this.appointmentForm.get('cost')?.setValue(75);
         break;
       case "Haircut Medium to Long":
         this.appointmentForm.get('service')?.setValue(service);
+        this.appointmentForm.get('cost')?.setValue(75);
+
         break;
       case 'Beard Trim':
         this.appointmentForm.get('service')?.setValue(service);
@@ -67,8 +93,23 @@ export class SelectAppointmentComponent implements OnInit {
     }
   }
 
+  selectDay(day: Date){
+    // const dayDate =  new Date(day)
+    // console.log(dayDate);
+    this.appointmentForm.get('date')?.setValue(day);
+  }
+
+  selectHour(hour:any){
+    // console.log(hour);
+    this.appointmentForm.get('time')?.setValue(hour);
+  }
+
   saveUserData(){
-    console.log('Input');
+    if(this.appointmentForm.valid) {
+      // Se manda la informacion para la siguiente parte
+    }
+
+    console.log(this.appointmentForm.getRawValue());
   }
 
   // Obtiene el nombre del dia
@@ -100,7 +141,7 @@ export class SelectAppointmentComponent implements OnInit {
   }
   private createForm(){
     this.appointmentForm = this.fb.group({
-      id: [null, [Validators.required]],
+      id_sub: [null, [Validators.required]],
       barber: [null, [Validators.required]],
       service:[null, [Validators.required]],
       duration: [null, [Validators.required]],
@@ -153,7 +194,6 @@ export class SelectAppointmentComponent implements OnInit {
   print(){
     //make a delay
     console.log(this.appointmentForm.getRawValue());
-
   }
 
 }

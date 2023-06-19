@@ -44,7 +44,7 @@
     <article class="content">
       <h3 style="font-size: 25px; font-weight: bold;">Choose a Date</h3>
       <div class="hour-container">
-        <button *ngFor="let date of dates" class="appointment-button">
+        <button (click)="selectDay(date)"  *ngFor="let date of dates" class="appointment-button">
           <span>{{ getMonthName(date)}}</span>
           <span>{{ getDayNumber(date)}}</span>
           <span>{{getDayName(date)}}</span>
@@ -55,7 +55,7 @@
     <article class="content">
       <h3 style="font-size: 25px; font-weight: bold;">Choose a Hour</h3>
       <div class="hour-container">
-        <button *ngFor="let hour of hours" class="hour-button">
+        <button (click)="selectHour(hour)" *ngFor="let hour of hours" class="hour-button">
           <span>{{hour}}</span>
         </button>
       </div>
@@ -63,19 +63,19 @@
     <!-- Contact -->
     <article class="content">
       <h3 style="font-size: 25px; font-weight: bold;">Contact info</h3>
-      <form [formGroup]="appointmentForm" (ngSubmit)="saveUserData()">
+      <form [formGroup]="appointmentForm">
         <div class="input-container">
           <mat-form-field appearance="outline" >
             <mat-label>Full Name</mat-label>
             <input matInput  formControlName="nameClient">
             <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+            <mat-error *ngIf="appointmentForm.get('nameClient')?.hasError('required') && appointmentForm.get('nameClient')?.touched">Full name is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" >
             <mat-label>Mobile phone</mat-label>
             <input matInput  formControlName="phoneClient">
             <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+            <mat-error *ngIf="appointmentForm.get('phoneClient')?.hasError('required') && appointmentForm.get('phoneClient')?.touched">Phone is required</mat-error>
           </mat-form-field>
         </div>
         <div class="input-container">
@@ -83,28 +83,35 @@
             <mat-label>Email</mat-label>
             <input matInput  formControlName="emailClient">
             <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+            <mat-error *ngIf="appointmentForm.get('emailClient')?.hasError('required') && appointmentForm.get('emailClient')?.touched">Emamil is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" >
             <mat-label>Address</mat-label>
             <input matInput  formControlName="addressClient">
             <mat-icon matSuffix>date</mat-icon>
-            <!-- <mat-error *ngIf="modalForm.get('address')?.hasError('required') && modalForm.get('address')?.touched">Email is required</mat-error> -->
+            <mat-error *ngIf="appointmentForm.get('addressClient')?.hasError('required') && appointmentForm.get('addressClient')?.touched">Address is required</mat-error>
           </mat-form-field>
         </div>
       </form>
     </article>
     <!-- Map -->
     <article class="content">
-      <h3>Choose a location</h3>
+      <!-- <h3>Choose a location</h3>
       <h4> Search or drag
           the marker to the desired
           service location</h4>
       <input class="form-control" id="search-input" type="text" placeholder="Search..."><br>
-      <div id="map" style="height: 400px; padding-top: 10px;"></div>
+      <div id="map" style="height: 400px; padding-top: 10px; border: 1px solid black;"></div> -->
+      <!-- <google-map
+        width="100%"
+        height="500px"
+        [center]="{lat: 33.448376, lng: -112.074036}"
+        [zoom]="12">
+      </google-map> -->
+      <app-maps [lat]="33.448376" [lng]=" -112.074036" [zoom]="19"></app-maps>
+      <button (click)="saveUserData()"  class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Confirm
+      </button>
     </article>
-    <button (click)="print()"  class="btnConfirm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Confirm
-    </button>
   </section>
 </main>

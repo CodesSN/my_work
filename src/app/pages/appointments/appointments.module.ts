@@ -7,6 +7,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAppointmentComponent } from './select-appointment/select-appointment.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SelectAppointmentComponent } from './select-appointment/select-appointm
     AppointmentsRoutingModule,
     ComponentsModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GoogleMapsModule
   ]
 })
 export class AppointmentsModule { }

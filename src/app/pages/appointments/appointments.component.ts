@@ -33,7 +33,6 @@ export class AppointmentsComponent implements OnInit {
     })
   }
 
-
   selectBarber(barber:Barber){
     // console.log(barber);
     this.barberForm.get('id')?.setValue(barber.id);
