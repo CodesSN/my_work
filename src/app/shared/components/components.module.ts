@@ -34,6 +34,8 @@ import { MonitoristTableComponent } from './monitorist-table/monitorist-table.co
 import { MapsComponent } from './maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { NgScrollbarModule } from "ngx-scrollbar";
+import { ServiceCardComponent } from './service-card/service-card.component';
+import { BarberCardComponent } from './barber-card/barber-card.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { NgScrollbarModule } from "ngx-scrollbar";
     ModalReportAppointmentComponent,
     MonitoristTableComponent,
     MapsComponent,
+    ServiceCardComponent,
+    BarberCardComponent,
   ],
   imports: [
     SharedModule,
@@ -87,6 +91,8 @@ import { NgScrollbarModule } from "ngx-scrollbar";
     ReportsListComponent,
     MonitoristTableComponent,
     MapsComponent,
+    ServiceCardComponent,
+    BarberCardComponent
   ],
 })
 export class ComponentsModule {}

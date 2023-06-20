@@ -1,1 +1,59 @@
-<h2>Home Component</h2>
+<nav>
+  <ul>
+    <li>
+      <button>H</button>
+    </li>
+    <li>
+      <button></button>
+      <button>Ham</button>
+    </li>
+  </ul>
+</nav>
+<section>
+  <article>
+    <h2>Hi, Pavel</h2>
+    <p>What are you looking for today?</p>
+    <!-- Ubicacion -->
+    <p>
+      <i class="material-icons">locations_on</i>
+      <span>Ubicacion</span>
+    </p>
+    <!-- Buscador -->
+    <div>
+      <button>i</button>
+      <input type="text">
+    </div>
+  </article>
+  <article>
+    <app-service-card description="Hair"></app-service-card>
+    <app-service-card description="Beard"></app-service-card>
+    <app-service-card description="Color"></app-service-card>
+  </article>
+  <article>
+    <h2>Nearest Barbers</h2>
+    <app-barber-card
+      [barber]="'Benjamin Reynolds'"
+      [description]="'With a friendly smile and a knack for understanding individual preferences.'"
+      [rate]="'4.5'"
+      [services]="'3'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'Liam Anderson'"
+      [description]="'Meet Liam, a barber with a passion for traditional barbering techniques and a dedication to customer satisfaction.'"
+      [rate]="'4.3'"
+      [services]="'7'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'Oliver Wright'"
+      [description]="'precision and style go hand in hand. With a knack for delivering clean lines, perfectly faded cuts, and expertly groomed beards.'"
+      [rate]="'4.1'"
+      [services]="'23'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'William Adams'"
+      [description]="'A barber known for her attention to detail and commitment to exceptional service.'"
+      [rate]="'3.8'"
+      [services]="'12'"
+    ></app-barber-card>
+  </article>
+</section>
