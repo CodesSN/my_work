@@ -36,6 +36,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NgScrollbarModule } from "ngx-scrollbar";
 import { ServiceCardComponent } from './service-card/service-card.component';
 import { BarberCardComponent } from './barber-card/barber-card.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { BarberCardComponent } from './barber-card/barber-card.component';
     MapsComponent,
     ServiceCardComponent,
     BarberCardComponent,
+    HeaderComponent,
   ],
   imports: [
     SharedModule,
@@ -92,7 +94,8 @@ import { BarberCardComponent } from './barber-card/barber-card.component';
     MonitoristTableComponent,
     MapsComponent,
     ServiceCardComponent,
-    BarberCardComponent
+    BarberCardComponent,
+    HeaderComponent
   ],
 })
 export class ComponentsModule {}
