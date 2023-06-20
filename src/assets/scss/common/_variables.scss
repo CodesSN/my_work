@@ -32,6 +32,17 @@ $yellow: #ffe821;
 $gray-border: rgb(221, 221, 221);
 
 
+// Aplicacion colors
+$white-100: #fff;
+$white-200: #F4F4F4;
+$light-gray-100: #F6F8F9;
+$light-gray-200: #E3E3E3;
+$black-100: #000;
+$black-200: #151515;
+$black-300: #1E1E1E;
+// Strokes
+$strokes: #DDDDDD;
+
 $linear-colors: (
   "green": linear-gradient(45deg, #9ce89d, #cdfa7e),
   "orange": linear-gradient(135deg, #ffc480, #ff763b),
@@ -45,6 +56,11 @@ $linear-colors: (
   "card4": linear-gradient(to left, #d38312, #a83279),
 );
 
+// Aplicacion font
+$poppins: 'Poppins', sans-serif;
+
+
 //Fonts Family
 $navbar-font-family: "Roboto", sans-serif;
 $sidebar-font-family: "Roboto", sans-serif;
+

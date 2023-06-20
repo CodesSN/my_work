@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ServiceCardComponent {
   @Input() description = '';
+  @Input() img = '';
+  @Input() alt = '';
 }

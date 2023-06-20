@@ -1,36 +1,54 @@
-<nav>
-  <ul>
-    <li>
-      <button>H</button>
+<header class="header" >
+  <ul class="list">
+    <li class="list-item">
+      <button class="button button--profile">H</button>
     </li>
-    <li>
-      <button></button>
-      <button>Ham</button>
+    <li class="list-item">
+      <button class="button button--icons">
+        <img src="../../../../assets/icons/notifications.svg" alt="">
+      </button>
+      <button class="button button--icons">
+        <img src="../../../../assets/icons/menu.svg" alt="">
+      </button>
     </li>
   </ul>
-</nav>
-<section>
-  <article>
-    <h2>Hi, Pavel</h2>
-    <p>What are you looking for today?</p>
+</header>
+<section >
+  <article class="content">
+    <h2 class="title">Hi, Pavel</h2>
+    <p class="text">What are you looking for today?</p>
     <!-- Ubicacion -->
-    <p>
-      <i class="material-icons">locations_on</i>
-      <span>Ubicacion</span>
-    </p>
+    <div class="content-location">
+      <img src="../../../../assets/icons/location.svg" alt="">
+      <span class="text-location">Ubicacion</span>
+    </div>
     <!-- Buscador -->
-    <div>
-      <button>i</button>
-      <input type="text">
+    <div class="input-container">
+      <button class="button button--search">
+        <img src="../../../../assets/icons/search.svg" alt="">
+      </button>
+      <input class="input" type="text">
     </div>
   </article>
-  <article>
-    <app-service-card description="Hair"></app-service-card>
-    <app-service-card description="Beard"></app-service-card>
-    <app-service-card description="Color"></app-service-card>
+  <article class="content content-barber">
+    <app-service-card
+      description="Hair"
+      img="./../../../../assets/images/app/beard.png"
+      alt="Barber beard service img">
+    </app-service-card>
+    <app-service-card
+      description="Beard"
+      img="./../../../../assets/images/app/hair.png"
+      alt="Barber beard service img">
+    </app-service-card>
+    <app-service-card
+      description="Color"
+      img="./../../../../assets/images/app/color.png"
+      alt="Barber beard service img">
+    </app-service-card>
   </article>
-  <article>
-    <h2>Nearest Barbers</h2>
+  <article class="content">
+    <h2 class="title title--barber">Nearest Barbers</h2>
     <app-barber-card
       [barber]="'Benjamin Reynolds'"
       [description]="'With a friendly smile and a knack for understanding individual preferences.'"

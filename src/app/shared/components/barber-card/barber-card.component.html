@@ -1,27 +1,25 @@
-<div>
-  <div>
-    <picture></picture>
+<div class="card">
+  <div class="content">
+    <picture class="img--container">
+      <img class="img" src="../../../../assets/images/app/beard.png" alt="">
+    </picture>
     <div>
-      <h4>{{barber}}</h4>
-      <p>{{description}}</p>
+      <h4 class="card-barber">{{barber}}</h4>
+      <p class="card-description">{{description}}</p>
     </div>
   </div>
-  <div>
-    <div>
-      <button>
-        <i class="material-icons-outlined">
-          star
-        </i>
-        <span>{{rate}}</span>
+  <div class="content--buttons">
+    <div class="content">
+      <button class="button button--description">
+        <span class="button-text">{{rate}}</span>
+        <img src="../../../../assets/icons/star.svg" alt="">
       </button>
-      <button>
-        {{services}} services
+      <button class="button button--description">
+        {{services}} Services
       </button>
     </div>
-    <button>
-      <span class="material-icons-outlined">
-        add
-      </span>
+    <button class="button button--appointment">
+      <img class="button-text" src="../../../../assets/icons/plus.svg" alt="">
       <span>Appointments</span>
     </button>
   </div>
