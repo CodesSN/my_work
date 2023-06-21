@@ -1,0 +1,62 @@
+<div class="c-a">
+  <header class="h-a-v">
+    <div class="b-s">
+      <div class="b-b">
+        <span class="material-icons-round"> arrow_back_ios </span>
+      </div>
+      <button class="p-b"><p>{{pbp}}</p></button>
+    </div>
+    <div class="i">
+      <button class="n">
+        <span class="material-icons"> notifications </span>
+      </button>
+      <button class="b">
+        <span class="material-icons-round"> menu </span>
+      </button>
+    </div>
+  </header>
+  <content class="b-a-v">
+    <section class="h-b-a-v">
+      <div class="a-i">
+        <p class="s-n">{{sn}}</p>
+        <div class="t-s">
+          <p class="a-d">{{ad}}</p>
+          <p class="a-h">{{ah}}</p>
+        </div>
+      </div>
+      <div class="a-l">
+        <span class="material-icons-round"> location_on </span>
+        <p>{{al}}</p>
+      </div>
+    </section>
+    <section class="m-s">
+      <app-maps [lat]="lat" [lng]="lng" [h]="h" [zoom]="19"></app-maps>
+    </section>
+    <section class="f">
+      <div class="barber-s">
+        <div class="i-s"></div>
+        <div class="inf-s">
+          <p class="b-name">{{bName}}</p>
+          <p class="b-desc">
+            {{desc}}
+          </p>
+          <div class="kpis">
+            <p class="kpi">
+              {{rate}}
+              <span class="material-icons-round"> star </span>
+            </p>
+            <p class="kpi">{{services}} services</p>
+          </div>
+        </div>
+      </div>
+      <div class="a-s">
+        <span class="material-icons-round">
+          phone
+          </span>
+          <span class="material-icons-round">
+            question_answer
+            </span>
+      </div>
+    </section>
+  </content>
+</div>

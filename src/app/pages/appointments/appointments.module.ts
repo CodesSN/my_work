@@ -8,12 +8,16 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectAppointmentComponent } from './select-appointment/select-appointment.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { AppointmentViewComponent } from './appointment-view/appointment-view.component';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
   declarations: [
     AppointmentsComponent,
     SelectAppointmentComponent,
+    AppointmentViewComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,

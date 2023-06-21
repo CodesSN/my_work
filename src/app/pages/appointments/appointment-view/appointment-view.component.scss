@@ -1,0 +1,237 @@
+@import '../../../../assets/scss/common/variables';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.c-a{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    height:100vh;
+    width:100%;
+    background-color: $mobile-dark;
+    overflow:hidden;
+    
+    & .h-a-v{
+        display: flex;
+        position: relative;
+        height:70px;
+        width: 100%;
+        background-color: $mobile-dark;
+        justify-content: space-between;
+        align-items: center;
+        padding:0px 10px 0px 10px;
+
+        & .b-s{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height:100%;
+            gap:20px;
+            & .b-b{
+            display: flex;
+            height:100%;
+            align-items: center;
+            color: $mobile-icons-gray;
+            border: none;
+            }
+    
+            & .p-b{
+                display: flex;
+                width:50px;
+                height:50px;
+                background-color: $mobile-button-dark;
+                color: white;
+                justify-content: center;
+                align-items: center;
+                border-radius:10px;
+                border: none;
+
+                & p {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height:100%;
+                    margin:0px;
+                    font-size:16px;
+                }
+            }
+        }
+
+        & .i{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height:100%;
+            gap:20px;
+            color: $mobile-icons-gray;
+
+            & .n{
+                display: flex;
+                height:100%;
+                align-items: center;
+                justify-content: center;
+                width:50px;
+                background-color: $mobile-dark;
+                border: none;
+                color: $mobile-icons-gray;
+            }
+
+            & .b{
+                display: flex;
+                height:100%;
+                width:50px;
+                justify-content: center;
+                align-items: center;
+                background-color: $mobile-dark;
+                border: none;
+                color: $mobile-icons-gray;
+            }
+        }
+    }
+}
+.b-a-v{
+    display: flex;
+    flex-direction: column;
+    background-color: $mobile-dark;
+    height:calc(100% - 70px);
+    width:100%;
+
+    & .h-b-a-v{
+    display: flex;
+    width: 100%;
+    height:90px;
+    align-items: center;
+    flex-direction: row;
+    color: white;
+    padding:5px 10px 5px 20px;
+    justify-content: space-between;
+
+    & .a-i{
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        padding:10px;
+        & p{
+            margin:0px 0px 2px 0px;
+        }
+        & .s-n{
+            font-size:20px;
+            font-weight: 800;
+        }
+
+        & .t-s{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+    }
+    & .a-l{
+        display: flex;
+        width: 190px;
+        
+        & span{
+            color: $mobile-red-location;
+            font-size: 20px;
+            margin:0px 2px 0px 2px;
+        }
+    }
+    }
+    & .m-s{
+        position: relative;
+        width:100%;
+        height:calc(100% - 220px);
+
+        & google-maps{
+            position: absolute;
+            width:100%;
+            height:100px;
+        }
+    }
+    & .f{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height:150px;
+        color: white;
+        padding:15px 10px 10px 15px;
+
+        & .barber-s{
+            display: flex;
+            flex-direction: row;
+            padding:10px 0px 10px 0px;
+            width: 240px;
+            gap: 20px;
+
+            & .i-s{
+                display: flex;
+                width: 50px;
+                height:50px;
+                border-radius: 100%;
+                background-image: url(https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80);
+            }
+
+            & .inf-s{
+                display: flex;
+                flex-direction: column;
+                width:calc(240px - 50px);
+                justify-content: center;
+
+                & p {
+                    margin: 0px;
+                }
+
+                & .b-name{
+                    font-size: 16px;
+                    font-weight:700;
+                }
+
+                & .b-desc{
+                    font-size: 12px;
+                    color:$mobile-icons-gray;
+                    margin-bottom: 10px;
+                }
+
+                & .kpis{
+                    display: flex;
+                    flex-direction: row;
+                    gap:10px;
+
+                    & .kpi{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding:2px 10px 2px 10px;
+                        color:$mobile-dark;
+                        background-color:$mobile-icons-gray;
+                        border-radius:15px;
+                        font-weight: bold;
+
+                        & span{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size:14px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .a-s{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            & span{
+                display: flex;
+                border-radius:100px;
+                align-items: center;
+                justify-content: center;
+                width:40px;
+                height:40px;
+                background-color: $mobile-icons-gray;
+                color: $mobile-dark;
+            }
+        }
+    }
+}

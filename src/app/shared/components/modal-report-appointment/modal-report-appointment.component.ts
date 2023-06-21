@@ -17,6 +17,8 @@ export class ModalReportAppointmentComponent implements OnInit {
   public title = 'Appointment';
   public appointment!: Appointment;
   public confirmButton = false;
+  public lat = 0;
+  public lng = 0;
 
   constructor(
     public dialogRef: MatDialogRef<ModalReportAppointmentComponent>,
@@ -28,7 +30,10 @@ export class ModalReportAppointmentComponent implements OnInit {
     console.log(this.data.appointment);
 
     this.appointment = this.data.appointment;
-    console.log("lat ",this.appointment.lat)
+    this.lat = this.appointment.lat;
+    this.lng = this.appointment.lng;
+
+    console.log("lat ", typeof this.appointment.lat)
     if(this.data.report === 'Requested') {
       this.confirmButton = true
     } else {

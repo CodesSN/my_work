@@ -12,10 +12,12 @@ export class MapsComponent implements OnInit {
       lng: this.lng
     }
     this.addMarker(this.lat, this.lng);
+    this.markerOptions.draggable = false;
   }
   @Input() lat!: any;
   @Input() lng!: any;
   @Input() zoom!: any;
+  @Input() h!: any;
   markerPositions: google.maps.LatLngLiteral[] = [
     {
       lat: this.lat,
@@ -34,7 +36,6 @@ export class MapsComponent implements OnInit {
     draggable: true,
   };
   addMarker(lat: number, lng: number) {
-    console.log(this.lat, this.lng);
     const markerPosition: google.maps.LatLngLiteral = {
       lat: lat,
       lng: lng
