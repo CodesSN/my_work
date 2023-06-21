@@ -1,21 +1,16 @@
-<header class="header" >
-  <ul class="list">
-    <li class="list-item">
-      <button *ngIf="back" (click)="pageBack()" class="button button--icons">
-        <!-- <img src="../../../../assets/icons/notifications.svg" alt=""> -->
-        <span class="material-icons-outlined">
-          arrow_back_ios
-          </span>
-      </button>
-      <button class="button button--profile">H</button>
-    </li>
-    <li class="list-item">
-      <button class="button button--icons">
-        <img src="../../../../assets/icons/notifications.svg" alt="">
-      </button>
-      <button class="button button--icons">
-        <img src="../../../../assets/icons/menu.svg" alt="">
-      </button>
-    </li>
-  </ul>
+<header [ngClass]="{'dark-mobile': dark,'light-mobile': !dark}" class="h-a-v">
+  <div class="b-s">
+    <button [ngClass]="{'dark-mobile': dark,'light-mobile': !dark}" class="b-b">
+      <span *ngIf="back" (click)="pageBack()" class="material-icons-round"> arrow_back_ios </span>
+    </button>
+    <button [ngClass]="{'dark-mobile-button': dark,'light-mobile-button': !dark}" class="p-b"><p>{{user_l}}</p></button>
+  </div>
+  <div class="i">
+    <button [ngClass]="{'dark-mobile': dark,'light-mobile': !dark}" class="n">
+      <span class="material-icons"> notifications </span>
+    </button>
+    <button [ngClass]="{'dark-mobile': dark,'light-mobile': !dark}" class="b">
+      <span class="material-icons-round"> menu </span>
+    </button>
+  </div>
 </header>

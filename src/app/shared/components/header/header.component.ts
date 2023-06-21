@@ -6,9 +6,10 @@ import { Component, Input } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent{
   @Input() back = false;
-
+  @Input() user_l : any = 'h';
+  @Input() dark = true;
   constructor(
     private location: Location
   ){}
