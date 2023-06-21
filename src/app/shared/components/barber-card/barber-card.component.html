@@ -1,17 +1,19 @@
 <div class="card">
   <div class="content">
-    <picture class="img--container">
+    <picture routerLink="/user/profile" class="img--container">
       <img class="img" src="../../../../assets/images/app/beard.png" alt="">
     </picture>
     <div>
-      <h4 class="card-barber">{{barber}}</h4>
+      <h4 routerLink="/user/profile" class="card-barber">
+        {{barber}}
+      </h4>
       <p class="card-description">{{description}}</p>
     </div>
   </div>
   <div class="content--buttons">
     <div class="content">
       <button class="button button--description">
-        <span class="button-text">{{rate}}</span>
+        <span  class="button-text">{{rate}}</span>
         <img src="../../../../assets/icons/star.svg" alt="">
       </button>
       <button class="button button--description">
