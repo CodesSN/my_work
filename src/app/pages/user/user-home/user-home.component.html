@@ -1,1 +1,63 @@
-<h2>Home Component</h2>
+<app-header [back]="false"></app-header>
+<section >
+  <article class="content">
+    <h2 class="title">Hi, Pavel</h2>
+    <p class="text">What are you looking for today?</p>
+    <!-- Ubicacion -->
+    <div class="content-location">
+      <img src="../../../../assets/icons/location.svg" alt="">
+      <span class="text-location">Ubicacion</span>
+    </div>
+    <!-- Buscador -->
+    <div class="input-container">
+      <button class="button button--search">
+        <img src="../../../../assets/icons/search.svg" alt="">
+      </button>
+      <input class="input" type="text">
+    </div>
+  </article>
+  <article class="content content-barber">
+    <app-service-card
+      description="Hair"
+      img="./../../../../assets/images/app/beard.png"
+      alt="Barber beard service img">
+    </app-service-card>
+    <app-service-card
+      description="Beard"
+      img="./../../../../assets/images/app/hair.png"
+      alt="Barber beard service img">
+    </app-service-card>
+    <app-service-card
+      description="Color"
+      img="./../../../../assets/images/app/color.png"
+      alt="Barber beard service img">
+    </app-service-card>
+  </article>
+  <article class="content">
+    <h2 class="title title--barber">Nearest Barbers</h2>
+    <app-barber-card
+      [barber]="'Benjamin Reynolds'"
+      [description]="'With a friendly smile and a knack for understanding individual preferences.'"
+      [rate]="'4.5'"
+      [services]="'3'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'Liam Anderson'"
+      [description]="'Meet Liam, a barber with a passion for traditional barbering techniques and a dedication to customer satisfaction.'"
+      [rate]="'4.3'"
+      [services]="'7'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'Oliver Wright'"
+      [description]="'precision and style go hand in hand. With a knack for delivering clean lines, perfectly faded cuts, and expertly groomed beards.'"
+      [rate]="'4.1'"
+      [services]="'23'"
+    ></app-barber-card>
+    <app-barber-card
+      [barber]="'William Adams'"
+      [description]="'A barber known for her attention to detail and commitment to exceptional service.'"
+      [rate]="'3.8'"
+      [services]="'12'"
+    ></app-barber-card>
+  </article>
+</section>
